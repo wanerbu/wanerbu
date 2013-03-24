@@ -8,6 +8,7 @@
     <meta name="author" content="wanerbu">
 
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
     
     <!-- TODO dairg 需要调查清楚这里的作用 -->
     <%= csrf_meta_tags %>
@@ -53,21 +54,33 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav_main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">玩儿不</a>
-          <div class="nav-collapse collapse">
+          <a class="brand" href="#">玩儿不后台管理</a>
+          <div class="nav_main nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">DashBoard</a></li>
+              <li class="dropdown">  
+                <a href="#"
+                    class="dropdown-toggle"  
+                    data-toggle="dropdown">
+                    用户管理
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">用户一览</a></li>
+                  <li><a href="#">用户授权</a></li>
+                  <li><a href="#">用户锁定</a></li>
+                </ul>
+              </li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
             <p class="navbar-text pull-right">
               Logged in as <a href="#" class="navbar-link">Admin</a>
             </p>
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -143,13 +156,10 @@
       <hr>
 
       <footer>
-        <p>&copy; Company 2013</p>
+        <p class='text-center'>&copy; wanerbu 2013</p>
       </footer>
 
     </div><!--/.fluid-container-->
-
-    <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
 
   </body>
 </html>

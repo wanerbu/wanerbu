@@ -20,6 +20,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+# The gem for twitter bootstrap using Sass
+gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

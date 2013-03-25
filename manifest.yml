@@ -1,0 +1,9 @@
+---
+applications:
+- name: wanerbu
+  framework: rails3
+  runtime: ruby19
+  memory: 1G
+  instances: 1
+  url: wanerbu.${target-base}
+  path: .

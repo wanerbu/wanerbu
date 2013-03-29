@@ -38,3 +38,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+# 认证gem包
+gem 'devise', '~> 2.0'
+

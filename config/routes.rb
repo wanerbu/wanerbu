@@ -1,10 +1,24 @@
 Wanerbu::Application.routes.draw do
 
+  # 普通用户认证部分
+  devise_for :users, :path => 'auth',
+             :path_names => { :sign_in => 'login', :sign_out => 'logout'}
+
+  # 系统管理员认证部分
+  devise_for :admins, :controllers => {:sessions => 'admin/admins/sessions'},
+             :path => 'admin/auth', :path_names => { :sign_in => 'login', :sign_out => 'logout'}
 
   # 默认主页
   root :to => 'welcome#index'
 
+  # 系统管理员route
   namespace :admin do
+    root :to => 'dashboard#index'
+    get 'dashboard' => 'dashboard#index'
+  end
+
+  # 普通用户route
+  namespace :user do
     root :to => 'dashboard#index'
     get 'dashboard' => 'dashboard#index'
   end

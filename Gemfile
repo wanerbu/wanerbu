@@ -50,3 +50,7 @@ gem 'will_paginate', '~> 3.0.0'
 
 # 表单组件
 gem 'formtastic', '~> 2.2'
+
+# 导航组件
+gem 'simple-navigation', '~> 3.10'
+

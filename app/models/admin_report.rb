@@ -20,6 +20,6 @@ class AdminReport
   column(:email)
   column(:name)
   column(:created_at)
-  column(:actions, :html => true) { |asset| render :partial => "admin/master/datagrid_assets/actions", :locals => {:target => asset} }
+  column(:actions, :html => true) { |asset| render :partial => "admin/master/admin_reports/actions", :locals => {:target => asset} }
 end
 

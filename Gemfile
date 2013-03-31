@@ -42,3 +42,8 @@ gem 'jquery-rails'
 # 认证gem包
 gem 'devise', '~> 2.0'
 
+# 实现过滤，列头排序等
+gem 'datagrid'
+
+# 分页组件
+gem 'will_paginate', '~> 3.0.0'

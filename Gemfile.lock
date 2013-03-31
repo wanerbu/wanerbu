@@ -41,6 +41,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.1)
+    datagrid (0.7.1)
+      rails (>= 3.0)
     devise (2.0.5)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -116,6 +118,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.1.1)
       rack (>= 1.0)
+    will_paginate (3.0.4)
 
 PLATFORMS
   ruby
@@ -123,6 +126,7 @@ PLATFORMS
 DEPENDENCIES
   anjlab-bootstrap-rails (>= 2.3)
   coffee-rails (~> 3.2.1)
+  datagrid
   devise (~> 2.0)
   jquery-rails
   rails (= 3.2.12)
@@ -130,3 +134,4 @@ DEPENDENCIES
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)
+  will_paginate (~> 3.0.0)

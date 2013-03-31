@@ -7,7 +7,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration
   def change
     create_table(:admins) do |t|
       ## 自定义字段
-      t.string :login_id, limit: 16, null: false
+      t.string :login_id, limit: 16
       t.string :first_name, limit: 10
       t.string :last_name, limit: 10
       t.string :telephone_no, limit: 15

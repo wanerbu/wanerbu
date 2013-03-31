@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       ## 自定义字段
-      t.string :login_id, limit: 16, null: false
+      t.string :login_id, limit: 16
       t.string :first_name, limit: 10
       t.string :last_name, limit: 10
       t.string :honey_name, limit: 20

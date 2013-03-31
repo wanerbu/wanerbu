@@ -21,4 +21,15 @@ class Admin < ActiveRecord::Base
     # TODO dairg 临时的处理
     self.login_id = self.email
   end
+
+  def name
+    name = ''
+    if self.first_name
+      name += self.first_name + ' '
+    end
+    if self.last_name
+      name += self.last_name
+    end
+    return name
+  end
 end

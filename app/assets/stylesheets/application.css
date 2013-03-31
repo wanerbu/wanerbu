@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require wanerbu_bootstrap
+ *= require formtastic
  *= require_tree .
  */

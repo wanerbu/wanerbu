@@ -1,2 +1,10 @@
-<h1>Admin::Master::Admins#new</h1>
-<p>Find me in app/views/admin/master/admins/new.html.erb</p>
+<h3>新建管理员</h3>
+<div class='span8'>
+  <%= semantic_form_for([:admin, :master, @admin], :html => { :class => 'form-horizontal' }) do |f| %>
+    <%= f.input :email, :input_html => { :class => "span4" }, :hint => "add your email here" %>
+    <%= f.input :login_id %>
+    <%= f.input :password %>
+    <%= f.inputs :first_name, :last_name, :name => "姓名" %>
+    <%= f.actions %>
+  <% end %>
+</div>

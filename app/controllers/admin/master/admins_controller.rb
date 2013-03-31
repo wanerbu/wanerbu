@@ -10,10 +10,16 @@ class Admin::Master::AdminsController < Admin::AdminBaseController
     @admins = Admin.all
   end
 
+  def show
+    @admin = Admin.find(params[:id])
+  end
+
   def new
+    @admin = Admin.new
   end
 
   def create
+    
   end
 
   def edit
@@ -21,4 +27,5 @@ class Admin::Master::AdminsController < Admin::AdminBaseController
 
   def update
   end
+
 end

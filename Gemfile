@@ -47,3 +47,6 @@ gem 'datagrid'
 
 # 分页组件
 gem 'will_paginate', '~> 3.0.0'
+
+# 表单组件
+gem 'formtastic', '~> 2.2'

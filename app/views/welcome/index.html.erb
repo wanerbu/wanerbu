@@ -9,24 +9,6 @@
         margin: 60px 0;
       }
 
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 80px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 100px;
-        line-height: 1;
-      }
-      .jumbotron .lead {
-        font-size: 24px;
-        line-height: 1.25;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-
       /* Supporting marketing content */
       .marketing {
         margin: 60px 0;
@@ -60,12 +42,19 @@
         border-left: 0;
         border-radius: 3px 0 0 3px;
       }
-     .container .navbar .nav li:last-child a {
+      .container .navbar .nav li:last-child a {
         border-right: 0;
         border-radius: 0 3px 3px 0;
       }
       .carousel-caption {
         background: none;
+      }
+      .item img {
+        width: 100%;
+        height: 180px;
+      }
+      .carousel {
+        margin-bottom: 0;
       }
 
     </style>
@@ -95,7 +84,7 @@
           <div id="myCarousel" class="carousel slide">
             <div class="carousel-inner">
               <div class="item active">
-                <img src="images/1.jpeg" alt="">
+                <img src="images/1.jpeg" alt="" class='img-polaroid'>
                 <%# image_tag("/images/1.jpeg", :size => "800x400", :alt => "") %>
                 <div class="container">
                   <div class="carousel-caption">
@@ -104,7 +93,7 @@
                 </div>
               </div>
               <div class="item">
-                <img src="images/2.jpeg" alt="">
+                <img src="images/2.jpeg" alt="" class='img-polaroid'>
                 <div class="container">
                   <div class="carousel-caption">
                     <p class="lead">football, let`s go!</p>
@@ -113,7 +102,7 @@
                 </div>
               </div>
               <div class="item">
-                <img src="images/3.jpeg" alt="">
+                <img src="images/3.jpeg" alt="" class='img-polaroid'>
                 <div class="container">
                   <div class="carousel-caption">
                     <p class="lead">football, let`s go!</p>

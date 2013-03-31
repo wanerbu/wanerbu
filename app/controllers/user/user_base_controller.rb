@@ -6,6 +6,6 @@
 #++
 #
 class User::UserBaseController < ApplicationController
-  # 需要必须是管理员
+  # 需要必须是登陆用户
   before_filter :authenticate_user!
 end

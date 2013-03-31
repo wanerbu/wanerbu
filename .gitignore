@@ -26,4 +26,4 @@ rerun.txt
 pickle-email-*.html
 
 # The vim swp file
-.swp
+*.swp

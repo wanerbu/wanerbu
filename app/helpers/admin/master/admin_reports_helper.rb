@@ -1,2 +1,2 @@
-module Admin::Master::AdminReportHelper
+module Admin::Master::AdminReportsHelper
 end

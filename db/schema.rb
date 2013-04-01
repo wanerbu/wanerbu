@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130329075503) do
 
   create_table "admins", :force => true do |t|
-    t.string   "login_id",               :limit => 16,                 :null => false
+    t.string   "login_id",               :limit => 16
     t.string   "first_name",             :limit => 10
     t.string   "last_name",              :limit => 10
     t.string   "telephone_no",           :limit => 15
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20130329075503) do
   add_index "admins", ["unlock_token"], :name => "index_admins_on_unlock_token", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "login_id",               :limit => 16,                  :null => false
+    t.string   "login_id",               :limit => 16
     t.string   "first_name",             :limit => 10
     t.string   "last_name",              :limit => 10
     t.string   "honey_name",             :limit => 20

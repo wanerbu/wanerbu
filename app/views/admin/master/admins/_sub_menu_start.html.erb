@@ -1,0 +1,7 @@
+  <ul class="nav nav-tabs">
+    <li class="<%= 'active' if active_path.present? && active_path == admin_master_admin_reports_path %>">
+      <%= link_to '用户一览', admin_master_admin_reports_path %>
+    </li>
+    <li class="<%= 'active' if active_path.present? && active_path == new_admin_master_admin_path %>">
+      <%= link_to '新建用户', new_admin_master_admin_path %>
+    </li>

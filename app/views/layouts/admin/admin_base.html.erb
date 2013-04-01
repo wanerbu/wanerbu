@@ -8,29 +8,14 @@
     <meta name="author" content="wanerbu">
 
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "admin", :media => "all" %>
+    <%= yield :head_stylesheet %>
     <%= javascript_include_tag "application" %>
+    <%= yield :head_javascript %>
     
     <!-- TODO dairg 需要调查清楚这里的作用 -->
     <%= csrf_meta_tags %>
     
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-
-      @media (max-width: 980px) {
-        /* Enable use of floated navbar text */
-        .navbar-text.pull-right {
-          float: none;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-      }
-    </style>
 
     <!-- TODO dairg 需要调查清楚这里的作用 -->
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -49,72 +34,32 @@
 
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav_main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">玩儿不后台管理</a>
-          <div class="nav_main nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">DashBoard</a></li>
-              <li class="dropdown">  
-                <a href="#"
-                    class="dropdown-toggle"  
-                    data-toggle="dropdown">
-                    用户管理
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">用户一览</a></li>
-                  <li><a href="#">用户授权</a></li>
-                  <li><a href="#">用户锁定</a></li>
-                </ul>
-              </li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-            <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">Admin</a>
-            </p>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
+      <!-- 顶部的固定导航 -->
+      <%= render 'layouts/admin/top_fixed_nav' -%>
     </div>
 
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">用户管理</li>
-              <li class="active"><a href="#">用户一览</a></li>
-              <li>
-                <%= link_to '新建用户', new_admin_master_admin_path %>
-              </li>
-              <li><a href="#">锁定用户</a></li>
-              <li class="nav-header">运动项目管理</li>
-              <li><a href="#">一览</a></li>
-            </ul>
-
-
-
-
-            <%= render_navigation(:level => :all, :expand_all => true, :context => :admin) %>
-
-
-          </div><!--/.well -->
+          <!-- 左边的主菜单 -->
+          <%= render 'layouts/admin/left_nav' -%>
         </div><!--/span-->
-        <div class="span10">
-          <%= yield %>
+        <div class="container-fluid span10">
+          <div class="span12">
+            <!-- 主工作区的顶部菜单 -->
+            <%= yield :sub_menu -%>
+          </div>
+          <div class="span12">
+            <!-- 主工作区内容 -->
+            <%= yield %>
+          </div>
         </div><!--/span-->
       </div><!--/row-->
 
-      <hr>
-      <footer>
-        <p class='text-center'>&copy; wanerbu 2013</p>
-      </footer>
+      <div class="row-fluid">
+        <!-- 页脚 -->
+        <%= render 'layouts/admin/footer' -%>
+      </div>
 
     </div><!--/.fluid-container-->
 

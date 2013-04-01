@@ -1,1 +1,12 @@
 ﻿zh-CN:
+  activerecord:
+    models:
+      admin: 系统用户
+    attributes:
+      admin:
+        login_id: "登录ID"
+        email: "Email"
+        name: "姓名"
+        first_name: "姓"
+        last_name: "名"
+

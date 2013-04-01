@@ -7,19 +7,20 @@
 <% end %>
 
 <div class="data">
+  <h3><%= Admin.model_name.human %></h3>
   <dl>
     <dt>
-      Email
-    </dt>
-    <dd>
-      <%= @admin.email -%>
-    </dd>
-
-    <dt>
-      Login_id
+      <%= Admin.human_attribute_name(:login_id) %>
     </dt>
     <dd>
       <%= @admin.login_id -%>
+    </dd>
+
+    <dt>
+      <%= Admin.human_attribute_name(:email) %>
+    </dt>
+    <dd>
+      <%= @admin.email -%>
     </dd>
   </dl>
 </div>

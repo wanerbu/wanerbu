@@ -1,7 +1,7 @@
 <% content_for :sub_menu do %>
   <%= render :partial => 'admin/master/admins/sub_menu_start', :locals => {:active_path => nil } -%>
     <li class="active">
-      <%= link_to t('admin_nav.main_menu.master.admins.items.show'), admin_master_admin_path(@admin) %>
+      <%= link_to t('admin.nav.main_menu.master.admins.items.show'), admin_master_admin_path(@admin) %>
     </li>
   <%= render 'common_parts/sub_menu_end' -%>
 <% end %>

@@ -1,0 +1,15 @@
+zh-CN:
+  admin:
+    nav:
+      top_fixed:
+
+      main_menu:
+        dashboard: 主面板
+        master:
+          admins:
+            name: 系统用户管理
+            items:
+              list: 系统用户一览
+              new: 新建系统用户
+              show: 详细信息 
+

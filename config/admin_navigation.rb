@@ -49,12 +49,12 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
-    primary.item :dashboard, '主面板', admin_dashboard_path, {:class => 'nav-header'}
+    primary.item :dashboard, I18n.t('admin_nav.main_menu.dashboard'), admin_dashboard_path, {:class => 'nav-header'}
 
-    primary.item :admins, '系统用户管理', admin_master_admin_reports_path, {:class => 'nav-header'} do |sub_nav|
+    primary.item :admins, I18n.t('admin_nav.main_menu.master.admins.name'), admin_master_admin_reports_path, {:class => 'nav-header'} do |sub_nav|
       sub_nav.dom_class = 'nav nav-list'
-      sub_nav.item :admins_list, '系统用户一览', admin_master_admin_reports_path
-      sub_nav.item :new_admin, '新建用户', new_admin_master_admin_path
+      sub_nav.item :admins_list, I18n.t('admin_nav.main_menu.master.admins.items.list'), admin_master_admin_reports_path
+      sub_nav.item :new_admin, I18n.t('admin_nav.main_menu.master.admins.items.new'), new_admin_master_admin_path
     end
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
@@ -70,7 +70,5 @@ SimpleNavigation::Configuration.run do |navigation|
 
     # You can turn off auto highlighting for a specific level
     # primary.auto_highlight = false
-
   end
-
 end

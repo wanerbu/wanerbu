@@ -37,31 +37,32 @@
       <!-- 顶部的固定导航 -->
       <%= render 'layouts/admin/top_fixed_nav' -%>
     </div>
+    <div>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span2">
+            <!-- 左边的主菜单 -->
+            <%= render 'layouts/admin/left_nav' -%>
+          </div><!--/span-->
+          <div class="span10">
+            <div class="span12">
+              <!-- 主工作区的顶部菜单 -->
+              <%= yield :sub_menu -%>
+            </div>
+            <div class="span12">
+              <!-- 主工作区内容 -->
+              <%= yield %>
+            </div>
+          </div><!--/span-->
+        </div><!--/row-->
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span2">
-          <!-- 左边的主菜单 -->
-          <%= render 'layouts/admin/left_nav' -%>
-        </div><!--/span-->
-        <div class="container-fluid span10">
-          <div class="span12">
-            <!-- 主工作区的顶部菜单 -->
-            <%= yield :sub_menu -%>
-          </div>
-          <div class="span12">
-            <!-- 主工作区内容 -->
-            <%= yield %>
-          </div>
-        </div><!--/span-->
-      </div><!--/row-->
-
-      <div class="row-fluid">
+      </div><!--/.fluid-container-->
+      <div class="span12">
         <!-- 页脚 -->
         <%= render 'layouts/admin/footer' -%>
       </div>
+    </div>
 
-    </div><!--/.fluid-container-->
 
   </body>
 </html>

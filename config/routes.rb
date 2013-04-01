@@ -16,7 +16,7 @@ Wanerbu::Application.routes.draw do
     root :to => 'dashboard#index'
     get 'dashboard' => 'dashboard#index'
     namespace :master do
-      resources :admins
+      resources :admins, :except => [:index]
       resources :admin_reports, :only => [:index]
     end
   end

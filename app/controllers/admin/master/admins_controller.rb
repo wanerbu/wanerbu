@@ -6,9 +6,6 @@
 #++
 #
 class Admin::Master::AdminsController < Admin::AdminBaseController
-  def index
-    @admins = Admin.all
-  end
 
   def show
     @admin = Admin.find(params[:id])

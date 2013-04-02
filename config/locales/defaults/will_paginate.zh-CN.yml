@@ -1,0 +1,4 @@
+zh-CN:
+  will_paginate:
+    previous_label: '<<'
+    next_label: '>>'

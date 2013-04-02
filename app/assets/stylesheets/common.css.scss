@@ -1,3 +1,41 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* -----------------------------------------------------
+ * 这里开始是自定义了datagrid的表头排序显示部分
+ * ----------------------------------------------------- */
+
+// 这里定义的是表格头部排序用的图标
+@mixin class-order-icon-base {
+  background-image: url("/assets/twitter/glyphicons-halflings.png");
+  background-position: -289px -96px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 14px;
+  line-height: 14px;
+  margin-top: 1px;
+  vertical-align: text-top;
+  width: 14px;
+  padding: 0;
+}
+
+table.datagrid {
+  th {
+    // 这里是排序的表头
+    span {
+      vertical-align: text-top;
+      float: left;
+    }
+  }
+  // 这里定义的是表格头部排序用的图标
+  div.order {
+    margin-left: 10px;
+    float: left;
+
+    a.asc {
+      @include class-order-icon-base;
+      background-position: -289px -96px;
+    }
+    a.desc {
+      @include class-order-icon-base;
+      background-position: -312px -96px;
+    }
+  }
+}

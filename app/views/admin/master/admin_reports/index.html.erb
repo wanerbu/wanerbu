@@ -27,7 +27,8 @@
 
   <div class='total'>Total: <%= @admin_report.assets.count %></div>
   <%= datagrid_table(@admin_report, @assets) %>
-  <%= will_paginate @assets %>
+  <%= will_paginate @assets, :renderer => PaginationListLinkRenderer %>
+  <%# will_paginate @assets %>
 </div>
 
 <div class="right">

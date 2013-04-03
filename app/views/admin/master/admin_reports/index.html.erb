@@ -6,35 +6,32 @@
   <%= render 'common_parts/sub_menu_end' -%>
 <% end %>
 
-<div class="left">
+<div class="search-condition alert alert-success">
 
-<%= form_for [:admin, :master, @admin_report], :html => {:method => :get} do |f| -%>
-  <% @admin_report.filters.each do |filter| -%>
-    <div class="filter">
-      <%= f.datagrid_label filter %>
-      <%= f.datagrid_filter filter %>
+  <%= form_for [:admin, :master, @admin_report], :html => {:method => :get} do |f| -%>
+    <% @admin_report.filters.each do |filter| -%>
+      <div class="datagrid-filter">
+        <%= f.datagrid_label filter %>
+        <%= f.datagrid_filter filter %>
+      </div>
+    <% end -%>
+
+    <div class='filter-action'>
+      <button type='submit' class='btn btn-primary'>检索</button>
+      <button type='button' class='btn'>清空</button>
     </div>
-    <div class="clear"></div>
+    <div class='clear'></div>
   <% end -%>
+</div>
 
-  <div class="filter">
-    <%= f.submit 'select' %>
-  </div>
-  <div class="clear"></div>
-<% end -%>
-
-<h3>Admins Report</h3>
+<div class="search-result">
+  <h4>系统用户一览</h4>
 
   <div class='total'>Total: <%= @admin_report.assets.count %></div>
   <%= datagrid_table(@admin_report, @assets) %>
-  <%= will_paginate @assets, :renderer => PaginationListLinkRenderer %>
-  <%# will_paginate @assets %>
+  <%= will_paginate @assets %>
 </div>
 
 <div class="right">
   <%# render :partial => "shared/source", :object => @admin_report %>
 </div>
-
-
-<table class="table table-striped table-hover">
-</table>

@@ -74,3 +74,15 @@ div.search-condition {
 // 结果部分
 div.search-result {
 }
+
+div.total {
+  float:right;
+  margin: 5px;
+  border-color: pink;
+  border-style: solid;
+  border-width: 0 0 2px 0;
+}
+
+.pagination {
+  margin: 15px 0 5px 0;
+}

@@ -23,12 +23,12 @@
     <div class='clear'></div>
   <% end -%>
 </div>
-
 <div class="search-result">
-  <h4>系统用户一览</h4>
-
-  <div class='total'>Total: <%= @admin_report.assets.count %></div>
+  <div class='total'>Total: <%= @admin_report.assets.count %> 件</div>
+  <%= will_paginate @assets %>
+  <div class='alert alert-info'>
   <%= datagrid_table(@admin_report, @assets) %>
+  </div>
   <%= will_paginate @assets %>
 </div>
 

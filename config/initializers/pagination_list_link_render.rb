@@ -30,4 +30,5 @@ class PaginationListLinkRenderer < WillPaginate::ActionView::LinkRenderer
 end
 
 # 分页顶层div的class设置
-WillPaginate::ViewHelpers.pagination_options[:class] = 'pagination pagination-centered'
+#WillPaginate::ViewHelpers.pagination_options[:class] = 'pagination pagination-centered'
+WillPaginate::ViewHelpers.pagination_options[:class] = 'pagination'

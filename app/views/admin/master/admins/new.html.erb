@@ -3,15 +3,6 @@
   <%= render 'common_parts/sub_menu_end' -%>
 <% end %>
 
-<div class='wb-content-sub-title'>
-  <h4>新建管理员</h4>
-  <div style='float:right;'>
-    <button type='button' class='btn btn-primary'>其他</button>
-    <button type='button' class='btn btn-primary'>其他</button>
-    <button type='button' class='btn btn-primary'>其他</button>
-  </div>
-  <div class='clear'></div>
-</div>
 <div class='wb-content-main'>
   <%= semantic_form_for([:admin, :master, @admin], :html => { :class => 'form-horizontal' }) do |f| %>
     <ul>

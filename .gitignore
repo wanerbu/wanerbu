@@ -27,3 +27,6 @@ pickle-email-*.html
 
 # The vim swp file
 *.swp
+
+# The precompile file
+/public/assets/*

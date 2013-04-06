@@ -97,7 +97,7 @@ div.wb-content-sub-title {
   padding: 5px 0;
   border-color: pink;
   border-style: solid;
-  border-width: 0 0 2px 5px;
+  border-width: 0 0 2px 0px;
   font-weight: bold;
   vertical-align: middle;
 
@@ -122,6 +122,7 @@ div.wb-content-model-detail {
   tr {
     td:first-child {
       background-color: pink;
+      text-align: right;
     }
   }
 }

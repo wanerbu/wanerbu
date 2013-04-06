@@ -26,7 +26,8 @@
 <div class="search-result">
   <div class='total'>Total: <%= @admin_report.assets.count %> 件</div>
   <%= will_paginate @assets %>
-  <div class='alert alert-info'>
+  <div class='clear'></div>
+  <div>
   <%= datagrid_table(@admin_report, @assets) %>
   </div>
   <%= will_paginate @assets %>

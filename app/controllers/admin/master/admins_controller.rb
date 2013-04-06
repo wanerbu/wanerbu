@@ -16,7 +16,14 @@ class Admin::Master::AdminsController < Admin::AdminBaseController
   end
 
   def create
-    
+    @admin = Admin.new(params[:admin])
+    if @admin.save
+      flash[:notice] = 'save success'
+      redirect_to admin_master_admin_path(@admin)
+    else
+      flash[:alert] = 'save fail!'
+      render :new
+    end
   end
 
   def edit

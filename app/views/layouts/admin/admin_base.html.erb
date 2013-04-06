@@ -50,6 +50,10 @@
               <%= yield :sub_menu -%>
             </div>
             <div id='main-content' class="span12">
+
+              <!-- 提示信息或者错误信息 -->
+              <%= render 'layouts/admin/info_or_error_msg' -%>
+
               <!-- 主工作区内容 -->
               <%= yield %>
             </div>

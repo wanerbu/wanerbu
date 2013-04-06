@@ -16,6 +16,8 @@ class User::Master::GymsController < ApplicationController
 
   def create
     @gym = Gym.new(params[:gym])
+    @gym.deleted_at = '10010101'
+    @gym.status = '00'
     if @gym.save
        render "show", notice: 'Gym was successfully created.'
     else

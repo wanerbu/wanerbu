@@ -36,7 +36,6 @@ class User::Master::GymsController < ApplicationController
 
     @gym = Gym.find(params[:id])
 
-    respond_to do |format|
       if @gym.update_attributes(params[:gym])
 #页面不不能刷新
         redirect_to user_master_gym_url(@gym)
@@ -44,8 +43,6 @@ class User::Master::GymsController < ApplicationController
       else
         render "edit"
       end
-    end
-
   end
 
   def destroy
@@ -53,6 +50,4 @@ class User::Master::GymsController < ApplicationController
     @gym.destroy
     redirect_to user_master_gyms_url
   end
-
-
 end

@@ -6,21 +6,31 @@
   <%= render 'common_parts/sub_menu_end' -%>
 <% end %>
 
-<div class="data">
-  <h3><%= Admin.model_name.human %></h3>
-  <dl>
-    <dt>
-      <%= Admin.human_attribute_name(:login_id) %>
-    </dt>
-    <dd>
-      <%= @admin.login_id -%>
-    </dd>
+<div class="row-fluid">
+  <div class='wb-content-sub-title span9'>
+    <h4><%= Admin.model_name.human %></h4>
+    <div style='float:right;'>
+      <button type='button' class='btn btn-primary'>编辑</button>
+      <button type='button' class='btn btn-primary'>删除</button>
+      <button type='button' class='btn btn-primary'>锁定</button>
+    </div>
+    <div class='clear'></div>
+  </div>
+</div>
 
-    <dt>
-      <%= Admin.human_attribute_name(:email) %>
-    </dt>
-    <dd>
-      <%= @admin.email -%>
-    </dd>
-  </dl>
+<div class="row-fluid">
+  <div class="wb-content-model-detail span9">
+    <table class="table table-bordered" style="width: 100%;">
+      <tbody>
+        <tr>
+          <td><%= Admin.human_attribute_name(:login_id) %></td>
+          <td><%= @admin.login_id -%></td>
+        </tr>
+        <tr>
+          <td><%= Admin.human_attribute_name(:email) %></td>
+          <td><%= @admin.email -%></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

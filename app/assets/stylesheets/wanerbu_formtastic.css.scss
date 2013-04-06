@@ -1,0 +1,20 @@
+form.formtastic {
+  .input {
+    padding: 15px 0 10px 0;
+  }
+  ul {
+    li {
+      border-color: #AAAAAA;
+      border-style: dotted;
+      border-width: 0 0 1px;
+      
+      label {
+        color: black;
+        background-color: white;
+        text-align: right;
+        padding-right: 15px;
+      }
+    }
+  }
+}
+

@@ -10,6 +10,7 @@
  *
  *= require wanerbu_bootstrap
  *= require formtastic
+ *= require wanerbu_formtastic
  *= require_self
  *= require common
  */

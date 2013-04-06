@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Intro</th>
+    <th>Open time</th>
+    <th>Close time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gyms.each do |gym| %>
+  <tr>
+    <td><%= gym.name %></td>
+    <td><%= gym.intro %></td>
+    <td><%= gym.open_time.strftime("%H:%M:%S") %></td>
+    <td><%= gym.close_time.strftime("%H:%M:%S") %></td>
+    <td><%= link_to 'Show', user_master_gym_path(gym) %></td>
+    <td><%= link_to 'Edit', edit_user_master_gym_path(gym) %></td>
+    <td><%= link_to 'Destroy', user_master_gym_path(gym), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+</table>
+<% end %>
+<table>
+   <tr>
+     <td><%= link_to 'New', new_user_master_gym_path %></td>
+   </tr>
+</table>

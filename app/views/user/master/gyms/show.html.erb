@@ -1,0 +1,28 @@
+
+<p>
+  <b>Name:</b>
+  <%= @gym.name %>
+</p>
+
+<p>
+  <b>Intro:</b>
+  <%= @gym.intro %>
+</p>
+
+
+<p>
+  <b>Open time:</b>
+  <%= @gym.open_time.strftime("%H:%M:%S") %>
+</p>
+
+<p>
+  <b>Close time:</b>
+  <%= @gym.close_time.strftime("%H:%M:%S") %>
+</p>
+
+
+
+<%= link_to 'Back', user_master_gyms_path %>|
+<%= link_to 'Edit', edit_user_master_gym_path(@gym) %>
+
+

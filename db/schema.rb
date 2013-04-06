@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329075503) do
+ActiveRecord::Schema.define(:version => 20130406022038) do
 
   create_table "admins", :force => true do |t|
     t.string   "login_id",               :limit => 16
@@ -49,6 +49,20 @@ ActiveRecord::Schema.define(:version => 20130329075503) do
   add_index "admins", ["login_id"], :name => "index_admins_on_login_id", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
   add_index "admins", ["unlock_token"], :name => "index_admins_on_unlock_token", :unique => true
+
+  create_table "gyms", :force => true do |t|
+    t.string   "name",       :limit => 50,  :default => "",   :null => false
+    t.text     "intro"
+    t.string   "address",    :limit => 100, :default => "",   :null => false
+    t.string   "telephone",  :limit => 30,  :default => "",   :null => false
+    t.time     "open_time",                                   :null => false
+    t.time     "close_time",                                  :null => false
+    t.float    "score",                     :default => 0.0,  :null => false
+    t.string   "status",                    :default => "00", :null => false
+    t.datetime "deleted_at",                                  :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login_id",               :limit => 16

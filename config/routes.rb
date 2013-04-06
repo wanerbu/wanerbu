@@ -25,6 +25,9 @@ Wanerbu::Application.routes.draw do
   namespace :user do
     root :to => 'dashboard#index'
     get 'dashboard' => 'dashboard#index'
+    namespace :master do
+      resources :gyms
+    end
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

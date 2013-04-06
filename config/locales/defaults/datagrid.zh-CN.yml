@@ -4,3 +4,5 @@ zh-CN:
       order:
         asc: ''
         desc: ''
+    no_results: '无匹配数据。'
+

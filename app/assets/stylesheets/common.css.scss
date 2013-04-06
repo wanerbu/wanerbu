@@ -1,18 +1,61 @@
+/* 引入公共的一些基本定义 */
+@import "base";
+
 /* -----------------------------------------------------
- * 共通的一些定义
+ * 开始定义一些公用功能的mixin(组件级别用)
  * ----------------------------------------------------- */
-div.clear {
-  clear: both;
+
+
+
+/* 定义组件 Start */
+
+/* -----------------------------------------------------
+ * 自己定义翻页组件样式的部分(如果和bootstrap的
+ * pagination有冲突, 会覆盖bootstrap的)
+ * ----------------------------------------------------- */
+.wb-pagination {
+  margin: 15px 0 5px 0;
 }
 
 /* -----------------------------------------------------
- * 这里开始是自定义了datagrid的表头排序显示部分
+ * 这里是一般一览画面的检索部分
  * ----------------------------------------------------- */
+/* 条件部分外围容器  */
+div.wb-search-condition-container {
+  float: none;
+  margin: 0;
+  padding: 14px 14px 10px;
+
+  form {
+    margin: 0px;
+  }
+}
+
+/* 检索部的条件部分  */
+.wb-datagrid-filter-content {
+  padding-right: 20px;
+  float: left;
+  label {
+    display: inline;
+  }
+}
+/* 检索部的操作部分  */
+.wb-datagrid-filter-action {
+  float: right;
+}
+
+/* -----------------------------------------------------
+ * 这里是一般一览画面的结果部分
+ * ----------------------------------------------------- */
+/* 结果部分外围容器  */
+.wb-search-result-container {
+}
 
 // 这里定义的是表格头部排序用的图标
-@mixin class-order-icon-base {
+// $p_x: 在图片中的横轴坐标； $p_y: 在图片中的纵轴坐标；
+@mixin wb-class-order-icon-base($p_x, $p_y) {
   background-image: url("/assets/twitter/glyphicons-halflings.png");
-  background-position: -289px -96px;
+  background-position: $p_x $p_y;
   background-repeat: no-repeat;
   display: inline-block;
   height: 14px;
@@ -23,59 +66,28 @@ div.clear {
   padding: 0;
 }
 
-table.datagrid {
+/* 这里开始是自定义了datagrid的表头排序显示部分 */
+table.wb-datagrid {
   th {
-    // 这里是排序的表头
+    // 这里是排序的表头显示内容
     span {
       vertical-align: text-top;
       float: left;
     }
   }
-  // 这里定义的是表格头部排序用的图标
-  div.order {
+  // 这里定义的是表格头部排序用的图标部分
+  .order {
     margin-left: 10px;
     float: left;
-
-    a.asc {
-      @include class-order-icon-base;
-      background-position: -289px -96px;
-    }
-    a.desc {
-      @include class-order-icon-base;
-      background-position: -312px -96px;
-    }
+    // 升序图标
+    .asc { @include wb-class-order-icon-base(-289px, -96px); }
+    // 降序图标
+    .desc { @include wb-class-order-icon-base(-312px, -96px); }
   }
 }
 
-div.datagrid-filter {
-  padding-right: 20px;
-  float: left;
-  label {
-    display: inline;
-  }
-}
-div.filter-action {
-  float: right;
-}
-
-/* -----------------------------------------------------
- * 这里是一般一览画面的检索和结果部分
- * ----------------------------------------------------- */
-// 条件部分
-div.search-condition {
-  float: none;
-  margin: 0;
-  padding: 14px 14px 10px;
-
-  form {
-    margin: 0px;
-  }
-}
-// 结果部分
-div.search-result {
-}
-
-div.total {
+/* 显示总件数 */
+.wb-result-total {
   float:right;
   margin: 5px;
   border-color: pink;
@@ -84,16 +96,15 @@ div.total {
 }
 
 /* -----------------------------------------------------
- * 自己定义翻页组件样式的部分
+ * 具体业务操作部分
  * ----------------------------------------------------- */
-.pagination {
-  margin: 15px 0 5px 0;
+/* 总外围容器(包含下面两个sub-title和detail) */
+.wb-content-main {
+  margin-top: 20px;
 }
 
-/* -----------------------------------------------------
- * 具体内容部分的标题
- * ----------------------------------------------------- */
-div.wb-content-sub-title {
+/* 具体业务操作部分内容的标题,动作头 */
+.wb-content-sub-title {
   padding: 5px 0;
   border-color: pink;
   border-style: solid;
@@ -106,17 +117,8 @@ div.wb-content-sub-title {
   }
 }
 
-/* -----------------------------------------------------
- * 具体内容部分的标题
- * ----------------------------------------------------- */
-div.wb-content-main {
-  margin-top: 20px;
-}
-
-/* -----------------------------------------------------
- * 具体内容详细部分
- * ----------------------------------------------------- */
-div.wb-content-model-detail {
+/* 具体内容详细部分 */
+.wb-content-detail {
   padding: 0;
   margin: 20px 0 0 0;
   tr {

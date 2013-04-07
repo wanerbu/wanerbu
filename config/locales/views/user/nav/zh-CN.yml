@@ -1,0 +1,15 @@
+zh-CN:
+  user:
+    nav:
+      top_fixed:
+
+      main_menu:
+        dashboard: 主面板
+        master:
+          gyms:
+            name: 场馆管理
+            items:
+              list: 场馆一览
+              new: 新建场馆
+              show: 详细信息 
+

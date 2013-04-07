@@ -1,28 +1,28 @@
+<% content_for :sub_menu do %>
+  <%= render :partial => 'user/master/gyms/sub_menu_start', :locals => {:active_path => nil } -%>
+    <li class="active">
+      <%= link_to t('场馆详情'), user_master_gym_path(@gym) %>
+    </li>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @gym.name %>
-</p>
+<div class='wb-content-sub-title'>
+  <div>
+    <button type='button' class='btn btn-primary'>编辑</button>
+    <button type='button' class='btn btn-primary'>删除</button>
+    <button type='button' class='btn btn-primary'>锁定</button>
+  </div>
+  <div class='clear'></div>
+</div>
 
-<p>
-  <b>Intro:</b>
-  <%= @gym.intro %>
-</p>
-
-
-<p>
-  <b>Open time:</b>
-  <%= @gym.open_time.strftime("%H:%M:%S") %>
-</p>
-
-<p>
-  <b>Close time:</b>
-  <%= @gym.close_time.strftime("%H:%M:%S") %>
-</p>
-
-
-
-<%= link_to 'Back', user_master_gyms_path %>|
-<%= link_to 'Edit', edit_user_master_gym_path(@gym) %>
-
+<div class="wb-content-model-detail">
+  <table class="table table-bordered" style="width: 100%;">
+    <tbody>
+      <tr>
+        <td><%= Gym.human_attribute_name(:name) %></td>
+        <td><%= @gym.name -%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 

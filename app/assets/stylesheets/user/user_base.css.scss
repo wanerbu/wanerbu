@@ -1,3 +1,24 @@
 // Place all the styles related to the user/UserBase controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.sidebar-nav {
+  padding: 9px 0;
+}
+
+@media (max-width: 980px) {
+  /* Enable use of floated navbar text */
+  .navbar-text.pull-right {
+    float: none;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+#main-content {
+  margin-left: 3px;
+}

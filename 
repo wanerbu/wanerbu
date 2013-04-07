@@ -7,10 +7,12 @@ SimpleNavigation::Configuration.run do |navigation|
   # navigation.renderer = Your::Custom::Renderer
 
   # Specify the class that will be applied to active navigation items. Defaults to 'selected'
-  navigation.selected_class = 'active'
+  # navigation.selected_class = 'your_selected_class'
 
   # Specify the class that will be applied to the current leaf of
   # active navigation items. Defaults to 'simple-navigation-active-leaf'
+  # navigation.active_leaf_class = 'your_active_leaf_class'
+
   # Item keys are normally added to list items as id.
   # This setting turns that off
   # navigation.autogenerate_item_ids = false
@@ -37,36 +39,39 @@ SimpleNavigation::Configuration.run do |navigation|
     # options - can be used to specify attributes that will be included in the rendered navigation item (e.g. id, class etc.)
     #           some special options that can be set:
     #           :if - Specifies a proc to call to determine if the item should
-    #                 be rendered (e.g. <tt>:if => Proc.new { current_user.user? }</tt>). The
+    #                 be rendered (e.g. <tt>:if => Proc.new { current_user.admin? }</tt>). The
     #                 proc should evaluate to a true or false value and is evaluated in the context of the view.
     #           :unless - Specifies a proc to call to determine if the item should not
-    #                     be rendered (e.g. <tt>:unless => Proc.new { current_user.user? }</tt>). The
+    #                     be rendered (e.g. <tt>:unless => Proc.new { current_user.admin? }</tt>). The
     #                     proc should evaluate to a true or false value and is evaluated in the context of the view.
     #           :method - Specifies the http-method for the generated link - default is :get.
     #           :highlights_on - if autohighlighting is turned off and/or you want to explicitly specify
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
-    #primary.item :dashboard, I18n.t('user.nav.main_menu.dashboard'), user_dashboard_path, {:class => 'nav-header'}
+=begin
+    primary.item :dashboard, '主面板', admin_dashboard_path
 
-    primary.item :gyms, t('场馆管理'), user_master_gym_reports_path, {:class => 'nav-header'} do |sub_nav|
-      sub_nav.dom_class = 'nav nav-list'
-      sub_nav.item :my_gym, t('我的场馆'), user_master_gym_reports_path
-      sub_nav.item :new_gym, t('新建场馆'), new_user_master_gym_path
+    primary.item :admins, '系统用户管理', admin_master_admin_reports_path do |sub_nav|
+      sub_nav.item :admins_list, '系统用户一览', admin_master_admin_reports_path
+      sub_nav.item :new_admin, '新建用户', new_admin_master_admin_path
     end
+=end
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.
-    # primary.item :key_3, 'user', url, :class => 'special', :if => Proc.new { current_user.user? }
+    # primary.item :key_3, 'Admin', url, :class => 'special', :if => Proc.new { current_user.admin? }
     # primary.item :key_4, 'Account', url, :unless => Proc.new { logged_in? }
 
     # you can also specify a css id or class to attach to this particular level
     # works for all levels of the menu
     # primary.dom_id = 'menu-id'
-    primary.dom_class = 'nav nav-list'
+    # primary.dom_class = 'menu-class'
 
     # You can turn off auto highlighting for a specific level
     # primary.auto_highlight = false
+
   end
+
 end

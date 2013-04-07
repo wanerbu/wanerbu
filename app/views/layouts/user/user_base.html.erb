@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>玩儿不</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="玩儿不">
+    <meta name="author" content="wanerbu">
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "user", :media => "all" %>
+    <%= yield :head_stylesheet %>
+    <%= javascript_include_tag "application" %>
+    <%= yield :head_javascript %>
+    
+    <!-- TODO dairg 需要调查清楚这里的作用 -->
+    <%= csrf_meta_tags %>
+    
+
+    <!-- TODO dairg 需要调查清楚这里的作用 -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- TODO dairg 需要调查清楚这里的作用 -->
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <!-- 顶部的固定导航 -->
+      <%= render 'layouts/user/top_fixed_nav' -%>
+    </div>
+    <div>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span2">
+            <!-- 左边的主菜单 -->
+            <%= render 'layouts/user/left_nav' -%>
+          </div><!--/span-->
+          <div class="span10">
+            <div class="span12">
+              <!-- 主工作区的顶部菜单 -->
+              <%= yield :sub_menu -%>
+            </div>
+            <div id='main-content' class="span12">
+
+              <!-- 提示信息或者错误信息 -->
+              <%= render 'layouts/user/info_or_error_msg' -%>
+
+              <!-- 主工作区内容 -->
+              <%= yield %>
+            </div>
+          </div><!--/span-->
+        </div><!--/row-->
+
+      </div><!--/.fluid-container-->
+      <div class="span12">
+        <!-- 页脚 -->
+        <%= render 'layouts/user/footer' -%>
+      </div>
+    </div>
+
+
+  </body>
+</html>
+

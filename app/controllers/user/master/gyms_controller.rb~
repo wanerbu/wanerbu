@@ -1,11 +1,11 @@
-# encoding: UTF-8
-#--
-# FileInfo:
-#   Author: dairugang
-#
-#++
-#
-class User::Master::GymsController <  User::UserBaseController
+
+class User::Master::GymsController < ApplicationController
+  
+  def index
+
+    @gyms = Gym.all
+  end
+  
   def show
     @gym = Gym.find(params[:id])
   end

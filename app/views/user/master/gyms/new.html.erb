@@ -1,6 +1,7 @@
-
-<h1>New gym</h1>
-
+<% content_for :sub_menu do %>
+  <%= render :partial => 'user/master/gyms/sub_menu_start', :locals => {:active_path => new_user_master_gym_path } -%>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
 <%= render 'form' %>
 
 <%= link_to 'Back', user_master_gyms_path %>

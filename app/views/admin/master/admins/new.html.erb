@@ -4,13 +4,5 @@
 <% end %>
 
 <div class='wb-content-main'>
-  <%= semantic_form_for([:admin, :master, @admin], :html => { :class => 'form-horizontal' }) do |f| %>
-    <ul>
-      <%= f.input :email, :input_html => { :class => "" }, :hint => "add your email here" %>
-      <%= f.input :login_id %>
-      <%= f.input :password %>
-      <%= f.inputs :first_name, :last_name, :name => "姓名" %>
-    </ul>
-    <%= f.actions %>
-  <% end %>
+  <%= render 'form' -%>
 </div>

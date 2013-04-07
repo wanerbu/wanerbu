@@ -181,7 +181,7 @@ zh-CN:
   support:
     array:
       last_word_connector: ! ', 和 '
-      two_words_connector: ! ' 和 '
+      two_words_connector: ! ', '
       words_connector: ! ', '
   time:
     am: 上午
@@ -194,6 +194,13 @@ zh-CN:
   activemodel:
     errors:
       <<: *errors
+      create: "%{model}创建失败"
+      update: "%{model}更新失败"
+      destroy: "%{model}删除失败"
+    success:
+      create: "%{model}创建成功"
+      update: "%{model}更新成功"
+      destroy: "%{model}删除成功"
   activerecord:
     errors:
       <<: *errors

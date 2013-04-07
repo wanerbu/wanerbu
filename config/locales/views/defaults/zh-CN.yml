@@ -1,2 +1,12 @@
 ﻿zh-CN:
+  views:
+    defaults:
+      label:
+        base_info: "基本信息" 
+        ext_info: "扩展信息" 
+      actions:
+        edit: 编辑
+        show: 详细
+        destroy: 删除
+        lock: 锁定
 

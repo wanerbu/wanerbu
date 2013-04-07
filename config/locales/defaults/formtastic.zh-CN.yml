@@ -1,0 +1,8 @@
+zh-CN:
+  formtastic:
+    actions:
+      create: "创建%{model}"
+      update: "更新%{model}"
+      cancel: "取消"
+      reset: "重置"
+      submit: "提交"

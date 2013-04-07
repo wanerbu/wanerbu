@@ -18,18 +18,27 @@ class Admin::Master::AdminsController < Admin::AdminBaseController
   def create
     @admin = Admin.new(params[:admin])
     if @admin.save
-      flash[:notice] = 'save success'
-      redirect_to admin_master_admin_path(@admin)
+      redirect_to admin_master_admin_path(@admin), notice: I18n.t("activemodel.success.create", model: Admin.model_name.human)
     else
-      flash[:alert] = 'save fail!'
+      flash[:alert] = I18n.t("activemodel.errors.create", model: Admin.model_name.human)
       render :new
     end
   end
 
   def edit
+    @admin = Admin.find(params[:id])
   end
 
+  # 
   def update
+    @admin = Admin.find(params[:id])
+    # TODO dairg 存在性的check
+    if @admin.update_attributes(params[:admin])
+      redirect_to admin_master_admin_path(@admin), notice: I18n.t("activemodel.success.update", model: Admin.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.update", model: Admin.model_name.human)
+      render :edit
+    end
   end
 
 end

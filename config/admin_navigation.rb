@@ -51,10 +51,11 @@ SimpleNavigation::Configuration.run do |navigation|
     #
     primary.item :dashboard, I18n.t('admin.nav.main_menu.dashboard'), admin_dashboard_path, {:class => 'nav-header'}
 
-    primary.item :admins, I18n.t('admin.nav.main_menu.master.admins.name'), admin_master_admin_reports_path, {:class => 'nav-header'} do |sub_nav|
-      sub_nav.dom_class = 'nav nav-list'
-      sub_nav.item :admins_list, I18n.t('admin.nav.main_menu.master.admins.items.list'), admin_master_admin_reports_path
-      sub_nav.item :new_admin, I18n.t('admin.nav.main_menu.master.admins.items.new'), new_admin_master_admin_path
+    primary.item :admins, I18n.t('admin.nav.main_menu.common.management', model: Admin.model_name.human),
+      admin_master_admin_reports_path, {:class => 'nav-header'} do |sub_nav|
+        sub_nav.dom_class = 'nav nav-list'
+        sub_nav.item :admins_list, I18n.t('admin.nav.main_menu.common.list', model: Admin.model_name.human), admin_master_admin_reports_path
+        sub_nav.item :new_admin, I18n.t('admin.nav.main_menu.common.new', model: Admin.model_name.human), new_admin_master_admin_path
     end
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.

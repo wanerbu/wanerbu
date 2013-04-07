@@ -6,7 +6,20 @@
       admin:
         login_id: "登录ID"
         email: "Email"
+        password: "密码"
+        password_confirmation: "重复密码"
         name: "姓名"
         first_name: "姓"
         last_name: "名"
-
+        telephone_no: "电话号码"
+        status: "状态"
+    errors:
+      models:
+        admin:
+          attributes:
+            login_id:
+              invalid: "无效的登录ID"
+            password:
+              invalid: "无效的密码格式"
+            password_confirmation:
+              invalid: "无效的密码格式"

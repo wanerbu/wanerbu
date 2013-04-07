@@ -1,16 +1,16 @@
 <% content_for :sub_menu do %>
   <%= render :partial => 'admin/master/admins/sub_menu_start', :locals => {:active_path => nil } -%>
     <li class="active">
-      <%= link_to t('admin.nav.main_menu.master.admins.items.show'), admin_master_admin_path(@admin) %>
+      <%= link_to t('admin.nav.main_menu.common.show', model: Admin.model_name.human), admin_master_admin_path(@admin) %>
     </li>
   <%= render 'common_parts/sub_menu_end' -%>
 <% end %>
 
 <div class='wb-content-sub-title'>
   <div>
-    <button type='button' class='btn btn-primary'>编辑</button>
-    <button type='button' class='btn btn-primary'>删除</button>
-    <button type='button' class='btn btn-primary'>锁定</button>
+    <%= link_to t('views.defaults.actions.edit'), edit_admin_master_admin_path(@admin), {class: "btn btn-primary"} %>
+    <%= link_to t('views.defaults.actions.lock'), nil, {class: "btn btn-primary"} %>
+    <%= link_to t('views.defaults.actions.destroy'), nil, {class: "btn btn-primary"} %>
   </div>
   <div class='wb-clear-both'></div>
 </div>
@@ -25,6 +25,18 @@
       <tr>
         <td><%= Admin.human_attribute_name(:email) %></td>
         <td><%= @admin.email -%></td>
+      </tr>
+      <tr>
+        <td><%= Admin.human_attribute_name(:name) %></td>
+        <td><%= @admin.name -%></td>
+      </tr>
+      <tr>
+        <td><%= Admin.human_attribute_name(:telephone_no) %></td>
+        <td><%= @admin.telephone_no -%></td>
+      </tr>
+      <tr>
+        <td><%= Admin.human_attribute_name(:status) %></td>
+        <td><%= @admin.status -%></td>
       </tr>
     </tbody>
   </table>

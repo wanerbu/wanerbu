@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406022038) do
+ActiveRecord::Schema.define(:version => 20130408142759) do
 
   create_table "admins", :force => true do |t|
     t.string   "login_id",               :limit => 16
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130406022038) do
     t.datetime "deleted_at",                                  :null => false
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

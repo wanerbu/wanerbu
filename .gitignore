@@ -30,3 +30,7 @@ pickle-email-*.html
 
 # The precompile file
 /public/assets/*
+
+#Ignore the vim  swo  and  ~ file
+*.swo
+*.*~

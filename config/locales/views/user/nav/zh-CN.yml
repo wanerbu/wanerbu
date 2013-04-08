@@ -1,15 +1,18 @@
 zh-CN:
   user:
     nav:
+      # 头部固定的菜单
       top_fixed:
 
+      # 主要用的左边菜单和内容区域的上部菜单
       main_menu:
+        # 通用的一些菜单
+        common:
+          management: "%{model}管理"
+          new: "新建%{model}"
+          list: "%{model}一览"
+          show: 详细表示
+          edit: 编辑 
         dashboard: 主面板
         master:
           gyms:
-            name: 场馆管理
-            items:
-              list: 场馆一览
-              new: 新建场馆
-              show: 详细信息 
-

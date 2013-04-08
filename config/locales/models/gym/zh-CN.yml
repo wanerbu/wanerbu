@@ -1,0 +1,14 @@
+﻿zh-CN:
+  activerecord:
+    models:
+      gym: 场馆
+    attributes:
+      gym:
+        name: "场馆名字"
+        status: "状态"
+    errors:
+      models:
+        gym:
+          attributes:
+            name:
+              invalid: "无效的场馆名字"

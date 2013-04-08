@@ -48,13 +48,14 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
     #primary.item :dashboard, I18n.t('user.nav.main_menu.dashboard'), user_dashboard_path, {:class => 'nav-header'}
-
-    primary.item :gyms, t('场馆管理'), user_master_gym_reports_path, {:class => 'nav-header'} do |sub_nav|
-      sub_nav.dom_class = 'nav nav-list'
-      sub_nav.item :my_gym, t('我的场馆'), user_master_gym_reports_path
-      sub_nav.item :new_gym, t('新建场馆'), new_user_master_gym_path
+    #
+    primary.item :gyms, I18n.t('user.nav.main_menu.common.management', model: Gym.model_name.human),
+      user_master_gym_reports_path, {:class => 'nav-header'} do |sub_nav|
+        sub_nav.dom_class = 'nav nav-list'
+        sub_nav.item :my_gym, I18n.t('user.nav.main_menu.common.list', model: Gym.model_name.human), user_master_gym_reports_path
+        sub_nav.item :new_gym, I18n.t('user.nav.main_menu.common.new', model: Gym.model_name.human), new_user_master_gym_path
     end
-
+    #
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.

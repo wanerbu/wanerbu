@@ -50,9 +50,9 @@ SimpleNavigation::Configuration.run do |navigation|
     #primary.item :dashboard, I18n.t('user.nav.main_menu.dashboard'), user_dashboard_path, {:class => 'nav-header'}
     #
     primary.item :gyms, I18n.t('user.nav.main_menu.common.management', model: Gym.model_name.human),
-      user_master_gym_reports_path, {:class => 'nav-header'} do |sub_nav|
+      user_master_gyms_path, {:class => 'nav-header'} do |sub_nav|
         sub_nav.dom_class = 'nav nav-list'
-        sub_nav.item :my_gym, I18n.t('user.nav.main_menu.common.list', model: Gym.model_name.human), user_master_gym_reports_path
+        sub_nav.item :my_gym, I18n.t('user.nav.main_menu.common.list', model: Gym.model_name.human), user_master_gyms_path
     primary.item :new_gym, I18n.t('user.nav.main_menu.common.new', model: Gym.model_name.human), new_user_master_gym_path, {:class => 'nav-header'}
     end
     #

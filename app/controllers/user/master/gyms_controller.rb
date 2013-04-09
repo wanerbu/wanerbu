@@ -9,6 +9,8 @@ class User::Master::GymsController <  User::UserBaseController
   def show
     @gym = Gym.find(params[:id])
   end
+  def index
+  end
 
   def new
     @gym = Gym.new

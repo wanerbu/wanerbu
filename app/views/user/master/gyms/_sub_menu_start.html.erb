@@ -1,7 +1,4 @@
   <ul class="nav nav-tabs">
-    <li class="<%= 'active' if active_path.present? && active_path == user_master_gym_reports_path %>">
-      <%= link_to t('user.nav.main_menu.common.list', model: Gym.model_name.human), user_master_gym_reports_path %>
-    </li>
-    <li class="<%= 'active' if active_path.present? && active_path == new_user_master_gym_path %>">
-      <%= link_to t('user.nav.main_menu.common.new', model: Gym.model_name.human), new_user_master_gym_path %>
+    <li class="<%= 'active' if active_path.present? && active_path == user_master_gyms_path %>">
+      <%= link_to t('user.nav.main_menu.common.list', model: Gym.model_name.human), user_master_gyms_path %>
     </li>

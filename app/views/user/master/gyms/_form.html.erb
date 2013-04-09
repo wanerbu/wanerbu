@@ -1,37 +1,14 @@
-<%= form_for([:user_master,@gym])  do |f| %>
-
-  <div class="field">
-    <%= f.label :场馆名 %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :场馆介绍 %><br />
-    <%= f.text_area :intro %>
-  </div>
-
-  <div class="field">
-    <%= f.label :地址 %><br />
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :电话 %><br />
-    <%= f.text_field :telephone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :开业时间 %><br />
-    <%= f.time_select :open_time %>
-  </div>
-
-  <div class="field">
-    <%= f.label :闭馆时间 %><br />
-    <%= f.time_select :close_time %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-<% end %>
+  <%= semantic_form_for([:user, :master, @gym], :html => { :class => 'form-horizontal' }) do |f| %>
+    <%= f.inputs  do %>
+      <%= f.input :name, :required => true, :input_html => {:readonly => !@gym.new_record?}  %>
+      <%= f.input :intro, :input_html => { :class => "" } %>
+      <%= f.input :address, :input_html => { :class => "" } %>
+      <%= f.input :telephone, :input_html => { :class => "" } %>
+      <%= f.time_select :open_time, :required => true,:input_html => { :class => "" } %>
+      <%= f.time_select :close_time,:required => true,:input_html => { :class => "" } %>
+    <% end -%>
+    <%= f.actions do %>
+      <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>
+      <%= f.action :cancel, :as => :link %>
+    <% end -%>
+  <% end %>

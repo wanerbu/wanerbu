@@ -5,6 +5,11 @@
     attributes:
       gym:
         name: "场馆名字"
+        intro: "场馆介绍"
+        address: "场馆地址"
+        telephone: "联系电话"
+        open_time: "开馆时间"
+        close_time: "闭馆时间"
         status: "状态"
     errors:
       models:

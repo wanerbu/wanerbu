@@ -1,5 +1,9 @@
 
+<% content_for :sub_menu do %>
+  <%= render :partial => 'user/master/gyms/sub_menu_start', :locals => {:active_path => nil } -%>
+    <li class="active">
+      <%= link_to t('user.nav.main_menu.common.edit', model: Gym.model_name.human), edit_user_master_gym_path %>
+    </li>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
 <%= render 'form' %>
-
-<%= link_to 'Show', user_master_gym_path %> |
-<%= link_to 'Back', user_master_gyms_path %>

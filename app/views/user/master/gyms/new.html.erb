@@ -1,6 +1,5 @@
-  <ul class="nav nav-tabs">
-    <li class="active">
-      <%= link_to t('user.nav.main_menu.common.new', model: Gym.model_name.human), new_user_master_gym_path %>
-    </li>
-  </ul>
+<% content_for :sub_menu do %>
+  <%= render :partial => 'user/master/gyms/sub_menu_new', :locals => {:active_path => nil } -%>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
 <%= render 'form' %>

@@ -10,6 +10,8 @@ class User::Master::GymsController <  User::UserBaseController
     @gym = Gym.find(params[:id])
   end
   def index
+#TODO 这里的值要根据seesion的user id 得到
+    @gym = Gym.find(12)
   end
 
   def new
@@ -21,7 +23,7 @@ class User::Master::GymsController <  User::UserBaseController
     @gym.deleted_at = '10010101'
     @gym.status = '00'
     if @gym.save
-       render "show", notice: 'Gym was successfully created.'
+       render "index"
     else
        render "new"
     end
@@ -39,9 +41,7 @@ class User::Master::GymsController <  User::UserBaseController
     @gym = Gym.find(params[:id])
 
       if @gym.update_attributes(params[:gym])
-#页面不不能刷新
-        redirect_to user_master_gym_url(@gym)
-#         render "show" 
+       render "index"
       else
         render "edit"
       end

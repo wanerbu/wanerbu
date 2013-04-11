@@ -17,3 +17,5 @@
           attributes:
             name:
               invalid: "无效的场馆名字"
+            telephone:
+              invalid: "无效的电话号码"

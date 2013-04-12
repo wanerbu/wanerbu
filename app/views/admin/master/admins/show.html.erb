@@ -10,7 +10,8 @@
   <div>
     <%= link_to t('views.defaults.actions.edit'), edit_admin_master_admin_path(@admin), {class: "btn btn-primary"} %>
     <%= link_to t('views.defaults.actions.lock'), nil, {class: "btn btn-primary"} %>
-    <%= link_to t('views.defaults.actions.destroy'), nil, {class: "btn btn-primary"} %>
+    <%= link_to t('views.defaults.actions.destroy'), admin_master_admin_path(@admin), 
+                { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
   </div>
   <div class='wb-clear-both'></div>
 </div>

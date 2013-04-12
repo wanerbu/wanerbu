@@ -13,6 +13,9 @@ class Admin < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable
 
+  # 逻辑删除
+  acts_as_paranoid
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
                   :password,

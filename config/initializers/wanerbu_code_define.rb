@@ -8,6 +8,12 @@ module Wanerbu
   end
 
   module CodeDefine
+    ADMIN_STATUS = {
+      # 活跃
+      active: '00',
+      # 锁定
+      locked: '01' 
+    }
   end
 end
 

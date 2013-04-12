@@ -53,6 +53,9 @@ module Wanerbu
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
+    # 默认不加载所有helper
+    config.action_controller.include_all_helpers = false
+
     # Enable the asset pipeline
     config.assets.enabled = true
     #config.assets.paths += Dir[Rails.root.join('app', 'assets', 'stylesheets', '**/').to_s]

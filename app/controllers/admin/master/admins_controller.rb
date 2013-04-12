@@ -41,4 +41,15 @@ class Admin::Master::AdminsController < Admin::AdminBaseController
     end
   end
 
+  def destroy
+    @admin = Admin.find(params[:id])
+    # TODO dairg 存在性的check
+
+    if @admin.destroy
+      redirect_to admin_master_admin_reports_path, notice: I18n.t("activemodel.success.destroy", model: Admin.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.destroy", model: Admin.model_name.human)
+      render :show
+    end
+  end
 end

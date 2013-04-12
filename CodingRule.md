@@ -48,3 +48,9 @@ CSS编码规范
   * 采用 XX-XXX-XXX 的格式
 
 
+关于Helper的说明
+=======
+* 本次开发中，默认不为controller加载所有的helper，这样的话，每个controller只有自己对应的helper，以及父类对应的helper中的方法可用。  
+* 这样，所有通用的helper写到application_helper中，所有admin通用的helper写到admin_base_helper中，user通用的helper写到user_base_helper中。  
+* 如果将来helper太多，可以把同类的抽出来，然后放到module中。
+

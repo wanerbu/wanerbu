@@ -8,9 +8,9 @@
 class User::Master::GymsController <  User::UserBaseController
   def index
 #TODO 这里的值要根据seesion的user id 得到
-#    @gym = Gym.find(12)
     # TODO Tom 存在性的check
-     @gym = User.find(1).gym
+   #@gym = User.find(4).gym
+   @gym = current_user.gym
   end
 
   def new
@@ -18,11 +18,12 @@ class User::Master::GymsController <  User::UserBaseController
   end
 
   def create
-    # TODO Tom 存在性的check
     @gym = Gym.new(params[:gym])
-    @gym.status = '00'
+#    @gym.status = '00'
+    @gym.status = 'draft'
 #TODO 这里的值要根据seesion的user id 得到
-    @gym.user_id = 1
+#    @gym.user_id = 4
+    @gym.user_id = current_user.id
     if @gym.save
        render "index"
     else

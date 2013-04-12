@@ -14,6 +14,16 @@ module Wanerbu
       # 锁定
       locked: '01' 
     }
+    GYM_STATUS = {
+      # 草稿
+      draft: '00',
+      # 审核中
+      applying: '01',
+      # 审核通过
+      applied: '02',
+      # 撤消
+      canceled: '99'
+    }
   end
 end
 

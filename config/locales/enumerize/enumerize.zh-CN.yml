@@ -4,3 +4,9 @@ zh-CN:
       status:
         active: 活跃
         locked: 已锁定
+    gym:
+      status:
+        draft: 草稿
+        applying: 审核中
+        appplied: 审核通过
+        canceled: 撤消

@@ -11,7 +11,8 @@ class User::Master::GymsController <  User::UserBaseController
   end
   def index
 #TODO 这里的值要根据seesion的user id 得到
-    @gym = Gym.find(12)
+#    @gym = Gym.find(12)
+     @gym = User.find(1).gym
   end
 
   def new
@@ -20,8 +21,8 @@ class User::Master::GymsController <  User::UserBaseController
 
   def create
     @gym = Gym.new(params[:gym])
-    @gym.deleted_at = '10010101'
     @gym.status = '00'
+    @gym.user_id = 1
     if @gym.save
        render "index"
     else
@@ -49,7 +50,13 @@ class User::Master::GymsController <  User::UserBaseController
 
   def destroy
     @gym = Gym.find(params[:id])
-    @gym.destroy
-    redirect_to user_master_gyms_url
+    # TODO Tom 存在性的check
+
+    if @gym.destroy
+      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.destroy", model: Gym.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.destroy", model: Gym.model_name.human)
+      render :show
+    end
   end
 end

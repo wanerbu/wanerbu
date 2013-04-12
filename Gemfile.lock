@@ -51,6 +51,8 @@ GEM
       orm_adapter (~> 0.0.3)
       railties (~> 3.1)
       warden (~> 1.1.1)
+    enumerize (0.5.1)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -138,6 +140,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   datagrid
   devise (~> 2.0)
+  enumerize (~> 0.5.1)
   formtastic (~> 2.2)
   jquery-rails
   rails (= 3.2.12)

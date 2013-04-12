@@ -56,3 +56,7 @@ gem 'simple-navigation', '~> 3.10'
 
 # 逻辑删除包
 gem "acts_as_paranoid", "~>0.4.0"
+
+# enum管理包
+gem "enumerize", "~>0.5.1"
+

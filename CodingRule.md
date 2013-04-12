@@ -95,3 +95,46 @@ Admin.destroy!(params[:id])
 or
 Admin.delete_all!(conditions)
 ```
+
+关于Enum枚举的说明
+=======
+
+参考网站:  https://github.com/brainspec/enumerize  
+(一定要看这个网站，要知道提供了哪些方便的方法。)  
+
+本次开发I18n文件的路径:  /wanerbu/config/locales/enumerize/enumerize.zh-CN.yml  
+
+Code定义文件的路径:  /wanerbu/config/initializers/wanerbu_code_define.rb  
+
+常用的一些方法
+===
+
+得到对应的I18n字符串  
+```ruby
+@admin.status.text
+or
+@admin.status_text
+```
+判断enum属性值的方法
+```ruby
+@admin.status_active?
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

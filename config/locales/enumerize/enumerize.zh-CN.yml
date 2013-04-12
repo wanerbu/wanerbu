@@ -1,0 +1,6 @@
+zh-CN:
+  enumerize:
+    admin:
+      status:
+        active: 活跃
+        locked: 已锁定

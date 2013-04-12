@@ -104,7 +104,26 @@ or
 @admin.status_active?
 ```
 
+## 关于菜单的做成
 
+菜单使用了simple-navigation组件，参照:  https://github.com/andi/simple-navigation  
+
+本次菜单主要分三部分:
+
+1. 顶部固定菜单
+2. 左边主菜单
+3. 右边主内容区的顶部菜单（主要是针对某个大功能的二级功能菜单）  
+
+其中前两个菜单通过simple-navigation实现。  
+目前后台管理员的左边主菜单使用配置文件路径:  config/admin_navigation.rb  
+目前前台用户的左边主菜单使用配置文件路径:  config/user_navigation.rb  
+
+#### 关于第三类菜单的实现
+
+主要知道有一个公用的render，路径在: app/views/common_parts/_sub_menu_end.html.erb  
+这个文件里面就只有一个 `</ul>` 结束符号，之所以这样是要实现动态菜单，比如像 _*master详细*_ ，
+_*master编辑*_ 等菜单, 因为像 _*master一览*_ 这些菜单, 应该是固定菜单，所以单独写在一个
+render文件中，但是又不能直接把关闭ul的代码写到同一个文件中，这样就实现不了动态了。
 
 
 

@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :password_salt
   # attr_accessible :title, :body
 
+  #添加association
+  has_one :gym
+
   before_save do
     # TODO dairg 临时的处理
     self.login_id = self.email

@@ -6,12 +6,10 @@
 #++
 #
 class User::Master::GymsController <  User::UserBaseController
-  def show
-    @gym = Gym.find(params[:id])
-  end
   def index
 #TODO 这里的值要根据seesion的user id 得到
 #    @gym = Gym.find(12)
+    # TODO Tom 存在性的check
      @gym = User.find(1).gym
   end
 
@@ -20,8 +18,10 @@ class User::Master::GymsController <  User::UserBaseController
   end
 
   def create
+    # TODO Tom 存在性的check
     @gym = Gym.new(params[:gym])
     @gym.status = '00'
+#TODO 这里的值要根据seesion的user id 得到
     @gym.user_id = 1
     if @gym.save
        render "index"

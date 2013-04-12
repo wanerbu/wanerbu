@@ -54,3 +54,44 @@ CSS编码规范
 * 这样，所有通用的helper写到application_helper中，所有admin通用的helper写到admin_base_helper中，user通用的helper写到user_base_helper中。  
 * 如果将来helper太多，可以把同类的抽出来，然后放到module中。
 
+关于逻辑删除的说明
+=======
+
+本次逻辑删除使用如下gem实现:
+https://github.com/goncalossilva/rails3_acts_as_paranoid  
+
+常用的filter:  
+
+```ruby
+Admin.only_deleted # retrieves the deleted records
+Admin.with_deleted # retrieves all records, deleted or not
+```
+如果使用的是deleted_at标志位的话，还可以使用如下filter:(我们这次使用的就是deleted_at标志位)  
+
+```ruby
+time = Time.now
+
+Admin.deleted_after_time(time)
+Admin.deleted_before_time(time)
+
+# Or roll it all up and get a nice window:
+Admin.deleted_inside_time_window(time, 2.minutes)
+
+```
+
+逻辑删除代码:  
+
+```ruby
+@admin.destroy
+or (未验证)
+Admin.destroy(params[:id])
+```
+
+物理删除代码:  
+```ruby
+@admin.destroy!
+or (未验证)
+Admin.destroy!(params[:id])
+or
+Admin.delete_all!(conditions)
+```

@@ -7,6 +7,9 @@
 # 系统管理员
 #
 class Admin < ActiveRecord::Base
+
+  extend Enumerize
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -39,6 +42,7 @@ class Admin < ActiveRecord::Base
   validates :telephone_no, :format => { if: "telephone_no.present?", with: Wanerbu::Common::FORMAT_TELEPHONE}
 
   # validates :status, :format => { if: "status.present?", with: Wanerbu::Common::FORMAT_TELEPHONE}
+  enumerize :status, in: Wanerbu::CodeDefine::ADMIN_STATUS, default: :active
  
   before_save do
   end

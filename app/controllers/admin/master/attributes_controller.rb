@@ -5,6 +5,9 @@ class Admin::Master::AttributesController < Admin::AdminBaseController
 #   Author: Tom
 #
 #++
+  def show
+    @attribute = Attribute.find(params[:id])
+  end
   def new
     @attribute = Attribute.new
   end

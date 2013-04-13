@@ -10,4 +10,6 @@
         destroy: 删除
         lock: 锁定
         apply: 申请
+        search: 检索
+        clear: 清空
 

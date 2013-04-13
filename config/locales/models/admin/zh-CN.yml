@@ -19,6 +19,10 @@
         name: "属性名"
         unit: "属性单位"
         intro: "属性说明"
+      sport:
+        name: "项目名"
+        intro: "项目说明"
+        sort: "项目排序"
     errors:
       models:
         admin:

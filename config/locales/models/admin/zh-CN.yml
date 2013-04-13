@@ -3,6 +3,7 @@
     models:
       admin: 系统用户
       attribute: 属性
+      sport: 项目
     attributes:
       admin:
         login_id: "登录ID"

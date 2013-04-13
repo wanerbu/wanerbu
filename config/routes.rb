@@ -1,6 +1,8 @@
 Wanerbu::Application.routes.draw do
 
 
+  get "attribute_reports/index"
+
   # 普通用户认证部分
   devise_for :users, :path => 'auth',
              :path_names => { :sign_in => 'login', :sign_out => 'logout'}

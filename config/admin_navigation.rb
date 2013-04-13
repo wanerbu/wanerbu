@@ -64,8 +64,8 @@ SimpleNavigation::Configuration.run do |navigation|
         sub_nav.item :attributes_list, I18n.t('admin.nav.main_menu.common.list', model: Attribute.model_name.human), admin_master_attribute_reports_path
         sub_nav.item :new_attribute, I18n.t('admin.nav.main_menu.common.new', model: Attribute.model_name.human), new_admin_master_attribute_path
 #项目信息维护
-        sub_nav.item :sports_list, I18n.t('admin.nav.main_menu.common.list', model: Sport.model_name.human), admin_master_attribute_reports_path
-        sub_nav.item :new_sport, I18n.t('admin.nav.main_menu.common.new', model: Sport.model_name.human), new_admin_master_attribute_path
+        sub_nav.item :sports_list, I18n.t('admin.nav.main_menu.common.list', model: Sport.model_name.human), admin_master_sport_reports_path
+        sub_nav.item :new_sport, I18n.t('admin.nav.main_menu.common.new', model: Sport.model_name.human), new_admin_master_sport_path
     end
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,

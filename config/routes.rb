@@ -21,6 +21,8 @@ Wanerbu::Application.routes.draw do
       resources :admin_reports, :only => [:index]
       resources :attributes, :except => [:index]
       resources :attribute_reports, :only => [:index]
+      resources :sports, :except => [:index]
+      resources :sport_reports, :only => [:index]
     end
   end
 

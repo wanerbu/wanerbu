@@ -4,7 +4,7 @@
 #   Author: Tom
 #
 #++
-# 属性Report
+# 项目Report
 #
 class SportReport
   include Datagrid

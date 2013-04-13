@@ -9,7 +9,6 @@
 <div class='wb-content-sub-title'>
   <div>
     <%= link_to t('views.defaults.actions.edit'), edit_admin_master_attribute_path(@attribute), {class: "btn btn-primary"} %>
-    <%= link_to t('views.defaults.actions.lock'), nil, {class: "btn btn-primary"} %>
     <%= link_to t('views.defaults.actions.destroy'), admin_master_attribute_path(@attribute), 
                 { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
   </div>

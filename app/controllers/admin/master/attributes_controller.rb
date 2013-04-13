@@ -20,4 +20,19 @@ class Admin::Master::AttributesController < Admin::AdminBaseController
       render :new
     end
   end
+
+  def edit
+    @attribute = Attribute.find(params[:id])
+  end
+
+  def update
+    @attribute = Attribute.find(params[:id])
+    # TODO Tom 存在性的check
+    if @attribute.update_attributes(params[:attribute])
+      redirect_to admin_master_attribute_path(@attribute), notice: I18n.t("activemodel.success.update", model: Attribute.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.update", model: Attribute.model_name.human)
+      render :edit
+    end
+  end
 end

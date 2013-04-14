@@ -6,10 +6,14 @@
 #++
 # 系统管理员
 #
+# TODO dairg 将来这里要删除
+
+require 'role_ability'
+
 class Admin < ActiveRecord::Base
 
   extend Enumerize
-  #include Wanerbu::Common::RoleAbility
+  include Wanerbu::Common::RoleAbility
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -21,6 +25,9 @@ class Admin < ActiveRecord::Base
 
   # 逻辑删除
   acts_as_paranoid
+
+  ### 常量
+  SUPER_ADMIN_ID = 1
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
@@ -50,6 +57,12 @@ class Admin < ActiveRecord::Base
   ### Relations
   has_many(:admin_roles)
   has_many(:roles, through: :admin_roles)
+
+  ### DefaultScope
+  default_scope order("login_id ASC")
+
+  ### Scopes
+  scope :except_super_admin, where('id <> ?', SUPER_ADMIN_ID)
  
   before_save do
   end
@@ -61,4 +74,16 @@ class Admin < ActiveRecord::Base
     name += self.last_name if self.last_name
     return name
   end
+
+  ## 是否是唯一的超级管理员
+  def only_super_admin?
+    self.id == SUPER_ADMIN_ID
+  end
+
+  def ability?(function)
+    # 如果是唯一的超级管理员，拥有所有的权限
+    return true if self.only_super_admin?
+    super
+  end
+    
 end

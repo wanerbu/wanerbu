@@ -53,7 +53,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
     # 管理员管理菜单
     primary.item :admins, I18n.t('admin.nav.main_menu.common.management', model: Admin.model_name.human),
-      admin_master_admin_reports_path, {:class => 'nav-header'} do |sub_nav|
+      admin_master_admin_reports_path, { if: Proc.new { current_admin && current_admin.ability?(:manage_admin) },
+      :class => 'nav-header'} do |sub_nav|
         sub_nav.dom_class = 'nav nav-list'
         sub_nav.item :admins_list, I18n.t('admin.nav.main_menu.common.list', model: Admin.model_name.human), admin_master_admin_reports_path
         sub_nav.item :new_admin, I18n.t('admin.nav.main_menu.common.new', model: Admin.model_name.human), new_admin_master_admin_path
@@ -61,7 +62,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
     # 角色管理菜单
     primary.item :roles, I18n.t('admin.nav.main_menu.common.management', model: Role.model_name.human),
-      admin_master_role_reports_path, {:class => 'nav-header'} do |sub_nav|
+      admin_master_role_reports_path, { if: Proc.new { current_admin && current_admin.ability?(:manage_role) },
+      :class => 'nav-header'} do |sub_nav|
         sub_nav.dom_class = 'nav nav-list'
         sub_nav.item :roles_list, I18n.t('admin.nav.main_menu.common.list', model: Role.model_name.human), admin_master_role_reports_path
         sub_nav.item :new_role, I18n.t('admin.nav.main_menu.common.new', model: Role.model_name.human), new_admin_master_role_path

@@ -28,8 +28,8 @@ class AdminAbility
     # guest admin (not logged in)
     user ||= Admin.new 
 
-    can :manage, Admin if user.login_id =~ /admin$/
-    can :manage, Role if user.login_id =~ /admin$/
+    can :manage, Admin if user.ability? :manage_admin
+    can :manage, Role if user.ability? :manage_role
 
   end
 end

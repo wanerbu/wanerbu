@@ -10,7 +10,7 @@ class AdminReport
   include Datagrid
 
   scope do
-    Admin
+    Admin.except_super_admin
   end
 
   filter(:email, :string)

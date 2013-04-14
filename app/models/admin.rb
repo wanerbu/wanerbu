@@ -14,7 +14,9 @@ class Admin < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable
+         :token_authenticatable, :encryptable,  :lockable, :timeoutable
+         # TODO dairg 是否确认配置
+         # :confirmable,
 
   # 逻辑删除
   acts_as_paranoid

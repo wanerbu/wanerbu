@@ -1,6 +1,5 @@
 Wanerbu::Application.routes.draw do
 
-
   # 普通用户认证部分
   devise_for :users, :path => 'auth',
              :path_names => { :sign_in => 'login', :sign_out => 'logout'}
@@ -19,6 +18,8 @@ Wanerbu::Application.routes.draw do
     namespace :master do
       resources :admins, :except => [:index]
       resources :admin_reports, :only => [:index]
+      resources :roles, :except => [:index]
+      resources :role_reports, :only => [:index]
       resources :properties, :except => [:index]
       resources :property_reports, :only => [:index]
       resources :sports, :except => [:index]

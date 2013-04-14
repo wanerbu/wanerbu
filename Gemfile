@@ -60,3 +60,5 @@ gem "acts_as_paranoid", "~>0.4.0"
 # enum管理包
 gem "enumerize", "~>0.5.1"
 
+# 权限管理包
+gem "cancan"

@@ -50,13 +50,26 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
     primary.item :dashboard, I18n.t('admin.nav.main_menu.dashboard'), admin_dashboard_path, {:class => 'nav-header'}
+
+    # 管理员管理菜单
     primary.item :admins, I18n.t('admin.nav.main_menu.common.management', model: Admin.model_name.human),
-      admin_master_admin_reports_path, {:class => 'nav-header'} do |sub_nav|
+      admin_master_admin_reports_path, { if: Proc.new { current_admin && current_admin.ability?(:manage_admin) },
+      :class => 'nav-header'} do |sub_nav|
         sub_nav.dom_class = 'nav nav-list'
         sub_nav.item :admins_list, I18n.t('admin.nav.main_menu.common.list', model: Admin.model_name.human), admin_master_admin_reports_path
         sub_nav.item :new_admin, I18n.t('admin.nav.main_menu.common.new', model: Admin.model_name.human), new_admin_master_admin_path
     end
-#场馆相关master信息维护菜单
+
+    # 角色管理菜单
+    primary.item :roles, I18n.t('admin.nav.main_menu.common.management', model: Role.model_name.human),
+      admin_master_role_reports_path, { if: Proc.new { current_admin && current_admin.ability?(:manage_role) },
+      :class => 'nav-header'} do |sub_nav|
+        sub_nav.dom_class = 'nav nav-list'
+        sub_nav.item :roles_list, I18n.t('admin.nav.main_menu.common.list', model: Role.model_name.human), admin_master_role_reports_path
+        sub_nav.item :new_role, I18n.t('admin.nav.main_menu.common.new', model: Role.model_name.human), new_admin_master_role_path
+    end
+
+    #场馆相关master信息维护菜单
     primary.item :admins, I18n.t('admin.nav.main_menu.common.management', model: Gym.model_name.human),
       new_admin_master_property_path, {:class => 'nav-header'} do |sub_nav|
         sub_nav.dom_class = 'nav nav-list'

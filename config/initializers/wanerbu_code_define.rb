@@ -5,6 +5,8 @@ module Wanerbu
     FORMAT_PASSWORD = /\A[a-zA-Z0-9]+\z/
     FORMAT_LOGIN_ID = /\A[a-zA-Z0-9]+\z/
     FORMAT_TELEPHONE = /\A[0-9]+\z/
+
+    NUMBER_PER_PAGE = 10
   end
 
   module CodeDefine

@@ -1,0 +1,34 @@
+<% content_for :sub_menu do %>
+  <%= render :partial => 'admin/master/roles/sub_menu_start', :locals => {:active_path => nil } -%>
+    <li class="active">
+      <%= link_to t('admin.nav.main_menu.common.show', model: Role.model_name.human), admin_master_role_path(@role) %>
+    </li>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
+
+<div class='wb-content-sub-title'>
+  <div>
+    <% if can? :update, @role %>
+      <%= link_to t('views.defaults.actions.edit'), edit_admin_master_role_path(@role), {class: "btn btn-primary"} %>
+    <% end %>
+    <%= link_to t('views.defaults.actions.lock'), nil, {class: "btn btn-primary"} %>
+    <%= link_to t('views.defaults.actions.destroy'), admin_master_role_path(@role), 
+                { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
+  </div>
+  <div class='wb-clear-both'></div>
+</div>
+
+<div class="wb-content-detail">
+  <table class="table table-bordered" style="width: 100%;">
+    <tbody>
+      <tr>
+        <td><%= Role.human_attribute_name(:name) %></td>
+        <td><%= @role.name -%></td>
+      </tr>
+      <tr>
+        <td><%= Role.human_attribute_name(:function_codes) %></td>
+        <td><%= @role.function_codes -%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

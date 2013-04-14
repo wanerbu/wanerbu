@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414073519) do
+ActiveRecord::Schema.define(:version => 20130414060334) do
+
+  create_table "admin_roles", :force => true do |t|
+    t.integer "admin_id", :null => false
+    t.integer "role_id",  :null => false
+  end
+
+  add_index "admin_roles", ["admin_id"], :name => "index_admin_roles_on_admin_id"
+  add_index "admin_roles", ["role_id"], :name => "index_admin_roles_on_role_id"
 
   create_table "admins", :force => true do |t|
     t.string   "login_id",               :limit => 16
@@ -82,6 +90,17 @@ ActiveRecord::Schema.define(:version => 20130414073519) do
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name",           :limit => 20,                 :null => false
+    t.integer  "sort",           :limit => 3,   :default => 1, :null => false
+    t.string   "function_codes", :limit => 300
+    t.datetime "deleted_at"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
+  add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true
 
   create_table "sports", :force => true do |t|
     t.string   "name",       :limit => 50, :null => false

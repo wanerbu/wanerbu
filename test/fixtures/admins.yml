@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 admin_confirmed:
+  id: <%= Admin::SUPER_ADMIN_ID %>
   login_id: 'admin'
   first_name: 'admin'
   last_name: ''
@@ -15,6 +16,7 @@ admin_confirmed:
   confirmed_at: <%= Time.now %>
 
 admin_unconfirmed:
+  id: 2
   login_id: 'admin2'
   email: admin2@wanerbu.com
   encrypted_password: <%= Admin.new({password_salt: 'salt'}).send(:password_digest, "admin2") %>

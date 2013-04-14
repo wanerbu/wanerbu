@@ -45,6 +45,10 @@ class Admin < ActiveRecord::Base
 
   # validates :status, :format => { if: "status.present?", with: Wanerbu::Common::FORMAT_TELEPHONE}
   enumerize :status, in: Wanerbu::CodeDefine::ADMIN_STATUS, default: :active
+
+  ### Relations
+  has_many(:admin_roles)
+  has_many(:roles, through: :admin_roles)
  
   before_save do
   end

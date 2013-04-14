@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414050034) do
+ActiveRecord::Schema.define(:version => 20130414060334) do
+
+  create_table "admin_roles", :force => true do |t|
+    t.integer "admin_id", :null => false
+    t.integer "role_id",  :null => false
+  end
+
+  add_index "admin_roles", ["admin_id"], :name => "index_admin_roles_on_admin_id"
+  add_index "admin_roles", ["role_id"], :name => "index_admin_roles_on_role_id"
 
   create_table "admins", :force => true do |t|
     t.string   "login_id",               :limit => 16

@@ -2,7 +2,7 @@
   activerecord:
     models:
       admin: 系统用户
-      attribute: 属性
+      property: 属性
       sport: 项目
     attributes:
       admin:
@@ -15,7 +15,7 @@
         last_name: "名"
         telephone_no: "电话号码"
         status: "状态"
-      attribute:
+      property:
         name: "属性名"
         unit: "属性单位"
         intro: "属性说明"

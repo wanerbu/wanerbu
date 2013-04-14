@@ -13,6 +13,7 @@ class Admin::Master::SportsController < Admin::AdminBaseController
   end
   def create
     @sport = Sport.new(params[:sport])
+@sport.attributes = {'attribute_ids' => []}.merge(params[:sport] || {})
     if @sport.save
       redirect_to admin_master_sport_path(@sport), notice: I18n.t("activemodel.success.create", model: Sport.model_name.human)
     else

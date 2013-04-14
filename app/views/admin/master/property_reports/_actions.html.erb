@@ -1,0 +1,6 @@
+<%= link_to t('views.defaults.actions.show'), admin_master_property_path(target)%>
+ | 
+<%= link_to t('views.defaults.actions.edit'), edit_admin_master_property_path(target)%>
+ | 
+<%= link_to t('views.defaults.actions.destroy'), admin_master_property_path(target), 
+                { method: :delete, confirm: t('activemodel.confirm.destroy') } %>

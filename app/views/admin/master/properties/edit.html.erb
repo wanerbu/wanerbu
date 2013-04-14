@@ -1,0 +1,11 @@
+<% content_for :sub_menu do %>
+  <%= render :partial => 'admin/master/properties/sub_menu_start', :locals => {:active_path => nil } -%>
+    <li class="active">
+      <%= link_to t('admin.nav.main_menu.common.edit', model: Property.model_name.human), edit_admin_master_property_path(@property) %>
+    </li>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
+
+<div class='wb-content-main'>
+  <%= render 'form' -%>
+</div>

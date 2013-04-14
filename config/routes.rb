@@ -19,8 +19,8 @@ Wanerbu::Application.routes.draw do
     namespace :master do
       resources :admins, :except => [:index]
       resources :admin_reports, :only => [:index]
-      resources :attributes, :except => [:index]
-      resources :attribute_reports, :only => [:index]
+      resources :properties, :except => [:index]
+      resources :property_reports, :only => [:index]
       resources :sports, :except => [:index]
       resources :sport_reports, :only => [:index]
     end

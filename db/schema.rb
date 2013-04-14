@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414064735) do
+ActiveRecord::Schema.define(:version => 20130414073519) do
 
   create_table "admins", :force => true do |t|
     t.string   "login_id",               :limit => 16
@@ -50,14 +50,6 @@ ActiveRecord::Schema.define(:version => 20130414064735) do
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
   add_index "admins", ["unlock_token"], :name => "index_admins_on_unlock_token", :unique => true
 
-  create_table "attributes", :force => true do |t|
-    t.string   "name",       :limit => 20, :null => false
-    t.string   "unit",       :limit => 6,  :null => false
-    t.string   "intro",      :limit => 50
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-  end
-
   create_table "gyms", :force => true do |t|
     t.string   "name",       :limit => 50,  :default => "",   :null => false
     t.integer  "user_id"
@@ -81,9 +73,9 @@ ActiveRecord::Schema.define(:version => 20130414064735) do
     t.datetime "updated_at",               :null => false
   end
 
-  create_table "sport_attributes", :force => true do |t|
+  create_table "sport_properties", :force => true do |t|
     t.integer  "sport_id"
-    t.integer  "attribute_id"
+    t.integer  "property_id"
     t.string   "default_value", :limit => 20
     t.integer  "scope",         :limit => 1
     t.boolean  "required"

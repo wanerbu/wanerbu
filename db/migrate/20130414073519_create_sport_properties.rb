@@ -1,8 +1,8 @@
-class CreateSportAttributes < ActiveRecord::Migration
+class CreateSportProperties < ActiveRecord::Migration
   def change
-    create_table :sport_attributes do |t|
+    create_table :sport_properties do |t|
       t.integer :sport_id
-      t.integer :attribute_id
+      t.integer :property_id
       t.string :default_value, limit: 20
       t.integer :scope,limit: 1
       t.boolean :required

@@ -2,10 +2,10 @@
       <%= f.input :name %>
       <%= f.input :intro %>
       <%= f.input :sort %>
-      <% Attribute.all.each do |attribute| -%>
+      <% Property.all.each do |property| -%>
             <div>
-              <%= label_tag :attribute_ids, attribute.name -%>
-              <%= check_box_tag :attribute_ids, attribute.id, @sport.attributes.include?(attribute), :name => 'sport[attribute_ids][]' -%>
+              <%= label_tag :property_ids, property.name -%>
+              <%= check_box_tag :property_ids, property.id, @sport.properties.include?(property), :name => 'sport[property_ids][]' -%>
              </div>
       <% end -%>
     <%= f.actions do %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413095704) do
+ActiveRecord::Schema.define(:version => 20130414050034) do
 
   create_table "admins", :force => true do |t|
     t.string   "login_id",               :limit => 16
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(:version => 20130413095704) do
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
   end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name",       :limit => 20,                 :null => false
+    t.integer  "sort",       :limit => 3,   :default => 1, :null => false
+    t.string   "functions",  :limit => 300
+    t.datetime "deleted_at"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
+  add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true
 
   create_table "sports", :force => true do |t|
     t.string   "name",       :limit => 50, :null => false

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: '超级管理员'
+  sort: 1
+  functions: '' 
+
+two:
+  name: '操作员'
+  sort: 2
+  functions: '' 

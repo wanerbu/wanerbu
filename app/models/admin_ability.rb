@@ -29,6 +29,7 @@ class AdminAbility
     user ||= Admin.new 
 
     can :manage, Admin if user.login_id =~ /admin$/
+    can :manage, Role if user.login_id =~ /admin$/
 
   end
 end

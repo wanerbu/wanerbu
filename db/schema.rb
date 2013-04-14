@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414060334) do
+ActiveRecord::Schema.define(:version => 20130414073519) do
 
   create_table "admin_roles", :force => true do |t|
     t.integer "admin_id", :null => false
@@ -81,16 +81,6 @@ ActiveRecord::Schema.define(:version => 20130414060334) do
     t.datetime "updated_at",               :null => false
   end
 
-  create_table "sport_properties", :force => true do |t|
-    t.integer  "sport_id"
-    t.integer  "property_id"
-    t.string   "default_value", :limit => 20
-    t.integer  "scope",         :limit => 1
-    t.boolean  "required"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-  end
-
   create_table "roles", :force => true do |t|
     t.string   "name",           :limit => 20,                 :null => false
     t.integer  "sort",           :limit => 3,   :default => 1, :null => false
@@ -101,6 +91,16 @@ ActiveRecord::Schema.define(:version => 20130414060334) do
   end
 
   add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true
+
+  create_table "sport_properties", :force => true do |t|
+    t.integer  "sport_id"
+    t.integer  "property_id"
+    t.string   "default_value", :limit => 20
+    t.integer  "scope",         :limit => 1
+    t.boolean  "required"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
 
   create_table "sports", :force => true do |t|
     t.string   "name",       :limit => 50, :null => false

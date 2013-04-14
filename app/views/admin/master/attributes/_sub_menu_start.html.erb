@@ -1,7 +1,0 @@
-  <ul class="nav nav-tabs">
-    <li class="<%= 'active' if active_path.present? && active_path == admin_master_attribute_reports_path %>">
-      <%= link_to t('admin.nav.main_menu.common.list', model: Attribute.model_name.human), admin_master_attribute_reports_path %>
-    </li>
-    <li class="<%= 'active' if active_path.present? && active_path == new_admin_master_attribute_path %>">
-      <%= link_to t('admin.nav.main_menu.common.new', model: Attribute.model_name.human), new_admin_master_attribute_path %>
-    </li>

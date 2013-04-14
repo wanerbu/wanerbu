@@ -82,12 +82,12 @@ ActiveRecord::Schema.define(:version => 20130414060334) do
   end
 
   create_table "roles", :force => true do |t|
-    t.string   "name",       :limit => 20,                 :null => false
-    t.integer  "sort",       :limit => 3,   :default => 1, :null => false
-    t.string   "functions",  :limit => 300
+    t.string   "name",           :limit => 20,                 :null => false
+    t.integer  "sort",           :limit => 3,   :default => 1, :null => false
+    t.string   "function_codes", :limit => 300
     t.datetime "deleted_at"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
   add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true

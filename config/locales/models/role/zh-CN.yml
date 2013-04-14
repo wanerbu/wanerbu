@@ -5,5 +5,5 @@
     attributes:
       role:
         name: "角色名"
-        functions: "拥有权限"
+        function_codes: "拥有权限"
         sort: "排序"

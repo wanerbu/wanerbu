@@ -3,9 +3,9 @@
 one:
   name: '超级管理员'
   sort: 1
-  functions: '' 
+  function_codes: '' 
 
 two:
   name: '操作员'
   sort: 2
-  functions: '' 
+  function_codes: '' 

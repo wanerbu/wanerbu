@@ -3,7 +3,7 @@ class CreateRoles < ActiveRecord::Migration
     create_table :roles do |t|
       t.string :name, limit: 20, null: false
       t.integer :sort, limit: 3, null: false, default: 1
-      t.string :functions, limit: 300
+      t.string :function_codes, limit: 300
 
       t.datetime :deleted_at
 

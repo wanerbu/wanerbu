@@ -7,7 +7,7 @@
 # 系统角色
 #
 class Role < ActiveRecord::Base
-  attr_accessible :functions, :name, :sort
+  attr_accessible :function_codes, :name, :sort
 
   # 逻辑删除
   acts_as_paranoid

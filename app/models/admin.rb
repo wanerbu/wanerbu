@@ -9,6 +9,7 @@
 class Admin < ActiveRecord::Base
 
   extend Enumerize
+  #include Wanerbu::Common::RoleAbility
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable

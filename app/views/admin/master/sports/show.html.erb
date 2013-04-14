@@ -30,6 +30,16 @@
         <td><%= Sport.human_attribute_name(:sort) %></td>
         <td><%= @sport.sort -%></td>
       </tr>
+      <tr>
+        <td>项目属性</td>
+        <td>
+      <% @sport.properties.each do |property| -%>
+            <div>
+              <%= property.name -%>
+             </div>
+           <% end -%>
+         </td>
+       </tr>
     </tbody>
   </table>
 </div>

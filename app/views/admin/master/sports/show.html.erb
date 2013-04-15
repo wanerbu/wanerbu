@@ -33,9 +33,10 @@
       <tr>
         <td>项目属性</td>
         <td>
-      <% @sport.properties.each do |property| -%>
+      <% @sport.sport_properties.each do |sport_property| -%>
             <div>
-              <%= property.name -%>
+              <%= sport_property.property.name -%>: 
+              <%= sport_property.default_value-%>
              </div>
            <% end -%>
          </td>

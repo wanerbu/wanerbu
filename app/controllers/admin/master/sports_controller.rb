@@ -13,7 +13,7 @@ class Admin::Master::SportsController < Admin::AdminBaseController
   end
   def create
     @sport = Sport.new(params[:sport])
-    @sport.attributes = {'property_ids' => []}.merge(params[:sport] || {})
+    #@sport.attributes = {'property_ids' => []}.merge(params[:sport] || {})
     if @sport.save
       redirect_to admin_master_sport_path(@sport), notice: I18n.t("activemodel.success.create", model: Sport.model_name.human)
     else
@@ -28,7 +28,14 @@ class Admin::Master::SportsController < Admin::AdminBaseController
 
   def update
     @sport = Sport.find(params[:id])
-    @sport.attributes = {'property_ids' => []}.merge(params[:sport] || {})
+    #@sport.attributes = {'property_ids' => []}.merge(params[:sport] || {})
+    
+    if params[:sport][:sport_properties_attributes].present?
+      params[:sport][:sport_properties_attributes].each do |p|
+        p[:_destroy] = true if p[:property_id].blank?
+      end
+    end
+    
     # TODO Tom 存在性的check
     if @sport.update_attributes(params[:sport])
       redirect_to admin_master_sport_path(@sport), notice: I18n.t("activemodel.success.update", model: Sport.model_name.human)

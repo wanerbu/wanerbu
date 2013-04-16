@@ -26,7 +26,8 @@ Formtastic::FormBuilder.default_text_field_size = 50
 
 # Set the string that will be appended to the labels/fieldsets which are optional
 # Defaults to an empty string ("") and also accepts procs (see required_string above)
-# Formtastic::FormBuilder.optional_string = "(optional)"
+# 添加这个是为了让标签看起来和require的标签对齐，因为require的标签会多出来一个红色的星号，占了位置
+Formtastic::FormBuilder.optional_string = "&nbsp;&nbsp;&nbsp;&nbsp;"
 
 # Set the way inline errors will be displayed.
 # Defaults to :sentence, valid options are :sentence, :list, :first and :none

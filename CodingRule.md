@@ -125,19 +125,41 @@ or
 _*master编辑*_ 等菜单, 因为像 _*master一览*_ 这些菜单, 应该是固定菜单，所以单独写在一个
 render文件中，但是又不能直接把关闭ul的代码写到同一个文件中，这样就实现不了动态了。
 
+## 关于权限的控制
 
+本次权限控制使用了cancan组件，参照:  https://github.com/ryanb/cancan
 
+系统用户的权限配置路径:  app/models/admin_ability.rb  
+所有机能的定义: app/models/function.rb  
 
+#### 开发一个机能后的权限相关配置
 
+1. 首先在function.rb中注册这个机能
+2. 在admin_ability或者user_ability中配置可以访问这个机能的权限
+3. 通过在controller中加入  `load_and_authorize_resource`  可以为每一个action加上权限控制，具体使用可以参照cancan guide。
 
+#### 如何定制使用自己的ability文件
 
+cancan默认使用current_user来获得当前的用户，可以通过在controller定义以下方法来自定义
 
+```ruby
+  ## 定义登录管理员的权限
+  def current_ability
+    @current_ability ||= AdminAbility.new(current_admin)
+  end
+```
+#### 在view中的使用示例
 
+```ruby
+    <% if can? :update, @admin %>
+```
+#### 在navigation中的使用示例
 
-
-
-
-
+```ruby
+    primary.item :admins, I18n.t('admin.nav.main_menu.common.management', model: Admin.model_name.human),
+      admin_master_admin_reports_path, { if: Proc.new { current_admin && current_admin.ability?(:manage_admin) },
+      :class => 'nav-header'} do |sub_nav|
+```
 
 
 

@@ -1,3 +1,25 @@
+## Tips(一些项目常用的参照)
+
+* 定制了formtastic标签的路径:  app/inputs/  
+* 系统用户左边栏菜单的配置文件路径:  config/admin_navigation.rb
+* 普通用户左边栏菜单的配置文件路径:  config/user_navigation.rb
+* 系统用户的权限配置文件:  app\models\admin_ability.rb
+* enum code define文件的路径:  config\initializers\wanerbu_code_define.rb
+* 对分页组件的重写，主要是调整了使用标签:  config\initializers\pagination_list_link_render.rb , 同时在application helper中重写了以下helper:
+```ruby
+  # change the default link renderer for will_paginate
+  def will_paginate(collection_or_options = nil, options = {})
+    if collection_or_options.is_a? Hash
+      options, collection_or_options = collection_or_options, nil
+    end
+    unless options[:renderer]
+      options = options.merge :renderer => PaginationListLinkRenderer
+    end
+    super *[collection_or_options, options].compact
+  end
+```
+
+
 ## CSS编码规范
 
 参照： https://github.com/necolas/idiomatic-css/tree/master/translations/zh-CN

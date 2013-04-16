@@ -4,9 +4,15 @@
       <%= f.input :sort %>
       <% Property.all.each do |property| -%>
             <div>
+              <%= hidden_field_tag 'sport[sport_properties_attributes][][id]', 
+                  (b = @sport.sport_properties.where('property_id = ?', property.id).first) ? b.id : nil -%>
+              <%# TODO dairg 这里的这种搜索方法太长，考虑有没有其他的方式%>
+              <%= check_box_tag 'sport[sport_properties_attributes][][property_id]', property.id, @sport.properties.include?(property) -%>
               <%= label_tag :property_ids, property.name -%>
-              <%= check_box_tag :property_ids, property.id, @sport.properties.include?(property), :name => 'sport[property_ids][]' -%>
-             </div>
+              <%= text_field_tag 'sport[sport_properties_attributes][][default_value]',
+                (a = @sport.sport_properties.where('property_id = ?', property.id).first) ? a.default_value : nil -%>
+              <%= property.unit -%>
+            </div>
       <% end -%>
     <%= f.actions do %>
       <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>

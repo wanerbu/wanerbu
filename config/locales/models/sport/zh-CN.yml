@@ -1,18 +1,12 @@
 ﻿zh-CN:
   activerecord:
     models:
-      admin: 系统用户
+      sport: 项目
     attributes:
-      admin:
-        login_id: "登录ID"
-        email: "Email"
-        password: "密码"
-        password_confirmation: "重复密码"
-        name: "姓名"
-        first_name: "姓"
-        last_name: "名"
-        telephone_no: "电话号码"
-        status: "状态"
+      sport:
+        name: "项目名"
+        intro: "项目说明"
+        sort: "项目排序"
     errors:
       models:
         admin:

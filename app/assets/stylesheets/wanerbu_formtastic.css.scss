@@ -15,7 +15,21 @@
       padding-right: 15px;
     }
   }
+
+  // 这样使得选项的说明文字和选项框挨在一起
+  li.choice {
+    label {
+      text-align: left;
+    }
+  }
+
+  // 单选radio的配置覆盖，这样设置以后，可以保障选项和标签label在同一行开始
+  .choices-group {
+    padding: 0;
+    width: 70%;
+  }
 }
+
 
 legend {
   font-size: 16px;
@@ -34,3 +48,5 @@ abbr[title="required"] {
   color: #CC0000;
   font-size: 1.5em;
 }
+
+

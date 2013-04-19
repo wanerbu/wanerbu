@@ -4,6 +4,7 @@
       admin: 系统用户
     attributes:
       admin:
+        login: "登录ID或邮箱"
         login_id: "登录ID"
         email: "Email"
         password: "密码"

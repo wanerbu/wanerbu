@@ -19,7 +19,7 @@ class Admin < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :token_authenticatable, :encryptable,  :lockable, :timeoutable
+         :token_authenticatable, :encryptable,  :lockable, :timeoutable, :authentication_keys => [:login]
          # TODO dairg 是否确认配置
          # :confirmable,
 
@@ -29,6 +29,9 @@ class Admin < ActiveRecord::Base
   ### 常量
   SUPER_ADMIN_ID = 1
 
+  # Virtual attribute for authenticating by either login_id or email
+  attr_accessor :login 
+ 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
                   :password,
@@ -36,6 +39,7 @@ class Admin < ActiveRecord::Base
                   :remember_me,
                   :password_salt,
                   :login_id,
+                  :login,
                   :first_name,
                   :last_name,
                   :telephone_no,
@@ -85,5 +89,16 @@ class Admin < ActiveRecord::Base
     return true if self.only_super_admin?
     super
   end
+
+  # 覆盖devise的这个方法，可以修改认证登录的条件
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(login_id) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
+    end
+  end
+  
     
 end

@@ -76,6 +76,8 @@ module Wanerbu
       :enable_starttls_auto => true
     }
 
+    # TODO dairg false:develop环境下不真正发送邮件
+    config.action_mailer.perform_deliveries = false
 
   end
 end

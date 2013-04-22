@@ -17,11 +17,12 @@ class Admin < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,
          :token_authenticatable, :encryptable,  :lockable, :timeoutable, :authentication_keys => [:login]
          # TODO dairg 是否确认配置
          # :confirmable,
+         # :registerable,
 
   # 逻辑删除
   acts_as_paranoid
@@ -35,7 +36,6 @@ class Admin < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
                   :password,
-                  :password_confirmation,
                   :remember_me,
                   :password_salt,
                   :login_id,
@@ -46,14 +46,18 @@ class Admin < ActiveRecord::Base
                   :status
  
   ### validations
-  validates :login_id, :password_confirmation,  :presence => true, on: :create
+  # validates :login_id, :password_confirmation,  :presence => true, on: :create
+  validates :login_id, :presence => true, on: :create
   validates :login_id, :length => { :in => 6..16 }, if: "login_id.present?", on: :create
   validates :login_id, :format => { if: "login_id.present?", with: Wanerbu::Common::FORMAT_LOGIN_ID }, on: :create
-  validates :password, :format => { if: "password.present?", with: Wanerbu::Common::FORMAT_PASSWORD }, on: :create
-  validates :password_confirmation, :format => { if: "password_confirmation.present?", with: Wanerbu::Common::FORMAT_PASSWORD }, on: :create
   validates :first_name, :last_name, :length => { :in => 0..10 }
   validates :telephone_no, :length => { :in => 0..15 }
   validates :telephone_no, :format => { if: "telephone_no.present?", with: Wanerbu::Common::FORMAT_TELEPHONE}
+
+  before_validation do 
+    # TODO dairg define the code 
+    self.password = Devise.friendly_token.first(Wanerbu::Common::AUTO_GENERATE_PASSWORD_LENGTH) if self.new_record? && self.password.blank?
+  end
 
   # validates :status, :format => { if: "status.present?", with: Wanerbu::Common::FORMAT_TELEPHONE}
   enumerize :status, in: Wanerbu::CodeDefine::ADMIN_STATUS, default: :active
@@ -100,5 +104,4 @@ class Admin < ActiveRecord::Base
     end
   end
   
-    
 end

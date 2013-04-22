@@ -7,6 +7,7 @@ module Wanerbu
     FORMAT_TELEPHONE = /\A[0-9]+\z/
 
     NUMBER_PER_PAGE = 10
+    AUTO_GENERATE_PASSWORD_LENGTH = 8
   end
 
   module CodeDefine

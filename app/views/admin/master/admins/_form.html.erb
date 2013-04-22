@@ -2,10 +2,6 @@
     <%= f.inputs :name => t('views.defaults.label.base_info') do %>
       <%= f.input :login_id, :required => true, :input_html => {:readonly => !@admin.new_record?}  %>
       <%= f.input :email, :input_html => { :class => "" } %>
-      <% if @admin.new_record? -%>
-        <%= f.input :password %>
-        <%= f.input :password_confirmation, :required => true %>
-      <% end %>
     <% end -%>
     <%= f.inputs :name => t('views.defaults.label.ext_info') do %>
       <%= f.input :first_name %>

@@ -10,7 +10,8 @@ zh-CN:
         common:
           management: "%{model}管理"
           new: "新建%{model}"
-          list: "我的%{model}"
+          list: "%{model}一览"
+          my: "我的%{model}"
           show: 详细表示
           edit: "编辑%{model}"
         dashboard: 主面板

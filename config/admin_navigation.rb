@@ -79,6 +79,8 @@ SimpleNavigation::Configuration.run do |navigation|
 #项目信息维护
         sub_nav.item :sports_list, I18n.t('admin.nav.main_menu.common.list', model: Sport.model_name.human), admin_master_sport_reports_path
         sub_nav.item :new_sport, I18n.t('admin.nav.main_menu.common.new', model: Sport.model_name.human), new_admin_master_sport_path
+#用户场馆一览
+        sub_nav.item :gyms_list, I18n.t('admin.nav.main_menu.common.list', model: Gym.model_name.human), admin_master_gym_reports_path
     end
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,

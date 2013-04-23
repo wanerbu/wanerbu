@@ -1,0 +1,30 @@
+﻿zh-CN:
+  activerecord:
+    models:
+      user: 普通用户
+    attributes:
+      user:
+        login: "登录ID或邮箱"
+        login_id: "用户ID"
+        email: "Email"
+        password: "密码"
+        password_confirmation: "重复密码"
+        name: "姓名"
+        first_name: "姓"
+        last_name: "名"
+        honey_name: "昵称"
+        telephone_no: "电话号码"
+        sex: "性别"
+        birthday: "生日"
+        address: "地址"
+        status: "状态"
+    errors:
+      models:
+        user:
+          attributes:
+            login_id:
+              invalid: "无效的登录ID"
+            password:
+              invalid: "无效的密码格式"
+            password_confirmation:
+              invalid: "无效的密码格式"

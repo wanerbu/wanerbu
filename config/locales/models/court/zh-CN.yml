@@ -1,0 +1,17 @@
+﻿zh-CN:
+  activerecord:
+    models:
+      court: 场地
+    attributes:
+      court:
+        min_unit: "最小预订单位"
+    errors:
+      models:
+        admin:
+          attributes:
+            login_id:
+              invalid: "无效的登录ID"
+            password:
+              invalid: "无效的密码格式"
+            password_confirmation:
+              invalid: "无效的密码格式"

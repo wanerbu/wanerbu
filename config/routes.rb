@@ -38,6 +38,7 @@ Wanerbu::Application.routes.draw do
     get 'dashboard' => 'dashboard#index'
     namespace :master do
       resources :gyms
+      resources :courts, :except => [:index]
     end
   end
   # The priority is based upon order of creation:

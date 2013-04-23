@@ -1,10 +1,10 @@
-class Admin::Master::SportsController < Admin::AdminBaseController
 # encoding: UTF-8
 #--
 # FileInfo:
 #   Author: Tom
 #
 #++
+class Admin::Master::SportsController < Admin::AdminBaseController
   def show
     @sport = Sport.find(params[:id])
   end

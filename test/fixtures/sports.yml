@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  intro: MyString
+  id: 1
+  name: '羽毛球'
+  intro: '羽毛球介绍' 
   sort: 1
 
 two:
-  name: MyString
-  intro: MyString
-  sort: 1
+  id: 2
+  name: basketball
+  intro: basketball intro
+  sort: 2

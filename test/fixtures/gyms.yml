@@ -4,8 +4,19 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-#one: {}
-# column: value
-#
-#two: {}
-#  column: value
+one:
+  name: Gym1
+  user_id: <%= User.first.id %>
+  intro: Gym1 intro
+  address: Gym1 address
+  telephone: 111111111
+  open_time: <%= Time.now %>
+  close_time: <%= Time.now %>
+two:
+  name: Gym2
+  user_id: 2
+  intro: Gym2 intro
+  address: Gym2 address
+  telephone: 222222222
+  open_time: <%= Time.now %>
+  close_time: <%= Time.now %>

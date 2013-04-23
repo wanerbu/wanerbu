@@ -1,0 +1,8 @@
+<% content_for :sub_menu do %>
+  <%= render :partial => 'user/master/courts/sub_menu_start', :locals => {:active_path => new_user_master_court_path } -%>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
+
+<div class='wb-content-main'>
+  <%= render 'form' -%>
+</div>

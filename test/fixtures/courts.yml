@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sport_id: 1
+  gym_id: 1
+  min_unit: 1.5
+
+two:
+  sport_id: 1
+  gym_id: 1
+  min_unit: 1.5

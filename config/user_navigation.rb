@@ -56,6 +56,7 @@ SimpleNavigation::Configuration.run do |navigation|
       user_master_gyms_path, {:class => 'nav-header'} do |sub_nav|
         sub_nav.dom_class = 'nav nav-list'
         sub_nav.item :my_gym, I18n.t('user.nav.main_menu.common.my', model: Gym.model_name.human), user_master_gyms_path
+        sub_nav.item :new_court, I18n.t('user.nav.main_menu.common.new', model: Court.model_name.human), new_user_master_court_path
     end
     #
     # You can also specify a condition-proc that needs to be fullfilled to display an item.

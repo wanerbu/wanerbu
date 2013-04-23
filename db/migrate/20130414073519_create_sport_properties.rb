@@ -4,7 +4,7 @@ class CreateSportProperties < ActiveRecord::Migration
       t.integer :sport_id
       t.integer :property_id
       t.string :default_value, limit: 20
-      t.integer :scope,limit: 1
+      t.integer :scope,limit: 9
       t.boolean :required
 
       t.timestamps

@@ -2,7 +2,7 @@ Wanerbu::Application.routes.draw do
 
   # 普通用户认证部分
   devise_for :users,
-             :controllers => {:sessions => 'user/users/sessions'},
+             :controllers => {:sessions => 'user/users/sessions', :registrations => 'user/users/registrations'},
              :path => 'auth',
              :path_names => { :sign_in => 'login', :sign_out => 'logout'}
 

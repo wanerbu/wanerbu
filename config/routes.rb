@@ -1,12 +1,16 @@
 Wanerbu::Application.routes.draw do
 
   # 普通用户认证部分
-  devise_for :users, :path => 'auth',
+  devise_for :users,
+             :controllers => {:sessions => 'user/users/sessions'},
+             :path => 'auth',
              :path_names => { :sign_in => 'login', :sign_out => 'logout'}
 
   # 系统管理员认证部分
-  devise_for :admins, :controllers => {:sessions => 'admin/admins/sessions'},
-             :path => 'admin/auth', :path_names => { :sign_in => 'login', :sign_out => 'logout'}
+  devise_for :admins,
+             :controllers => {:sessions => 'admin/admins/sessions'},
+             :path => 'admin/auth',
+             :path_names => { :sign_in => 'login', :sign_out => 'logout'}
 
   # 默认主页
   root :to => 'welcome#index'

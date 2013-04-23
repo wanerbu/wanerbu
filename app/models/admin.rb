@@ -98,6 +98,7 @@ class Admin < ActiveRecord::Base
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
+      # TODO dairg 大小写问题的确认
       where(conditions).where(["lower(login_id) = :value OR lower(email) = :value", { :value => login.downcase }]).first
     else
       where(conditions).first

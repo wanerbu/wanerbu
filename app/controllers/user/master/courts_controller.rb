@@ -11,13 +11,13 @@ class User::Master::CourtsController <  User::UserBaseController
   end
 
   def create
-    @gym = Gym.new(params[:gym])
-    @gym.status = 'draft'
-    @gym.user_id = current_user.id
-    if @gym.save
-       render "index"
+    @court = Court.new(params[:court])
+    @court.gym_id = current_user.gym.id
+    if @court.save
+      redirect_to user_master_court_path(@court), notice: I18n.t("activemodel.success.create", model: Court.model_name.human)
     else
-       render "new"
+      flash[:alert] = I18n.t("activemodel.errors.create", model: Court.model_name.human)
+      render :new
     end
   end
 

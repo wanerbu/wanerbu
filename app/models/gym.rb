@@ -9,6 +9,7 @@ class Gym < ActiveRecord::Base
 
   #添加association
   belongs_to :user
+  has_many   :courts
   
   validates :telephone, :length => { :in => 0..15 }
   validates :telephone, :format => { if: "telephone.present?", with: Wanerbu::Common::FORMAT_TELEPHONE}

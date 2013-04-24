@@ -3,4 +3,5 @@ class Court < ActiveRecord::Base
   #添加association
   belongs_to :gym
   belongs_to :sport
+  has_many :court_properties, :dependent => :destroy
 end

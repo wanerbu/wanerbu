@@ -1,0 +1,14 @@
+<% content_for :sub_menu do %>
+  <%= render :partial => 'user/master/courts/sub_menu_start', :locals => {:active_path => nil } -%>
+    <li class="active">
+      <%= link_to t('user.nav.main_menu.common.edit', model: Property.model_name.human), user_master_edit_court_properties_path(@court)%>
+    </li>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
+<!--TODO 一下逻辑需要调查，@court的值没有从controller中传过来-->
+      <% @court.court_properties.all.each do |court_property| -%>
+        <div>
+          <%= property = Property.find[court_property.property_id]%>
+          <%= property.name -%>
+        </div>
+     <% end -%>

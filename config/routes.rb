@@ -39,6 +39,7 @@ Wanerbu::Application.routes.draw do
     namespace :master do
       resources :gyms
       resources :courts, :except => [:index]
+      match 'edit_court_properties' => 'courts#edit_court_properties', :via => :get
     end
   end
   # The priority is based upon order of creation:

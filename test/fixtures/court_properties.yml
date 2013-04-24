@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  court_id: 1
+  property_id: 1
+  property_value: MyString
+
+two:
+  court_id: 1
+  property_id: 1
+  property_value: MyString

@@ -13,10 +13,16 @@
               </li>
             </ul>
 
-            <p class="navbar-text pull-right">
-              <%= link_to 'Logout', destroy_user_session_path, {method: :DELETE}  %>
-              Logged in as <a href="#" class="dropdown-toggle navbar-link" data-toggle="dropdown"><%= current_user.login_id %></a>
-            </p>
+            <div class="btn-group pull-right">
+              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> <%= current_user.login_id %></a>
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-pencil"></i><%= link_to '编辑个人信息', edit_user_registration_path %></a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="icon-trash"></i><%= link_to '退出账户', destroy_user_session_path, {method: :DELETE} %></a></li>
+              </ul>
+            </div>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>

@@ -11,7 +11,6 @@
     <% if can? :update, @role %>
       <%= link_to t('views.defaults.actions.edit'), edit_admin_master_role_path(@role), {class: "btn btn-primary"} %>
     <% end %>
-    <%= link_to t('views.defaults.actions.lock'), nil, {class: "btn btn-primary"} %>
     <%= link_to t('views.defaults.actions.destroy'), admin_master_role_path(@role), 
                 { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
   </div>
@@ -27,7 +26,13 @@
       </tr>
       <tr>
         <td><%= Role.human_attribute_name(:function_codes) %></td>
-        <td><%= @role.function_codes -%></td>
+        <td>
+          <ul>
+            <% @role.function_names.each do |name| -%>
+              <li><%= name %></li>
+            <% end %>
+          </ul>
+        </td>
       </tr>
     </tbody>
   </table>

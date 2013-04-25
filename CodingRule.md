@@ -188,5 +188,6 @@ cancan默认使用current_user来获得当前的用户，可以通过在controll
 #### 关于权限的tips
 
 * `can manage, Admin` 中的manage包含所有的action，不只是增删改查，是所有controller中定义的action
+* 默认cancan加载的资源（resource）必须是存在的model类，如果只想对单纯的controller添加权限控制，可以参考：  https://github.com/ryanb/cancan/issues/22
 
 

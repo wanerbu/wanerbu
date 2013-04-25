@@ -65,6 +65,22 @@ class Admin::Master::AdminsController < Admin::AdminBaseController
     end
   end
 
+  # 锁定
+  def lock_admin
+    @admin = Admin.find(params[:id])
+    # TODO dairg 存在性的check
+ 
+    # 如果操作对象是唯一的超级管理员，不能进行该操作
+    return unless only_super_admin_validate?
+
+    if @admin.update_attribute(:status, Wanerbu::CodeDefine::ADMIN_STATUS[:locked])
+      redirect_to admin_master_admin_path(@admin), notice: I18n.t("activemodel.success.lock", model: Admin.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.lock", model: Admin.model_name.human)
+      render :show
+    end
+  end
+
 private
   def only_super_admin_validate?
     if @admin.only_super_admin?

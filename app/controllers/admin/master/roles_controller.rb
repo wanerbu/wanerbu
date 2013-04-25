@@ -7,6 +7,9 @@
 #
 class Admin::Master::RolesController < Admin::AdminBaseController
 
+  # 对于每一个action进行权限检查
+  load_and_authorize_resource 
+
   def show
     @role = Role.find(params[:id])
   end

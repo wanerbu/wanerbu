@@ -28,9 +28,15 @@ class AdminAbility
     # guest admin (not logged in)
     user ||= Admin.new 
 
-    can :manage, Admin if user.ability? :manage_admin
-    can :manage, Role if user.ability? :manage_role
+    # 给常用的增删改查取一个别名
+    alias_action :create, :read, :update, :destroy, :to => :crud
+
+    # can :manage, Admin if user.ability? :manage_admin
+    can :crud, Admin if user.ability? :manage_admin
+    can :index, AdminReport if user.ability? :manage_admin
     can :lock, Admin if user.ability? :lock_admin
+    can :manage, Role if user.ability? :manage_role
+    can :index, RoleReport if user.ability? :manage_role
 
   end
 end

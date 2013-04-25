@@ -14,12 +14,20 @@
             </ul>
 
             <div class="btn-group pull-right">
-              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> <%= current_user.login_id %></a>
+              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i>&nbsp;&nbsp;<%= current_user.login_id %></a>
               <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><i class="icon-pencil"></i><%= link_to '编辑个人信息', edit_user_registration_path %></a></li>
+                <li>
+                  <%= link_to edit_user_registration_path do %>
+                    <i class="icon-pencil"></i>&nbsp;&nbsp;编辑个人信息
+                  <% end %>
+                </li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="icon-trash"></i><%= link_to '退出账户', destroy_user_session_path, {method: :DELETE} %></a></li>
+                <li>
+                  <%= link_to destroy_user_session_path, {method: :DELETE} do %>
+                    <i class="icon-trash"></i>&nbsp;&nbsp;退出账户
+                  <% end %>
+                </li>
               </ul>
             </div>
 

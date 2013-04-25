@@ -185,5 +185,8 @@ cancan默认使用current_user来获得当前的用户，可以通过在controll
       :class => 'nav-header'} do |sub_nav|
 ```
 
+#### 关于权限的tips
+
+* `can manage, Admin` 中的manage包含所有的action，不只是增删改查，是所有controller中定义的action
 
 

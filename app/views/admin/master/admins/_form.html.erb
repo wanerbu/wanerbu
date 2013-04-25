@@ -9,6 +9,9 @@
       <%= f.input :telephone_no %>
       <%# f.input :status, :as => :radio %>
     <% end -%>
+    <%= f.inputs :name => t('views.defaults.label.auth_info') do %>
+      <%= f.input :roles, as: :check_boxes, collection: Role.all  %>
+    <% end -%>
     <%= f.actions do %>
       <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>
       <%= f.action :cancel, :as => :link %>

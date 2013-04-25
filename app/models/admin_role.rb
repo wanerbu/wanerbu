@@ -8,8 +8,9 @@
 #
 class AdminRole < ActiveRecord::Base
   ### Validations
-  validates_presence_of(:admin_id)
-  validates_presence_of(:role_id)
+  # TODO dairg 这里如果不注释掉，那么在新建用户并指定角色时，验证会失败
+  # validates_presence_of(:admin_id)
+  # validates_presence_of(:role_id)
 
   ### Relations
   belongs_to(:admin)

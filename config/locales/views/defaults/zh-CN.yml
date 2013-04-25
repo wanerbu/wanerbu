@@ -4,6 +4,7 @@
       label:
         base_info: "基本信息" 
         ext_info: "扩展信息" 
+        auth_info: "角色信息" 
       actions:
         edit: 编辑
         show: 详细

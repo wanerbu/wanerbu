@@ -45,6 +45,16 @@
         <td><%= Admin.human_attribute_name(:status) %></td>
         <td><%= @admin.status_text -%></td>
       </tr>
+      <tr>
+        <td><%= Admin.human_attribute_name(:roles) %></td>
+        <td>
+          <ul>
+            <% @admin.roles.each do |r| -%>
+              <li><%= r.name %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

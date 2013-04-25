@@ -43,7 +43,8 @@ class Admin < ActiveRecord::Base
                   :first_name,
                   :last_name,
                   :telephone_no,
-                  :status
+                  :status,
+                  :role_ids
  
   ### validations
   # validates :login_id, :password_confirmation,  :presence => true, on: :create
@@ -63,8 +64,8 @@ class Admin < ActiveRecord::Base
   enumerize :status, in: Wanerbu::CodeDefine::ADMIN_STATUS, default: :active
 
   ### Relations
-  has_many(:admin_roles)
-  has_many(:roles, through: :admin_roles)
+  has_many(:admin_roles, :validate => :false)
+  has_many(:roles, through: :admin_roles, :validate => :false)
 
   ### DefaultScope
   default_scope order("login_id ASC")
@@ -72,9 +73,6 @@ class Admin < ActiveRecord::Base
   ### Scopes
   scope :except_super_admin, where('id <> ?', SUPER_ADMIN_ID)
  
-  before_save do
-  end
-
   # 姓名
   def name
     name = ''

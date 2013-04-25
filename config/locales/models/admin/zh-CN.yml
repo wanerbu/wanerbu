@@ -14,6 +14,7 @@
         last_name: "名"
         telephone_no: "电话号码"
         status: "状态"
+        roles: "拥有角色"
     errors:
       models:
         admin:

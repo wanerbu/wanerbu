@@ -66,7 +66,7 @@ class Admin::Master::AdminsController < Admin::AdminBaseController
   end
 
   # 锁定
-  def lock_admin
+  def lock
     @admin = Admin.find(params[:id])
     # TODO dairg 存在性的check
  

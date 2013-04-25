@@ -22,7 +22,7 @@ Wanerbu::Application.routes.draw do
     namespace :master do
       resources :admins, :except => [:index] do
         member do
-          post :lock_admin
+          post :lock
         end
       end
       resources :admin_reports, :only => [:index]

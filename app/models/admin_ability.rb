@@ -30,6 +30,7 @@ class AdminAbility
 
     can :manage, Admin if user.ability? :manage_admin
     can :manage, Role if user.ability? :manage_role
+    can :lock, Admin if user.ability? :lock_admin
 
   end
 end

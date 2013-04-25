@@ -11,9 +11,13 @@
     <% if can? :update, @admin %>
       <%= link_to t('views.defaults.actions.edit'), edit_admin_master_admin_path(@admin), {class: "btn btn-primary"} %>
     <% end %>
-    <%= link_to t('views.defaults.actions.lock'), lock_admin_admin_master_admin_path(@admin), {method: :post, class: "btn btn-primary"} %>
-    <%= link_to t('views.defaults.actions.destroy'), admin_master_admin_path(@admin), 
+    <% if can? :lock, @admin %>
+      <%= link_to t('views.defaults.actions.lock'), lock_admin_master_admin_path(@admin), {method: :post, class: "btn btn-primary"} %>
+    <% end %>
+    <% if can? :destroy, @admin %>
+      <%= link_to t('views.defaults.actions.destroy'), admin_master_admin_path(@admin), 
                 { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
+    <% end %>
   </div>
   <div class='wb-clear-both'></div>
 </div>

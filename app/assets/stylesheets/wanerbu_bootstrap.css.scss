@@ -1,5 +1,6 @@
 // change colors
-$linkColor: #008B8B;
+// $linkColor: #008B8B;
+$linkColor: #0088cc;
 
 // change grid
 $gridColumnWidth: 70px;
@@ -8,6 +9,13 @@ $gridGutterWidth: 30px;
 // change table
 $tableBackgroundHover: #008B8B;
 
+
 // import original bootstrap
 @import "twitter/bootstrap";
 @import "twitter/bootstrap-responsive";
+
+// tab菜单的自定义
+.nav-tabs .active a {
+  background-color: $linkColor;
+  color: #ffffff;
+}

@@ -1,0 +1,11 @@
+<% if !sport_properties.blank? %>
+  <% sport_properties.all.each do |sport_property| %>
+    <% property = Property.find(sport_property.property_id) %>
+    <div>
+      <%= label_tag :property_ids, property.name -%>
+      <%= text_field_tag 'sport', sport_property.default_value  -%>
+      <%= property.unit -%>
+    </div>
+  <%end%>
+<% else %>
+<% end %>

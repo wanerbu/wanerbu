@@ -30,7 +30,9 @@ class User::Master::CourtsController <  User::UserBaseController
     end
   end
 
-  def edit_court_properties
+  def edit_court_properties_select
+    sport_properties = SportProperty.where(:sport_id=>params[:id]) unless params[:id].blank?
+    render :partial => "properties",:locals => { :sport_properties => sport_properties }
   end
   def edit
 

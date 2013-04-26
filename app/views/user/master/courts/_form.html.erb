@@ -3,6 +3,8 @@
       <label class=" label" for="court_sport_name">项目  </label>
       <%= collection_select(:court, :sport_id, Sport.all, :id, :name) %>
     </li>
+    <div id="courtProperties">
+    </div>  
     <%= f.input :min_unit %>
     <%= f.actions do %>
       <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>

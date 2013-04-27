@@ -14,16 +14,7 @@ class User::Master::CourtsController <  User::UserBaseController
     @court = Court.new(params[:court])
     @court.gym_id = current_user.gym.id
     if @court.save
-      #根据项目同步更新场地属性表
-      sport = Sport.find(params[:court][:sport_id])
-      sport.sport_properties.all.each do |sport_property| 
-        court_property = CourtProperty.new
-        court_property.court_id = @court.id
-        court_property.property_id = sport_property.property_id
-        court_property.property_value = sport_property.default_value
-        court_property.save 
-      end
-      redirect_to user_master_edit_court_properties_path(@court)
+      redirect_to user_master_court_path(@court), notice: I18n.t("activemodel.success.create", model: Court.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.create", model: Court.model_name.human)
       render :new

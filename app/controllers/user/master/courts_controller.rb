@@ -6,6 +6,10 @@
 #++
 #
 class User::Master::CourtsController <  User::UserBaseController
+  def show
+    @court = Court.find(params[:id])
+    @court = Court.find(params[:id])
+  end
   def new
     @court = Court.new
   end
@@ -27,15 +31,15 @@ class User::Master::CourtsController <  User::UserBaseController
   end
   def edit
 
-    @gym = Gym.find(params[:id])
+    @court = Court.find(params[:id])
 
   end
 
   def update
 
-    @gym = Gym.find(params[:id])
+    @court = Court.find(params[:id])
 
-      if @gym.update_attributes(params[:gym])
+      if @court.update_attributes(params[:Court])
        render "index"
       else
         render "edit"
@@ -44,11 +48,11 @@ class User::Master::CourtsController <  User::UserBaseController
 
   def destroy
     # TODO Tom 存在性的check
-    @gym = Gym.find(params[:id])
-    if @gym.destroy
-      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.destroy", model: Gym.model_name.human)
+    @court = Court.find(params[:id])
+    if @court.destroy
+      redirect_to user_master_Courts_path, notice: I18n.t("activemodel.success.destroy", model: Court.model_name.human)
     else
-      flash[:alert] = I18n.t("activemodel.errors.destroy", model: Gym.model_name.human)
+      flash[:alert] = I18n.t("activemodel.errors.destroy", model: Court.model_name.human)
       render :show
     end
   end

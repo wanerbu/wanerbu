@@ -1,11 +1,33 @@
 <% content_for :sub_menu do %>
-  <%= render :partial => 'admin/master/sports/sub_menu_start', :locals => {:active_path => nil } -%>
+  <%= render :partial => 'user/master/courts/sub_menu_start', :locals => {:active_path => nil } -%>
     <li class="active">
-      <%= link_to t('admin.nav.main_menu.common.edit', model: Sport.model_name.human), edit_admin_master_sport_path(@sport) %>
+      <%= link_to t('user.nav.main_menu.common.edit', model: Court.model_name.human), edit_user_master_court_path(@court) %>
     </li>
   <%= render 'common_parts/sub_menu_end' -%>
 <% end %>
 
 <div class='wb-content-main'>
-  <%= render 'form' -%>
+<%= semantic_form_for([:user, :master, @court], :html => { :class => 'form-horizontal' }) do |f| %>
+    <li id="court_sport_name" class="number input optional numeric stringish">
+      <label class=" label" for="court_sport_name">项目  </label>
+      <%= Sport.find(@court.sport_id).name %>
+    </li>
+    <div id="courtProperties">
+  <% @court.court_properties.all.each do |court_property| %>
+    <% property = Property.find(court_property.property_id) %>
+    <div>
+      <%= hidden_field_tag 'court[court_properties_attributes][][id]',court_property.id %>
+      <%= hidden_field_tag 'court[court_properties_attributes][][property_id]',property.id %>
+      <%= label_tag :property_ids, property.name -%>
+      <%= text_field_tag 'court[court_properties_attributes][][property_value]',court_property.property_value %>
+      <%= property.unit -%>
+    </div>
+  <%end%>
+    </div>  
+    <%= f.input :min_unit %>
+    <%= f.actions do %>
+      <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>
+      <%= f.action :cancel, :as => :link %>
+    <% end -%>
+  <% end %>
 </div>

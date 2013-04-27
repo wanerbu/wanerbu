@@ -8,8 +8,8 @@
 class User::Master::CourtsController <  User::UserBaseController
   def show
     @court = Court.find(params[:id])
-    @court = Court.find(params[:id])
   end
+
   def new
     @court = Court.new
   end
@@ -29,18 +29,15 @@ class User::Master::CourtsController <  User::UserBaseController
     sport_properties = SportProperty.where(:sport_id=>params[:id]) unless params[:id].blank?
     render :partial => "properties",:locals => { :sport_properties => sport_properties }
   end
+
   def edit
-
     @court = Court.find(params[:id])
-
   end
 
   def update
-
     @court = Court.find(params[:id])
-
-      if @court.update_attributes(params[:Court])
-       render "index"
+      if @court.update_attributes(params[:court])
+      redirect_to user_master_court_path(@court), notice: I18n.t("activemodel.success.update", model: Court.model_name.human)
       else
         render "edit"
       end
@@ -50,10 +47,11 @@ class User::Master::CourtsController <  User::UserBaseController
     # TODO Tom 存在性的check
     @court = Court.find(params[:id])
     if @court.destroy
-      redirect_to user_master_Courts_path, notice: I18n.t("activemodel.success.destroy", model: Court.model_name.human)
+        render "new"
     else
       flash[:alert] = I18n.t("activemodel.errors.destroy", model: Court.model_name.human)
       render :show
     end
   end
+
 end

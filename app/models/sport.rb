@@ -3,5 +3,6 @@ class Sport < ActiveRecord::Base
   has_many :sport_properties, :dependent => :destroy
   has_many :properties, :through => :sport_properties
 
-  accepts_nested_attributes_for :sport_properties, :allow_destroy => true
+  # :reject_if 来实现没有选中的属性不会插入一条property_id 为nil 的记录
+  accepts_nested_attributes_for :sport_properties, :allow_destroy => true, :reject_if => proc { |attributes| attributes['property_id'].blank? }
 end

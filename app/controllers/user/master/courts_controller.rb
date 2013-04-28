@@ -16,6 +16,9 @@ class User::Master::CourtsController <  User::UserBaseController
 
   def create
     @court = Court.new(params[:court])
+    puts "#########"
+    game_number = params[:game_number]
+    puts game_number
     @court.gym_id = current_user.gym.id
     if @court.save
       redirect_to user_master_court_path(@court), notice: I18n.t("activemodel.success.create", model: Court.model_name.human)

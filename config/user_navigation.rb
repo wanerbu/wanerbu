@@ -59,6 +59,8 @@ SimpleNavigation::Configuration.run do |navigation|
 #场地一览
         sub_nav.item :courts_list, I18n.t('user.nav.main_menu.common.list', model: Court.model_name.human), user_master_court_reports_path
         sub_nav.item :new_court, I18n.t('user.nav.main_menu.common.new', model: Court.model_name.human), new_user_master_court_path
+#场次一览
+        sub_nav.item :games_list, I18n.t('user.nav.main_menu.common.list', model: Game.model_name.human), user_master_game_reports_path
     end
     #
     # You can also specify a condition-proc that needs to be fullfilled to display an item.

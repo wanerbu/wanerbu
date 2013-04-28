@@ -1,0 +1,17 @@
+﻿zh-CN:
+  activerecord:
+    models:
+      game: 场次
+    attributes:
+      game:
+        name: "场次名称"
+    errors:
+      models:
+        admin:
+          attributes:
+            login_id:
+              invalid: "无效的登录ID"
+            password:
+              invalid: "无效的密码格式"
+            password_confirmation:
+              invalid: "无效的密码格式"

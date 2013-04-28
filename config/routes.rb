@@ -46,6 +46,7 @@ Wanerbu::Application.routes.draw do
       resources :court_reports, :only => [:index]
       match 'courts/edit_court_properties_select/:id' => 'courts#edit_court_properties_select',:via=>:get
       resources :games, :except => [:index]
+      resources :game_reports, :only => [:index]
     end
   end
   # The priority is based upon order of creation:

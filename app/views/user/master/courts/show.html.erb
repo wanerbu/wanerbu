@@ -39,6 +39,10 @@
         <td><%= Court.human_attribute_name(:min_unit) %></td>
         <td><%= @court.min_unit -%></td>
       </tr>
+      <tr>
+        <td>场次数量</td>
+        <td><%= Game.where(:court_id => @court.id).count %></td>
+      </tr>
     </tbody>
   </table>
 </div>

@@ -43,6 +43,7 @@ Wanerbu::Application.routes.draw do
     namespace :master do
       resources :gyms
       resources :courts, :except => [:index]
+      resources :court_reports, :only => [:index]
       match 'courts/edit_court_properties_select/:id' => 'courts#edit_court_properties_select',:via=>:get
     end
   end

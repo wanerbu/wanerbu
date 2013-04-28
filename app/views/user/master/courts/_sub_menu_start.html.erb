@@ -1,4 +1,7 @@
   <ul class="nav nav-tabs">
+    <li class="<%= 'active' if active_path.present? && active_path == user_master_court_reports_path %>">
+      <%= link_to t('user.nav.main_menu.common.list', model: Court.model_name.human), user_master_court_reports_path %>
+    </li>
     <li class="<%= 'active' if active_path.present? && active_path == new_user_master_court_path %>">
       <%= link_to t('user.nav.main_menu.common.new', model: Court.model_name.human), new_user_master_court_path %>
     </li>

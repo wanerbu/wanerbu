@@ -1,0 +1,34 @@
+<% content_for :head_stylesheet do %>
+<% end %>
+
+<% content_for :sub_menu do %>
+  <%= render :partial => 'user/master/courts/sub_menu_start', :locals => {:active_path => user_master_court_reports_path } -%>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
+
+<div class="wb-search-condition-container alert alert-success">
+  <%= form_for [:user, :master, @court_report], :html => {:method => :get} do |f| -%>
+    <% @court_report.filters.each do |filter| -%>
+      <div class="wb-datagrid-filter-content">
+        <%= f.datagrid_label filter %>
+        <%= f.datagrid_filter filter %>
+      </div>
+    <% end -%>
+
+    <div class='wb-datagrid-filter-action'>
+      <button type='submit' class='btn btn-primary'><%= t('views.defaults.actions.search')%></button>
+      <button type='button' class='btn'><%= t('views.defaults.actions.clear')%></button>
+    </div>
+    <div class='wb-clear-both'></div>
+  <% end -%>
+</div>
+
+<div class="search-result">
+  <div class='wb-result-total'>Total: <%= @court_report.assets.count %> 件</div>
+  <%= will_paginate @assets %>
+  <div class='wb-clear-both'></div>
+  <div>
+  <%= datagrid_table(@court_report, @assets) %>
+  </div>
+  <%= will_paginate @assets %>
+</div>

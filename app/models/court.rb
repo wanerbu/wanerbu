@@ -4,6 +4,7 @@ class Court < ActiveRecord::Base
   belongs_to :gym
   belongs_to :sport
   has_many :court_properties, :dependent => :destroy
+  has_many :games, :dependent => :destroy
   accepts_nested_attributes_for :court_properties, :allow_destroy => true
   #TODO 场馆添加项目不能重复的验证
 end

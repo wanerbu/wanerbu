@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424135512) do
+ActiveRecord::Schema.define(:version => 20130428085309) do
 
   create_table "admin_roles", :force => true do |t|
     t.integer "admin_id", :null => false
@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(:version => 20130424135512) do
     t.float    "min_unit",   :default => 0.5
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "games", :force => true do |t|
+    t.integer  "court_id"
+    t.string   "name",          :limit => 20
+    t.integer  "sort",          :limit => 3
+    t.float    "default_price",               :default => 0.0
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
   create_table "gyms", :force => true do |t|

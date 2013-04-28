@@ -16,8 +16,6 @@ class User::Master::GamesController <  User::UserBaseController
 
   def create
     @game= Game.new(params[:game])
-    puts "#####"
-    puts params[:sport_id]
     @game.court_id = Court.where(:sport_id => params[:sport_id]).first.id
     if @game.save
       redirect_to user_master_game_path(@game), notice: I18n.t("activemodel.success.create", model: Game.model_name.human)

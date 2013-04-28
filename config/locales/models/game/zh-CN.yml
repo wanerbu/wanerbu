@@ -5,6 +5,7 @@
     attributes:
       game:
         name: "场次名称"
+        sort: "顺序"
     errors:
       models:
         admin:

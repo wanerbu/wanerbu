@@ -1,0 +1,35 @@
+<% content_for :sub_menu do %>
+  <%= render :partial => 'user/master/games/sub_menu_start', :locals => {:active_path => nil } -%>
+    <li class="active">
+      <%= link_to t('user.nav.main_menu.common.show', model: Game.model_name.human), user_master_game_path(@game) %>
+    </li>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
+
+<div class='wb-content-sub-title'>
+  <div>
+    <%= link_to t('views.defaults.actions.edit'), edit_user_master_game_path(@game), {class: "btn btn-primary"} %>
+    <%= link_to t('views.defaults.actions.destroy'), user_master_game_path(@game), 
+                { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
+  </div>
+  <div class='wb-clear-both'></div>
+</div>
+
+<div class="wb-content-detail">
+  <table class="table table-bordered" style="width: 100%;">
+    <tbody>
+      <tr>
+        <td>项目名</td>
+        <td><%= Sport.find(Court.find(@game.court_id).sport_id).name -%></td>
+      </tr>
+      <tr>
+        <td><%= Game.human_attribute_name(:name) %></td>
+        <td><%= @game.name -%></td>
+      </tr>
+      <tr>
+        <td><%= Game.human_attribute_name(:sort) %></td>
+        <td><%= @game.sort -%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

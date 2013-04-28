@@ -1,0 +1,11 @@
+<% content_for :sub_menu do %>
+  <%= render :partial => 'user/master/games/sub_menu_start', :locals => {:active_path => nil } -%>
+    <li class="active">
+      <%= link_to t('user.nav.main_menu.common.edit', model: Game.model_name.human), edit_user_master_game_path(@game) %>
+    </li>
+  <%= render 'common_parts/sub_menu_end' -%>
+<% end %>
+
+<div class='wb-content-main'>
+  <%= render 'form' -%>
+</div>

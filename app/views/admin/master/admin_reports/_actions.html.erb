@@ -1,6 +1,6 @@
 <div class="btn-group">
-  <%= link_to t('views.defaults.actions.show'), admin_master_admin_path(target), class: "btn btn-success" %>
-  <%= link_to t('views.defaults.actions.edit'), edit_admin_master_admin_path(target), class: "btn btn-success" %>
+  <%= link_to t('views.defaults.actions.show'), admin_master_admin_path(target), class: "btn btn-small btn-success" %>
+  <%= link_to t('views.defaults.actions.edit'), edit_admin_master_admin_path(target), class: "btn btn-small btn-success" %>
   <%= link_to t('views.defaults.actions.destroy'), admin_master_admin_path(target), 
-               { class: "btn btn-danger", method: :delete, confirm: t('activemodel.confirm.destroy') } %>
+               { class: "btn btn-small btn-danger", method: :delete, confirm: t('activemodel.confirm.destroy') } %>
 </div>

@@ -3,7 +3,12 @@
     models:
       role: 角色
     attributes:
-      role:
+      role: &role
         name: "角色名"
         function_codes: "拥有权限"
         sort: "排序"
+
+  datagrid:
+    role_report:
+      columns:
+        <<: *role

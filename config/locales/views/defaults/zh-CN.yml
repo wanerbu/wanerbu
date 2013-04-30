@@ -15,4 +15,7 @@
         apply: 申请
         search: 检索
         clear: 清空
+      query_results:
+        prefix: "共: "
+        unit: " 件"
 

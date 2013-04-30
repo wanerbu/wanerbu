@@ -25,13 +25,14 @@ div.wb-search-condition-container {
   float: none;
   margin: 0;
   padding: 14px 14px 10px;
+  border: solid 1px $wanerbuSystemBaseColor;
 
   form {
     margin: 0px;
   }
 }
 
-/* 检索部的条件部分  */
+/* 检索部的条件部分(每一个查询条件一个div)  */
 .wb-datagrid-filter-content {
   padding-right: 20px;
   float: left;
@@ -39,7 +40,7 @@ div.wb-search-condition-container {
     display: inline;
   }
 }
-/* 检索部的操作部分  */
+/* 检索部的操作部分（也就是查询按钮等）  */
 .wb-datagrid-filter-action {
   float: right;
 }
@@ -68,6 +69,14 @@ div.wb-search-condition-container {
 
 /* 这里开始是自定义了datagrid的表头排序显示部分 */
 table.wb-datagrid {
+  // 这里是表头的样式
+  thead {
+    // firefox系
+    background: -moz-linear-gradient(top, #f2f2f2, #e3e3e3);
+    // webkit系
+    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e3e3e3));
+  }
+
   th {
     // 这里是排序的表头显示内容
     span {
@@ -89,10 +98,7 @@ table.wb-datagrid {
 /* 显示总件数 */
 .wb-result-total {
   float:right;
-  margin: 5px;
-  border-color: pink;
-  border-style: solid;
-  border-width: 0 0 2px 0;
+  margin: 12px 5px;
 }
 
 /* -----------------------------------------------------

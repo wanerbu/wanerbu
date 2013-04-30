@@ -1,3 +1,5 @@
+// $baseFontFamily: ;
+
 // change colors
 // $linkColor: #008B8B;
 $linkColor: #0088cc;
@@ -7,7 +9,10 @@ $gridColumnWidth: 70px;
 $gridGutterWidth: 30px;
 
 // change table
-$tableBackgroundHover: #008B8B;
+$tableBackgroundHover: lightgray;
+// 下面两个用来修改奇偶行交替颜色
+// $tableBackgroundAccent: white;
+// $tableBackground: ;
 
 
 // import original bootstrap

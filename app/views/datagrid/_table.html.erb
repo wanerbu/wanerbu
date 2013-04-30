@@ -4,7 +4,7 @@ Local variables:
 * assets - Array of database Entities
 * options - passed options Hash
 %>
-<%= content_tag :table, options[:html].merge({:class => 'table table-striped table-hover wb-datagrid ' + options[:html][:class]}) do %>
+<%= content_tag :table, options[:html].merge({:class => 'table table-striped table-hover table-bordered wb-datagrid ' + options[:html][:class]}) do %>
   <thead>
     <%= datagrid_header(grid, options) %>
   </thead>

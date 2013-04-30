@@ -6,7 +6,7 @@
   <%= render 'common_parts/sub_menu_end' -%>
 <% end %>
 
-<div class="wb-search-condition-container alert alert-success">
+<div class="wb-search-condition-container">
   <%= form_for [:admin, :master, @admin_report], :html => {:method => :get} do |f| -%>
     <% @admin_report.filters.each do |filter| -%>
       <div class="wb-datagrid-filter-content">
@@ -24,7 +24,7 @@
 </div>
 
 <div class="search-result">
-  <div class='wb-result-total'>Total: <%= @admin_report.assets.count %> 件</div>
+  <div class='wb-result-total'><span class="badge badge-important">Total: <%= @admin_report.assets.count %> 件</span></div>
   <%= will_paginate @assets %>
   <div class='wb-clear-both'></div>
   <div>

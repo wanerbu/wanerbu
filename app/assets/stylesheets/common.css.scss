@@ -87,11 +87,18 @@ table.wb-datagrid {
   // 这里定义的是表格头部排序用的图标部分
   .order {
     margin-left: 10px;
+    padding-top: 3px;
     float: left;
     // 升序图标
-    .asc { @include wb-class-order-icon-base(-289px, -96px); }
+    .asc { 
+      @include wb-class-order-icon-base(-289px, -96px);
+      margin: 0px;
+    }
     // 降序图标
-    .desc { @include wb-class-order-icon-base(-312px, -96px); }
+    .desc {
+      @include wb-class-order-icon-base(-312px, -96px);
+      margin: 0px;
+    }
   }
 }
 

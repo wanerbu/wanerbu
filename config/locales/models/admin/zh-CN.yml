@@ -3,7 +3,7 @@
     models:
       admin: 系统用户
     attributes:
-      admin:
+      admin: &admin
         login: "登录ID或邮箱"
         login_id: "登录ID"
         email: "Email"
@@ -25,3 +25,8 @@
               invalid: "无效的密码格式"
             password_confirmation:
               invalid: "无效的密码格式"
+  
+  datagrid:
+    admin_report:
+      columns:
+        <<: *admin

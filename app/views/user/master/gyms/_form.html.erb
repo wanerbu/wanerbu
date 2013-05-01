@@ -1,9 +1,9 @@
   <%= semantic_form_for([:user, :master, @gym], :html => { :class => 'form-horizontal' }) do |f| %>
     <%= f.inputs  do %>
-      <%= f.input :name, :required => true, :input_html => {:readonly => !@gym.new_record?}  %>
-      <%= f.input :intro, :input_html => { :class => "" } %>
-      <%= f.input :address, :input_html => { :class => "" } %>
-      <%= f.input :telephone, :input_html => { :class => "" } %>
+      <%= f.input :name, :required => true, :input_html => {:class=> ""}%>
+      <%= f.input :intro, :required => true, :input_html => { :class => "" } %>
+      <%= f.input :address, :required => true, :input_html => { :class => "" } %>
+      <%= f.input :telephone, :required => true,:input_html => { :class => "" } %>
       <%= f.time_select :open_time, :required => true,:input_html => { :class => "" } %>
       <%= f.time_select :close_time,:required => true,:input_html => { :class => "" } %>
     <% end -%>

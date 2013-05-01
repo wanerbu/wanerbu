@@ -54,7 +54,7 @@ class User::Master::GymsController <  User::UserBaseController
     # TODO Tom 存在性的check
     @gym = Gym.find(params[:id])
     if @gym.destroy
-      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.destroy", model: Gym.model_name.human)
+      redirect_to user_root_path, notice: I18n.t("activemodel.success.destroy", model: Gym.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.destroy", model: Gym.model_name.human)
       render :show

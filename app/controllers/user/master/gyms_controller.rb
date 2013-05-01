@@ -7,8 +7,9 @@
 #
 class User::Master::GymsController <  User::UserBaseController
 
-  # 对于每一个action进行权限检查
+  # 对于每一个action进行权限检查,除了新建
   load_and_authorize_resource 
+  skip_authorize_resource :only => :new 
 
   def index
     # TODO Tom 存在性的check

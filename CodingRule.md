@@ -160,7 +160,7 @@ render文件中，但是又不能直接把关闭ul的代码写到同一个文件
 
 1. 首先在function.rb中注册这个机能
 2. 在admin_ability或者user_ability中配置可以访问这个机能的权限
-3. 通过在controller中加入  `load_and_authorize_resource`  可以为每一个action加上权限控制，具体使用可以参照cancan guide。
+3. 通过在controller中加入  `load_and_authorize_resource`可以为每一个action加上权限控制，可以使用'skip_authorize_resource :only =>:new'解除对某一个具体action的权限验证,具体使用可以参照cancan guide。
 
 #### 如何定制使用自己的ability文件
 

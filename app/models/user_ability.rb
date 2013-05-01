@@ -33,7 +33,7 @@ class UserAbility
 
     # can :manage, Admin if user.ability? :manage_admin
     #can :crud, Gym if user.ability? :manage_gym && :user_id => user.id
-    can :crud, Gym if user.ability? :manage_gym 
+    can :crud, Gym if user.ability? :manage_gym
 
   end
 end

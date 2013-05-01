@@ -199,12 +199,16 @@ zh-CN:
       destroy: "%{model}删除失败"
       lock: "%{model}锁定失败"
       apply: "%{model}申请失败"
+      cancel: "%{model}撤销失败"
+      release: "%{model}发布失败"
     success:
       create: "%{model}创建成功"
       update: "%{model}更新成功"
       destroy: "%{model}删除成功"
       lock: "%{model}锁定成功"
       apply: "%{model}申请成功"
+      cancel: "%{model}撤销成功"
+      release: "%{model}发布成功"
     confirm:
       destroy: "确定删除吗？"
 

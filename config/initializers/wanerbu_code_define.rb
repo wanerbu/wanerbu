@@ -22,10 +22,14 @@ module Wanerbu
       draft: '00',
       # 审核中
       applying: '01',
-      # 审核通过
-      applied: '02',
       # 撤消
-      canceled: '99'
+      canceled: '02',
+      # 审核通过
+      applied: '03',
+      # 拒绝
+      rejected: '04',
+      # 发布
+      released: '05'
     }
   end
 end

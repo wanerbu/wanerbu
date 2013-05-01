@@ -44,6 +44,8 @@ Wanerbu::Application.routes.draw do
       resources :gyms do
         member do
           post :apply
+          post :cancel
+          post :release
         end
       end
       resources :courts, :except => [:index]

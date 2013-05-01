@@ -13,9 +13,10 @@
         destroy: 删除
         lock: 锁定
         apply: 申请
+        cancel: 撤销
+        release: 发布
         search: 检索
         clear: 清空
       query_results:
         prefix: "共: "
         unit: " 件"
-

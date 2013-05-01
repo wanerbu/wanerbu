@@ -29,25 +29,23 @@ class User::Master::GymsController <  User::UserBaseController
     #TODO hardcode需要改进
     @user_role.role_id = 980190963
     if @gym.save && @user_role.save
-       render "index"
+      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.create", model: Gym.model_name.human)
     else
-       render "new"
+      flash[:alert] = I18n.t("activemodel.errors.create", model: Gym.model_name.human)
+      render "new"
     end
   end
 
   def edit
-
     @gym = Gym.find(params[:id])
-
   end
 
   def update
-
-    @gym = Gym.find(params[:id])
-
+      @gym = Gym.find(params[:id])
       if @gym.update_attributes(params[:gym])
-       render "index"
+        redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.update", model: Gym.model_name.human)
       else
+        flash[:alert] = I18n.t("activemodel.errors.update", model: Gym.model_name.human)
         render "edit"
       end
   end
@@ -65,11 +63,30 @@ class User::Master::GymsController <  User::UserBaseController
   # 申请
   def apply
     @gym = Gym.find(params[:id])
-
     if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:applying])
-      render :index, notice: I18n.t("activemodel.success.apply", model: Gym.model_name.human)
+      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.apply", model: Gym.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.apply", model: Gym.model_name.human)
+      render :index
+    end
+  end
+  # 撤销
+  def cancel
+    @gym = Gym.find(params[:id])
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:canceled])
+      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.cancel", model: Gym.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.cancel", model: Gym.model_name.human)
+      render :index
+    end
+  end
+  # 发布
+  def release
+    @gym = Gym.find(params[:id])
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:released])
+      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.release", model: Gym.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.release", model: Gym.model_name.human)
       render :index
     end
   end

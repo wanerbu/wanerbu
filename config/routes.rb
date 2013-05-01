@@ -41,7 +41,11 @@ Wanerbu::Application.routes.draw do
     root :to => 'dashboard#index'
     get 'dashboard' => 'dashboard#index'
     namespace :master do
-      resources :gyms
+      resources :gyms do
+        member do
+          post :apply
+        end
+      end
       resources :courts, :except => [:index]
       resources :court_reports, :only => [:index]
       match 'courts/edit_court_properties_select/:id' => 'courts#edit_court_properties_select',:via=>:get

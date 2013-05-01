@@ -32,8 +32,9 @@ class UserAbility
     alias_action :create, :read, :update, :destroy, :to => :crud
 
     # can :manage, Admin if user.ability? :manage_admin
-    #can :crud, Gym if user.ability? :manage_gym && :user_id => user.id
-    can :crud, Gym if user.ability? :manage_gym
-
+    #当前用户只能操作自己的资源
+    if user.ability? :manage_gym
+      can :manage, Gym, :user_id => user.id
+    end
   end
 end

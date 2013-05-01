@@ -6,7 +6,7 @@
 <div class='wb-content-sub-title'>
   <div>
     <%= link_to t('views.defaults.actions.edit'), edit_user_master_gym_path(@gym), {class: "btn btn-primary"} %>
-    <%= link_to t('views.defaults.actions.apply'), nil, {class: "btn btn-primary"} %>
+    <%= link_to t('views.defaults.actions.apply'), apply_user_master_gym_path(@gym), {method: :post, class: "btn btn-primary"} %>
     <%= link_to t('views.defaults.actions.destroy'), user_master_gym_path(@gym), 
                 { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
   </div>

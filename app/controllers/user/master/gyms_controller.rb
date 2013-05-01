@@ -9,7 +9,7 @@ class User::Master::GymsController <  User::UserBaseController
 
   # 对于每一个action进行权限检查,除了新建
   load_and_authorize_resource 
-  skip_authorize_resource :only => :new 
+  skip_authorize_resource :only => [:new,:create] 
 
   def index
     # TODO Tom 存在性的check
@@ -24,7 +24,11 @@ class User::Master::GymsController <  User::UserBaseController
     @gym = Gym.new(params[:gym])
     @gym.status = 'draft'
     @gym.user_id = current_user.id
-    if @gym.save
+    @user_role = UserRole.new
+    @user_role.user_id = current_user.id
+    #TODO hardcode需要改进
+    @user_role.role_id = 980190963
+    if @gym.save && @user_role.save
        render "index"
     else
        render "new"
@@ -56,6 +60,17 @@ class User::Master::GymsController <  User::UserBaseController
     else
       flash[:alert] = I18n.t("activemodel.errors.destroy", model: Gym.model_name.human)
       render :show
+    end
+  end
+  # 申请
+  def apply
+    @gym = Gym.find(params[:id])
+
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:applying])
+      render :index, notice: I18n.t("activemodel.success.apply", model: Gym.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.apply", model: Gym.model_name.human)
+      render :index
     end
   end
 end

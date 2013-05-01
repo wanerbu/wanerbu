@@ -6,6 +6,10 @@
 #++
 #
 class User::Master::GymsController <  User::UserBaseController
+
+  # 对于每一个action进行权限检查
+  load_and_authorize_resource 
+
   def index
     # TODO Tom 存在性的check
    @gym = current_user.gym

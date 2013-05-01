@@ -49,11 +49,11 @@ SimpleNavigation::Configuration.run do |navigation|
     #
     #primary.item :dashboard, I18n.t('user.nav.main_menu.dashboard'), user_dashboard_path, {:class => 'nav-header'}
     #
-    #TODO 如果该用户已经创建了场馆，新建场馆菜单不显示
-    primary.item :new_gym, I18n.t('user.nav.main_menu.common.new', model: Gym.model_name.human), new_user_master_gym_path, {:class => 'nav-header'}
-    #TODO 如果该用户已经创建了场馆，显场馆管理菜单示
+    # 如果该用户已经创建了场馆，新建场馆菜单不显示
+    primary.item :new_gym, I18n.t('user.nav.main_menu.common.new', model: Gym.model_name.human), new_user_master_gym_path,{ if: Proc.new { !current_user.gym },:class => 'nav-header'}
+    # 如果该用户没有经创建场馆，场馆管理菜不显示
     primary.item :gyms, I18n.t('user.nav.main_menu.common.management', model: Gym.model_name.human),
-      user_master_gyms_path, {:class => 'nav-header'} do |sub_nav|
+      user_master_gyms_path, {if: Proc.new {current_user.gym},:class => 'nav-header'} do |sub_nav|
         sub_nav.dom_class = 'nav nav-list'
         sub_nav.item :my_gym, I18n.t('user.nav.main_menu.common.my', model: Gym.model_name.human), user_master_gyms_path
 #场地一览

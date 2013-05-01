@@ -14,14 +14,16 @@ class Function
     manage_admin:                   {code: '001', name: '系统用户管理(锁定以外)', abbr_name: '全部(锁定以外)'},
     manage_role:                    {code: '002', name: '角色管理', abbr_name: '全部'},
     manage_user:                    {code: '003', name: '普通用户管理', abbr_name: '全部'},
-    lock_admin:                     {code: '004', name: '系统用户锁定', abbr_name: '锁定'}
+    lock_admin:                     {code: '004', name: '系统用户锁定', abbr_name: '锁定'},
+    manage_gym:                     {code: '005', name: '场馆管理', abbr_name: '全部'}
 
   }
 
   FUNCTION_GROUPS = [
     { :title => '系统用户管理', :functions => [:manage_admin, :lock_admin] },
     { :title => '角色管理', :functions => [:manage_role] },
-    { :title => '普通用户管理', :functions => [:manage_user] }
+    { :title => '普通用户管理', :functions => [:manage_user] },
+    { :title => '用户场馆管理', :functions => [:manage_gym] }
   ]
 
 end

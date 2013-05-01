@@ -6,7 +6,12 @@
 #++
 # 普通用户
 #
+# TODO dairg 将来这里要删除
+
+require 'role_ability'
+
 class User < ActiveRecord::Base
+  include Wanerbu::Common::RoleAbility
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -50,6 +55,8 @@ class User < ActiveRecord::Base
 
   #添加association
   has_one :gym
+  has_many(:user_roles, :validate => :false)
+  has_many(:roles, through: :user_roles, :validate => :false)
 
   # 姓名
   def name

@@ -4,8 +4,8 @@
       <%= f.input :intro, :required => true, :input_html => { :class => "" } %>
       <%= f.input :address, :required => true, :input_html => { :class => "" } %>
       <%= f.input :telephone, :required => true,:input_html => { :class => "" } %>
-      <%= f.time_select :open_time, :required => true,:input_html => { :class => "" } %>
-      <%= f.time_select :close_time,:required => true,:input_html => { :class => "" } %>
+      <%= f.input :open_time, :as => :time_select,:required => true,:input_html => { :class => "" } %>
+      <%= f.input :close_time, :as => :time_select,:required => true,:input_html => { :class => "" } %>
     <% end -%>
     <%= f.actions do %>
       <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>

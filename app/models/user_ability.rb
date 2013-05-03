@@ -1,4 +1,5 @@
 class UserAbility
+
   include CanCan::Ability
 
   def initialize(user)
@@ -29,12 +30,18 @@ class UserAbility
     user ||= User.new 
 
     # 给常用的增删改查取一个别名
-    alias_action :create, :read, :update, :destroy, :to => :crud
+    alias_action :create,:read,:index,:edit,:update,:destroy, :to => :crud
 
     # can :manage, Admin if user.ability? :manage_admin
     #当前用户只能操作自己的资源
     if user.ability? :manage_gym
-      can :manage, Gym, :user_id => user.id
+      can [:index], Gym, :user_id => user.id
+      can [:edit,:update], Gym, :user_id => user.id,:status => ['draft','canceled']
+      can [:apply], Gym, :user_id => user.id,:status => ['draft','canceled']
+      can [:cancel], Gym, :user_id => user.id,:status => 'applying'
+      can [:release], Gym, :user_id => user.id,:status => 'applied'
+      can [:destroy], Gym, :user_id => user.id
+      cannot [:destroy], Gym,:status => 'applying'
     end
   end
-end
+ end

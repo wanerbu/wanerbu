@@ -4,8 +4,14 @@
       <%= f.input :intro, :required => true, :input_html => { :class => "" } %>
       <%= f.input :address, :required => true, :input_html => { :class => "" } %>
       <%= f.input :telephone, :required => true,:input_html => { :class => "" } %>
-      <%= f.input :open_time, :as => :time_select,:required => true,:input_html => { :class => "" } %>
-      <%= f.input :close_time, :as => :time_select,:required => true,:input_html => { :class => "" } %>
+      <input id="gym_open_time_1i" type="hidden" value="2001" name="gym[open_time(1i)]">
+      <input id="gym_open_time_2i" type="hidden" value="01" name="gym[open_time(2i)]">
+      <input id="gym_open_time_3i" type="hidden" value="01" name="gym[open_time(3i)]">
+      <%= f.input :open_time, :as => :time_select,:ignore_date => true,:required => true,:input_html => { :class => "" } %>
+      <input id="gym_close_time_1i" type="hidden" value="2001" name="gym[close_time(1i)]">
+      <input id="gym_close_time_2i" type="hidden" value="01" name="gym[close_time(2i)]">
+      <input id="gym_close_time_3i" type="hidden" value="01" name="gym[close_time(3i)]">
+      <%= f.input :close_time, :as => :time_select,:ignore_date => true,:required => true,:input_html => { :class => "" } %>
     <% end -%>
     <%= f.actions do %>
       <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>

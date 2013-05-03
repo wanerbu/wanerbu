@@ -3,7 +3,7 @@ class Gym < ActiveRecord::Base
   extend Enumerize
   # attr_accessible :title, :body
  attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:score,:status,:deleted_at
-
+ enumerize :status, in: [:draft, :applying,:canceled,:applied,:rejected,:released]
   # 逻辑删除
   acts_as_paranoid
 
@@ -24,6 +24,10 @@ class Gym < ActiveRecord::Base
   validates :telephone, 
     :length => { :in => 0..15 }, 
     :format => { if: "telephone.present?", with: Wanerbu::Common::FORMAT_TELEPHONE}
+  validates :open_time, 
+    :presence => true
+  validates :close_time, 
+    :presence => true
   validate :valid_time
 
  def valid_time

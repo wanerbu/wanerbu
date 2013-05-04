@@ -90,4 +90,14 @@ class User::Master::GymsController <  User::UserBaseController
       render :index
     end
   end
+  # 暂停发布
+  def suspend
+    @gym = Gym.find(params[:id])
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:suspended])
+      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.suspend", model: Gym.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.release", model: Gym.model_name.human)
+      render :index
+    end
+  end
 end

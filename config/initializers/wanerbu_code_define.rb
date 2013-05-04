@@ -29,7 +29,9 @@ module Wanerbu
       # 拒绝
       rejected: '04',
       # 发布
-      released: '05'
+      released: '05',
+      # 暂停营业
+      suspended: '06'
     }
   end
 end

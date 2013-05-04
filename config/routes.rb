@@ -46,6 +46,7 @@ Wanerbu::Application.routes.draw do
           post :apply
           post :cancel
           post :release
+          post :suspend
         end
       end
       resources :courts, :except => [:index]

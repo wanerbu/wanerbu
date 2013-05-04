@@ -7,20 +7,23 @@
   <div>
       <% if can? :edit, @gym%>
         <%= link_to t('views.defaults.actions.edit'), edit_user_master_gym_path(@gym), {class: "btn btn-primary"} %>
-    <%end%>
+      <%end%>
       <% if can? :apply, @gym%>
         <%= link_to t('views.defaults.actions.apply'), apply_user_master_gym_path(@gym), {method: :post, class: "btn btn-primary"} %>
-    <%end%>
+      <%end%>
       <% if can? :cancel, @gym%>
-    <%= link_to t('views.defaults.actions.cancel'), cancel_user_master_gym_path(@gym), {method: :post, class: "btn btn-primary"} %>
-    <%end%>
+        <%= link_to t('views.defaults.actions.cancel'), cancel_user_master_gym_path(@gym), {method: :post, class: "btn btn-primary"} %>
+      <%end%>
       <% if can? :release, @gym%>
-    <%= link_to t('views.defaults.actions.release'), release_user_master_gym_path(@gym), {method: :post, class: "btn btn-primary"} %>
-    <%end%>
-    <% if can? :destroy, @gym%>
-    <%= link_to t('views.defaults.actions.destroy'), user_master_gym_path(@gym), 
+        <%= link_to t('views.defaults.actions.release'), release_user_master_gym_path(@gym), {method: :post, class: "btn btn-primary"} %>
+      <%end%>
+      <% if can? :suspend, @gym%>
+        <%= link_to t('views.defaults.actions.suspend'), suspend_user_master_gym_path(@gym), {method: :post, class: "btn btn-primary"} %>
+      <%end%>
+      <% if can? :destroy, @gym%>
+        <%= link_to t('views.defaults.actions.destroy'), user_master_gym_path(@gym), 
                 { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
-    <%end%>
+      <%end%>
   </div>
   <div class='wb-clear-both'></div>
 </div>

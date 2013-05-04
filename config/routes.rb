@@ -32,7 +32,12 @@ Wanerbu::Application.routes.draw do
       resources :property_reports, :only => [:index]
       resources :sports, :except => [:index]
       resources :sport_reports, :only => [:index]
-      resources :gym_reports, :only => [:index]
+      resources :gym_reports, :only => [:index,:show] do
+        member do
+          post :approve
+          post :reject
+        end
+      end
     end
   end
 

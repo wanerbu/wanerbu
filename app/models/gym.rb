@@ -3,7 +3,7 @@ class Gym < ActiveRecord::Base
   extend Enumerize
   # attr_accessible :title, :body
  attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:score,:status,:deleted_at
- enumerize :status, in: [:draft, :applying,:canceled,:applied,:rejected,:released,:suspended]
+ enumerize :status, in: [:draft, :applying,:canceled,:approved,:rejected,:released,:suspended]
   # 逻辑删除
   acts_as_paranoid
 

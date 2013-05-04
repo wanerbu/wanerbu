@@ -9,7 +9,7 @@ zh-CN:
         draft: 草稿
         applying: 审核中
         canceled: 撤消申请
-        applied: 审核通过
+        approved: 审核通过
         rejected: 拒绝
         released: 发布
         suspended: 暂停营业

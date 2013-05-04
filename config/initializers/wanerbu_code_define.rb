@@ -25,7 +25,7 @@ module Wanerbu
       # 撤消
       canceled: '02',
       # 审核通过
-      applied: '03',
+      approved: '03',
       # 拒绝
       rejected: '04',
       # 发布

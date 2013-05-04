@@ -11,13 +11,15 @@
         edit: 编辑
         show: 详细
         destroy: 删除
+        search: 检索
+        clear: 清空
         lock: 锁定
         apply: 申请
         cancel: 撤销
         release: 发布
         suspend: 暂停营业
-        search: 检索
-        clear: 清空
+        approve: 同意申请
+        reject: 拒绝申请
       query_results:
         prefix: "共: "
         unit: " 件"

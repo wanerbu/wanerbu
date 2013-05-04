@@ -202,6 +202,8 @@ zh-CN:
       cancel: "%{model}撤销失败"
       release: "%{model}发布失败"
       suspend: "%{model}暂停营业失败"
+      approve: "%{model}同意申请失败"
+      reject: "%{model}拒绝申请失败"
     success:
       create: "%{model}创建成功"
       update: "%{model}更新成功"
@@ -211,6 +213,8 @@ zh-CN:
       cancel: "%{model}撤销成功"
       release: "%{model}发布成功"
       suspend: "%{model}暂停营业成功"
+      approve: "%{model}同意申请成功"
+      reject: "%{model}拒绝申请成功"
     confirm:
       destroy: "确定删除吗？"
 

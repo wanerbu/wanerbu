@@ -7,6 +7,7 @@
 # 系统管理员Report
 #
 class GymReport
+
   include Datagrid
 
   scope do

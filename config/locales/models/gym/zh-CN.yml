@@ -3,7 +3,7 @@
     models:
       gym: 场馆
     attributes:
-      gym:
+      gym: &gym
         name: "场馆名字"
         intro: "场馆介绍"
         address: "场馆地址"
@@ -17,3 +17,7 @@
           attributes:
             telephone:
               invalid: "无效的电话号码"
+  datagrid:
+    gym_report:
+      columns:
+        <<: *gym

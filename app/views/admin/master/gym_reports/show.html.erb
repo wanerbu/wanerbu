@@ -9,9 +9,9 @@
 <% end %>
 <div class='wb-content-sub-title'>
   <div>
-    <%= link_to t('views.defaults.actions.approve'), approve_admin_master_gym_report_path(@gym), {method: :post,class: "btn btn-primary", :data => {:confirm => :text_field_tag}} %>
-    <%= link_to t('views.defaults.actions.approve'), approve_admin_master_gym_report_path(@gym), {method: :post,:id => params[:id]}, :popup => ['Modelo Educacional', 'height=300,width=600'] %>
-        <%= link_to t('views.defaults.actions.reject'), reject_admin_master_gym_report_path(@gym), {method: :post,class: "btn btn-primary"} %>
+    <%= link_to t('views.defaults.actions.approve'), approve_admin_master_gym_report_path(@gym), {method: :post,class: "btn btn-primary"} %>
+    <!--TODO 这里需要实现弹出窗口(modal)来加拒绝理由,对应的数据库也应增加字段来存储拒绝理由,具体实现方法需要调查 -->
+    <%= link_to t('views.defaults.actions.reject'), reject_admin_master_gym_report_path(@gym), {method: :post,class: "btn btn-primary"} %>
   </div>
   <div class='wb-clear-both'></div>
 </div>

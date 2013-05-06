@@ -16,7 +16,14 @@ class GymReport
 
   filter(:name, :string)
   column(:name)
-  column(:created_at)
-  column(:actions, :html => true) { |asset| render :partial => "admin/master/gym_reports/actions", :locals => {:target => asset} }
+  column(:status) do
+   self.status.text
+  end
+  column(:created_at, header: I18n.t('views.defaults.label.created_at')) do
+    I18n.l(self.created_at.to_date)
+  end
+  column(:actions, header: I18n.t('views.defaults.label.actions'), :html => true) do |asset|
+    render :partial => "admin/master/gym_reports/actions", :locals => {:target => asset}
+  end
 end
 

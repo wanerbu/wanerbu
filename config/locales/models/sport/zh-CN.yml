@@ -3,17 +3,15 @@
     models:
       sport: 项目
     attributes:
-      sport:
+      sport: &sport
         name: "项目名"
         intro: "项目说明"
         sort: "项目排序"
     errors:
       models:
-        admin:
+        sport:
           attributes:
-            login_id:
-              invalid: "无效的登录ID"
-            password:
-              invalid: "无效的密码格式"
-            password_confirmation:
-              invalid: "无效的密码格式"
+  datagrid:
+    sport_report:
+      columns:
+        <<: *sport

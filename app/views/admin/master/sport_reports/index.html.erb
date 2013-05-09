@@ -24,7 +24,7 @@
 </div>
 
 <div class="search-result">
-  <div class='wb-result-total'>Total: <%= @sport_report.assets.count %> 件</div>
+  <%= render partial: 'common_parts/query_results_count', locals: {count: @sport_report.assets.count} %> 
   <%= will_paginate @assets %>
   <div class='wb-clear-both'></div>
   <div>

@@ -17,7 +17,6 @@ class PropertyReport
 
   column(:name)
   column(:unit)
-  column(:intro)
   column(:actions, header: I18n.t('views.defaults.label.actions'), :html => true) do |asset|
     render :partial => "admin/master/property_reports/actions", :locals => {:target => asset}
   end

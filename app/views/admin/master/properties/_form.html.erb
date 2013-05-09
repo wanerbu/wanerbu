@@ -1,5 +1,5 @@
   <%= semantic_form_for([:admin, :master, @property], :html => { :class => 'form-horizontal' }) do |f| %>
-      <%= f.input :name %>
+      <%= f.input :name ,:required => true%>
       <%= f.input :unit %>
       <%= f.input :intro %>
     <%= f.actions do %>

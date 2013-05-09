@@ -5,4 +5,11 @@ class Sport < ActiveRecord::Base
 
   # :reject_if 来实现没有选中的属性不会插入一条property_id 为nil 的记录
   accepts_nested_attributes_for :sport_properties, :allow_destroy => true, :reject_if => proc { |attributes| attributes['property_id'].blank? }
+  # validations
+  validates :name, 
+    :presence => true,
+    :length => { :in => 1..50 }
+  validates :sort, 
+    :presence => true,
+    :numericality => { :only_integer => true,:greater_than => 0 }
 end

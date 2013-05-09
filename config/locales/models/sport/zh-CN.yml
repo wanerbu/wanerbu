@@ -7,6 +7,7 @@
         name: "项目名"
         intro: "项目说明"
         sort: "项目排序"
+        default_properties: "默认属性"
     errors:
       models:
         sport:

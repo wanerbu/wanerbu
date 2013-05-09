@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class AdminTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  ### validates test
+  test "should not save without login id" do
+    admin = Admin.new
+    assert !admin.save
+  end
 end

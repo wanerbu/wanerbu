@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 user_confirmed:
+  id: 1
   login_id: 'user1'
   first_name: 'user1'
   last_name: ''
@@ -15,6 +16,7 @@ user_confirmed:
   confirmed_at: <%= Time.now %>
 
 user_unconfirmed:
+  id: 2
   login_id: 'user2'
   email: user2@wanerbu.com
   encrypted_password: <%= User.new({password_salt: 'salt'}).send(:password_digest, "user2") %>

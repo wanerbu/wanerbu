@@ -1,7 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  court_id: 1
-  name: MyString
-  sort: 1
-  default_price: 1.5
+  admin_id: 2
+  role_id: 2

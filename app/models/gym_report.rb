@@ -16,6 +16,9 @@ class GymReport
 
   filter(:name, :string)
   column(:name)
+  column("user id") do
+    User.find(self.user_id).login_id
+  end
   column(:status) do
    self.status.text
   end

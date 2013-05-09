@@ -3,17 +3,15 @@
     models:
       property: 属性
     attributes:
-      property:
+      property: &property
         name: "属性名"
         unit: "属性单位"
         intro: "属性说明"
     errors:
       models:
-        admin:
+        property:
           attributes:
-            login_id:
-              invalid: "无效的登录ID"
-            password:
-              invalid: "无效的密码格式"
-            password_confirmation:
-              invalid: "无效的密码格式"
+  datagrid:
+    property_report:
+      columns:
+        <<: *property

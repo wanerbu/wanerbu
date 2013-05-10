@@ -31,7 +31,7 @@ class Gym < ActiveRecord::Base
   validate :valid_time
 
  def valid_time
-   if close_time <= open_time
+   if close_time.present? && open_time.present? && close_time <= open_time
 #TODO 中文error msg 的显示需调查
      self.errors.add :close_time, 'close_time <= open_time'
    end

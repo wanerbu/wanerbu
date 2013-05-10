@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  admin_id: 2
+admin_roles1:
+  admin_id: 3
   role_id: 2

@@ -4,6 +4,7 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+# 唯一的超级管理员
 only_super_admin:
   id: <%= Admin::SUPER_ADMIN_ID %>
   login_id: 'admin'
@@ -12,12 +13,24 @@ only_super_admin:
   email: rugang6891@gmail.com
   encrypted_password: <%= Admin.new({password_salt: 'salt'}).send(:password_digest, "admin") %>
   password_salt: 'salt'
-  confirmation_token: 'abcde'
+  confirmation_token: 'admin'
   confirmed_at: <%= Time.now %>
 
+# 没有确认的管理员
 admin_unconfirmed:
   id: 2
   login_id: 'admin2'
   email: admin2@wanerbu.com
   encrypted_password: <%= Admin.new({password_salt: 'salt'}).send(:password_digest, "admin2") %>
   password_salt: 'salt'
+
+# 操作员
+admin_operator:
+  id: 3
+  login_id: 'admin3'
+  first_name: '操作员'
+  email: admin3@wanerbu.com
+  encrypted_password: <%= Admin.new({password_salt: 'salt'}).send(:password_digest, "admin3") %>
+  password_salt: 'salt'
+  confirmation_token: 'admin3'
+  confirmed_at: <%= Time.now %>

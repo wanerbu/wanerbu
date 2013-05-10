@@ -4,16 +4,16 @@ one:
   id: 1
   name: '超级管理员'
   sort: 1
-  function_codes: '' 
+  function_codes: '001,002,003,004,005,006' 
 
 two:
   id: 2
   name: '操作员'
   sort: 2
-  function_codes: '' 
+  function_codes: '005,006' 
 
 three:
   id: 3
   name: '馆主'
   sort: 3
-  function_codes: '' 
+  function_codes: '005' 

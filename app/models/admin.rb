@@ -75,10 +75,11 @@ class Admin < ActiveRecord::Base
  
   # 姓名
   def name
-    name = ''
-    name += self.first_name + ' ' if self.first_name
-    name += self.last_name if self.last_name
-    return name
+    if self.first_name.present? && self.last_name.present?
+      self.first_name + ' ' + self.last_name 
+    else
+      self.first_name.to_s + self.last_name.to_s 
+    end
   end
 
   ## 是否是唯一的超级管理员

@@ -29,6 +29,7 @@ class User::Master::GymsController <  User::UserBaseController
     @gym = Gym.new(params[:gym])
     @gym.status = 'draft'
     @gym.user_id = current_user.id
+    @gym.history_log = generate_log("create") 
     @user_role = UserRole.new
     @user_role.user_id = current_user.id
     #TODO hardcode需要改进
@@ -68,7 +69,8 @@ class User::Master::GymsController <  User::UserBaseController
   # 申请
   def apply
     @gym = Gym.find(params[:id])
-    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:applying])
+    apply_history_log = generate_log("apply")
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:applying]) && @gym.update_attribute(:history_log, apply_history_log)
       redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.apply", model: Gym.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.apply", model: Gym.model_name.human)
@@ -78,7 +80,8 @@ class User::Master::GymsController <  User::UserBaseController
   # 撤销
   def cancel
     @gym = Gym.find(params[:id])
-    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:canceled])
+    cancel_history_log = generate_log("cancel")
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:canceled]) && @gym.update_attribute(:history_log, cancel_history_log)
       redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.cancel", model: Gym.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.cancel", model: Gym.model_name.human)
@@ -88,7 +91,8 @@ class User::Master::GymsController <  User::UserBaseController
   # 发布
   def release
     @gym = Gym.find(params[:id])
-    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:released])
+    release_history_log = generate_log("release")
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:released]) && @gym.update_attribute(:history_log, release_history_log)
       redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.release", model: Gym.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.release", model: Gym.model_name.human)
@@ -98,11 +102,21 @@ class User::Master::GymsController <  User::UserBaseController
   # 暂停发布
   def suspend
     @gym = Gym.find(params[:id])
-    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:suspended])
+    suspend_history_log = generate_log("suspend")
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:suspended]) && @gym.update_attribute(:history_log, suspend_history_log)
       redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.suspend", model: Gym.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.release", model: Gym.model_name.human)
       render :index
     end
+  end
+  #生成历史记录
+  def generate_log(action)
+    if @gym.history_log.nil?
+        action_history_log = current_user.login_id + "于"+ Time.now.to_date.to_s + " " + Time.now.strftime("%H:%M").to_s + I18n.t("activemodel.success."+action, model: Gym.model_name.human)  + ";"
+    else
+        action_history_log = @gym.history_log + current_user.login_id + "于"+ Time.now.to_date.to_s + " " + Time.now.strftime("%H:%M").to_s + I18n.t("activemodel.success."+action, model: Gym.model_name.human)  + ";"
+    end
+    return action_history_log
   end
 end

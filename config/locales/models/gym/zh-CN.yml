@@ -11,6 +11,7 @@
         open_time: "开馆时间"
         close_time: "闭馆时间"
         status: "状态"
+        history_log: "历史记录"
     errors:
       models:
         gym:

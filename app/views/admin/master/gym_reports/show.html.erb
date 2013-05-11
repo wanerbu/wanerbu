@@ -47,6 +47,17 @@
         <td><%= Gym.human_attribute_name(:close_time) %></td>
         <td><%= @gym.close_time.strftime("%H:%M") -%></td>
       </tr>
+      <tr>
+        <td><%= Gym.human_attribute_name(:history_log) %></td>
+        <td>
+          <% if !@gym.history_log.nil? -%>
+            <% @gym.history_log.each_line(";") {|line|%>
+              <%= line %>
+              </p>
+            <%}%>
+          <%end%>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

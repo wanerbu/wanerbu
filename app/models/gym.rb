@@ -1,16 +1,15 @@
 class Gym < ActiveRecord::Base
   #Enumerize使用
   extend Enumerize
-  # attr_accessible :title, :body
  attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:score,:status,:deleted_at,:user_id
  enumerize :status, in: [:draft, :applying,:canceled,:approved,:rejected,:released,:suspended]
+  # 如果是逻辑删除，删除后该用户将不能再建场馆因为user_id uniquness 验证失败
   # 逻辑删除
-  acts_as_paranoid
+  #acts_as_paranoid
 
   #添加association
   belongs_to :user
   has_many   :courts
-  
   # validations
   validates :name, 
     :presence => true,
@@ -22,8 +21,12 @@ class Gym < ActiveRecord::Base
     :presence => true,
     :length => { :in => 1..50 }
   validates :telephone, 
+    :presence => true,
     :length => { :in => 0..15 }, 
     :format => { if: "telephone.present?", with: Wanerbu::Common::FORMAT_TELEPHONE}
+  #验证一个用户只能创建一个场馆
+  validates :user_id, 
+    :uniqueness => true
   validates :open_time, 
     :presence => true
   validates :close_time, 

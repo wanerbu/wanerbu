@@ -85,18 +85,21 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
 
   create_table "gyms", :force => true do |t|
     t.string   "name",       :limit => 50,  :default => "",   :null => false
-    t.integer  "user_id"
-    t.text     "intro"
+    t.integer  "user_id",                                     :null => false
+    t.text     "intro",                                       :null => false
     t.string   "address",    :limit => 100, :default => "",   :null => false
     t.string   "telephone",  :limit => 30,  :default => "",   :null => false
     t.time     "open_time",                                   :null => false
     t.time     "close_time",                                  :null => false
     t.float    "score",                     :default => 0.0,  :null => false
     t.string   "status",                    :default => "00", :null => false
+    t.string   "comment",    :limit => 100
     t.datetime "deleted_at"
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
   end
+
+  add_index "gyms", ["user_id"], :name => "index_gyms_on_user_id", :unique => true
 
   create_table "properties", :force => true do |t|
     t.string   "name",       :limit => 20, :null => false
@@ -121,7 +124,7 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
     t.integer  "sport_id"
     t.integer  "property_id"
     t.string   "default_value", :limit => 20
-    t.integer  "scope",         :limit => 1
+    t.integer  "scope",         :limit => 9
     t.boolean  "required"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false

@@ -204,6 +204,7 @@ zh-CN:
       suspend: "%{model}暂停营业失败"
       approve: "%{model}同意申请失败"
       reject: "%{model}拒绝申请失败"
+      duplicate: "%{model}已存在，不能重复创建"
     success:
       create: "%{model}创建成功"
       update: "%{model}更新成功"

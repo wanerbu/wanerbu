@@ -8,6 +8,7 @@ module Wanerbu
 
     NUMBER_PER_PAGE = 10
     AUTO_GENERATE_PASSWORD_LENGTH = 8
+    GYM_MANAGER_ROLE_ID = 3 
   end
 
   module CodeDefine

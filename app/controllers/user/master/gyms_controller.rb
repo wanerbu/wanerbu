@@ -17,6 +17,11 @@ class User::Master::GymsController <  User::UserBaseController
   end
 
   def new
+    #如果该用户已经拥有场馆，将不能再创建
+    if Gym.exists?(:user_id => current_user.id)
+      flash[:alert] = I18n.t("activemodel.errors.duplicate", model: Gym.model_name.human)
+      redirect_to user_master_gyms_path
+    end
     @gym = Gym.new
   end
 
@@ -27,7 +32,7 @@ class User::Master::GymsController <  User::UserBaseController
     @user_role = UserRole.new
     @user_role.user_id = current_user.id
     #TODO hardcode需要改进
-    @user_role.role_id = 980190963
+    @user_role.role_id =  Wanerbu::Common::GYM_MANAGER_ROLE_ID
     if @gym.save && @user_role.save
       redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.create", model: Gym.model_name.human)
     else

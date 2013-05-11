@@ -35,14 +35,14 @@ class UserAbility
     # can :manage, Admin if user.ability? :manage_admin
     #当前用户只能操作自己的资源
     if user.ability? :manage_gym
-      can [:index], Gym, :user_id => user.id
-      can [:apply], Gym, :user_id => user.id,:status => ['draft','canceled','rejected']
-      can [:cancel], Gym, :user_id => user.id,:status => 'applying'
-      can [:release], Gym, :user_id => user.id,:status => ['approved','suspended']
-      can [:suspend], Gym, :user_id => user.id,:status => 'released'
+      can [:index],    Gym, :user_id => user.id
+      can [:apply],    Gym, :user_id => user.id,:status => ['draft','canceled','rejected']
+      can [:cancel],   Gym, :user_id => user.id,:status => 'applying'
+      can [:release],  Gym, :user_id => user.id,:status => ['approved','suspended']
+      can [:suspend],  Gym, :user_id => user.id,:status => 'released'
       can [:destroy,:edit,:update], Gym, :user_id => user.id
-      cannot [:edit,:update], Gym,:status => 'applying'
-      cannot [:destroy], Gym,:status => ['applying','released','suspended']
+      cannot [:edit,:update],       Gym,:status => 'applying'
+      cannot [:destroy],            Gym,:status => ['applying','released','suspended']
     end
   end
  end

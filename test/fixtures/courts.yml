@@ -6,6 +6,6 @@ one:
   min_unit: 1.5
 
 two:
-  sport_id: 1
+  sport_id: 2
   gym_id: 1
   min_unit: 1.5

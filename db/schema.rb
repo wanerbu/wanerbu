@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
     t.datetime "updated_at",                   :null => false
   end
 
+  add_index "court_properties", ["court_id", "property_id"], :name => "index_court_properties_on_court_id_and_property_id", :unique => true
+
   create_table "courts", :force => true do |t|
     t.integer  "sport_id",                    :null => false
     t.integer  "gym_id",                      :null => false
@@ -73,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
+
+  add_index "courts", ["sport_id", "gym_id"], :name => "index_courts_on_sport_id_and_gym_id", :unique => true
 
   create_table "games", :force => true do |t|
     t.integer  "court_id"
@@ -83,20 +87,23 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
     t.datetime "updated_at",                                   :null => false
   end
 
+  add_index "games", ["court_id"], :name => "index_games_on_court_id"
+
   create_table "gyms", :force => true do |t|
-    t.string   "name",       :limit => 50,  :default => "",   :null => false
-    t.integer  "user_id",                                     :null => false
-    t.text     "intro",                                       :null => false
-    t.string   "address",    :limit => 100, :default => "",   :null => false
-    t.string   "telephone",  :limit => 30,  :default => "",   :null => false
-    t.time     "open_time",                                   :null => false
-    t.time     "close_time",                                  :null => false
-    t.float    "score",                     :default => 0.0,  :null => false
-    t.string   "status",                    :default => "00", :null => false
-    t.string   "comment",    :limit => 100
+    t.string   "name",          :limit => 50,  :default => "",   :null => false
+    t.integer  "user_id",                                        :null => false
+    t.text     "intro",                                          :null => false
+    t.string   "address",       :limit => 100, :default => "",   :null => false
+    t.string   "telephone",     :limit => 30,  :default => "",   :null => false
+    t.time     "open_time",                                      :null => false
+    t.time     "close_time",                                     :null => false
+    t.float    "score",                        :default => 0.0,  :null => false
+    t.string   "status",                       :default => "00", :null => false
+    t.string   "reject_reason", :limit => 100
+    t.text     "history_log"
     t.datetime "deleted_at"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   add_index "gyms", ["user_id"], :name => "index_gyms_on_user_id", :unique => true
@@ -108,6 +115,8 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  add_index "properties", ["name"], :name => "index_properties_on_name", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name",           :limit => 20,                 :null => false
@@ -125,10 +134,11 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
     t.integer  "property_id"
     t.string   "default_value", :limit => 20
     t.integer  "scope",         :limit => 9
-    t.boolean  "required"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
+
+  add_index "sport_properties", ["sport_id", "property_id"], :name => "index_sport_properties_on_sport_id_and_property_id", :unique => true
 
   create_table "sports", :force => true do |t|
     t.string   "name",       :limit => 50, :null => false
@@ -137,6 +147,8 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  add_index "sports", ["name"], :name => "index_sports_on_name", :unique => true
 
   create_table "user_roles", :force => true do |t|
     t.integer  "user_id",    :null => false

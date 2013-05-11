@@ -6,5 +6,6 @@ class CreateProperties < ActiveRecord::Migration
       t.string :intro, limit:50
       t.timestamps
     end
+    add_index :properties,:name,              :unique => true
   end
 end

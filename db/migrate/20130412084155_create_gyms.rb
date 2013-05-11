@@ -10,7 +10,8 @@ class CreateGyms < ActiveRecord::Migration
       t.time     :close_time,             :null => false, :default => ""
       t.float    :score,                  :null => false, :default => 0
       t.string   :status,                 :null => false, :default => "00"
-      t.string   :comment,    limit: 100
+      t.string   :reject_reason,          limit: 100
+      t.text     :history_log
       t.datetime :deleted_at
 
       t.timestamps

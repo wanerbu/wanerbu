@@ -7,4 +7,10 @@ class Court < ActiveRecord::Base
   has_many :games, :dependent => :destroy
   accepts_nested_attributes_for :court_properties, :allow_destroy => true
   #TODO 场馆添加项目不能重复的验证
+  # validations
+  validates :sport_id, 
+    :presence => true
+  validates :min_unit, 
+    :presence => true,
+    :numericality => { :greater_than_or_equal_to => 0 }
 end

@@ -15,6 +15,13 @@ class User::Master::CourtsController <  User::UserBaseController
   end
 
   def create
+
+    #如果该场馆已经拥有该项目，将不能再创建
+    if  @court = Court.where(:gym_id => current_user.gym.id,:sport_id => params[:court][:sport_id]).first 
+      flash[:alert] = I18n.t("activemodel.errors.duplicate", model: Court.model_name.human)
+      redirect_to user_master_court_path(@court)
+    else
+
     @court = Court.new(params[:court])
     game_number = params[:game_number].to_i
     @court.gym_id = current_user.gym.id
@@ -25,6 +32,7 @@ class User::Master::CourtsController <  User::UserBaseController
     else
       flash[:alert] = I18n.t("activemodel.errors.create", model: Court.model_name.human)
       render :new
+    end
     end
   end
 

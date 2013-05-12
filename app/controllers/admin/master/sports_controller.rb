@@ -5,6 +5,8 @@
 #
 #++
 class Admin::Master::SportsController < Admin::AdminBaseController
+  # 对于每一个action进行权限检查
+  load_and_authorize_resource 
   def show
     @sport = Sport.find(params[:id])
   end

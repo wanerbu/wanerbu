@@ -1,10 +1,12 @@
-class Admin::Master::PropertiesController < Admin::AdminBaseController
 # encoding: UTF-8
 #--
 # FileInfo:
 #   Author: Tom
 #
 #++
+class Admin::Master::PropertiesController < Admin::AdminBaseController
+  # 对于每一个action进行权限检查
+  load_and_authorize_resource 
   def show
     @property = Property.find(params[:id])
   end

@@ -37,6 +37,8 @@ class AdminAbility
     can :lock, Admin if user.ability? :lock_admin
     can :manage, Role if user.ability? :manage_role
     can :index, RoleReport if user.ability? :manage_role
-    can [:index,:show,:approve,:reject], GymReport if user.ability? :approve_reject_gym
+    if user.ability? :admin_gym
+      can :manage, [Property,PropertyReport,Sport,SportReport,GymReport] 
+    end
   end
 end

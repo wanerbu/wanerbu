@@ -43,6 +43,9 @@ class UserAbility
       can [:destroy,:edit,:update], Gym, :user_id => user.id
       cannot [:edit,:update],       Gym,:status => 'applying'
       cannot [:destroy],            Gym,:status => ['applying','released','suspended']
+      can :manage, Court, :id       => user.gym.court_ids
+      can :manage, Game,  :court_id => user.gym.court_ids
+      can :index, [CourtReport,GameReport]
     end
   end
- end
+end

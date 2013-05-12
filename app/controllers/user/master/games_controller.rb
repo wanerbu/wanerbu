@@ -6,6 +6,9 @@
 #++
 #
 class User::Master::GamesController <  User::UserBaseController
+  # 对于每一个action进行权限检查
+  load_and_authorize_resource 
+  skip_authorize_resource :only => [:new,:create] 
   def show
     @game= Game.find(params[:id])
   end

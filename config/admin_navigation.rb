@@ -69,9 +69,10 @@ SimpleNavigation::Configuration.run do |navigation|
         sub_nav.item :new_role, I18n.t('admin.nav.main_menu.common.new', model: Role.model_name.human), new_admin_master_role_path
     end
 
-    #场馆相关master信息维护菜单
+#场馆相关master信息维护菜单
     primary.item :admins, I18n.t('admin.nav.main_menu.common.management', model: Gym.model_name.human),
-      new_admin_master_property_path, {:class => 'nav-header'} do |sub_nav|
+      new_admin_master_property_path, { if: Proc.new { current_admin && current_admin.ability?(:admin_gym) },
+      :class => 'nav-header'} do |sub_nav|
         sub_nav.dom_class = 'nav nav-list'
 #属性信息维护
         sub_nav.item :propertes_list, I18n.t('admin.nav.main_menu.common.list', model: Property.model_name.human), admin_master_property_reports_path

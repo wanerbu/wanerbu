@@ -12,8 +12,9 @@ class CourtReport
   scope do
     Court
   end
-#TODO 这里需要按项目名查找
-  filter(:id, :string)
+  filter(:sport_id, :string,:header => "项目") do |value|
+    self.where(["sport_id = ?", sport_id = (@sport = Sport.where("name LIKE '%#{value}%' ").first) ? @sport.id : ""])
+  end
 
   column("项目") do
     Sport.find(self.sport_id).name

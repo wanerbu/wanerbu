@@ -18,9 +18,13 @@
     <div>
       <%= hidden_field_tag 'court[court_properties_attributes][][id]',court_property.id %>
       <%= hidden_field_tag 'court[court_properties_attributes][][property_id]',property.id %>
+    <li id="court_sport_name" class="number input optional numeric stringish">
+      <label class=" label" for="court_sport_name">
       <%= label_tag :property_ids, property.name -%>
+      </label>
       <%= text_field_tag 'court[court_properties_attributes][][property_value]',court_property.property_value %>
       <%= property.unit -%>
+    </li>
     </div>
   <%end%>
     </div>  

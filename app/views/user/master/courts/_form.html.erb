@@ -1,6 +1,8 @@
 <%= semantic_form_for([:user, :master, @court], :html => { :class => 'form-horizontal' }) do |f| %>
     <li id="court_sport_name" class="number input optional numeric stringish">
-      <label class=" label" for="court_sport_name">项目  </label>
+      <label class=" label" for="court_sport_name">项目  
+      <abbr title="required">*</abbr>
+    </label>
       <%= collection_select(:court, :sport_id, Sport.all, :id, :name) %>
     </li>
     <div id="courtProperties">

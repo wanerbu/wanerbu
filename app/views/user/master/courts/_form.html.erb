@@ -10,6 +10,10 @@
       <label class=" label" for="court_sport_name">场次数量 </label>
       <%= text_field_tag 'game_number',1 %>
     </li>
+    <li id="court_game_number" class="number input optional numeric stringish">
+      <label class=" label" for="court_sport_name">场次默认价格 </label>
+      <%= text_field_tag 'game_default_price',1 %>
+    </li>
     <%= f.actions do %>
       <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>
       <%= f.action :cancel, :as => :link %>

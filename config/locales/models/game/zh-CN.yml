@@ -3,16 +3,15 @@
     models:
       game: 场次
     attributes:
-      game:
+      game: &game
         name: "场次名称"
         sort: "顺序"
+        default_price: "场次价格"
     errors:
       models:
-        admin:
+        game:
           attributes:
-            login_id:
-              invalid: "无效的登录ID"
-            password:
-              invalid: "无效的密码格式"
-            password_confirmation:
-              invalid: "无效的密码格式"
+  datagrid:
+    game_report:
+      columns:
+        <<: *game

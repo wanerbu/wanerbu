@@ -1,6 +1,8 @@
 <%= semantic_form_for([:user, :master, @game], :html => { :class => 'form-horizontal' }) do |f| %>
     <li id="court_sport_name" class="number input optional numeric stringish">
-    <label class=" label" for="court_sport_name">项目</label>
+    <label class=" label" for="court_sport_name">项目
+      <abbr title="required">*</abbr>
+    </label>
      <% if @game.new_record? %>
       <% sport_id_array = Array.new() %>
       <% current_user.gym.courts.all.each do |court| -%>
@@ -12,8 +14,9 @@
       <%= Sport.find(Court.find(@game.court_id).sport_id).name -%>
     <% end -%>
     </li>
-    <%= f.input :name %>
-    <%= f.input :sort %>
+    <%= f.input :name, :required => true%>
+    <%= f.input :sort, :required => true%>
+    <%= f.input :default_price,:required => true%>
     <%= f.actions do %>
       <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>
       <%= f.action :cancel, :as => :link %>

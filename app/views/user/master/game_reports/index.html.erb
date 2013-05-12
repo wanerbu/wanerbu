@@ -2,7 +2,7 @@
 <% end %>
 
 <% content_for :sub_menu do %>
-  <%= render :partial => 'user/master/courts/sub_menu_start', :locals => {:active_path => user_master_court_reports_path } -%>
+  <%= render :partial => 'user/master/games/sub_menu_start', :locals => {:active_path => user_master_game_reports_path } -%>
   <%= render 'common_parts/sub_menu_end' -%>
 <% end %>
 
@@ -24,7 +24,7 @@
 </div>
 
 <div class="search-result">
-  <div class='wb-result-total'>Total: <%= @game_report.assets.count %> 件</div>
+  <%= render partial: 'common_parts/query_results_count', locals: {count: @game_report.assets.count} %> 
   <%= will_paginate @assets %>
   <div class='wb-clear-both'></div>
   <div>

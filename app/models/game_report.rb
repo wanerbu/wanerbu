@@ -13,10 +13,14 @@ class GameReport
     Game
   end
 #TODO 这里需要按项目名查找
-  filter(:id, :string)
+  filter(:name, :string)
 
-#TODO 这里需要显示项目名，项目属性等关联属性
-  column(:id)
+  column("项目") do
+    Sport.find(Court.find(self.court_id).sport_id).name
+  end
   column(:name)
-  column(:actions, :html => true) { |asset| render :partial => "user/master/game_reports/actions", :locals => {:target => asset} }
+  column(:default_price)
+  column(:actions, header: I18n.t('views.defaults.label.actions'), :html => true) do |asset|
+    render :partial => "user/master/game_reports/actions", :locals => {:target => asset}
+  end
 end

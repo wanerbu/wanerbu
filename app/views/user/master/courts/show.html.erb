@@ -43,6 +43,10 @@
         <td>场次数量</td>
         <td><%= Game.where(:court_id => @court.id).count %></td>
       </tr>
+      <tr>
+        <td>场次默认价格</td>
+        <td><%= Game.where(:court_id => @court.id).first.default_price %></td>
+      </tr>
     </tbody>
   </table>
 </div>

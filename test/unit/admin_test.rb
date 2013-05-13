@@ -102,7 +102,7 @@ class AdminTest < ActiveSupport::TestCase
   end
 
   test "has ability to manage gyms when has the related role" do
-    assert admins(:admin_operator).ability?(:approve_reject_gym)
+    assert admins(:admin_operator).ability?(:admin_gym)
   end
 
 end

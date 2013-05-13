@@ -1,9 +1,12 @@
 require 'test_helper'
 
 class Admin::DashboardControllerTest < ActionController::TestCase
-  test "should get index" do
+
+  ### 未登录的情况
+
+  test "should redirect to login when get index" do
     get :index
-    assert_response :success
+    should_redirect_to_admin_login
   end
 
 end

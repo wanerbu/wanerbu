@@ -1,9 +1,12 @@
 require 'test_helper'
 
 class Admin::Master::RolesControllerTest < ActionController::TestCase
-  test "should get new" do
+
+  ### 未登录的情况
+
+  test "should redirect to login when get new" do
     get :new
-    assert_response :success
+    should_redirect_to_admin_login
   end
 
 end

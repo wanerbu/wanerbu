@@ -1,9 +1,11 @@
 require 'test_helper'
 
 class User::Master::GymsControllerTest < ActionController::TestCase
-  test "should get index" do
+  ### 未登录的情况
+
+  test "should redirect to login when get index" do
     get :index
-    assert_response :success
+    should_redirect_to_user_login
   end
 
 end

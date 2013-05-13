@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
+  id: 1
   name: Gym1
   user_id: 1
   intro: Gym1 intro
@@ -13,6 +14,7 @@ one:
   open_time: <%= Time.now %>
   close_time: <%= Time.now %>
 two:
+  id: 2
   name: Gym2
   user_id: 2
   intro: Gym2 intro

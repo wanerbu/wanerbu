@@ -125,7 +125,7 @@ or
 ```
 #### 判断enum属性值的方法
 ```ruby
-@admin.status_active?
+@admin.status.active?
 ```
 
 ## 关于菜单的做成

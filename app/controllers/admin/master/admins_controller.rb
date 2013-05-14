@@ -20,7 +20,7 @@ class Admin::Master::AdminsController < Admin::AdminBaseController
 
   def create
     @admin = Admin.new(params[:admin])
-    if @admin.save!
+    if @admin.save
       # 发送包含自动生成密码的欢迎邮件
       Admin::WanerbuDeviseMailer.welcome_admin(@admin).deliver
       redirect_to admin_master_admin_path(@admin), notice: I18n.t("activemodel.success.create", model: Admin.model_name.human)

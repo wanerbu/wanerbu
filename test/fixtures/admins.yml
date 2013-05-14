@@ -10,6 +10,7 @@ only_super_admin:
   login_id: 'admin'
   first_name: 'admin'
   last_name: ''
+  status: "<%= Wanerbu::CodeDefine::ADMIN_STATUS[:active] %>"
   email: rugang6891@gmail.com
   encrypted_password: <%= Admin.new({password_salt: 'salt'}).send(:password_digest, "admin") %>
   password_salt: 'salt'
@@ -33,4 +34,16 @@ admin_operator:
   encrypted_password: <%= Admin.new({password_salt: 'salt'}).send(:password_digest, "admin3") %>
   password_salt: 'salt'
   confirmation_token: 'admin3'
+  confirmed_at: <%= Time.now %>
+
+# 普通的一个admin，主要可能用于test
+admin_normal:
+  id: 4
+  login_id: 'admin4'
+  first_name: '普通管理员'
+  status: "<%= Wanerbu::CodeDefine::ADMIN_STATUS[:active] %>"
+  email: admin4@wanerbu.com
+  encrypted_password: <%= Admin.new({password_salt: 'salt'}).send(:password_digest, "admin4") %>
+  password_salt: 'salt'
+  confirmation_token: 'admin4'
   confirmed_at: <%= Time.now %>

@@ -22,6 +22,14 @@ class ActiveSupport::TestCase
     assert_equal I18n.t("devise.failure.unauthenticated"), flash[:alert]
     assert_redirected_to new_user_session_url
   end
+
+  # 用来判断flash[:alert]中的内容(主要是针对那些出错后没有redirect，而是render的action)
+  # 原因是在view中一旦显示了msg，就会把flash清空，而如果没有重定向的话，那么发送请求后，
+  # 会在这个render执行后，也就是清空flash后才会在测试用例中进行断言的判断，这个时候，
+  # flash已经被清空。所以要在view的级别进行测试。
+  def wanerbu_assert_alert_msg(expected_msg=nil)
+    assert_select 'div.alert-error', expected_msg
+  end
 end
 
 # 添加了Devise的一些用于测试的helper

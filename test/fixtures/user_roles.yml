@@ -3,3 +3,7 @@
 one:
   user_id: 1
   role_id: 3
+#user2 设为馆主测试馆主可以编辑自己的场馆
+two:
+  user_id: 2
+  role_id: 3

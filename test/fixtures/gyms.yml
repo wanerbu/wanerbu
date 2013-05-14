@@ -18,7 +18,18 @@ two:
   name: Gym2
   user_id: 2
   intro: Gym2 intro
+  status: "<%= Wanerbu::CodeDefine::GYM_STATUS[:draft] %>"
   address: Gym2 address
   telephone: 222222222
+  open_time: <%= Time.now %>
+  close_time: <%= Time.now %>
+four:
+  id: 4
+  name: Gym4
+  user_id: 4
+  intro: Gym4 intro
+  status: "<%= Wanerbu::CodeDefine::GYM_STATUS[:draft] %>"
+  address: Gym2 address
+  telephone: 444444444
   open_time: <%= Time.now %>
   close_time: <%= Time.now %>

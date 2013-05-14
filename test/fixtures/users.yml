@@ -28,3 +28,10 @@ user_unconfirmed_no_gym:
   email: user3@wanerbu.com
   encrypted_password: <%= User.new({password_salt: 'salt'}).send(:password_digest, "user3") %>
   password_salt: 'salt'
+
+user_not_gymer:
+  id: 4
+  login_id: 'user4'
+  email: user4@wanerbu.com
+  encrypted_password: <%= User.new({password_salt: 'salt'}).send(:password_digest, "user4") %>
+  password_salt: 'salt'

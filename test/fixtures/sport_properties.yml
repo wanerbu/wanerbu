@@ -13,6 +13,6 @@ two:
   property_id: 2
   default_value: 20
 three:
+  sport_id: 2
   property_id: 2
   default_value: 20
-  sport_id: 2

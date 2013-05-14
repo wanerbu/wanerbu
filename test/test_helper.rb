@@ -13,11 +13,13 @@ class ActiveSupport::TestCase
   
   # 用来判断是否迁移到了admin的登录画面
   def should_redirect_to_admin_login
+    assert_equal I18n.t("devise.failure.unauthenticated"), flash[:alert]
     assert_redirected_to new_admin_session_url
   end
 
   # 用来判断是否迁移到了user的登录画面
   def should_redirect_to_user_login
+    assert_equal I18n.t("devise.failure.unauthenticated"), flash[:alert]
     assert_redirected_to new_user_session_url
   end
 end

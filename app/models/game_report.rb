@@ -10,7 +10,7 @@ class GameReport
   include Datagrid
 
   scope do
-    Game.order("games.court_id asc")
+    Game.where(:court_id => User.current.gym.court_ids).order("games.court_id asc")
   end
 
   #TODO select的名字显示需要调查，暂时用下面的模糊查询

@@ -8,9 +8,8 @@
 #
 class CourtReport
   include Datagrid
-
   scope do
-    Court
+   Court.where("gym_id = ?",User.current.gym.id)
   end
   filter(:sport_id, :string,:header => "项目") do |value|
     self.where(["sport_id = ?", sport_id = (@sport = Sport.where("name LIKE '%#{value}%' ").first) ? @sport.id : ""])

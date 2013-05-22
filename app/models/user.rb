@@ -76,5 +76,13 @@ class User < ActiveRecord::Base
       where(conditions).first
     end
   end
+  
+#为了在model层取出当前用户的信息
+  def self.current
+      Thread.current[:user]
+  end
+  def self.current=(user)
+      Thread.current[:user] = user
+  end
 
 end

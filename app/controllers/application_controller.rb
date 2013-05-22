@@ -7,4 +7,8 @@ private
     # 如果是后台用户退出，那么回到登录画面，如果是前台用户退出，回到首页
     resource_or_scope == :admin ? new_admin_session_path : root_path
   end
+#为了在model层取出当前用户的信息
+  def set_current_user
+      User.current = current_user
+  end
 end

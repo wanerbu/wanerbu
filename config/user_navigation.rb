@@ -47,7 +47,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
-    #primary.item :dashboard, I18n.t('user.nav.main_menu.dashboard'), user_dashboard_path, {:class => 'nav-header'}
+    primary.item :dashboard, I18n.t('user.nav.main_menu.dashboard'), user_dashboard_path, {:class => 'nav-header'}
     #
     # 如果该用户已经创建了场馆，新建场馆菜单不显示
     primary.item :new_gym, I18n.t('user.nav.main_menu.common.new', model: Gym.model_name.human), new_user_master_gym_path,{ if: Proc.new { !current_user.gym },:class => 'nav-header'}

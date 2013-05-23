@@ -35,8 +35,7 @@ class Gym < ActiveRecord::Base
 
  def valid_time
    if close_time.present? && open_time.present? && close_time <= open_time
-#TODO 中文error msg 的显示需调查
-     self.errors.add :close_time, 'close_time <= open_time'
+     self.errors.add(:close_time, :close_time_less_than_open_time)
    end
  end 
   #Enumerize使用

@@ -18,6 +18,7 @@
           attributes:
             telephone:
               invalid: "无效的电话号码"
+          close_time_less_than_open_time: "闭馆时间不能小于开馆时间"
   datagrid:
     gym_report:
       columns:

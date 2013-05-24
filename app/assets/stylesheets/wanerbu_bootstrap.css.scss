@@ -3,6 +3,7 @@
 // change colors
 // $linkColor: #008B8B;
 $linkColor: #0088cc;
+$linkHoverColor: #0055cc;
 
 // change grid
 $gridColumnWidth: 70px;
@@ -22,5 +23,11 @@ $tableBackgroundHover: lightgray;
 // tab菜单的自定义
 .nav-tabs .active a {
   background-color: $linkColor;
+  color: #ffffff;
+}
+
+.nav-tabs .active a:hover,
+.nav-tabs .active a:focus {
+  background-color: $linkHoverColor;
   color: #ffffff;
 }

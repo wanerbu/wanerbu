@@ -13,7 +13,7 @@ class PropertyReport
     Property
   end
 
-  filter(:name, :string)
+  filter(:name, :string,:header => "属性名")
 
   column(:name)
   column(:unit)

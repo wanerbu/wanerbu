@@ -8,7 +8,7 @@
 class User::Master::CourtsController <  User::UserBaseController
   # 对于每一个action进行权限检查
   load_and_authorize_resource 
-  skip_authorize_resource :only => [:new,:create] 
+  skip_authorize_resource :only => [:new,:create,:edit_court_properties_select] 
   def show
     @court = Court.find(params[:id])
   end

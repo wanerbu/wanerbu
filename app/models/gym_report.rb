@@ -14,7 +14,7 @@ class GymReport
     Gym
   end
 
-  filter(:name, :string)
+  filter(:name, :string,:header => "场馆名")
   column(:name)
   column("user id") do
     User.find(self.user_id).login_id

@@ -10,26 +10,45 @@
 <div class='wb-content-sub-title'>
   <div>
     <%= link_to t('views.defaults.actions.approve'), approve_admin_master_gym_report_path(@gym), {method: :post,class: "btn btn-primary"} %>
-    <!--TODO 这里需要实现弹出窗口(modal)来加拒绝理由,对应的数据库也应增加字段来存储拒绝理由,具体实现方法需要调查 -->
-    <button type="button" data-toggle="modal"class= "btn btn-primary" data-target="#myModal"><%= t('views.defaults.actions.reject')%></button>
+    <button type="button" data-toggle="modal"class= "btn btn-primary" data-target="#rejectModal"><%= t('views.defaults.actions.reject')%></button>
+    <button type="button" data-toggle="modal"class= "btn btn-primary" data-target="#lockModal"><%= t('views.defaults.actions.lock')%></button>
+   <%= link_to t('views.defaults.actions.destroy'), admin_master_gym_report_path(@gym), 
+                { method: :post, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
   </div>
   <div class='wb-clear-both'></div>
 </div>
 
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Reject Modal -->
+<div id="rejectModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel"><%=t('views.defaults.actions.reject') %></h3>
+        <h3 id="rejectModalLabel"><%=t('views.defaults.actions.reject') %></h3>
     </div>
     <%= form_tag(:controller => "gym_reports", :action => "reject", :method => "post") do %>
     <div class="modal-body">
-        <%= label_tag(:reject_reason,Gym.human_attribute_name(:reject_reason)) %>
-        <%= text_field_tag(:reject_reason) %>
+        <%= label_tag(:reason,Gym.human_attribute_name(:reason)) %>
+        <%= text_field_tag(:reason) %>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true"><%= t('views.defaults.actions.cancel') %></button>
         <%= submit_tag(t('views.defaults.actions.reject')) %>
+    </div>
+    <% end %>
+</div>
+<!-- Lock Modal -->
+<div id="lockModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="lockModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="lockModalLabel"><%=t('views.defaults.actions.lock') %></h3>
+    </div>
+    <%= form_tag(:controller => "gym_reports", :action => "lock", :method => "post") do %>
+    <div class="modal-body">
+        <%= label_tag(:reason,Gym.human_attribute_name(:reason)) %>
+        <%= text_field_tag(:reason) %>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true"><%= t('views.defaults.actions.cancel') %></button>
+        <%= submit_tag(t('views.defaults.actions.lock')) %>
     </div>
     <% end %>
 </div>
@@ -57,10 +76,10 @@
         <td><%= Gym.human_attribute_name(:status) %></td>
         <td><%= @gym.status.text -%></td>
       </tr>
-      <% if @gym.status.rejected?%>
+      <% if @gym.status.rejected? or @gym.status.locked? %>
       <tr>
-        <td><%= Gym.human_attribute_name(:reject_reason) %></td>
-        <td><%= @gym.reject_reason -%></td>
+        <td><%= @gym.status.text + Gym.human_attribute_name(:reason) %></td>
+        <td><%= @gym.reason -%></td>
       </tr>
       <% end%>
       <tr>

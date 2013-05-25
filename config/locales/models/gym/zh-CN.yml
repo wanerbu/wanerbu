@@ -12,7 +12,7 @@
         close_time: "闭馆时间"
         status: "状态"
         history_log: "历史记录"
-        reject_reason: "拒绝理由"
+        reason: "理由"
     errors:
       models:
         gym:

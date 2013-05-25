@@ -20,10 +20,6 @@
       <% if can? :suspend, @gym%>
         <%= link_to t('views.defaults.actions.suspend'), suspend_user_master_gym_path(@gym), {method: :post, class: "btn btn-primary"} %>
       <%end%>
-      <% if can? :destroy, @gym%>
-        <%= link_to t('views.defaults.actions.destroy'), user_master_gym_path(@gym), 
-                { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
-      <%end%>
   </div>
   <div class='wb-clear-both'></div>
 </div>
@@ -51,10 +47,10 @@
         <td><%= Gym.human_attribute_name(:status) %></td>
         <td><%= @gym.status.text -%></td>
       </tr>
-      <% if @gym.status.rejected?%>
+      <% if @gym.status.rejected? or @gym.status.locked? %>
       <tr>
-        <td><%= Gym.human_attribute_name(:reject_reason) %></td>
-        <td><%= @gym.reject_reason -%></td>
+        <td><%= @gym.status.text + Gym.human_attribute_name(:reason) %></td>
+        <td><%= @gym.reason -%></td>
       </tr>
       <% end%>
       <tr>

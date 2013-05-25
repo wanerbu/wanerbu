@@ -90,20 +90,20 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
   add_index "games", ["court_id"], :name => "index_games_on_court_id"
 
   create_table "gyms", :force => true do |t|
-    t.string   "name",          :limit => 50,  :default => "",   :null => false
-    t.integer  "user_id",                                        :null => false
-    t.text     "intro",                                          :null => false
-    t.string   "address",       :limit => 100, :default => "",   :null => false
-    t.string   "telephone",     :limit => 30,  :default => "",   :null => false
-    t.time     "open_time",                                      :null => false
-    t.time     "close_time",                                     :null => false
-    t.float    "score",                        :default => 0.0,  :null => false
-    t.string   "status",                       :default => "00", :null => false
-    t.string   "reject_reason", :limit => 100
+    t.string   "name",        :limit => 50,  :default => "",   :null => false
+    t.integer  "user_id",                                      :null => false
+    t.text     "intro",                                        :null => false
+    t.string   "address",     :limit => 100, :default => "",   :null => false
+    t.string   "telephone",   :limit => 30,  :default => "",   :null => false
+    t.time     "open_time",                                    :null => false
+    t.time     "close_time",                                   :null => false
+    t.float    "score",                      :default => 0.0,  :null => false
+    t.string   "status",                     :default => "00", :null => false
+    t.string   "reason",      :limit => 100
     t.text     "history_log"
     t.datetime "deleted_at"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
   add_index "gyms", ["user_id"], :name => "index_gyms_on_user_id", :unique => true

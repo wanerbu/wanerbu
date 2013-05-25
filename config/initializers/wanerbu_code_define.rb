@@ -32,7 +32,9 @@ module Wanerbu
       # 发布
       released: '05',
       # 暂停营业
-      suspended: '06'
+      suspended: '06',
+      # 锁定
+      locked: '07' 
     }
   end
 end

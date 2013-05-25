@@ -36,6 +36,8 @@ Wanerbu::Application.routes.draw do
         member do
           post :approve
           post :reject
+          post :lock
+          post :destroy
         end
       end
     end

@@ -24,18 +24,39 @@ class Admin::Master::GymReportsController < Admin::AdminBaseController
       redirect_to admin_master_gym_report_path(@gym), notice: I18n.t("activemodel.success.approve", model: Gym.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.approve", model: Gym.model_name.human)
-      render :index
+      render :show
     end
   end
   # 拒绝
   def reject
     @gym = Gym.find(params[:id])
     reject_history_log = generate_log("reject")
-    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:rejected]) && @gym.update_attribute(:history_log, reject_history_log) && @gym.update_attribute(:reject_reason, params[:reject_reason])
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:rejected]) && @gym.update_attribute(:history_log, reject_history_log) && @gym.update_attribute(:reason, params[:reason])
       redirect_to admin_master_gym_report_path(@gym), notice: I18n.t("activemodel.success.reject", model: Gym.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.reject", model: Gym.model_name.human)
-      render :index
+      render :show
+    end
+  end
+  # 锁定
+  def lock
+    @gym = Gym.find(params[:id])
+    lock_history_log = generate_log("lock")
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:locked]) && @gym.update_attribute(:history_log, lock_history_log) && @gym.update_attribute(:reason, params[:reason])
+      redirect_to admin_master_gym_report_path(@gym), notice: I18n.t("activemodel.success.lock", model: Gym.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.lock", model: Gym.model_name.human)
+      render :show
+    end
+  end
+  def destroy
+    # TODO Tom 存在性的check
+    @gym = Gym.find(params[:id])
+    if @gym.destroy
+      redirect_to admin_master_gym_reports_path, notice: I18n.t("activemodel.success.destroy", model: Gym.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.destroy", model: Gym.model_name.human)
+      render :show
     end
   end
   #生成历史记录

@@ -1,8 +1,8 @@
 class Gym < ActiveRecord::Base
   #Enumerize使用
   extend Enumerize
- attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:score,:status,:deleted_at,:user_id,:history_log,:reject_reason
- enumerize :status, in: [:draft, :applying,:canceled,:approved,:rejected,:released,:suspended]
+ attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:score,:status,:deleted_at,:user_id,:history_log,:reason
+ enumerize :status, in: [:draft, :applying,:canceled,:approved,:rejected,:released,:suspended,:locked]
   # 如果是逻辑删除，删除后该用户将不能再建场馆因为user_id uniquness 验证失败
   # 逻辑删除
   #acts_as_paranoid

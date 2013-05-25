@@ -51,6 +51,12 @@
         <td><%= Gym.human_attribute_name(:status) %></td>
         <td><%= @gym.status.text -%></td>
       </tr>
+      <% if @gym.status.rejected?%>
+      <tr>
+        <td><%= Gym.human_attribute_name(:reject_reason) %></td>
+        <td><%= @gym.reject_reason -%></td>
+      </tr>
+      <% end%>
       <tr>
         <td><%= Gym.human_attribute_name(:open_time) %></td>
         <td><%= @gym.open_time.strftime("%H:%M") -%></td>

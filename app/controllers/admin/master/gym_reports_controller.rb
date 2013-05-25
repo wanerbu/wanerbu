@@ -30,8 +30,8 @@ class Admin::Master::GymReportsController < Admin::AdminBaseController
   # 拒绝
   def reject
     @gym = Gym.find(params[:id])
-    reject_history_log = generate_log("approve")
-    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:rejected]) && @gym.update_attribute(:history_log, reject_history_log)
+    reject_history_log = generate_log("reject")
+    if @gym.update_attribute(:status, Wanerbu::CodeDefine::GYM_STATUS[:rejected]) && @gym.update_attribute(:history_log, reject_history_log) && @gym.update_attribute(:reject_reason, params[:reject_reason])
       redirect_to admin_master_gym_report_path(@gym), notice: I18n.t("activemodel.success.reject", model: Gym.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.reject", model: Gym.model_name.human)

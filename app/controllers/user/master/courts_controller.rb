@@ -40,7 +40,7 @@ class User::Master::CourtsController <  User::UserBaseController
         redirect_to user_master_court_path(@court), notice: I18n.t("activemodel.success.create", model: Court.model_name.human)
       else
         flash[:alert] = I18n.t("activemodel.errors.create", model: Court.model_name.human)
-        render :new
+        render "new"
       end
     end
   end

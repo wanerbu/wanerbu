@@ -19,8 +19,8 @@
   <table class="table table-bordered" style="width: 100%;">
     <tbody>
       <tr>
-        <td>项目名</td>
-        <td><%= Sport.find(Court.find(@game.court_id).sport_id).name -%></td>
+        <td>项目</td>
+        <td><%= Sport.find(Court.find(@game.court_id).sport_id).name + "(" + Court.find(@game.court_id).reservation_type.text + ")" -%></td>
       </tr>
       <tr>
         <td><%= Game.human_attribute_name(:name) %></td>

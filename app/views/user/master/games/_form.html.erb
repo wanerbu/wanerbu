@@ -1,19 +1,23 @@
 <%= semantic_form_for([:user, :master, @game], :html => { :class => 'form-horizontal' }) do |f| %>
-    <li id="court_sport_name" class="number input optional numeric stringish">
-    <label class=" label" for="court_sport_name">项目
-      <abbr title="required">*</abbr>
-    </label>
      <% if @game.new_record? %>
-      <% sport_id_array = Array.new() %>
-      <% current_user.gym.courts.all.each do |court| -%>
-        <%sport_id_array.push(court.sport_id)%>
-      <%end%>
-      <%= select_tag(:sport_id, options_from_collection_for_select(
-      Sport.where(:id => sport_id_array),:id, :name)) %>
+       <!-- 构造select的数组，name为 项目名+预订类型，id为场地的id -->
+       <% 
+          court_array_for_select = Array.new()
+          current_user.gym.courts.all.each do |court| 
+             item = Array.new()
+             item.push(Sport.find(court.sport_id).name + "(" + court.reservation_type.text + ")")
+             item.push(court.id)
+             court_array_for_select.push(item)
+          end
+      %>
+      <%= f.input :court_id, :label => "项目", :required => true, :as => :select,:collection => court_array_for_select%>
     <% else %>
-      <%= Sport.find(Court.find(@game.court_id).sport_id).name -%>
+      <li id="court_sport_name" class="number input optional numeric stringish">
+        <label class=" label" for="court_sport_name">项目<abbr title="required">*</abbr>
+        </label>
+        <%= Sport.find(Court.find(@game.court_id).sport_id).name + "(" + Court.find(@game.court_id).reservation_type.text + ")" -%>
+      </li>
     <% end -%>
-    </li>
     <%= f.input :name, :required => true%>
     <%= f.input :sort, :required => true%>
     <%= f.input :default_price,:required => true%>

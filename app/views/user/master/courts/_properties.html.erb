@@ -2,8 +2,8 @@
   <% sport_properties.all.each do |sport_property| %>
     <% property = Property.find(sport_property.property_id) %>
       <%= hidden_field_tag 'court[court_properties_attributes][][property_id]',property.id %>
-    <li id="court_sport_name" class="number input optional numeric stringish">
-      <label class=" label" for="court_sport_name">
+    <li id="sport_property_name" class="number input optional numeric stringish">
+      <label class=" label" for="sport_property_name">
         <%= label_tag :property_ids, property.name -%>
       </label>
       <%= text_field_tag 'court[court_properties_attributes][][property_value]',sport_property.default_value %>

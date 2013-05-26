@@ -6,6 +6,7 @@
       <%= collection_select(:court, :sport_id, Sport.all, :id, :name) %>
     </li>
     <%= f.input :reservation_type, :as => :radio %>
+    <!--异步请求返回所选项目的属性显示层-->
     <div id="courtProperties">
     </div>  
     <%= f.input :min_unit %>

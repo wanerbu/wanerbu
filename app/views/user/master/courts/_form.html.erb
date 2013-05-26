@@ -5,6 +5,7 @@
     </label>
       <%= collection_select(:court, :sport_id, Sport.all, :id, :name) %>
     </li>
+    <%= f.input :reservation_type, :as => :radio %>
     <div id="courtProperties">
     </div>  
     <%= f.input :min_unit %>

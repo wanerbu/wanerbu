@@ -18,25 +18,30 @@ class User::Master::CourtsController <  User::UserBaseController
   end
 
   def create
-
     #如果该场馆已经拥有该项目，将不能再创建
-    if  @court = Court.where(:gym_id => current_user.gym.id,:sport_id => params[:court][:sport_id]).first 
+    reservation_type = "00"
+    case params[:court][:reservation_type]
+        when "according_time"
+          reservation_type = Wanerbu::CodeDefine::COURT_RESERVATION_TYPE[:according_time]
+        when "according_people"
+          reservation_type = Wanerbu::CodeDefine::COURT_RESERVATION_TYPE[:according_people]
+    end
+    if  @court = Court.where(:gym_id => current_user.gym.id,:sport_id => params[:court][:sport_id],:reservation_type => reservation_type).first 
       flash[:alert] = I18n.t("activemodel.errors.duplicate", model: Court.model_name.human)
       redirect_to user_master_court_path(@court)
     else
-
-    @court = Court.new(params[:court])
-    game_number = params[:game_number].to_i
-    game_default_price = params[:game_default_price].to_i
-    @court.gym_id = current_user.gym.id
-    if @court.save
-      #根据场次数批量添加场次
-      game_number.times {|i| Game.create(:court_id=> @court.id, :default_price => game_default_price,:name => "场次" + (i+1).to_s,:sort => (i+1)) }
-      redirect_to user_master_court_path(@court), notice: I18n.t("activemodel.success.create", model: Court.model_name.human)
-    else
-      flash[:alert] = I18n.t("activemodel.errors.create", model: Court.model_name.human)
-      render :new
-    end
+      @court = Court.new(params[:court])
+      game_number = params[:game_number].to_i
+      game_default_price = params[:game_default_price].to_i
+      @court.gym_id = current_user.gym.id
+      if @court.save
+        #根据场次数批量添加场次
+        game_number.times {|i| Game.create(:court_id=> @court.id, :default_price => game_default_price,:name => "场次" + (i+1).to_s,:sort => (i+1)) }
+        redirect_to user_master_court_path(@court), notice: I18n.t("activemodel.success.create", model: Court.model_name.human)
+      else
+        flash[:alert] = I18n.t("activemodel.errors.create", model: Court.model_name.human)
+        render :new
+      end
     end
   end
 

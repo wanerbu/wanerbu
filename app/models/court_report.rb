@@ -18,6 +18,9 @@ class CourtReport
   column("项目") do
     Sport.find(self.sport_id).name
   end
+  column(:reservation_type) do
+   self.reservation_type.text
+  end
   column("场次数量") do
     Game.where(:court_id => self.id).count
   end

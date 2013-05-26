@@ -5,6 +5,7 @@
     attributes:
       court: &court
         min_unit: "最小预订单位"
+        reservation_type: "预订类型"
     errors:
       models:
         court:

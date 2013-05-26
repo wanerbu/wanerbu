@@ -69,14 +69,15 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
   add_index "court_properties", ["court_id", "property_id"], :name => "index_court_properties_on_court_id_and_property_id", :unique => true
 
   create_table "courts", :force => true do |t|
-    t.integer  "sport_id",                    :null => false
-    t.integer  "gym_id",                      :null => false
-    t.float    "min_unit",   :default => 0.5
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.integer  "sport_id",                           :null => false
+    t.integer  "gym_id",                             :null => false
+    t.string   "reservation_type", :default => "00", :null => false
+    t.float    "min_unit",         :default => 0.5
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
-  add_index "courts", ["sport_id", "gym_id"], :name => "index_courts_on_sport_id_and_gym_id", :unique => true
+  add_index "courts", ["sport_id", "gym_id", "reservation_type"], :name => "index_courts_on_sport_id_and_gym_id_and_reservation_type", :unique => true
 
   create_table "games", :force => true do |t|
     t.integer  "court_id"

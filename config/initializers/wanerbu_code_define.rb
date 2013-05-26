@@ -36,6 +36,14 @@ module Wanerbu
       # 锁定
       locked: '07' 
     }
+
+    #场地预订类型
+    COURT_RESERVATION_TYPE = {
+      # 按时间
+      according_time: '00',
+      # 按人次
+      according_people: '01' 
+    }
   end
 end
 

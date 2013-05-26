@@ -14,3 +14,7 @@ zh-CN:
         released: 发布
         suspended: 暂停营业
         locked: 已锁定
+    court:
+      reservation_type:
+        according_time: 按时间
+        according_people: 按人次

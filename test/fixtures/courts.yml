@@ -4,10 +4,12 @@ one:
   id: 1
   sport_id: 1
   gym_id: 1
+  reservation_type: "00"
   min_unit: 1.5
 
 two:
   id: 2
   sport_id: 2
   gym_id: 1
+  reservation_type: "01"
   min_unit: 1.5

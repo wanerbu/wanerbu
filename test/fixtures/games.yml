@@ -5,3 +5,8 @@ one:
   name: MyString
   sort: 1
   default_price: 1.5
+two:
+  court_id: 2
+  name: MyString
+  sort: 1
+  default_price: 1.5

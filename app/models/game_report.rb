@@ -23,6 +23,9 @@ class GameReport
   column("项目") do
     Sport.find(Court.find(self.court_id).sport_id).name
   end
+  column("预订类型") do
+    Court.find(self.court_id).reservation_type.text
+  end
   column(:name)
   column(:default_price)
   column(:sort)

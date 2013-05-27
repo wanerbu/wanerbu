@@ -84,7 +84,7 @@ class User::Master::CourtsController <  User::UserBaseController
     # TODO Tom 存在性的check
     @court = Court.find(params[:id])
     if @court.destroy
-        render "new"
+        redirect_to :action => "new"
     else
       flash[:alert] = I18n.t("activemodel.errors.destroy", model: Court.model_name.human)
       render :show

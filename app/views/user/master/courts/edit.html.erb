@@ -7,43 +7,5 @@
 <% end %>
 
 <div class='wb-content-main'>
-<%= semantic_form_for([:user, :master, @court], :html => { :class => 'form-horizontal' }) do |f| %>
-    <li id="court_sport_name" class="number input optional numeric stringish">
-      <label class=" label" for="court_sport_name">项目  </label>
-      <%= Sport.find(@court.sport_id).name %>
-    </li>
-    <li id="court_sport_name" class="number input optional numeric stringish">
-      <label class=" label" for="reservation_type"><%= Court.human_attribute_name(:reservation_type) %></label>
-        <%= @court.reservation_type.text -%>
-    </li>
-    <div id="courtProperties">
-  <% @court.court_properties.all.each do |court_property| %>
-    <% property = Property.find(court_property.property_id) %>
-    <div>
-      <%= hidden_field_tag 'court[court_properties_attributes][][id]',court_property.id %>
-      <%= hidden_field_tag 'court[court_properties_attributes][][property_id]',property.id %>
-    <li id="court_sport_name" class="number input optional numeric stringish">
-      <label class=" label" for="court_sport_name">
-      <%= label_tag :property_ids, property.name -%>
-      </label>
-      <%= text_field_tag 'court[court_properties_attributes][][property_value]',court_property.property_value %>
-      <%= property.unit -%>
-    </li>
-    </div>
-  <%end%>
-    </div>  
-    <%= f.input :min_unit %>
-    <li id="court_game_number" class="number input optional numeric stringish">
-      <label class=" label" for="court_sport_name">场次数量 </label>
-      <%= text_field_tag 'game_number',Game.where(:court_id => @court.id).count %>
-    </li>
-    <li id="court_game_number" class="number input optional numeric stringish">
-      <label class=" label" for="court_sport_name">场次默认价格 </label>
-      <%= text_field_tag 'game_default_price', (Game.where(:court_id => @court.id).first.nil?) ? "" : Game.where(:court_id => @court.id).first.default_price %>
-    </li>
-    <%= f.actions do %>
-      <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>
-      <%= f.action :cancel, :as => :link %>
-    <% end -%>
-  <% end %>
+  <%= render 'form' -%>
 </div>

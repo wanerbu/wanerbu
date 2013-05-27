@@ -5,6 +5,8 @@
         base_info: "基本信息" 
         ext_info: "扩展信息" 
         auth_info: "角色信息" 
+        batch_game_info: "批量场次信息" 
+        batch_game_price_rule: "批量场次价格规则" 
         created_at: "创建时间"
         actions: ""
       actions:

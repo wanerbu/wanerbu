@@ -33,7 +33,7 @@ class User::Master::CourtsController <  User::UserBaseController
       @court = Court.new(params[:court])
       game_number = params[:game_number].to_i
       game_default_price = params[:game_default_price].to_i
-      can_reservation = params[:can_reservation]
+      can_reservation = params[:can_reservation_in_court] 
       @court.gym_id = current_user.gym.id
       if @court.save
         #根据场次数批量添加场次
@@ -59,7 +59,7 @@ class User::Master::CourtsController <  User::UserBaseController
     @court = Court.find(params[:id])
     game_number = params[:game_number].to_i
     game_default_price = params[:game_default_price].to_i
-    can_reservation = params[:can_reservation]
+    can_reservation =  params[:can_reservation_in_court] 
       if @court.update_attributes(params[:court])
          #取出当前DB中的场次数量 
          current_game_count = Game.where(:court_id => @court.id).count

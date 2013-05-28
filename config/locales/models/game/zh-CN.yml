@@ -7,6 +7,7 @@
         name: "场次名称"
         sort: "顺序"
         default_price: "场次价格"
+        can_reservation: "能否预订"
     errors:
       models:
         game:

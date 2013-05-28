@@ -18,3 +18,7 @@ zh-CN:
       reservation_type:
         according_time: 按时间
         according_people: 按人次
+    game:
+      can_reservation:
+        can_reservation_true: 可以预订
+        can_reservation_false: 不可以预订

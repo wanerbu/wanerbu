@@ -1,5 +1,9 @@
 class Game < ActiveRecord::Base
+  #Enumerize使用
+ # extend Enumerize
   attr_accessible :court_id, :default_price, :name, :sort,:can_reservation
+  #Enumerize使用
+ # enumerize :can_reservation, in: Wanerbu::CodeDefine::GAME_CAN_RESERVATION, default: :can_reservation_true
   # validations
   validates :court_id, 
     :presence => true

@@ -59,18 +59,18 @@
         <li class="choice">
           <label for="court_game_can_reservation_true">
             <% if @court.new_record? or !@court.new_record? and (Game.where(:court_id => @court.id).first.nil?) ? true : Game.where(:court_id => @court.id).first.can_reservation %>
-               <%= radio_button_tag("can_reservation", true,true) %>可以预订
+               <%= radio_button_tag("can_reservation_in_court", true,true) %>可以预订
           <% else %>
-               <%= radio_button_tag("can_reservation", true) %>可以预订
+               <%= radio_button_tag("can_reservation_in_court", true) %>可以预订
            <%end%>
           </label>
         </li>
         <li class="choice">
           <label for="court_game_can_reservation_false">
             <% if  !@court.new_record? and !((Game.where(:court_id => @court.id).first.nil?) ? false : Game.where(:court_id => @court.id).first.can_reservation) %>
-            <%= radio_button_tag("can_reservation", false,true) %>不可以预订
+            <%= radio_button_tag("can_reservation_in_court", false,true) %>不可以预订
           <% else %>
-            <%= radio_button_tag("can_reservation", false) %>不可以预订
+            <%= radio_button_tag("can_reservation_in_court", false) %>不可以预订
            <%end%>
           </label>
         </li>

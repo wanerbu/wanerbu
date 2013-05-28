@@ -44,6 +44,13 @@ module Wanerbu
       # 按人次
       according_people: '01' 
     }
+    #场次能否预订
+    GAME_CAN_RESERVATION = {
+      # 可以预订
+      can_reservation_true: true,
+      # 不可以预订
+      can_reservation_false: false 
+    }
   end
 end
 

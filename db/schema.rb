@@ -81,11 +81,12 @@ ActiveRecord::Schema.define(:version => 20130501024936) do
 
   create_table "games", :force => true do |t|
     t.integer  "court_id"
-    t.string   "name",          :limit => 20
-    t.integer  "sort",          :limit => 3
-    t.float    "default_price",               :default => 0.0
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.string   "name",            :limit => 20
+    t.integer  "sort",            :limit => 3
+    t.boolean  "can_reservation"
+    t.float    "default_price",                 :default => 0.0
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   add_index "games", ["court_id"], :name => "index_games_on_court_id"

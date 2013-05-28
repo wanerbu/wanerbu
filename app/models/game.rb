@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  attr_accessible :court_id, :default_price, :name, :sort
+  attr_accessible :court_id, :default_price, :name, :sort,:can_reservation
   # validations
   validates :court_id, 
     :presence => true

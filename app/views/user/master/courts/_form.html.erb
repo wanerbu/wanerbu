@@ -38,23 +38,44 @@
 <% end %>
 <%= f.inputs :name => t('views.defaults.label.batch_game_info') do %>
     <li id="court_game_number" class="number input optional numeric stringish">
-      <label class=" label" for="court_sport_name">场次数量 </label>
+      <label class=" label" for="court_gane_number">场次数量 </label>
       <% if @court.new_record? %>
         <%= text_field_tag 'game_number',1 %>
       <% else %>
         <%= text_field_tag 'game_number',Game.where(:court_id => @court.id).count %>
       <%end%>
     </li>
-    <li id="court_game_number" class="number input optional numeric stringish">
-      <label class=" label" for="court_sport_name">场次默认价格 </label>
+    <li id="court_game_price" class="number input optional numeric stringish">
+      <label class=" label" for="court_game_price">场次默认价格 </label>
       <% if @court.new_record? %>
         <%= text_field_tag 'game_default_price',1 %>
       <% else %>
         <%= text_field_tag 'game_default_price', (Game.where(:court_id => @court.id).first.nil?) ? "" : Game.where(:court_id => @court.id).first.default_price %>
       <%end%>
     </li>
-<% end %>
-<%= f.inputs :name => t('views.defaults.label.batch_game_price_rule') do %>
+    <li id="court_game_can_reservation" class="number input optional numeric stringish">
+        <label class=" label" for="court_game_can_reservation">能否预订</label>
+      <ol class="choices-group">
+        <li class="choice">
+          <label for="court_game_can_reservation_true">
+            <% if @court.new_record? or !@court.new_record? and (Game.where(:court_id => @court.id).first.nil?) ? true : Game.where(:court_id => @court.id).first.can_reservation %>
+               <%= radio_button_tag("can_reservation", true,true) %>可以预订
+          <% else %>
+               <%= radio_button_tag("can_reservation", true) %>可以预订
+           <%end%>
+          </label>
+        </li>
+        <li class="choice">
+          <label for="court_game_can_reservation_false">
+            <% if  !@court.new_record? and !((Game.where(:court_id => @court.id).first.nil?) ? false : Game.where(:court_id => @court.id).first.can_reservation) %>
+            <%= radio_button_tag("can_reservation", false,true) %>不可以预订
+          <% else %>
+            <%= radio_button_tag("can_reservation", false) %>不可以预订
+           <%end%>
+          </label>
+        </li>
+      </ol>
+    </li>
 <% end %>
     <%= f.actions do %>
       <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>

@@ -4,6 +4,7 @@ class CreateGames < ActiveRecord::Migration
       t.integer :court_id
       t.string :name, limit: 20
       t.integer :sort, limit: 3
+      t.boolean :can_reservation
       t.float :default_price, default: 0
 
       t.timestamps

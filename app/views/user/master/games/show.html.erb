@@ -9,17 +9,38 @@
 <div class='wb-content-sub-title'>
   <div>
     <%= link_to t('views.defaults.actions.edit'), edit_user_master_game_path(@game), {class: "btn btn-primary"} %>
+    <button type="button" data-toggle="modal"class= "btn btn-primary" data-target="#newPriceRuleModal"><%= t('views.defaults.actions.new_game_price_rule')%></button>
+    <button type="button" data-toggle="modal"class= "btn btn-primary" data-target="#newPriceRuleModal"><%= t('views.defaults.actions.new_game_reservation_rule')%></button>
     <%= link_to t('views.defaults.actions.destroy'), user_master_game_path(@game), 
                 { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
   </div>
   <div class='wb-clear-both'></div>
 </div>
 
+<!-- new price rule Modal -->
+<div id="newPriceRuleModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="newPriceRuleModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="newPriceRuleModalLabel"><%=t('views.defaults.actions.new_game_price_rule') %></h3>
+    </div>
+    <%= form_tag(:controller => "games", :action => "new_price_rule", :method => "post") do %>
+    <div class="modal-body">
+        <%= label_tag(:rule_type,GamePriceRule.human_attribute_name(:rule_type)) %>
+        <%= text_field_tag(:rule_type) %>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true"><%= t('views.defaults.actions.cancel') %></button>
+        <%= submit_tag(t('views.defaults.actions.reject')) %>
+    </div>
+    <% end %>
+</div>
+
+
 <div class="wb-content-detail">
   <table class="table table-bordered" style="width: 100%;">
     <tbody>
       <tr>
-        <td>项目</td>
+        <td><%=Sport.model_name.human%></td>
         <td><%= Sport.find(Court.find(@game.court_id).sport_id).name + "(" + Court.find(@game.court_id).reservation_type.text + ")" -%></td>
       </tr>
       <tr>
@@ -38,9 +59,9 @@
         <td><%= Game.human_attribute_name(:can_reservation) %></td>
         <td>
           <% if @game.can_reservation%> 
-              可以预订
+            <%= t('views.defaults.game.reservation_true')%>
           <%else%>
-              不可以预订
+            <%= t('views.defaults.game.reservation_false')%>
           <%end%>
         </td>
       </tr>

@@ -10,10 +10,10 @@
              court_array_for_select.push(item)
           end
       %>
-      <%= f.input :court_id, :label => "项目", :required => true, :as => :select,:collection => court_array_for_select%>
+      <%= f.input :court_id, :label => Sport.model_name.human, :required => true, :as => :select,:collection => court_array_for_select%>
     <% else %>
       <li id="court_sport_name" class="number input optional numeric stringish">
-        <label class=" label" for="court_sport_name">项目<abbr title="required">*</abbr>
+      <label class=" label" for="court_sport_name"><%= Sport.model_name.human %><abbr title="required">*</abbr>
         </label>
         <%= Sport.find(Court.find(@game.court_id).sport_id).name + "(" + Court.find(@game.court_id).reservation_type.text + ")" -%>
       </li>
@@ -28,18 +28,18 @@
         <li class="choice">
           <label for="court_game_can_reservation_true">
             <% if @game.new_record? or (!@game.new_record? and @game.can_reservation) %>
-               <%= radio_button_tag("game[can_reservation]", true,true) %>可以预订
+              <%= radio_button_tag("game[can_reservation]", true,true)%> <%= t('views.defaults.game.reservation_true')%>
           <% else %>
-               <%= radio_button_tag("game[can_reservation]", true) %>可以预订
+            <%= radio_button_tag("game[can_reservation]", true) %><%= t('views.defaults.game.reservation_true')%>
            <%end%>
           </label>
         </li>
         <li class="choice">
           <label for="court_game_can_reservation_false">
             <% if  !@game.new_record? and !@game.can_reservation %>
-            <%= radio_button_tag("game[can_reservation]", false,true) %>不可以预订
+              <%= radio_button_tag("game[can_reservation]", false,true) %><%= t('views.defaults.game.reservation_false')%>
           <% else %>
-            <%= radio_button_tag("game[can_reservation]", false) %>不可以预订
+            <%= radio_button_tag("game[can_reservation]", false) %><%= t('views.defaults.game.reservation_false')%>
            <%end%>
           </label>
         </li>

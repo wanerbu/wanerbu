@@ -2,7 +2,7 @@
 <%= f.inputs :name => t('views.defaults.label.base_info') do %>
   <!--新建-->
   <% if @court.new_record? %>
-    <%= f.input :sport_id, :label => "项目", :required => true, :as => :select,:collection => Sport.all %>
+    <%= f.input :sport_id, :label => Sport.model_name.human, :required => true, :as => :select,:collection => Sport.all %>
     <%= f.input :reservation_type, :as => :radio %>
     <!--异步请求返回所选项目的属性显示层-->
     <div id="courtProperties">
@@ -10,7 +10,7 @@
   <!--编辑-->
   <% else %>
     <li id="court_sport_name" class="number input optional numeric stringish">
-      <label class=" label" for="court_sport_name">项目</label>
+    <label class=" label" for="court_sport_name"><%=Sport.model_name.human%></label>
       <%= Sport.find(@court.sport_id).name %>
     </li>
     <li id="court_sport_name" class="number input optional numeric stringish">
@@ -39,7 +39,8 @@
 <% if @court.new_record? %>
 <%= f.inputs :name => t('views.defaults.label.batch_game_info') do %>
     <li id="court_game_number" class="number input optional numeric stringish">
-      <label class=" label" for="court_game_number">场次数量 </label>
+    <label class=" label" for="court_game_number"><%= t('views.defaults.game.game_number')%>
+    </label>
         <%= text_field_tag 'game_number',1 %>
     </li>
     <li id="court_game_price" class="number input optional numeric stringish">
@@ -51,12 +52,12 @@
       <ol class="choices-group">
         <li class="choice">
           <label for="court_game_can_reservation_true">
-               <%= radio_button_tag("can_reservation_in_court", true,true) %>可以预订
+            <%= radio_button_tag("can_reservation_in_court", true,true) %><%= t('views.defaults.game.reservation_true')%>
           </label>
         </li>
         <li class="choice">
           <label for="court_game_can_reservation_false">
-            <%= radio_button_tag("can_reservation_in_court", false) %>不可以预订
+            <%= radio_button_tag("can_reservation_in_court", false) %><%= t('views.defaults.game.reservation_false')%>
           </label>
         </li>
       </ol>

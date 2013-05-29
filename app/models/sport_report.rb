@@ -13,7 +13,7 @@ class SportReport
     Sport
   end
 
-  filter(:name, :string,:header => "项目名")
+  filter(:name, :string,:header => Sport.human_attribute_name(:name))
 
   column(:name)
   column(:sort)

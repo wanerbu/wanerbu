@@ -59,7 +59,11 @@ Wanerbu::Application.routes.draw do
       resources :courts, :except => [:index]
       resources :court_reports, :only => [:index]
       match 'courts/edit_court_properties_select/:sport_id' => 'courts#edit_court_properties_select',:via=>:get
-      resources :games, :except => [:index]
+      resources :games, :except => [:index] do
+        member do
+          post :new_price_rule
+        end
+      end
       resources :game_reports, :only => [:index]
     end
   end

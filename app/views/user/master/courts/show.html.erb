@@ -19,7 +19,7 @@
   <table class="table table-bordered" style="width: 100%;">
     <tbody>
       <tr>
-        <td>项目名</td>
+        <td><%=Sport.model_name.human%></td>
         <td><%= Sport.find(@court.sport_id).name -%></td>
       </tr>
       <tr>
@@ -27,7 +27,7 @@
         <td><%= @court.reservation_type.text -%></td>
       </tr>
       <tr>
-        <td>项目属性</td>
+        <td><%=Property.model_name.human%></td>
         <td>
             <% @court.court_properties.each do |court_property| -%>
             <div>
@@ -44,12 +44,9 @@
         <td><%= @court.min_unit -%></td>
       </tr>
       <tr>
-        <td>场次数量</td>
+        <td><%= t('views.defaults.game.game_number')%>
+        </td>
         <td><%= Game.where(:court_id => @court.id).count %></td>
-      </tr>
-      <tr>
-        <td>场次默认价格</td>
-        <td><%= (Game.where(:court_id => @court.id).first.nil?) ? "" : Game.where(:court_id => @court.id).first.default_price %></td>
       </tr>
     </tbody>
   </table>

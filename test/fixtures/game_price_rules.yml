@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  game_id: 1
+  rule_type: '00'
+  week_value: 1
+  date_value: 2013-05-29
+  start_time: 2013-05-29 23:04:11
+  end_time: 2013-05-29 23:04:11
+  price: 1.5
+
+two:
+  game_id: 1
+  rule_type: '00' 
+  week_value: 1
+  date_value: 2013-05-29
+  start_time: 2013-05-29 23:04:11
+  end_time: 2013-05-29 23:04:11
+  price: 1.5

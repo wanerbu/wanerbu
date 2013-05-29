@@ -22,6 +22,12 @@
         suspend: 暂停营业
         approve: 同意申请
         reject: 拒绝申请
+        new_game_price_rule: 新增价格规则
+        new_game_reservation_rule: 新增预订规则
       query_results:
         prefix: "共: "
         unit: " 件"
+      game:
+        reservation_true: "可以预订 "
+        reservation_false: "不可以预订"
+        game_number: "场次数量"

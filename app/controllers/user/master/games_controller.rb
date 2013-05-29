@@ -51,5 +51,14 @@ class User::Master::GamesController <  User::UserBaseController
       render :show
     end
   end
+  def new_price_rule
+    @game_price_rule= GamePriceRule.new(params[:game_price_rule])
+    if @game_price_rule.save
+      redirect_to user_master_game_path(@game), notice: I18n.t("activemodel.success.create", model: GamePriceRule.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.create", model: GamePriceRule.model_name.human)
+      render :new
+    end
+  end
 
 end

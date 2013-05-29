@@ -21,9 +21,9 @@
     <%= f.input :name, :required => true%>
     <%= f.input :sort, :required => true%>
     <%= f.input :default_price,:required => true%>
-    <%#= f.input :can_reservation,:required => true, :as => :radio,:collection => ["可以", "不可以"]%>
+    <%#= f.input :can_reservation,:required => true, :as => :radio%>
     <li id="court_game_can_reservation" class="number input optional numeric stringish">
-        <label class=" label" for="court_game_can_reservation">能否预订</label>
+        <label class=" label" for="court_game_can_reservation"><%= Game.human_attribute_name(:can_reservation) %></label>
       <ol class="choices-group">
         <li class="choice">
           <label for="court_game_can_reservation_true">
@@ -44,8 +44,7 @@
           </label>
         </li>
       </ol>
-    </li>
-    <%#= f.input :can_reservation,:required => true, :as => :radio%>
+      </li>
     <%= f.actions do %>
       <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>
       <%= f.action :cancel, :as => :link %>

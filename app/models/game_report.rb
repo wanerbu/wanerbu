@@ -28,6 +28,13 @@ class GameReport
   end
   column(:name)
   column(:default_price)
+  column(:can_reservation) do
+    if self.can_reservation
+      "可以预订"
+    else
+      "不可以预订"
+    end
+  end
   column(:sort)
   column(:actions, header: I18n.t('views.defaults.label.actions'), :html => true) do |asset|
     render :partial => "user/master/game_reports/actions", :locals => {:target => asset}

@@ -34,6 +34,16 @@
         <td><%= Game.human_attribute_name(:default_price) %></td>
         <td><%= @game.default_price -%></td>
       </tr>
+      <tr>
+        <td><%= Game.human_attribute_name(:can_reservation) %></td>
+        <td>
+          <% if @game.can_reservation%> 
+              可以预订
+          <%else%>
+              不可以预订
+          <%end%>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

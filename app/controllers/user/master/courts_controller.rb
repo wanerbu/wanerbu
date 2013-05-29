@@ -57,10 +57,15 @@ class User::Master::CourtsController <  User::UserBaseController
 
   def update
     @court = Court.find(params[:id])
+=begin
+更新场地是批量更新场次逻辑取消
     game_number = params[:game_number].to_i
     game_default_price = params[:game_default_price].to_i
     can_reservation =  params[:can_reservation_in_court] 
+=end
       if @court.update_attributes(params[:court])
+=begin
+更新场地是批量更新场次逻辑取消
          #取出当前DB中的场次数量 
          current_game_count = Game.where(:court_id => @court.id).count
          if current_game_count > game_number then
@@ -76,6 +81,7 @@ class User::Master::CourtsController <  User::UserBaseController
             game.update_attributes(:default_price => game_default_price,:can_reservation => can_reservation)
            end
          end
+=end
       redirect_to user_master_court_path(@court), notice: I18n.t("activemodel.success.update", model: Court.model_name.human)
       else
         render "edit"

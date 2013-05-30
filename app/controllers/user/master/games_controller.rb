@@ -52,7 +52,7 @@ class User::Master::GamesController <  User::UserBaseController
     end
   end
   def new_price_rule
-    @game_price_rule= GamePriceRule.new(params[:game_price_rule])
+    @game_price_rule= GamePriceRule.new(params[:price_rule])
     if @game_price_rule.save
       redirect_to user_master_game_path(@game), notice: I18n.t("activemodel.success.create", model: GamePriceRule.model_name.human)
     else

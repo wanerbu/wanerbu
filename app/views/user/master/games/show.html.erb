@@ -25,12 +25,35 @@
     </div>
     <%= form_tag(:controller => "games", :action => "new_price_rule", :method => "post") do %>
     <div class="modal-body">
-        <%= label_tag(:rule_type,GamePriceRule.human_attribute_name(:rule_type)) %>
-        <%= text_field_tag(:rule_type) %>
+      <%= hidden_field_tag 'price_rule[game_id]', @game.id %>
+      <li id="price_type" class="number input optional numeric stringish">
+        <label class=" label" for="price_type">
+        <%= GamePriceRule.human_attribute_name(:rule_type) %>
+          <abbr title="required">*</abbr>
+        </label>
+        <%= select_tag('price_rule[rule_type]', options_for_select([[GamePriceRule.human_attribute_name(:week_value), '00'], [GamePriceRule.human_attribute_name(:date_value), '01']])) %>
+      </li>
+      <div id="select_week_price_rule">
+        每周<%= text_field_tag('price_rule[week_value]') %>
+      </div>
+      <div id="select_date_price_rule" style="display: none;">
+        <%= date_select :price_rule, :date_value %>
+      </div >
+      <div id="price_rule">
+        的<%= time_select :price_rule, :start_time %> 至
+        <%= time_select :price_rule, :end_time %>的价格为
+        <%= text_field_tag('price_rule[price]') %>元
+        <% court = Court.find(@game.court_id) %>
+        <%if court.reservation_type.according_time?%>
+          <%=court.min_unit%> 小时
+        <%else %>
+          <%=court.min_unit%>人次
+        <%end%>
+      </div >
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true"><%= t('views.defaults.actions.cancel') %></button>
-        <%= submit_tag(t('views.defaults.actions.reject')) %>
+        <%= submit_tag(t('views.defaults.actions.new_game_price_rule')) %>
     </div>
     <% end %>
 </div>

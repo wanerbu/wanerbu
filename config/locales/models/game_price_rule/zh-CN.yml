@@ -1,0 +1,20 @@
+﻿zh-CN:
+  activerecord:
+    models:
+      game_price_rule: 价格规则
+    attributes:
+      game_price_rule: &game_price_rule
+        rule_type: "规则类型"
+        week_value: "星期"
+        date_value: "日期"
+        start_time: "开始时间"
+        end_time: "结束时间"
+        price: "价格"
+    errors:
+      models:
+        game_price_rule:
+          attributes:
+  datagrid:
+    game_price_rule_report:
+      columns:
+        <<: *game_price_rule

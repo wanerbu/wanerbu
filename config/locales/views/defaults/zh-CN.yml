@@ -31,3 +31,10 @@
         reservation_true: "可以预订 "
         reservation_false: "不可以预订"
         game_number: "场次数量"
+        every_week: '每周'
+        of: '的'
+        to: '至'
+        price_is: '的价格为'
+        yuan: '元'
+        every_hour: '小时'
+        every_people: '人次'

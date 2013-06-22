@@ -57,7 +57,18 @@ class User::Master::GamesController <  User::UserBaseController
       redirect_to user_master_game_path(@game), notice: I18n.t("activemodel.success.create", model: GamePriceRule.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.create", model: GamePriceRule.model_name.human)
-      render :new
+      redirect_to user_master_game_path(@game)
+    end
+  end
+  
+  def delete_game_price_rule
+    @price_rule = GamePriceRule.find(params[:price_rule_id])
+    @game= Game.find(@price_rule.game_id)
+    if @price_rule.destroy
+      redirect_to user_master_game_path(@game), notice: I18n.t("activemodel.success.destroy", model: GamePriceRule.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.destroy", model: GamePriceRule.model_name.human)
+      redirect_to user_master_game_path(@game)
     end
   end
 

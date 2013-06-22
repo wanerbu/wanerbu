@@ -64,6 +64,7 @@ Wanerbu::Application.routes.draw do
           post :new_price_rule
         end
       end
+      match 'games/delete_game_price_rule/:price_rule_id' => 'games#delete_game_price_rule',:via=>:get
       resources :game_reports, :only => [:index]
     end
   end

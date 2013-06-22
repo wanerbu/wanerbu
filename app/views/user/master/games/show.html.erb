@@ -33,21 +33,37 @@
         </label>
         <%= select_tag('price_rule[rule_type]', options_for_select([[GamePriceRule.human_attribute_name(:week_value), '00'], [GamePriceRule.human_attribute_name(:date_value), '01']])) %>
       </li>
+      <!--TODO 当选中按星期时显示javascript-->
       <div id="select_week_price_rule">
-        每周<%= text_field_tag('price_rule[week_value]') %>
+        <%= t('views.defaults.game.every_week')%>
+        <%= select(:price_rule,:week_value,
+                   [['周一',1],
+                    ['周二',2],
+                    ['周三',3],
+                    ['周四',4],
+                    ['周五',5],
+                    ['周六',6],
+                    ['周日',7]]) %>
       </div>
+      <!--TODO 当选中按日期时显示javascript-->
       <div id="select_date_price_rule" style="display: none;">
         <%= date_select :price_rule, :date_value %>
       </div >
       <div id="price_rule">
-        的<%= time_select :price_rule, :start_time %> 至
-        <%= time_select :price_rule, :end_time %>的价格为
-        <%= text_field_tag('price_rule[price]') %>元
+        <%= t('views.defaults.game.of')%>
+        <%= time_select :price_rule, :start_time %> 
+        <%= t('views.defaults.game.to')%>
+        <%= time_select :price_rule, :end_time %>
+        <%= t('views.defaults.game.price_is')%>
+        <%= text_field_tag('price_rule[price]') %>
+        <%= t('views.defaults.game.yuan')%>
         <% court = Court.find(@game.court_id) %>
         <%if court.reservation_type.according_time?%>
-          <%=court.min_unit%> 小时
+          <%=court.min_unit%> 
+          <%= t('views.defaults.game.every_hour')%>
         <%else %>
-          <%=court.min_unit%>人次
+          <%=court.min_unit%>
+          <%= t('views.defaults.game.every_people')%>
         <%end%>
       </div >
     </div>
@@ -86,6 +102,51 @@
           <%else%>
             <%= t('views.defaults.game.reservation_false')%>
           <%end%>
+        </td>
+      </tr>
+      <tr>
+        <td><%= GamePriceRule.model_name.human%></td>
+        <td>
+        <% @game.game_price_rules.all.each do |game_price_rule| %>
+          <% if game_price_rule.rule_type == '00' %>
+             <%= t('views.defaults.game.every_week')%>
+             <% case game_price_rule.week_value%>
+                <%when 1%> 
+                  周一
+                <%when 2%> 
+                  周二
+                <%when 3%> 
+                  周三
+                <%when 4%> 
+                  周四
+                <%when 5%> 
+                  周五
+                <%when 6%> 
+                  周六
+                <%when 7%> 
+                  周日
+             <%end%>
+          <%else%>
+             <%= game_price_rule.date_value %> 
+          <%end%>
+          <%= t('views.defaults.game.of')%>
+          <%= game_price_rule.start_time.strftime("%H:%M") %> 
+          <%= t('views.defaults.game.to')%>
+          <%= game_price_rule.end_time.strftime("%H:%M") %> 
+          <%= t('views.defaults.game.price_is')%>
+          <%= game_price_rule.price %>
+          <%= t('views.defaults.game.yuan')%>
+          <% court = Court.find(@game.court_id) %>
+          <%if court.reservation_type.according_time?%>
+               <%=court.min_unit%> 
+                 <%= t('views.defaults.game.every_hour')%>
+             <%else %>
+                <%=court.min_unit%>
+                <%= t('views.defaults.game.every_people')%>
+          <%end%>
+          <%= link_to t('views.defaults.actions.destroy'), :controller => "games",:action => "delete_game_price_rule", :price_rule_id => game_price_rule.id, :confirm => t('activemodel.confirm.destroy') %>
+          </p>
+        <%end%>
         </td>
       </tr>
     </tbody>

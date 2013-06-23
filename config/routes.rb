@@ -62,9 +62,11 @@ Wanerbu::Application.routes.draw do
       resources :games, :except => [:index] do
         member do
           post :new_price_rule
+          post :new_reservation_rule
         end
       end
       match 'games/delete_game_price_rule/:price_rule_id' => 'games#delete_game_price_rule',:via=>:get
+      match 'games/delete_game_reservation_rule/:reservation_rule_id' => 'games#delete_game_reservation_rule',:via=>:get
       resources :game_reports, :only => [:index]
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529150411) do
+ActiveRecord::Schema.define(:version => 20130623073718) do
 
   create_table "admin_roles", :force => true do |t|
     t.integer "admin_id", :null => false
@@ -92,6 +92,20 @@ ActiveRecord::Schema.define(:version => 20130529150411) do
   end
 
   add_index "game_price_rules", ["game_id"], :name => "index_game_price_rules_on_game_id"
+
+  create_table "game_reservation_rules", :force => true do |t|
+    t.integer  "game_id"
+    t.string   "rule_type",       :limit => 2, :default => "00", :null => false
+    t.integer  "week_value",      :limit => 1
+    t.date     "date_value"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.boolean  "can_reservation"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "game_reservation_rules", ["game_id"], :name => "index_game_reservation_rules_on_game_id"
 
   create_table "games", :force => true do |t|
     t.integer  "court_id"

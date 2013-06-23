@@ -1,4 +1,4 @@
-class CreateGames < ActiveRecord::Migration
+lass CreateGames < ActiveRecord::Migration
   def change
     create_table :games do |t|
       t.integer :court_id

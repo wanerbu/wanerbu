@@ -1,12 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 1
   court_id: 1
-  name: MyString
+  name: game one
   sort: 1
   default_price: 1.5
+  can_reservation: true
 two:
+  id: 2
   court_id: 2
-  name: MyString
+  name: game two
   sort: 1
   default_price: 1.5
+  can_reservation: false

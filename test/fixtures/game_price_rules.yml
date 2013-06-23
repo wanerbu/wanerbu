@@ -10,7 +10,7 @@ one:
   price: 1.5
 
 two:
-  game_id: 1
+  game_id: 2
   rule_type: '00' 
   week_value: 1
   date_value: 2013-05-29

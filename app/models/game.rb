@@ -1,6 +1,7 @@
 class Game < ActiveRecord::Base
   attr_accessible :court_id, :default_price, :name, :sort,:can_reservation
   has_many :game_price_rules, :dependent => :destroy
+  has_many :game_reservation_rules, :dependent => :destroy
   # validations
   validates :court_id, 
     :presence => true

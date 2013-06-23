@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rule_type: MyString
+  week_value: 1
+  data_value: 2013-06-23
+  start_time: 2013-06-23 15:33:26
+  end_time: 2013-06-23 15:33:26
+  can_reservation: false
+
+two:
+  rule_type: MyString
+  week_value: 1
+  data_value: 2013-06-23
+  start_time: 2013-06-23 15:33:26
+  end_time: 2013-06-23 15:33:26
+  can_reservation: false

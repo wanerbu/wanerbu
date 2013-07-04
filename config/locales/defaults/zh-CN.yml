@@ -119,6 +119,10 @@ zh-CN:
       too_long: 过长（最长为 %{count} 个字符）
       too_short: 过短（最短为 %{count} 个字符）
       wrong_length: 长度非法（必须为 %{count} 个字符）
+      carrierwave_processing_error: 不能调整图片大小
+      carrierwave_integrity_error: 不是一个图片
+      carrierwave_download_error: 不能下载图片
+      extension_white_list_error: 文件类型错误
     template:
       body: 如下字段出现错误：
       header:

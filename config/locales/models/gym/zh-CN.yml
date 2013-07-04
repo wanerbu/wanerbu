@@ -13,6 +13,7 @@
         status: "状态"
         history_log: "历史记录"
         reason: "理由"
+        logo: "场馆标识"
     errors:
       models:
         gym:

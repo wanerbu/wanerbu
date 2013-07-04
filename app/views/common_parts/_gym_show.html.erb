@@ -2,6 +2,10 @@
   <table class="table table-bordered" style="width: 100%;">
     <tbody>
       <tr>
+        <td><%= Gym.human_attribute_name(:logo) %></td>
+        <td><%= image_tag @gym.logo_url(:thumb).to_s %></td>
+      </tr>
+      <tr>
         <td><%= Gym.human_attribute_name(:name) %></td>
         <td><%= @gym.name -%></td>
       </tr>

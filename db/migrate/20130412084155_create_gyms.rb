@@ -12,6 +12,7 @@ class CreateGyms < ActiveRecord::Migration
       t.string   :status,                 :null => false, :default => "00"
       t.string   :reason,       limit: 100
       t.text     :history_log
+      t.string   :logo
       t.datetime :deleted_at
 
       t.timestamps

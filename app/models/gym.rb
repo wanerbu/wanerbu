@@ -1,7 +1,8 @@
 class Gym < ActiveRecord::Base
   #Enumerize使用
   extend Enumerize
- attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:score,:status,:deleted_at,:user_id,:history_log,:reason
+ attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:score,:status,:deleted_at,:user_id,:history_log,:reason,:logo
+  mount_uploader :logo, ImageUploader
   #Enumerize使用
   enumerize :status, in: Wanerbu::CodeDefine::GYM_STATUS, default: :draft
   # 如果是逻辑删除，删除后该用户将不能再建场馆因为user_id uniquness 验证失败

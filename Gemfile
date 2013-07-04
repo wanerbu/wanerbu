@@ -62,3 +62,6 @@ gem "enumerize", "~>0.5.1"
 
 # 权限管理包
 gem "cancan"
+# 文件upload
+gem "rmagick"
+gem "carrierwave"

@@ -1,7 +1,8 @@
-  <%= semantic_form_for([:user, :master, @gym], :html => { :class => 'form-horizontal' }) do |f| %>
+<%= semantic_form_for([:user, :master, @gym], :html => { :class => 'form-horizontal',:multipart => true }) do |f| %>
     <%= f.inputs  do %>
       <%= f.input :name, :required => true, :input_html => {:readonly => (@gym.status.approved? or @gym.status.released? or @gym.status.suspended?),:class=> ""}%>
       <%= f.input :intro, :required => true, :input_html => { :class => "" } %>
+      <%= f.input :logo, :as =>:file%>
       <%= f.input :address, :required => true, :input_html => {:readonly => (@gym.status.approved? or @gym.status.released? or @gym.status.suspended?),:class=> ""}%>
       <%= f.input :telephone, :required => true,:input_html => { :class => "" } %>
       <input id="gym_open_time_1i" type="hidden" value="2001" name="gym[open_time(1i)]">

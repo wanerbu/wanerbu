@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(:version => 20130623073718) do
     t.string   "status",                     :default => "00", :null => false
     t.string   "reason",      :limit => 100
     t.text     "history_log"
+    t.string   "logo"
     t.datetime "deleted_at"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false

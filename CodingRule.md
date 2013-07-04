@@ -191,3 +191,8 @@ cancan默认使用current_user来获得当前的用户，可以通过在controll
 * 默认cancan加载的资源（resource）必须是存在的model类，如果只想对单纯的controller添加权限控制，可以参考：  https://github.com/ryanb/cancan/issues/22
 
 
+#### 关于使用CarrierWave uplaod file
+1. https://github.com/carrierwaveuploader/carrierwave
+2. 如果bundle install rmgick 时出现类似Can't find Magick-config的错误，需先apt-get install libmagickwand-dev
+
+

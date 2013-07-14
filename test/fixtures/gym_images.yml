@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gym_id: 1
+  image: MyString
+  intro: MyString
+
+two:
+  gym_id: 1
+  image: MyString
+  intro: MyString

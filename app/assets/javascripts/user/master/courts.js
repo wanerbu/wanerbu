@@ -1,9 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-#TODO 页面加载时初始化未实现
+//# Place all the behaviors and hooks related to the matching controller here.
+//# All this logic will automatically be available in application.js.
+//# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+//#TODO 页面加载时初始化未实现
 jQuery(function($) {
-  if $("#court_sport_id").change(function() {
+  $("#court_sport_id").change(function() {
     var sport = $('select#court_sport_id :selected').val();
     if(sport == "") sport="0";
     jQuery.get('edit_court_properties_select/' + sport,

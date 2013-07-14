@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130623073718) do
+ActiveRecord::Schema.define(:version => 20130713083538) do
 
   create_table "admin_roles", :force => true do |t|
     t.integer "admin_id", :null => false
@@ -118,6 +118,16 @@ ActiveRecord::Schema.define(:version => 20130623073718) do
   end
 
   add_index "games", ["court_id"], :name => "index_games_on_court_id"
+
+  create_table "gym_images", :force => true do |t|
+    t.integer  "gym_id"
+    t.string   "image"
+    t.string   "intro",      :limit => 2
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "gym_images", ["gym_id"], :name => "index_gym_images_on_gym_id"
 
   create_table "gyms", :force => true do |t|
     t.string   "name",        :limit => 50,  :default => "",   :null => false

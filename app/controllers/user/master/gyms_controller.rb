@@ -32,13 +32,9 @@ class User::Master::GymsController <  User::UserBaseController
     @gym.history_log = generate_log("create") 
     @user_role = UserRole.new
     @user_role.user_id = current_user.id
-    #upload_logo_io = params[:gym][:logo]
     #TODO hardcode需要改进
     @user_role.role_id =  Wanerbu::Common::GYM_MANAGER_ROLE_ID
     if @gym.save && @user_role.save
-     #  File.open(Rails.root.join('public', 'uploads', upload_logo_io.original_filename), 'wb') do |file|
-      #       file.write(upload_logo_io.read)
-      # end
       redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.create", model: Gym.model_name.human)
     else
       flash[:alert] = I18n.t("activemodel.errors.create", model: Gym.model_name.human)
@@ -114,6 +110,18 @@ class User::Master::GymsController <  User::UserBaseController
       render :index
     end
   end
+  #upload image
+  def upload_image
+    @gym_image = GymImage.new(params[:gym_image])
+    puts params[:gym_image]
+    if @gym_image.save 
+      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.create", model: GymImage.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.create", model: GymImage.model_name.human)
+      render "new"
+    end
+  end
+
   #生成历史记录
   def generate_log(action)
     if @gym.history_log.nil?

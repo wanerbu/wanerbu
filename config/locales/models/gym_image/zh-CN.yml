@@ -1,0 +1,12 @@
+﻿zh-CN:
+  activerecord:
+    models:
+      gym_image: 场馆照片
+    attributes:
+      gym_image: 
+        image: "场馆照片"
+        intro: "照片介绍"
+    errors:
+      models:
+        gym_image:
+          attributes:

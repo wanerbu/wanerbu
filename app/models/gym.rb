@@ -12,6 +12,7 @@ class Gym < ActiveRecord::Base
   #添加association
   belongs_to :user
   has_many   :courts
+  has_many   :gym_images
   # validations
   validates :name, 
     :presence => true,

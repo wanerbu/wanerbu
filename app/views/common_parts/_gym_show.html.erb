@@ -50,6 +50,17 @@
           <%end%>
         </td>
       </tr>
+      <tr>
+        <td><%= GymImage.human_attribute_name(:image) %></td>
+        <td>
+         <% @gym.gym_images.all.each do |gym_image| %>
+            <%= image_tag gym_image.image_url(:thumb).to_s %>
+            </p>
+            <%= gym_image.intro.to_s %>
+            </p>
+         <%end%>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

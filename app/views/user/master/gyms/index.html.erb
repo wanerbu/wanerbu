@@ -20,7 +20,26 @@
       <% if can? :suspend, @gym%>
         <%= link_to t('views.defaults.actions.suspend'), suspend_user_master_gym_path(@gym), {method: :post, class: "btn btn-primary"} %>
       <%end%>
+    <button type="button" data-toggle="modal"class= "btn btn-primary" data-target="#uploadImageModal"><%= t('views.defaults.actions.upload_image')%></button>
   </div>
   <div class='wb-clear-both'></div>
 </div>
 <%= render 'common_parts/gym_show' -%>
+<!-- upload image Modal -->
+<div id="uploadImageModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="uploadImageModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="uploadImageModalLabel"><%=t('views.defaults.actions.upload_image') %></h3>
+    </div>
+    <%= form_tag({:controller => "gyms", :action => "upload_image"}, {:method => "post", multipart: true}) do %>
+    <div class="modal-body">
+      <%= hidden_field_tag 'gym_image[gym_id]', @gym.id %>
+      <%= file_field_tag 'gym_image[image]' %>
+      <%= text_field_tag 'gym_image[intro]' %>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true"><%= t('views.defaults.actions.cancel') %></button>
+        <%= submit_tag(t('views.defaults.actions.upload_image')) %>
+    </div>
+    <% end %>
+</div>

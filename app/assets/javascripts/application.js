@@ -17,14 +17,3 @@
 // Include all twitter's javascripts
 //= require twitter/bootstrap
 //
-jQuery(function($) {
-  $("#court_sport_id").change(function() {
-    var sport = $('select#court_sport_id :selected').val();
-    if(sport == "") sport="0";
-    jQuery.get('edit_court_properties_select/' + sport,
-    function(data){
-     $("#courtProperties").html(data);
-                  })
-   return false;
-   });
- })

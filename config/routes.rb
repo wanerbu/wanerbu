@@ -56,6 +56,7 @@ Wanerbu::Application.routes.draw do
           post :suspend
         end
       end
+      match 'gyms/upload_image' => 'gyms#upload_image',:via => :post
       resources :courts, :except => [:index]
       resources :court_reports, :only => [:index]
       match 'courts/edit_court_properties_select/:sport_id' => 'courts#edit_court_properties_select',:via=>:get

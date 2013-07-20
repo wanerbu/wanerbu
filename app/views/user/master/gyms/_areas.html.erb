@@ -1,0 +1,5 @@
+<% if !areas.blank? %>
+      <%= collection_select(:gym, :area_id, areas.all, :id, :area) %>
+<% else %>
+<% end %>
+

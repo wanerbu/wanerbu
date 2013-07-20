@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 610101
+  area: 市辖区
+  city_id: 610100
+
+two:
+  id: 610103
+  area: 碑林区
+  city_id: 610100

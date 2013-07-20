@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130713083538) do
+ActiveRecord::Schema.define(:version => 20130720071936) do
 
   create_table "admin_roles", :force => true do |t|
     t.integer "admin_id", :null => false
@@ -57,6 +57,20 @@ ActiveRecord::Schema.define(:version => 20130713083538) do
   add_index "admins", ["login_id"], :name => "index_admins_on_login_id", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
   add_index "admins", ["unlock_token"], :name => "index_admins_on_unlock_token", :unique => true
+
+  create_table "areas", :force => true do |t|
+    t.integer  "city_id"
+    t.string   "area",       :limit => 20
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  create_table "cities", :force => true do |t|
+    t.integer  "province_id"
+    t.string   "city",        :limit => 20
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
   create_table "court_properties", :force => true do |t|
     t.integer  "court_id"
@@ -130,24 +144,40 @@ ActiveRecord::Schema.define(:version => 20130713083538) do
   add_index "gym_images", ["gym_id"], :name => "index_gym_images_on_gym_id"
 
   create_table "gyms", :force => true do |t|
-    t.string   "name",       :limit => 50,  :default => "",   :null => false
-    t.integer  "user_id"
-    t.text     "intro"
-    t.string   "address",    :limit => 100, :default => "",   :null => false
-    t.string   "telephone",  :limit => 30,  :default => "",   :null => false
-    t.time     "open_time",                                   :null => false
-    t.time     "close_time",                                  :null => false
-    t.float    "score",                     :default => 0.0,  :null => false
-    t.string   "status",                    :default => "00", :null => false
+    t.string   "name",        :limit => 50,  :default => "",   :null => false
+    t.integer  "user_id",                                      :null => false
+    t.text     "intro",                                        :null => false
+    t.integer  "province_id"
+    t.integer  "city_id"
+    t.integer  "area_id"
+    t.string   "address",     :limit => 100, :default => "",   :null => false
+    t.string   "telephone",   :limit => 30,  :default => "",   :null => false
+    t.time     "open_time",                                    :null => false
+    t.time     "close_time",                                   :null => false
+    t.float    "score",                      :default => 0.0,  :null => false
+    t.string   "status",                     :default => "00", :null => false
+    t.string   "reason",      :limit => 100
+    t.text     "history_log"
+    t.string   "logo"
     t.datetime "deleted_at"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
+
+  add_index "gyms", ["user_id"], :name => "index_gyms_on_user_id", :unique => true
 
   create_table "properties", :force => true do |t|
     t.string   "name",       :limit => 20, :null => false
-    t.string   "unit",       :limit => 6,  :null => false
+    t.string   "unit",       :limit => 6
     t.string   "intro",      :limit => 50
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "properties", ["name"], :name => "index_properties_on_name", :unique => true
+
+  create_table "provinces", :force => true do |t|
+    t.string   "province",   :limit => 20
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
@@ -167,11 +197,12 @@ ActiveRecord::Schema.define(:version => 20130713083538) do
     t.integer  "sport_id"
     t.integer  "property_id"
     t.string   "default_value", :limit => 20
-    t.integer  "scope",         :limit => 1
-    t.boolean  "required"
+    t.integer  "scope",         :limit => 9
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
+
+  add_index "sport_properties", ["sport_id", "property_id"], :name => "index_sport_properties_on_sport_id_and_property_id", :unique => true
 
   create_table "sports", :force => true do |t|
     t.string   "name",       :limit => 50, :null => false
@@ -180,6 +211,8 @@ ActiveRecord::Schema.define(:version => 20130713083538) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  add_index "sports", ["name"], :name => "index_sports_on_name", :unique => true
 
   create_table "user_roles", :force => true do |t|
     t.integer  "user_id",    :null => false

@@ -57,9 +57,14 @@ Wanerbu::Application.routes.draw do
         end
       end
       match 'gyms/upload_image' => 'gyms#upload_image',:via => :post
+      match 'gyms/get_cities_by_province_id/:province_id' => 'gyms#get_cities_by_province_id',:via=>:get
+      match 'gyms/:id/get_cities_by_province_id/:province_id' => 'gyms#get_cities_by_province_id',:via=>:get
+      match 'gyms/get_areas_by_city_id/:city_id' => 'gyms#get_areas_by_city_id',:via=>:get
+      match 'gyms/:id/get_areas_by_city_id/:city_id' => 'gyms#get_areas_by_city_id',:via=>:get
       resources :courts, :except => [:index]
       resources :court_reports, :only => [:index]
       match 'courts/edit_court_properties_select/:sport_id' => 'courts#edit_court_properties_select',:via=>:get
+      match 'courts/:id/edit_court_properties_select/:sport_id' => 'courts#edit_court_properties_select',:via=>:get
       resources :games, :except => [:index] do
         member do
           post :new_price_rule

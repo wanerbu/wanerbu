@@ -9,6 +9,7 @@ one:
   name: Gym1
   user_id: 1
   intro: Gym1 intro
+  logo: test02.jpg
   address: Gym1 address
   telephone: 111111111
   open_time: <%= Time.now %>

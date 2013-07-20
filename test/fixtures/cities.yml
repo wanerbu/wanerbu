@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 610100
+  city: '西安市'
+  province_id: 610000
+two:
+  id: 610200
+  city: '铜川市'
+  province_id: 610000
+three:
+  id: 310100
+  city: '市辖区'
+  province_id: 310000
+four:
+  id: 310200
+  city: '县'
+  province_id: 310000

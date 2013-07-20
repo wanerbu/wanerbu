@@ -1,7 +1,7 @@
 class Gym < ActiveRecord::Base
   #Enumerize使用
   extend Enumerize
- attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:score,:status,:deleted_at,:user_id,:history_log,:reason,:logo
+ attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:score,:status,:deleted_at,:user_id,:history_log,:reason,:logo,:province_id,:city_id,:area_id
   mount_uploader :logo, ImageUploader
   #Enumerize使用
   enumerize :status, in: Wanerbu::CodeDefine::GYM_STATUS, default: :draft

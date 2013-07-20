@@ -9,7 +9,7 @@ class User::Master::GymsController <  User::UserBaseController
 
   # 对于每一个action进行权限检查,除了新建
   load_and_authorize_resource 
-  skip_authorize_resource :only => [:new,:create] 
+  skip_authorize_resource :only => [:new,:create,:get_cities_by_province_id,:get_areas_by_city_id] 
 
   def index
     # TODO Tom 存在性的check
@@ -121,7 +121,14 @@ class User::Master::GymsController <  User::UserBaseController
       render "new"
     end
   end
-
+  def get_cities_by_province_id
+    cities = City.where(:province_id=>params[:province_id]) unless params[:province_id].blank?
+    render :partial => "cities",:locals => { :cities => cities }
+  end
+  def get_areas_by_city_id
+    areas = Area.where(:city_id=>params[:city_id]) unless params[:city_id].blank?
+    render :partial => "areas",:locals => { :areas => areas }
+  end
   #生成历史记录
   def generate_log(action)
     if @gym.history_log.nil?

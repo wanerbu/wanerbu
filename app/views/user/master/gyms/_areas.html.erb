@@ -1,5 +1,9 @@
 <% if !areas.blank? %>
-      <%= collection_select(:gym, :area_id, areas.all, :id, :area) %>
+  <% if @gym == nil %>
+    <%= collection_select(:gym, :area_id, areas.all, :id, :area) %>
+  <% else %>
+    <%= collection_select(:gym, :area_id, areas.all, :id, :area,{:selected => @gym.area_id}) %>
+  <% end %>
 <% else %>
 <% end %>
 

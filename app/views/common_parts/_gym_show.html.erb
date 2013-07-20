@@ -16,7 +16,7 @@
       <tr>
       <tr>
         <td><%= Gym.human_attribute_name(:address) %></td>
-        <td><%= @gym.address -%></td>
+        <td><%= Province.find(@gym.province_id).province + City.find(@gym.city_id).city + Area.find(@gym.area_id).area + @gym.address -%></td>
       </tr>
         <td><%= Gym.human_attribute_name(:telephone) %></td>
         <td><%= @gym.telephone -%></td>

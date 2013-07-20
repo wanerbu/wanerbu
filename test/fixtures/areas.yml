@@ -2,10 +2,29 @@
 
 one:
   id: 610101
-  area: 市辖区
+  area: 高薪区
   city_id: 610100
-
 two:
   id: 610103
   area: 碑林区
   city_id: 610100
+three:
+  id: 610201
+  area: 真货区
+  city_id: 610200
+four:
+  id: 610203
+  area: 假货区
+  city_id: 610200
+five:
+  id: 310101
+  area: 静安区
+  city_id: 310100
+six:
+  id: 310103
+  area: 浦东区
+  city_id: 310100
+severn:
+  id: 310201
+  area: 聪明县
+  city_id: 310200

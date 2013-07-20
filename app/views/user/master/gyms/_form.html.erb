@@ -4,12 +4,13 @@
       <%= f.input :name, :required => true, :input_html => {:readonly => (@gym.status.approved? or @gym.status.released? or @gym.status.suspended?),:class=> ""}%>
       <%= f.input :intro, :required => true, :input_html => { :class => "" } %>
       <%= f.input :logo, :as =>:file,:required => true%>
-      <%= f.input :address, :required => true, :input_html => {:readonly => (@gym.status.approved? or @gym.status.released? or @gym.status.suspended?),:class=> ""}%>
+      <%#= f.input :address, :required => true, :input_html => {:readonly => (@gym.status.approved? or @gym.status.released? or @gym.status.suspended?),:class=> ""}%>
       <%= collection_select(:gym, :province_id, Province.all, :id, :province) %>
-       <div id="cities">
-       </div>  
-       <div id="areas">
-       </div>  
+       <span id="cities">
+       </span>  
+       <span id="areas">
+       </span>
+      <%= text_field_tag 'address', @gym.address %>  
       <%= f.input :telephone, :required => true,:input_html => { :class => "" } %>
       <input id="gym_open_time_1i" type="hidden" value="2001" name="gym[open_time(1i)]">
       <input id="gym_open_time_2i" type="hidden" value="01" name="gym[open_time(2i)]">

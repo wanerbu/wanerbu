@@ -3,7 +3,13 @@
 <%= f.inputs :name => t('views.defaults.label.base_info') do %>
   <!--新建-->
   <% if @court.new_record? %>
-    <%= f.input :sport_id, :label => Sport.model_name.human, :required => true, :as => :select,:collection => Sport.all %>
+    <%#= f.input :sport_id, :label => Sport.model_name.human, :required => true, :as => :select,:collection => Sport.all,:selected => Sport.first.id %>
+    <li id="court_sport_id_input" class="select input required">
+      <label class=" label" for="court_sport_id">
+        <%= Sport.model_name.human %><abbr title="required">*</abbr>
+      </label>
+      <%= collection_select(:court, :sport_id, Sport.all, :id, :name) %>
+    </li>
     <%= f.input :reservation_type, :as => :radio %>
     <!--异步请求返回所选项目的属性显示层-->
     <div id="courtProperties">

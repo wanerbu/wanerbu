@@ -16,7 +16,13 @@
       <tr>
       <tr>
         <td><%= Gym.human_attribute_name(:address) %></td>
-        <td><%= Province.find(@gym.province_id).province + City.find(@gym.city_id).city + Area.find(@gym.area_id).area + @gym.address -%></td>
+        <td>
+          <% if @gym.province_id != nil and @gym.city_id != nil and @gym.area_id != nil%>
+            <%= Province.find(@gym.province_id).province + City.find(@gym.city_id).city + Area.find(@gym.area_id).area + @gym.address -%>
+          <%else%>
+            <%= @gym.address %>
+          <%end%>
+        </td>
       </tr>
         <td><%= Gym.human_attribute_name(:telephone) %></td>
         <td><%= @gym.telephone -%></td>

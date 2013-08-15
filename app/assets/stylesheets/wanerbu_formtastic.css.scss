@@ -62,4 +62,8 @@ abbr[title="required"] {
   font-size: 1.5em;
 }
 
-
+// text area的宽度和高度的修改
+.formtastic .text textarea {
+  width: 45%;
+  height: 100px;
+}

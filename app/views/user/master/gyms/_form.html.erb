@@ -1,22 +1,22 @@
 <%= javascript_include_tag "user/master/gyms.js" %>
 <%= semantic_form_for([:user, :master, @gym], :html => { :class => 'form-horizontal',:multipart => true }) do |f| %>
     <%= f.inputs  do %>
-      <%= f.input :name, :required => true, :input_html => {:readonly => (@gym.status.approved? or @gym.status.released? or @gym.status.suspended?),:class=> ""}%>
-      <%= f.input :intro, :required => true, :input_html => { :class => "" } %>
+      <%= f.input :name, :required => true, :input_html => {:readonly => (@gym.status.approved? or @gym.status.released? or @gym.status.suspended?)}%>
+      <%= f.input :intro, :required => true %>
       <%= f.input :logo, :as =>:file,:required => true%>
       <%#= f.input :address, :required => true, :input_html => {:readonly => (@gym.status.approved? or @gym.status.released? or @gym.status.suspended?),:class=> ""}%>
      <li id="gym_province_id_input" class="select input required">
        <label class=" label" for="gym_province_id">
         <%= Gym.human_attribute_name(:address) %><abbr title="required">*</abbr>
        </label>
-       <%= collection_select(:gym, :province_id, Province.all, :id, :province) %>
+       <%= collection_select(:gym, :province_id, Province.all, :id, :province,{:prompt=>true},{:class =>"span1"}) %>
        <span id="cities">
        </span>  
        <span id="areas">
        </span>
        <%= text_field_tag 'address', @gym.address %>  
      </li>
-      <%= f.input :telephone, :required => true,:input_html => { :class => "" } %>
+      <%= f.input :telephone, :required => true %>
       <input id="gym_open_time_1i" type="hidden" value="2001" name="gym[open_time(1i)]">
       <input id="gym_open_time_2i" type="hidden" value="01" name="gym[open_time(2i)]">
       <input id="gym_open_time_3i" type="hidden" value="01" name="gym[open_time(3i)]">

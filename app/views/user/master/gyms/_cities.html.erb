@@ -1,9 +1,9 @@
 <%= javascript_include_tag "user/master/cities.js" %>
 <% if !cities.blank? %>
   <% if @gym == nil %>
-    <%= collection_select(:gym, :city_id, cities.all, :id, :city) %>
+    <%= collection_select(:gym, :city_id, cities.all, :id, :city,{:class =>"span1"}) %>
   <% else %>
-    <%= collection_select(:gym, :city_id, cities.all, :id, :city,{:selected => @gym.city_id}) %>
+    <%= collection_select(:gym, :city_id, cities.all, :id, :city,{:selected => @gym.city_id},{:class =>"span1"}) %>
   <% end %>
 <% else %>
 <% end %>

@@ -30,3 +30,27 @@ $tableBackgroundHover: lightgray;
   background-color: $linkHoverColor;
   color: #ffffff;
 }
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+// 导航的自定义
+.nav-header .nav-list a {
+  padding-left: 30px;
+}
+
+.nav-header > a {
+  font-weight: bold;
+  border-bottom: 1px solid rgb(218, 208, 208);
+}
+
+.nav-header.active > a {
+  border-left: 3px solid red;
+}
+
+.nav-header.active .active a {
+  background-color: $linkColor;
+  color: white;
+}
+

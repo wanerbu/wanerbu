@@ -39,18 +39,18 @@
       <%= render 'layouts/admin/top_fixed_nav' -%>
     </div>
     <div>
-      <div class="container-fluid">
-        <div class="row-fluid">
-          <div class="span2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
             <!-- 左边的主菜单 -->
             <%= render 'layouts/admin/left_nav' -%>
-          </div><!--/span-->
-          <div class="span10">
-            <div class="span12">
+          </div>
+          <div class="col-md-10">
+            <div class="col-md-12">
               <!-- 主工作区的顶部菜单 -->
               <%= yield :sub_menu -%>
             </div>
-            <div id='main-content' class="span12">
+            <div id='main-content' class="col-md-12">
 
               <!-- 提示信息或者错误信息 -->
               <%= render 'layouts/admin/info_or_error_msg' -%>
@@ -58,12 +58,12 @@
               <!-- 主工作区内容 -->
               <%= yield %>
             </div>
-          </div><!--/span-->
+          </div>
         </div><!--/row-->
 
-      </div><!--/.fluid-container-->
+      </div><!--/.container-->
       <br>
-      <div class="container-fluid">
+      <div class="container">
         <!-- 页脚 -->
         <%= render 'layouts/admin/footer' -%>
       </div>

@@ -4,11 +4,11 @@
     <% end -%>
 
     <%= f.inputs :name => t('activerecord.attributes.role.function_codes') do %>
-      <table class='span12 table table-condensed'>
+      <table class='col-md-12 table table-condensed'>
           <tr></tr>
           <% Function::FUNCTION_GROUPS.each do |group| %>
-            <tr class='span12'>
-              <td class='span3'><%= group[:title] %></td>
+            <tr class='col-md-12'>
+              <td class='col-md-3'><%= group[:title] %></td>
               <td>
                 <ul style="list-style: none">
                 <% group[:functions].each do |func| %>

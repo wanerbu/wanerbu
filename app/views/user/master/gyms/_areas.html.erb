@@ -1,8 +1,8 @@
 <% if !areas.blank? %>
   <% if @gym == nil %>
-    <%= collection_select(:gym, :area_id, areas.all, :id, :area,{:class =>"span1"}) %>
+    <%= collection_select(:gym, :area_id, areas.all, :id, :area,{:class =>"col-md-1"}) %>
   <% else %>
-    <%= collection_select(:gym, :area_id, areas.all, :id, :area,{:selected => @gym.area_id},{:class =>"span1"}) %>
+    <%= collection_select(:gym, :area_id, areas.all, :id, :area,{:selected => @gym.area_id},{:class =>"col-md-1"}) %>
   <% end %>
 <% else %>
 <% end %>

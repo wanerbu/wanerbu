@@ -5,12 +5,12 @@
       <%= f.input :sort %>
     <% end -%>
     <%= f.inputs :name => t('activerecord.attributes.sport.default_properties') do %>
-      <table class='span12 table table-condensed'>
+      <table class='col-md-12 table table-condensed'>
           <tr></tr>
       <% Property.all.each do |property| -%>
               <%= hidden_field_tag 'sport[sport_properties_attributes][][id]', 
                   (b = @sport.sport_properties.where('property_id = ?', property.id).first) ? b.id : nil -%>
-            <tr class='span12'>
+            <tr class='col-md-12'>
               <td>
               <%= check_box_tag 'sport[sport_properties_attributes][][property_id]', property.id, @sport.properties.include?(property) -%>
               </td>

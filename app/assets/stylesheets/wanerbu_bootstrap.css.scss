@@ -18,16 +18,15 @@ $tableBackgroundHover: lightgray;
 
 // import original bootstrap
 @import "twitter/bootstrap";
-// @import "twitter/bootstrap-responsive";
 
 // tab菜单的自定义
-.nav-tabs .active a {
+.nav-tabs li.active a {
   background-color: $linkColor;
   color: #ffffff;
 }
 
-.nav-tabs .active a:hover,
-.nav-tabs .active a:focus {
+.nav-tabs li.active a:hover,
+.nav-tabs li.active a:focus {
   background-color: $linkHoverColor;
   color: #ffffff;
 }

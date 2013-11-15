@@ -1,5 +1,7 @@
 Wanerbu::Application.routes.draw do
 
+  get "gym/gym_home"
+
   # 普通用户认证部分
   devise_for :users,
              :controllers => {:sessions => 'user/users/sessions', :registrations => 'user/users/registrations'},

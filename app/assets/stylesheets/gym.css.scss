@@ -1,0 +1,64 @@
+// Place all the styles related to the gym controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@charset "UTF-8";
+
+.dl-horizontal dd { margin-left: 80px;}
+dt,dd {line-height: 25px;}
+
+.ulist{margin-bottom:20px;font:12px/22px}
+.ulist li{line-height:24px;padding:3px 0 5px 0; list-style:none; margin:0px} 
+.ulist li a{white-space:nowrap}
+
+.typeTitle{color:#999;position:absolute;left:0;top:0;line-height:24px}
+.dlTy{padding-left:0px;position:relative}
+
+.condition a{padding:3px 5px;margin:02px;color:#666}
+.condition a.selected{background:#1885ae;color:#fff}
+.condition a:hover{background:#1885ae;color:#fff;text-decoration:none}
+
+ul.nav-tabs li a{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.selectedMenus {
+  background-color: #F4F4F4;
+  height: 55px;
+  line-height: 28px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+.nav {
+  margin-bottom: 0;
+}
+.ui_media .ui_pic{margin-right:10px;float:left}
+
+.sportList a{color:#333}
+.sportList .title span{font:14px/26px verdana,Arial;font-weight:bold}
+
+.sportList ul li.effectLi{padding:0 0 20px;border-bottom:1px solid #f4f4f4;margin-bottom:20px;position:relative;display:inline-block}
+
+.ui_text{color:#999}
+.sportList .ui_text p b{font-size:12px;margin-right:10px;color:#1885ae}
+
+.grade{margin:0 0 0 9px;font:12px/22px verdana,Arial,Helvetica,'ËÎÌå',sans-serif}
+.grade sub{font-size:24px;color:#f60;font-style:italic;vertical-align:middle}
+.grade sup{color:#f60;font-size:14px;font-style:italic;line-height:20px;margin-left:-4px;vertical-align:3px}
+
+.ui_right h2{
+  font-size: 16px;
+  font-weight: bold;
+  display: inline;
+}
+
+.hot_activity dt {
+  width: 100px;
+}
+.hot_activity dd {
+  margin-left: 106px;
+}
+

@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+/*标签级别前台共通样式*/
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,bloc
+kquote,th,td,ins,img {
+  margin:0;padding:0;word-wrap:break-word
+}
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  font:12px/22px verdana,Arial,Helvetica,'宋体',sans-serif;color:#333;
+  background-color: #e5e5e5;
+}
+ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*常量*/
+.mt10{margin-top:10px}
+.hotcmt{margin-top:20px}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.cSport{color:#39c!important} 
+
+
+
+/*class id 级别前台共通样式*/
+.container{
+  width:970px;
+  background-color:white; margin-top:0px;
+}
+.ui_row {
+  width:100%;
+  float:left;
+}
+.ui_left {
+  width:65%;
+  float:left;
+}
+.ui_right{
+  width:30%;
+  float:left;
+  margin-left:5%;
+}
+
+.title{
+  font-size: 16px;
+}
+
+#page{font-size:12px;height:21px;width:auto;margin:20px auto;float:left}
+#page a,#page strong{float:left;margin:0 1px}
+#page a{display:inline-block;height:21px;line-height:21px;padding:0 8px}
+#page a:hover{background:#f60;color:#fff;text-decoration:none}
+#page .on,#page a.on:hover{background:#c30;color:#fff}
+#page a{color:#39c}
+#page a:hover{background:#3ae}
+#page .on,#page a.on:hover{background:#1885ae}

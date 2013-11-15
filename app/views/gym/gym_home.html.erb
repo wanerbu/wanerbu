@@ -1,0 +1,226 @@
+<%= stylesheet_link_tag "gym" %>
+<%= stylesheet_link_tag "front_common" %>
+<div class='ui_row'>
+  <div class='ui_left'>
+    <div class="tile_condition">
+      <ul class = "ulist">
+        <li>
+        <strong class="title">运动场馆</strong>
+        </li>
+        <li>
+        <div class="condition">
+          <dl class="dl-horizontal dlTy">
+            <dt>
+            <span class="typeTitle">选择项目 </span>
+            </dt>
+            <dd>
+            <a  href="javascript:searchPPPV('servicetype','288732');">羽毛球</a>
+            <a  href="javascript:searchPPPV('servicetype','288721');">篮球（场地）</a>
+            <a  href="javascript:searchPPPV('servicetype','91275434');">篮球（人次）</a>
+            <a  href="javascript:searchPPPV('servicetype','288733');">乒乓球</a>
+            <a  href="javascript:searchPPPV('servicetype','288722');">足球</a>
+            </dd>
+          </dl>
+        </div>
+        </li>
+        <li>
+        <div class="condition">
+          <dl class="dl-horizontal dlTy">
+            <dt>
+            <span class="typeTitle">行政区域 </span>
+            </dt>
+            <dd>
+            <a  href="javascript:searchPPPV('countycode','310115');">浦东</a>
+            <a  href="javascript:searchPPPV('countycode','310112');">闵行</a>
+            <a  href="javascript:searchPPPV('countycode','310104');">徐汇</a>
+            <a  href="javascript:searchPPPV('countycode','310105');">长宁</a>
+            <a  href="javascript:searchPPPV('countycode','310107');">普陀</a>
+            <a  href="javascript:searchPPPV('countycode','310101');">黄浦</a>
+            <a  href="javascript:searchPPPV('countycode','310110');">杨浦</a>
+            <a  href="javascript:searchPPPV('countycode','310109');">虹口</a>
+            <a  href="javascript:searchPPPV('countycode','310113');">宝山</a>
+            <a  href="javascript:searchPPPV('countycode','310108');">闸北</a>
+            <a  href="javascript:searchPPPV('countycode','310106');">静安</a>
+            <a  href="javascript:searchPPPV('countycode','310117');">松江</a>
+            <a  href="javascript:searchPPPV('countycode','310118');">青浦</a>
+            <a  href="javascript:searchPPPV('countycode','310114');">嘉定</a>
+            <a  href="javascript:searchPPPV('countycode','310116');">金山</a>
+            <a  href="javascript:searchPPPV('countycode','310120');">奉贤</a>
+            <a  href="javascript:searchPPPV('countycode','310230');">崇明</a>
+            </dd>
+          </dl>
+        </div>
+        </li>
+        <li>
+        <div class="condition">
+          <dl class="dl-horizontal dlTy">
+            <dt>
+            <span class="typeTitle left">名称查询</span>
+            </dt>
+            <dd>
+            <div>
+              <form class="form-search">
+                <input type="text" class="input-medium search-query" placeholder="请输入搜索关键词">
+                <button type="submit" class="btn">查询</button>
+              </form>
+            </div>	
+            </dd>
+          </dl>
+        </div>
+        </li>
+      </ul>
+    </div><!--tile_condition-->
+    <div class="boxtab">
+      <ul class="nav nav-tabs">
+        <li  class="active"  id="dramaInfoBoxTab"><a href="javascript:searchPPPV('booking', '');">全　部</a></li>
+        <li  id="theatraIntruduceTab"><a href="javascript:searchPPPV('booking', 'open');">可预订</a></li>
+      </ul>
+    </div>
+    <div class="selectedMenus">
+      <div class="right">
+        <div class="btn-group">
+          <button class="btn">默认(优先展示可预订场馆)</button>
+          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">默认(优先展示可预订项目)</a></li>
+            <li><a href="#">按评分(由高到低)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="left">
+        <span>
+          共<b class="cSport">26</b>家场馆
+        </span>
+      </div>
+    </div>
+    <div class="sportList" id="gymListArea">
+      <ul>
+        <li class="effectLi sportList" style="width:100%; position:static;">
+        <div class="ui_media">
+          <div class="ui_pic">
+            <a href="one_gym.html" target="_blank" title="田林体育俱乐部">
+              <img src="../../assets/img/blank.gif" alt="田林体育俱乐部" height="90" width="120" style="border:1px solid #f4f4f4; background:url(../../assets/img/gym1.jpg) center center no-repeat #fff; display:block; padding:1px; vertical-align:middle;"/></a>
+            <p class="mt10" style="text-align:center">
+            <button class="btn btn-primary" type="button" >在线预订</button>
+            </p>
+          </div> 
+        </div>
+        <div class="ui_text">
+          <div class="title">
+            <span>
+              <a href="one_gym.html" title="田林体育俱乐部"	target="_blank">田林体育俱乐部</a>
+              <span>
+                <span class="grade" style="display:inline">
+                  <sub style="margin:0;">7</sub>
+                  <sup>.5</sup>
+                </span>
+              </div>
+              <p class="mt10">详细地址：<a href="/sport/sportList.xhtml?countycode=310104" target="_blank">徐汇区</a>钦州路728号(近田林东路)
+              <span class="ffst">[</span><a class="cSport" target="_blank" href="/common/baiduMap.xhtml?id=1276900&tag=sport">地图</a><span class="ffst">]</span>
+              </p>
+              <p class="mt10">联系电话：021-54489574          021-54974676</p>
+              <p class="mt10">经营项目：网球 乒乓球 斯诺克 游泳 保龄球 美式台球 </p>
+            </div>
+            </li>
+            <li class="effectLi sportList" style="width:100%; position:static;">
+            <div class="ui_media">
+              <div class="ui_pic">
+                <a href="one_gym.html" target="_blank" title="田林体育俱乐部">
+                  <img src="../../assets/img/blank.gif" alt="田林体育俱乐部" height="90" width="120" style="border:1px solid #f4f4f4; background:url(../../assets/img/gym1.jpg) center center no-repeat #fff; display:block; padding:1px; vertical-align:middle;"/></a>
+                <p class="mt10" style="text-align:center">
+                <button class="btn btn-primary" type="button" >在线预订</button>
+                </p>
+              </div> 
+            </div>
+            <div class="ui_text">
+              <div class="title">
+                <span>
+                  <a href="one_gym.html" title="田林体育俱乐部"	target="_blank">田林体育俱乐部</a>
+                  <span>
+                    <span class="grade" style="display:inline">
+                      <sub style="margin:0;">7</sub>
+                      <sup>.5</sup>
+                    </span>
+                  </div>
+                  <p class="mt10">详细地址：<a href="/sport/sportList.xhtml?countycode=310104" target="_blank">徐汇区</a>钦州路728号(近田林东路)
+                  <span class="ffst">[</span><a class="cSport" target="_blank" href="/common/baiduMap.xhtml?id=1276900&tag=sport">地图</a><span class="ffst">]</span>
+                  </p>
+                  <p class="mt10">联系电话：021-54489574          021-54974676</p>
+                  <p class="mt10">经营项目：网球 乒乓球 斯诺克 游泳 保龄球 美式台球 </p>
+                </div>
+                </li>
+              </ul>
+            </div><!--sportList-->
+          </div><!--ui_left-->
+          <div class="ui_right">
+            <div>
+              <h2>热门活动</h2>
+              <a target="_blank" class="more cSport" href="activity_home.html">更多>></a>
+            </div>
+            <div class="hot_activity">
+              <ul>
+                <li>
+                <dl class="dl-horizontal">
+                  <dt class="act_pic">
+                  <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742">
+                    <img width="96" height="128" alt="玩儿不@运动 9元抢场 第二十期10月1日场" src="../../assets/img/act.jpg">
+                  </a>
+                  </dt>
+                  <dd class="act_txt">
+                  <span title="玩儿不官方认证活动" class="mr5"></span>
+                  <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742" class="cSport">玩儿不@运动 9元抢场 第二十期10月1日场</a>
+                  <p class="mt10">5月21日--12月31日</p>
+                  <p class="mt10">玩儿不运动</p>
+                  </dd>
+                </dl>
+                </li>
+                <li class="hotcmt">
+                <dl class="dl-horizontal">
+                  <dt class="act_pic">
+                  <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742">
+                    <img width="96" height="128" alt="玩儿不@运动 9元抢场 第二十期10月1日场" src="../../assets/img/act.jpg">
+                  </a>
+                  </dt>
+                  <dd class="act_txt">
+                  <span title="玩儿不官方认证活动" class="mr5"></span>
+                  <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742" class="cSport">玩儿不@运动 9元抢场 第二十期10月1日场</a>
+                  <p class="mt10">5月21日--12月31日</p>
+                  <p class="mt10">玩儿不运动</p>
+                  </dd>
+                </dl>
+                </li>
+                <li class="hotcmt">
+                <dl class="dl-horizontal">
+                  <dt class="act_pic">
+                  <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742">
+                    <img width="96" height="128" alt="玩儿不@运动 9元抢场 第二十期10月1日场" src="../../assets/img/act.jpg">
+                  </a>
+                  </dt>
+                  <dd class="act_txt">
+                  <span title="玩儿不官方认证活动" class="mr5"></span>
+                  <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742" class="cSport">玩儿不@运动 9元抢场 第二十期10月1日场</a>
+                  <p class="mt10">5月21日--12月31日</p>
+                  <p class="mt10">玩儿不运动</p>
+                  </dd>
+                </dl>
+                </li>
+              </ul>
+            </div><!--hot_activity--->
+          </div><!--ui_right-->
+        </div><!-- /.row-fluid -->
+        <div class='ui_row'>
+          <div class="page">
+            <div id='page'>
+              <a href="/sport/sportList.xhtml?servicetype=288731"  class='on' ><span>1</span></a>
+              <a href="/sport/sportList.xhtml?pageNo=1&servicetype=288731" ><span>2</span></a>
+              <a href="/sport/sportList.xhtml?pageNo=2&servicetype=288731" ><span>3</span></a>
+              <a href="/sport/sportList.xhtml?pageNo=3&servicetype=288731" ><span>4</span></a>
+              <a href="/sport/sportList.xhtml?pageNo=4&servicetype=288731" ><span>5</span></a>
+              <a href="/sport/sportList.xhtml?pageNo=5&servicetype=288731" ><span>6</span></a>
+              <strong>...</strong>
+              <a href="/sport/sportList.xhtml?pageNo=14&servicetype=288731" ><span>15</span></a>
+              <a href="/sport/sportList.xhtml?pageNo=1&servicetype=288731" class='next'><span>下一页</span></a>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.row-fluid -->

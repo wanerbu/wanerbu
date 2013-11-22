@@ -1,0 +1,46 @@
+<ul>
+  <% @gyms.all.each do |gym| %>
+    <li class="effectLi sportList" style="width:100%; position:static;">
+    <div class="ui_media">
+      <div class="ui_pic">
+        <a href="one_gym.html" target="_blank" title=<%=gym.name%> >
+          <%= image_tag gym.logo_url(:thumb).to_s,class: "gymlogo"%>
+        </a>
+        <p class="mt10" style="text-align:center">
+        <button class="btn btn-primary" type="button" >在线预订</button>
+        </p>
+      </div> 
+    </div>
+    <div class="ui_text">
+      <div class="title">
+        <span>
+          <a href="one_gym.html" title=<%=gym.name%> target="_blank"><%= gym.name %></a>
+        </span>
+        <span class="grade" style="display:inline">
+          <sub style="margin:0;"><%=gym.score.truncate%></sub>
+          <sup>.0</sup>
+        </span>
+      </div>
+      <p class="mt10">详细地址：
+      <%=Province.find(gym.province_id).province%>
+      <%=City.find(gym.city_id).city%>
+      <%=Area.find(gym.area_id).area%>
+      <%=gym.address %>
+      <span class="ffst">[</span><a class="cSport" target="_blank" href="/common/baiduMap.xhtml?id=1276900&tag=sport">地图</a><span class="ffst">]</span>
+      </p>
+      <p class="mt10">联系电话：<%=gym.telephone%></p>
+      <p class="mt10">经营项目：
+      <% gym.courts.order("sport_id desc").each do |court| %>
+        <%= Sport.find(court.sport_id).name%>
+        (
+        <%= court.reservation_type.text -%>
+        )  
+      <% end%>
+      </p>
+    </div>
+    </li>
+  <% end %>
+</ul>
+<div class='ui_row'>
+  <%= will_paginate @gyms %>
+</div>

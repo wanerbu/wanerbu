@@ -52,12 +52,18 @@ ul li {
 .title{
   font-size: 16px;
 }
-
-#page{font-size:12px;height:21px;width:auto;margin:20px auto;float:left}
-#page a,#page strong{float:left;margin:0 1px}
-#page a{display:inline-block;height:21px;line-height:21px;padding:0 8px}
-#page a:hover{background:#f60;color:#fff;text-decoration:none}
-#page .on,#page a.on:hover{background:#c30;color:#fff}
-#page a{color:#39c}
-#page a:hover{background:#3ae}
-#page .on,#page a.on:hover{background:#1885ae}
+/* -----------------------------------------------------
+ * 自己定义翻页组件样式的部分(如果和bootstrap的
+ * pagination有冲突, 会覆盖bootstrap的)
+ * ----------------------------------------------------- */
+.wb-pagination ul li {
+     display :inline;
+  }
+.wb-pagination a:hover{background:#f60;color:#fff;text-decoration:none}
+.wb-pagination .active a {background:#3ae;color:#fff}
+.wb-pagination a{
+     color:#39c;
+     padding-left:5px; 
+     padding-right:5px; 
+}
+.wb-pagination a:hover{background:#3ae}

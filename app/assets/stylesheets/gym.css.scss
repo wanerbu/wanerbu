@@ -13,6 +13,7 @@ dt,dd {line-height: 25px;}
 .typeTitle{color:#999;position:absolute;left:0;top:0;line-height:24px}
 .dlTy{padding-left:0px;position:relative}
 
+.select {background:#3ae;color:#fff}
 .condition a{padding:3px 5px;margin:02px;color:#666}
 .condition a.selected{background:#1885ae;color:#fff}
 .condition a:hover{background:#1885ae;color:#fff;text-decoration:none}
@@ -37,6 +38,15 @@ ul.nav-tabs li a{
 }
 .ui_media .ui_pic{margin-right:10px;float:left}
 
+.gymlogo {
+  height:90px; 
+  width:120px; 
+  border:1px; 
+  solid:#f4f4f4;  
+  display:block; 
+  padding:1px; 
+  vertical-align:middle;
+}
 .sportList a{color:#333}
 .sportList .title span{font:14px/26px verdana,Arial;font-weight:bold}
 

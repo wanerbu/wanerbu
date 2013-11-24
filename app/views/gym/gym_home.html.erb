@@ -17,7 +17,7 @@
             <dd>
             <div id="fidsportid">
             <% Sport.all.each do |sport| %>
-              <a href="javascript:searchItem('sportid',<%=sport.id%>)" name=<%=sport.id%> ><%=sport.name%></a>
+              <a href="javascript:searchItem('sportid',<%=sport.id%>,'<%=sport.name%>')" name=<%=sport.id%> ><%=sport.name%></a>
             <% end %>
             </div>
             </dd>
@@ -33,7 +33,7 @@
             <dd>
             <div id="fidareaid">
             <% Area.all.each do |area| %>
-              <a href="javascript:searchItem('areaid',<%=area.id%>)" name=<%=area.id%> ><%=area.area%></a>
+              <a href="javascript:searchItem('areaid',<%=area.id%>,'<%=area.area%>')" name=<%=area.id%> ><%=area.area%></a>
             <% end %>
             </div>
             </dd>
@@ -49,8 +49,8 @@
             <dd>
             <div>
               <form class="form-search">
-                <input type="text" class="input-medium search-query" placeholder="请输入搜索关键词">
-                <button type="submit" class="btn">查询</button>
+                <input id="keywordinput" value="" type="text" class="input-medium search-query" placeholder="请输入搜索关键词">
+                <a class="btn btn-default" href="javascript:searchKey()" role="button">查询</a>
               </form>
             </div>	
             </dd>
@@ -61,33 +61,42 @@
     </div><!--tile_condition-->
     <div class="boxtab">
       <ul class="nav nav-tabs">
-        <li  class="active"  id="dramaInfoBoxTab"><a href="javascript:searchPPPV('booking', '');">全　部</a></li>
-        <li  id="theatraIntruduceTab"><a href="javascript:searchPPPV('booking', 'open');">可预订</a></li>
+        <li  class="active"  id="allgym"><a href="javascript:searchForReserve('all');">全　部</a></li>
+        <li  id="openonlygym"><a href="javascript:searchForReserve('openonly');">可预订</a></li>
       </ul>
     </div>
     <div class="selectedMenus">
       <div class="right">
         <div class="btn-group">
-          <button class="btn">默认(优先展示可预订场馆)</button>
-          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">默认(优先展示可预订项目)</a></li>
-            <li><a href="#">按评分(由高到低)</a></li>
+          <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
+            默认(优先展示可预订场馆)
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="meun">
+            <li><a href="javascript:sortBy('opengym');">默认(优先展示可预订项目)</a></li>
+            <li><a href="javascript:sortBy('score');">按评分(由高到低)</a></li>
           </ul>
         </div>
       </div>
-    </div>
-    <div class="sportList" id="gymListArea">
-        <%= render 'gymlist' -%>
+      <div class="chose left">
+        <span id="chosetxt" style="display: none;">已选条件：</span>
+          <a href="javascript:remove('sportid')" id="chosesportid" style="display: none;"></a>
+          <a href="javascript:remove('areaid')"  id="choseareaid" style="display: none;"></a>
+          <a href="javascript:remove('keyword')"  id="chosekeyword" style="display: none;"></a>
+        </div>
+
+      </div>
+      <div class="sportList" id="gymListArea">
+          <%= render 'gymlist' -%>
+        </div><!--sportList-->
+        <!--查询结果-->
+      <div class="sportList" id="gymListAreaBySearch">
       </div><!--sportList-->
-      <!--查询结果-->
-    <div class="sportList" id="gymListAreaBySearch">
-    </div><!--sportList-->
-  </div><!--ui_left-->
-  <div class="ui_right">
-    <div>
-      <h2>热门活动</h2>
-      <a target="_blank" class="more cSport" href="activity_home.html">更多>></a>
+    </div><!--ui_left-->
+    <div class="ui_right">
+      <div>
+        <h2>热门活动</h2>
+        <a target="_blank" class="more cSport" href="activity_home.html">更多>></a>
     </div>
     <div class="hot_activity">
       <ul>
@@ -145,5 +154,8 @@
 <form id="searchForm"> 
   <input type="hidden" name="sportid" id="sportid" value="all"/>
   <input type="hidden" name="areaid" id="areaid" value="all"/>
+  <input type="hidden" name="keyword" id="keyword" value="all"/>
+  <input type="hidden" name="reservekey" id="reservekey" value="all"/>
+  <input type="hidden" name="sortkey" id="sortkey" value="opengym"/>
 </form> 
 

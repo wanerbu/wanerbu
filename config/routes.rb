@@ -2,7 +2,7 @@ Wanerbu::Application.routes.draw do
 
   # 前台部分
   get "gym/gym_home"
-  match 'gym/search/:sportid/:areaid' => 'gym#search',:via=>:get
+  match 'gym/search/:sportid/:areaid/:keyword/:reservekey/:sortkey' => 'gym#search',:via=>:get
 
   # 普通用户认证部分
   devise_for :users,

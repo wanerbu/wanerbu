@@ -17,7 +17,14 @@ dt,dd {line-height: 25px;}
 .condition a{padding:3px 5px;margin:02px;color:#666}
 .condition a.selected{background:#1885ae;color:#fff}
 .condition a:hover{background:#1885ae;color:#fff;text-decoration:none}
-
+.chose{
+ margin-top:5px;
+ margin-left:65px;
+}
+.close{
+ margin-top:5px;
+font-size:16px;
+}
 ul.nav-tabs li a{
   font-size: 16px;
   font-weight: bold;
@@ -72,5 +79,5 @@ ul.nav-tabs li a{
   margin-left: 106px;
 }
 .count {
-  margin-top:-56px;
+  margin-top:-57px;
 }

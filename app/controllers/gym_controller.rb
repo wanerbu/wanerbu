@@ -28,7 +28,7 @@ class GymController < ApplicationController
     end
     $sortkey = 'id asc'
     if params[:sortkey] == "score" then
-       $sortkey = 'score asc'
+       $sortkey = 'score desc'
     end
     @gyms = Gym.where($sql).paginate(:page => params[:page],:per_page => 1).order($sortkey)
     render :partial => "gymlist"

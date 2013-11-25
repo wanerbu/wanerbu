@@ -12,6 +12,9 @@ one:
   logo: test02.jpg
   address: Gym1 address
   telephone: 111111111
+  province_id: 610000
+  city_id: 610100
+  area_id: 610101
   open_time: <%= Time.now %>
   close_time: <%= Time.now %>
 two:
@@ -22,6 +25,9 @@ two:
   status: "<%= Wanerbu::CodeDefine::GYM_STATUS[:draft] %>"
   address: Gym2 address
   telephone: 222222222
+  province_id: 610000
+  city_id: 610100
+  area_id: 610101
   open_time: <%= Time.now %>
   close_time: <%= Time.now %>
 four:
@@ -32,5 +38,50 @@ four:
   status: "<%= Wanerbu::CodeDefine::GYM_STATUS[:draft] %>"
   address: Gym2 address
   telephone: 444444444
+  province_id: 610000
+  city_id: 610100
+  area_id: 610101
+  open_time: <%= Time.now %>
+  close_time: <%= Time.now %>
+five:
+  id: 5
+  name: Gym5
+  user_id: 5
+  intro: Gym1 intro
+  logo: test02.jpg
+  address: Gym1 address
+  telephone: 111111111
+  province_id: 610000
+  city_id: 610100
+  area_id: 610101
+  score: 5.3
+  open_time: <%= Time.now %>
+  close_time: <%= Time.now %>
+six:
+  id: 6
+  name: Gym6
+  user_id: 6
+  intro: Gym2 intro
+  status: "<%= Wanerbu::CodeDefine::GYM_STATUS[:draft] %>"
+  address: Gym2 address
+  telephone: 222222222
+  province_id: 610000
+  city_id: 610100
+  area_id: 610101
+  score: 6.4
+  open_time: <%= Time.now %>
+  close_time: <%= Time.now %>
+seve:
+  id: 7
+  name: Gym7
+  user_id: 7
+  intro: Gym4 intro
+  status: "<%= Wanerbu::CodeDefine::GYM_STATUS[:draft] %>"
+  address: Gym2 address
+  telephone: 444444444
+  province_id: 610000
+  city_id: 610100
+  area_id: 610101
+  score: 7.5
   open_time: <%= Time.now %>
   close_time: <%= Time.now %>

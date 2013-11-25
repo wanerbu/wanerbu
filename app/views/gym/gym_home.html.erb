@@ -16,9 +16,9 @@
             </dt>
             <dd>
             <div id="fidsportid">
-            <% Sport.all.each do |sport| %>
-              <a href="javascript:searchItem('sportid',<%=sport.id%>,'<%=sport.name%>')" name=<%=sport.id%> ><%=sport.name%></a>
-            <% end %>
+              <% Sport.all.each do |sport| %>
+                <a href="javascript:searchItem('sportid',<%=sport.id%>,'<%=sport.name%>')" name=<%=sport.id%> ><%=sport.name%></a>
+              <% end %>
             </div>
             </dd>
           </dl>
@@ -32,9 +32,9 @@
             </dt>
             <dd>
             <div id="fidareaid">
-            <% Area.all.each do |area| %>
-              <a href="javascript:searchItem('areaid',<%=area.id%>,'<%=area.area%>')" name=<%=area.id%> ><%=area.area%></a>
-            <% end %>
+              <% Area.all.each do |area| %>
+                <a href="javascript:searchItem('areaid',<%=area.id%>,'<%=area.area%>')" name=<%=area.id%> ><%=area.area%></a>
+              <% end %>
             </div>
             </dd>
           </dl>
@@ -68,35 +68,35 @@
     <div class="selectedMenus">
       <div class="right">
         <div class="btn-group">
-          <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
+          <button id="showsort" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
             默认(优先展示可预订场馆)
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="meun">
-            <li><a href="javascript:sortBy('opengym');">默认(优先展示可预订项目)</a></li>
-            <li><a href="javascript:sortBy('score');">按评分(由高到低)</a></li>
+            <li><a id = "opengym" href="javascript:sortBy('opengym');">默认(优先展示可预订项目)</a></li>
+            <li><a id = "score" href="javascript:sortBy('score');">按评分(由高到低)</a></li>
           </ul>
         </div>
       </div>
       <div class="chose left">
         <span id="chosetxt" style="display: none;">已选条件：</span>
-          <a href="javascript:remove('sportid')" id="chosesportid" style="display: none;"></a>
-          <a href="javascript:remove('areaid')"  id="choseareaid" style="display: none;"></a>
-          <a href="javascript:remove('keyword')"  id="chosekeyword" style="display: none;"></a>
-        </div>
-
+        <a href="javascript:remove('sportid')" id="chosesportid" style="display: none;"></a>
+        <a href="javascript:remove('areaid')"  id="choseareaid" style="display: none;"></a>
+        <a href="javascript:remove('keyword')"  id="chosekeyword" style="display: none;"></a>
       </div>
-      <div class="sportList" id="gymListArea">
-          <%= render 'gymlist' -%>
-        </div><!--sportList-->
-        <!--查询结果-->
-      <div class="sportList" id="gymListAreaBySearch">
-      </div><!--sportList-->
-    </div><!--ui_left-->
-    <div class="ui_right">
-      <div>
-        <h2>热门活动</h2>
-        <a target="_blank" class="more cSport" href="activity_home.html">更多>></a>
+
+    </div>
+    <div class="sportList" id="gymListArea">
+      <%= render 'gymlist' -%>
+    </div><!--sportList-->
+    <!--查询结果-->
+    <div class="sportList" id="gymListAreaBySearch">
+    </div><!--sportList-->
+  </div><!--ui_left-->
+  <div class="ui_right">
+    <div>
+      <h2>热门活动</h2>
+      <a target="_blank" class="more cSport" href="activity_home.html">更多>></a>
     </div>
     <div class="hot_activity">
       <ul>

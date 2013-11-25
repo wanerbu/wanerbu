@@ -33,6 +33,7 @@ function searchForReserve(value){
 }
 function sortBy(value){
   document.getElementById("sortkey").value = value;
+  document.getElementById("showsort").innerHTML = document.getElementById(value).innerHTML + "<span class='caret'></span>";
   requestSearch();
 }
 function remove(field){
@@ -87,5 +88,32 @@ function requestSearch(){
       function(data){
         $('#gymListArea').hide();    
         $("#gymListAreaBySearch").html(data);
+        changehref(); 
       });
+}
+jQuery(function($) {
+  //页面刷新时
+  changehref(); 
+})
+function page(value){
+  var sportid = document.getElementById("sportid").value;
+  var areaid = document.getElementById("areaid").value;
+  var keyword = document.getElementById("keyword").value;
+  var reservekey = document.getElementById("reservekey").value;
+  var sortkey = document.getElementById("sortkey").value;
+  jQuery.get('search/' + sportid + '/' + areaid + '/' +  keyword + '/' +  reservekey + '/' +  sortkey + '?page=' + value,
+      function(data){
+        $('#gymListArea').hide();    
+        $("#gymListAreaBySearch").html(data);
+        changehref(); 
+      });
+}
+function changehref(){
+  var page = "";
+  $(".pagination a[href^='/gym']")
+    .each(function()
+        { 
+          page = this.href.substr(this.href.indexOf("=") + 1);
+          this.href = "javascript:page('" + page + "')";
+        });
 }

@@ -19,7 +19,7 @@
     <div class="ui_text">
       <div class="title">
         <span>
-          <a href="one_gym.html" title=<%=gym.name%> target="_blank"><%= gym.name %></a>
+          <a href="javascript:toOneGym('<%= gym.id %>')" title=<%=gym.name%> ><%= gym.name %></a>
         </span>
         <span class="grade" style="display:inline">
           <sub style="margin:0;"><%=gym.score.truncate%></sub>
@@ -27,25 +27,31 @@
         </span>
       </div>
       <p class="mt10">详细地址：
-      <%=Province.find(gym.province_id).province%>
-      <%=City.find(gym.city_id).city%>
-      <%=Area.find(gym.area_id).area%>
-      <%=gym.address %>
-      <span class="ffst">[</span><a class="cSport" target="_blank" href="/common/baiduMap.xhtml?id=1276900&tag=sport">地图</a><span class="ffst">]</span>
-      </p>
-      <p class="mt10">联系电话：<%=gym.telephone%></p>
-      <p class="mt10">经营项目：
-      <% gym.courts.order("sport_id desc").each do |court| %>
-        <%= Sport.find(court.sport_id).name%>
-        (
-        <%= court.reservation_type.text -%>
-        )  
-      <% end%>
-      </p>
-    </div>
-    </li>
-  <% end %>
-</ul>
-<div class='ui_row'>
-  <%= will_paginate @gyms %>
-</div>
+      <%= Province.find(gym.province_id).province +
+        City.find(gym.city_id).city +
+        Area.find(gym.area_id).area +
+        gym.address %>
+        <span class="ffst">[</span><a class="cSport" target="_blank" href="/common/baiduMap.xhtml?id=1276900&tag=sport">地图</a><span class="ffst">]</span>
+        </p>
+        <p class="mt10">联系电话：<%=gym.telephone%></p>
+        <p class="mt10">经营项目：
+        <% 
+          old_sport_id = 0 
+          gym.courts.order("sport_id asc").each do |court|
+          new_sport_id = court.sport_id
+          if new_sport_id != old_sport_id then
+        %>
+        <%= Sport.find(court.sport_id).name-%></a> 
+       <% 
+          end
+          old_sport_id = new_sport_id 
+          end
+        %>
+        </p>
+      </div>
+      </li>
+    <% end %>
+  </ul>
+  <div class='ui_row'>
+    <%= will_paginate @gyms %>
+  </div>

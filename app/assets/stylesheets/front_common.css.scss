@@ -17,9 +17,14 @@ ul li {
   margin: 0;
 }
 
+
 /*常量*/
 .mt10{margin-top:10px}
-.hotcmt{margin-top:20px}
+.ml15 {margin-left: 15px;}
+.mt10 {margin-top: 10px;}
+.mt20 {
+  margin-top: 20px!important;
+}
 .right {
   float: right;
 }
@@ -52,18 +57,30 @@ ul li {
 .title{
   font-size: 16px;
 }
+/*活动列表样式*/
+.activity_list dt {
+  width: 100px;
+}
+.activity_list dd {
+  margin-left: 106px;
+}
+.hotcmt{margin-top:20px}
+/*覆盖bootstrap中的样式*/
+.nav-tabs {
+  border-bottom: 2px solid #1885AE;
+}
 /* -----------------------------------------------------
  * 自己定义翻页组件样式的部分(如果和bootstrap的
  * pagination有冲突, 会覆盖bootstrap的)
  * ----------------------------------------------------- */
 .wb-pagination ul li {
-     display :inline;
-  }
+  display :inline;
+}
 .wb-pagination a:hover{background:#f60;color:#fff;text-decoration:none}
 .wb-pagination .active a {background:#3ae;color:#fff}
 .wb-pagination a{
-     color:#39c;
-     padding-left:5px; 
-     padding-right:5px; 
+  color:#39c;
+  padding-left:5px; 
+  padding-right:5px; 
 }
 .wb-pagination a:hover{background:#3ae}

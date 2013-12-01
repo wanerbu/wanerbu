@@ -84,7 +84,6 @@
         <a href="javascript:remove('areaid')"  id="choseareaid" style="display: none;"></a>
         <a href="javascript:remove('keyword')"  id="chosekeyword" style="display: none;"></a>
       </div>
-
     </div>
     <div class="sportList" id="gymListArea">
       <%= render 'gymlist' -%>
@@ -98,55 +97,7 @@
       <h2>热门活动</h2>
       <a target="_blank" class="more cSport" href="activity_home.html">更多>></a>
     </div>
-    <div class="hot_activity">
-      <ul>
-        <li>
-        <dl class="dl-horizontal">
-          <dt class="act_pic">
-          <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742">
-            <img width="96" height="128" alt="玩儿不@运动 9元抢场 第二十期10月1日场" src="../../assets/img/act.jpg">
-          </a>
-          </dt>
-          <dd class="act_txt">
-          <span title="玩儿不官方认证活动" class="mr5"></span>
-          <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742" class="cSport">玩儿不@运动 9元抢场 第二十期10月1日场</a>
-          <p class="mt10">5月21日--12月31日</p>
-          <p class="mt10">玩儿不运动</p>
-          </dd>
-        </dl>
-        </li>
-        <li class="hotcmt">
-        <dl class="dl-horizontal">
-          <dt class="act_pic">
-          <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742">
-            <img width="96" height="128" alt="玩儿不@运动 9元抢场 第二十期10月1日场" src="../../assets/img/act.jpg">
-          </a>
-          </dt>
-          <dd class="act_txt">
-          <span title="玩儿不官方认证活动" class="mr5"></span>
-          <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742" class="cSport">玩儿不@运动 9元抢场 第二十期10月1日场</a>
-          <p class="mt10">5月21日--12月31日</p>
-          <p class="mt10">玩儿不运动</p>
-          </dd>
-        </dl>
-        </li>
-        <li class="hotcmt">
-        <dl class="dl-horizontal">
-          <dt class="act_pic">
-          <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742">
-            <img width="96" height="128" alt="玩儿不@运动 9元抢场 第二十期10月1日场" src="../../assets/img/act.jpg">
-          </a>
-          </dt>
-          <dd class="act_txt">
-          <span title="玩儿不官方认证活动" class="mr5"></span>
-          <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742" class="cSport">玩儿不@运动 9元抢场 第二十期10月1日场</a>
-          <p class="mt10">5月21日--12月31日</p>
-          <p class="mt10">玩儿不运动</p>
-          </dd>
-        </dl>
-        </li>
-      </ul>
-    </div><!--hot_activity--->
+    <%= render 'common_parts/activity_list' -%>
   </div><!--ui_right-->
 </div><!-- /.row-fluid -->
 </div>

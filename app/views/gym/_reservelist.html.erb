@@ -1,0 +1,67 @@
+    <div class="reserve_content">
+      <div class="details_ticket">
+        <dl class="dl-horizontal clear">
+          <dt>运动项目:</dt>
+          <dd style="padding-top: 10px;">
+          <% 
+            old_sport_id = 0 
+            @gym.courts.order("sport_id asc").each do |court|
+            new_sport_id = court.sport_id
+            if new_sport_id != old_sport_id then
+          %>
+          <a href="javascript:getcourt('sportid',<%=court.sport_id%>);" class="<%= 'select' if court.sport_id == @court.sport_id %>" id="si288732"><%= Sport.find(court.sport_id).name -%></a> 
+          <% 
+            end
+            old_sport_id = new_sport_id 
+            end
+          %>
+          </dd>
+          <dt>预订模式:</dt>
+          <dd>
+          <%Court.where("sport_id" => @court.sport_id).each do |court| %>
+            <a href="javascript:getcourt('reservationtype','<%=court.reservation_type%>')" class="<%= 'select' if court.reservation_type == @court.reservation_type %>" id="si288732">
+              <%= court.reservation_type.text%></a> 
+          <%end%>
+          </dd>
+        </dl>
+      </div>
+      <div class="reserve_info" style="padding-left: 5px;">
+        <div class="intro">
+          <% @court.court_properties.each do |court_property| -%>
+            <span>
+              <% property = Property.find(court_property.property_id) -%>
+              <%= property.name-%>:
+              <%= court_property.property_value-%>
+              <%= property.unit-%>
+            </span>
+          <% end -%>
+        </div>
+      </div>
+      <div class="choose_head">
+        <span class="opiTime">预订日期</span>
+        <span class="opiPrice">价格(元)</span>
+        <span class="opiInfo">支持</span>
+        <span class="opiAct">操作</span>
+      </div>
+      <div class="choose_body">
+        <ul>
+          <% for i in 0..15 %>
+          <li>
+          <span class="opiTime">
+          <b><%= (Date.today+i).strftime("%m-%d")%>&nbsp;<%= (Date.today+i).strftime("%A")%></b>
+          </span>
+          <span class="opiPrice_body">
+            <%= show_price(@court.id,Date.today+i)%>
+          </span>
+          <span class="opiInfo_body">
+            <em class="q" title="支持票券抵值">券</em>				
+            <em class="y" title="支持支付优惠">惠</em>			
+          </span>
+          <span class="opiAct">
+            <a href="reserve.html" target="_blank"><button class="btn btn-primary" type="button">在线预订</button></a>
+          </span>
+          </li>
+        <%end%>
+        </ul>
+    </div>
+  </div>

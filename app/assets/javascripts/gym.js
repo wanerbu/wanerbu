@@ -117,3 +117,8 @@ function changehref(){
           this.href = "javascript:page('" + page + "')";
         });
 }
+function toOneGym(value){
+  var sportid = document.getElementById("sportid").value;
+  var url = 'one_gym/'+ value + '/' + sportid;
+  window.open(url,"_blank");
+}

@@ -1,0 +1,503 @@
+// Place all the styles related to the gym controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@charset "UTF-8";
+/* -----------------------------------------------------
+ * ----------------------------------------------------- */
+h1,h2,h3,h4,h5,h6{display:inline}
+h1{font:30px/45px}
+h1 span{font-size:18px;margin-left:10px;color:#999}
+
+.detail_head {position:relative;padding:10px 10px 20px;}
+.clear{position:relative;height:46px}
+.clear{zoom:1}
+.detailName{border-bottom:1px solid #eee;padding-bottom:10px;}
+
+.ui_right{
+  margin-left: 3%;
+}
+.ui_big_ratings {
+  width: 130px;
+  height: 24px;
+  overflow: hidden;
+  line-height: 24px;
+  float: left;
+}
+.ui_big_ratings li.half {
+  background-position: 1px 0;
+}
+.ui_big_ratings li {
+  width: 13px;
+  height: 24px;
+  float: left;
+  background-position: -25px 0;
+  cursor: default;
+  overflow: hidden;
+}
+.ratings li, .ui_big_ratings li, .initRating span {
+  background: url('ico_star.gif') no-repeat;
+}
+
+ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ui_big_ratings li.on {
+  background-position: -12px 0;
+}
+.ui_big_ratings li.no {
+  background-position: -38px 0;
+}
+
+.bigSubp {
+  vertical-align: -4px;
+  height: 30px;
+  line-height: 30px;
+  display: inline-block;
+}
+
+.bigSubp sub {
+  font-size: 30px;
+}
+
+sub {
+  font-size: 22px;
+  font-size: 28px\9;
+  font-style: italic;
+  color: #f60;
+  line-height: 24px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.bigSubp sup {
+  font-size: 20px;
+}
+
+sup {
+  font-weight: normal;
+  font-size: 16px;
+  font-style: italic;
+  color: #f60;
+  line-height: 20px;
+  vertical-align: top;
+  margin-left: 2px;
+}
+
+.ratingsCount {
+  margin: 10px 0 0 20px;
+}
+
+.ratingsCount ul li {
+  float: left;
+  margin-right: 10px;
+  color: #666;
+}
+
+.ratingsCount a.cou {
+  background-position: 6px -177px;
+  padding: 0 7px 0 30px;
+}
+
+.ratingsCount a {
+  background: url("cinemaico.gif") no-repeat 0 0;
+  cursor: pointer;
+  color: #666;
+  height: 26px;
+  line-height: 27px;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+}
+
+a {
+  color: #c30;
+  text-decoration: none;
+  outline: 0;
+}
+
+.ratingsCount a.ad {
+  background-position: 6px -205px;
+  padding: 0 7px 0 30px;
+}
+
+.ratingsCount a.se {
+  color: #c30;
+  background-position: 6px -325px;
+}
+
+.none {
+  display: none!important;
+}
+
+.itemTopic {
+  overflow: hidden;
+  padding-top: 10px;
+}
+.itemTopic{
+  margin-right: 15px;
+}
+
+.ui_media, .ui_text {
+  overflow: hidden;
+  zoom: 1;
+}
+
+.ui_media{
+  margin-right: 10px;
+  float: left;
+  width: 320px;
+}
+
+.ui_text{
+  float: left;
+  width: 280px;
+}
+.ui_map{
+  float: left;
+}
+
+.ui_text a{
+  color: #3399CC; 
+}
+
+.ui_summary_big {
+  color: #666666;
+  font-size: 16px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.itemTopic .ui_summary_big span.first {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.ui_summary_big span.first {
+  background-position: 0 2px;
+  margin: 0 10px 0 0;
+}
+
+.ui_summary_big span {
+  background-position: 0 -19px;
+  display: inline-block;
+  margin: 0 0 0 10px;
+  height: 13px;
+  width: 18px;
+}
+
+.ui_summary span, .ui_summary_big span, .screenList a img.seatPic {
+  background: url("ico_pub.gif") no-repeat;
+}
+
+.itemTopic dl {
+  margin-bottom: 10px;
+}
+
+.clear, .button, .ui_layout, .abeam, .list li, .tales60, .tales100, .selectOptions, .inner {
+  zoom: 1;
+}
+
+.itemTopic dt {
+  float: left;
+  color: #999;
+}
+
+.ui_map{
+  margin-left: 5px;
+}
+
+.details{
+  margin-top: 20px
+}
+.ui_summary{
+  float: left;
+  width: 600px;
+  margin-top: -45px
+}
+ul.nav-tabs li a{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.details_ticket dl{
+  font-size: 14px;
+  margin-right: 0px;
+}
+.details_ticket dt {
+  width: 70px;
+  margin-top: 10px;
+}
+
+.details_ticket dd {
+  margin-left: 80px;
+  margin-top: 10px;
+}
+
+.intro span{
+  color: #666666;
+  margin-right: 20px;
+}
+.reserve_info{
+  margin-top: 40px;
+}
+
+.choose_head {
+  margin-top: 20px;
+  background-color: #EEEEEE;
+  line-height: 30px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.opiTime{
+  margin-left: 10px;
+}
+
+.opiPrice{
+  margin-left: 120px;
+}
+.opiInfo{
+  margin-left: 120px;
+}
+
+.opiAct{
+  margin-left: 120px;
+}
+
+.choose_body ul li{
+  border-bottom-style: solid;
+  border-bottom-color: #E4E4E4;
+  border-bottom-width: 1px;
+  padding-bottom: 9px;
+}
+.choose_body {
+  position: relative;
+  height: 400px;
+  overflow-y: auto;
+}
+
+.vertical {
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: 10px;
+}
+.scroller {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: absolute;
+  z-index: 0;
+}
+.vertical .decrease {
+  right: 0;
+  top: 0;
+}
+.decrease, .increase {
+  display: none !important;
+}
+.vertical .scroll {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: #EEEEEE;
+  background-image: none;
+  background-origin: padding-box;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: auto auto;
+  position: absolute;
+  right: 2px;
+  top: 0;
+  width: 6px;
+  z-index: 98;
+}
+.vertical .handle {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: #999999;
+  background-image: none;
+  background-origin: padding-box;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: auto auto;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  cursor: pointer;
+  display: block;
+  left: -1px;
+  position: relative;
+  width: 8px;
+}
+
+.vertical .handle .handleL {
+  height: 99%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 2px;
+  width: 8px;
+}
+
+.vertical .handle .handleR {
+  height: 100%;
+  width: 8px;
+}
+
+.vertical .handle .handleC {
+  height: 100%;
+  width: 8px;
+}
+
+.opiPrice_body{
+  margin-left: 90px;
+}
+.opiPrice_body em{
+  -moz-text-decoration-line: line-through;
+  margin-right: 5px;
+}
+.opiPrice_body b{
+  color: #3399CC;
+  font-size: 16px;
+  vertical-align: middle;
+}
+.opiInfo_body{
+  margin-left: 65px;
+}
+
+/*right info*/
+.right_info{
+  margin-left: 24px;
+}
+
+.right_info h2{
+  font-family: 'Î¢ÈíÑÅºÚ','ËÎÌå';
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mt5 {margin-top: 5px;}
+
+.cSport {
+  color: #3399CC !important;
+}
+.more {
+  margin-left: 24px;
+}
+.hot_activity dt {
+  width: 100px;
+}
+.hot_activity dd {
+  margin-left: 106px;
+}
+.mr5 {margin-right: 5px;}
+
+.details_ticket a.select {
+  font-weight: bold;
+}
+.details_ticket a.select, .details_ticket .left a:hover {
+  background-color: #3399CC;
+  color: #FFFFFF;
+}
+.details_ticket a{
+  display: inline-block;
+  margin-right: 5px;
+  padding-bottom: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+  -moz-text-decoration-line: none;
+}
+
+.mapInfo {
+  border-color: #CECECE;
+  border-style: solid;
+  border-width: 1px;
+
+}
+#allmap {
+  width:240px;
+  height:150px;
+  overflow:hidden; 
+  margin:0;
+}
+
+.mapModify {
+  height: 140px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  border-color: #CECECE;
+  border-style: solid;
+  border-width: 1px;
+}
+.search_icon_tab {
+  float: left;
+
+}
+.search_icon_tab a img {
+  background-image: url("map_ico.png");
+  display: block;
+  height: 16px;
+  width: 16px;
+}
+
+.search_icon_tab a:hover .car, .search_icon_tab a.select .car {
+  background-position: 0 3px;
+}
+
+.search_icon_tab .bus {
+  background-position: 2px -74px;
+}
+.search_icon_tab .men {
+  background-position: 2px -125px;
+}
+
+.search_icon_tab a:hover, .search_icon_tab a.select {
+  background-color: #F4F4F4;
+}
+.search_icon_tab a {
+  border-color: #E7E7E7;
+  border-style: solid;
+  border-width: 1px;
+  float: left;
+  height: 16px;
+  padding-bottom: 6px;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-top: 6px;
+  width: 16px;
+}
+.search_form {
+  margin-top: 40px;
+  padding-left: 35px;
+}
+
+.search_form ul li {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: -2px;
+  position: relative;
+}
+.search_form span.map_ico_a, .search_form span.map_ico_b {
+  background-image: url("map_ico.png");
+  display: block;
+  height: 21px;
+  left: -30px;
+  position: absolute;
+  top: 5px;
+  width: 21px;
+}
+.search_form span.map_ico_a {
+  background-position: -2px -205px;
+}
+.search_form span.map_ico_b {
+  background-position: -2px -235px;
+}

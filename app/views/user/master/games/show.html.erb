@@ -1,243 +1,249 @@
 <%= javascript_include_tag "user/master/games.js" %>
 <% content_for :sub_menu do %>
   <%= render :partial => 'user/master/games/sub_menu_start', :locals => {:active_path => nil } -%>
-    <li class="active">
-      <%= link_to t('user.nav.main_menu.common.show', model: Game.model_name.human), user_master_game_path(@game) %>
-    </li>
+  <li class="active">
+  <%= link_to t('user.nav.main_menu.common.show', model: Game.model_name.human), user_master_game_path(@game) %>
+  </li>
   <%= render 'common_parts/sub_menu_end' -%>
 <% end %>
 
 <div class='wb-content-sub-title'>
   <div>
     <%= link_to t('views.defaults.actions.edit'), edit_user_master_game_path(@game), {class: "btn btn-primary"} %>
-    <button type="button" data-toggle="modal"class= "btn btn-primary" data-target="#newPriceRuleModal"><%= t('views.defaults.actions.new_game_price_rule')%></button>
+    <button  data-toggle="modal"class= "btn btn-primary" data-target="#newPriceRuleModal"><%= t('views.defaults.actions.new_game_price_rule')%></button>
     <button type="button" data-toggle="modal"class= "btn btn-primary" data-target="#newReservationRuleModal"><%= t('views.defaults.actions.new_game_reservation_rule')%></button>
     <%= link_to t('views.defaults.actions.destroy'), user_master_game_path(@game), 
-                { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
+      { method: :delete, class: "btn btn-primary", confirm: t('activemodel.confirm.destroy') } %>
+    </div>
+    <div class='wb-clear-both'></div>
   </div>
-  <div class='wb-clear-both'></div>
-</div>
 
-<!-- new price rule Modal -->
-<div id="newPriceRuleModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="newPriceRuleModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="newPriceRuleModalLabel"><%=t('views.defaults.actions.new_game_price_rule') %></h3>
-    </div>
-    <%= form_tag(:controller => "games", :action => "new_price_rule", :method => "post") do %>
-    <div class="modal-body">
-      <%= hidden_field_tag 'price_rule[game_id]', @game.id %>
-      <li id="price_type" class="number input optional numeric stringish">
-        <label class=" label" for="price_type">
-        <%= GamePriceRule.human_attribute_name(:rule_type) %>
-          <abbr title="required">*</abbr>
-        </label>
-        <%= select_tag('price_rule[rule_type]', options_for_select([[GamePriceRule.human_attribute_name(:week_value), '00'], [GamePriceRule.human_attribute_name(:date_value), '01']])) %>
-      </li>
-      <!--TODO 当选中按星期时显示javascript-->
-      <div id="select_week_price_rule">
-        <%= t('views.defaults.game.every_week')%>
-        <%= select(:price_rule,:week_value,
-                   [['周一',1],
-                    ['周二',2],
-                    ['周三',3],
-                    ['周四',4],
-                    ['周五',5],
-                    ['周六',6],
-                    ['周日',7]]) %>
-      </div>
-      <!--TODO 当选中按日期时显示javascript-->
-      <div id="select_date_price_rule" style="display: none;">
-        <%= date_select :price_rule, :date_value %>
-      </div >
-      <div id="price_rule">
-        <%= t('views.defaults.game.of')%>
-        <%= time_select :price_rule, :start_time %> 
-        <%= t('views.defaults.game.to')%>
-        <%= time_select :price_rule, :end_time %>
-        <%= t('views.defaults.game.price_is')%>
-        <%= text_field_tag('price_rule[price]') %>
-        <%= t('views.defaults.game.yuan')%>
-        <% court = Court.find(@game.court_id) %>
-        <%if court.reservation_type.according_time?%>
-          <%=court.min_unit%> 
-          <%= t('views.defaults.game.every_hour')%>
-        <%else %>
-          <%=court.min_unit%>
-          <%= t('views.defaults.game.every_people')%>
-        <%end%>
-      </div >
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-default" data-dismiss="modal" aria-hidden="true"><%= t('views.defaults.actions.cancel') %></button>
-        <%= submit_tag(t('views.defaults.actions.new_game_price_rule')) %>
-    </div>
-    <% end %>
-</div>
-<!-- new reservation rule Modal -->
-<div id="newReservationRuleModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="newReservationRuleModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="newReservationRuleModalLabel"><%=t('views.defaults.actions.new_game_reservation_rule') %></h3>
-    </div>
-    <%= form_tag(:controller => "games", :action => "new_reservation_rule", :method => "post") do %>
-    <div class="modal-body">
-      <%= hidden_field_tag 'reservation_rule[game_id]', @game.id %>
-      <li id="price_type" class="number input optional numeric stringish">
-        <label class=" label" for="reservation_type">
-        <%= GameReservationRule.human_attribute_name(:rule_type) %>
-          <abbr title="required">*</abbr>
-        </label>
-        <%= select_tag('reservation_rule[rule_type]', options_for_select([[GameReservationRule.human_attribute_name(:week_value), '00'], [GameReservationRule.human_attribute_name(:date_value), '01']])) %>
-      </li>
-      <!--TODO 当选中按星期时显示javascript-->
-      <div id="select_week_reservation_rule">
-        <%= t('views.defaults.game.every_week')%>
-        <%= select(:reservation_rule,:week_value,
-                   [['周一',1],
-                    ['周二',2],
-                    ['周三',3],
-                    ['周四',4],
-                    ['周五',5],
-                    ['周六',6],
-                    ['周日',7]]) %>
-      </div>
-      <!--TODO 当选中按日期时显示javascript-->
-      <div id="select_date_reservation_rule" style="display: none;">
-        <%= date_select :reservation_rule, :date_value %>
-      </div >
-      <div id="reservation_rule">
-        <%= t('views.defaults.game.of')%>
-        <%= time_select :reservation_rule, :start_time %> 
-        <%= t('views.defaults.game.to')%>
-        <%= time_select :reservation_rule, :end_time %>
-        <%= t('views.defaults.game.this_game')%>
-        <%= radio_button_tag("reservation_rule[can_reservation]", true,true)%> <%= t('views.defaults.game.reservation_true')%>
-        <%= radio_button_tag("reservation_rule[can_reservation]", false)%> <%= t('views.defaults.game.reservation_false')%>
-      </div >
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-default" data-dismiss="modal" aria-hidden="true"><%= t('views.defaults.actions.cancel') %></button>
-        <%= submit_tag(t('views.defaults.actions.new_game_reservation_rule')) %>
-    </div>
-    <% end %>
-</div>
-
-
-<div class="wb-content-detail">
-  <table class="table table-bordered" style="width: 100%;">
-    <tbody>
-      <tr>
-        <td><%=Sport.model_name.human%></td>
-        <td><%= Sport.find(Court.find(@game.court_id).sport_id).name + "(" + Court.find(@game.court_id).reservation_type.text + ")" -%></td>
-      </tr>
-      <tr>
-        <td><%= Game.human_attribute_name(:name) %></td>
-        <td><%= @game.name -%></td>
-      </tr>
-      <tr>
-        <td><%= Game.human_attribute_name(:sort) %></td>
-        <td><%= @game.sort -%></td>
-      </tr>
-      <tr>
-        <td><%= Game.human_attribute_name(:default_price) %></td>
-        <td><%= @game.default_price -%></td>
-      </tr>
-      <tr>
-        <td><%= Game.human_attribute_name(:can_reservation) %></td>
-        <td>
-          <% if @game.can_reservation%> 
-            <%= t('views.defaults.game.reservation_true')%>
-          <%else%>
-            <%= t('views.defaults.game.reservation_false')%>
-          <%end%>
-        </td>
-      </tr>
-      <tr>
-        <td><%= GamePriceRule.model_name.human%></td>
-        <td>
-        <% @game.game_price_rules.all.each do |game_price_rule| %>
-          <% if game_price_rule.rule_type == '00' %>
-             <%= t('views.defaults.game.every_week')%>
-             <% case game_price_rule.week_value%>
-                <%when 1%> 
-                  周一
-                <%when 2%> 
-                  周二
-                <%when 3%> 
-                  周三
-                <%when 4%> 
-                  周四
-                <%when 5%> 
-                  周五
-                <%when 6%> 
-                  周六
-                <%when 7%> 
-                  周日
-             <%end%>
-          <%else%>
-             <%= game_price_rule.date_value %> 
-          <%end%>
-          <%= t('views.defaults.game.of')%>
-          <%= game_price_rule.start_time.strftime("%H:%M") %> 
-          <%= t('views.defaults.game.to')%>
-          <%= game_price_rule.end_time.strftime("%H:%M") %> 
-          <%= t('views.defaults.game.price_is')%>
-          <%= game_price_rule.price %>
-          <%= t('views.defaults.game.yuan')%>
-          <% court = Court.find(@game.court_id) %>
-          <%if court.reservation_type.according_time?%>
-               <%=court.min_unit%> 
-                 <%= t('views.defaults.game.every_hour')%>
-             <%else %>
-                <%=court.min_unit%>
-                <%= t('views.defaults.game.every_people')%>
-          <%end%>
-          <%= link_to t('views.defaults.actions.destroy'), :controller => "games",:action => "delete_game_price_rule", :price_rule_id => game_price_rule.id, :confirm => t('activemodel.confirm.destroy') %>
-          </p>
-        <%end%>
-        </td>
-      </tr>
-      <tr>
-        <td><%= GameReservationRule.model_name.human%></td>
-        <td>
-        <% @game.game_reservation_rules.all.each do |game_reservation_rule| %>
-          <% if game_reservation_rule.rule_type == '00' %>
-             <%= t('views.defaults.game.every_week')%>
-             <% case game_reservation_rule.week_value%>
-                <%when 1%> 
-                  周一
-                <%when 2%> 
-                  周二
-                <%when 3%> 
-                  周三
-                <%when 4%> 
-                  周四
-                <%when 5%> 
-                  周五
-                <%when 6%> 
-                  周六
-                <%when 7%> 
-                  周日
-             <%end%>
-          <%else%>
-             <%= game_reservation_rule.date_value %> 
-          <%end%>
-          <%= t('views.defaults.game.of')%>
-          <%= game_reservation_rule.start_time.strftime("%H:%M") %> 
-          <%= t('views.defaults.game.to')%>
-          <%= game_reservation_rule.end_time.strftime("%H:%M") %> 
-          <%= t('views.defaults.game.this_game')%>
-          <% if game_reservation_rule.can_reservation%> 
-            <%= t('views.defaults.game.reservation_true')%>
-          <%else%>
-            <%= t('views.defaults.game.reservation_false')%>
-          <%end%>
-          <%= link_to t('views.defaults.actions.destroy'), :controller => "games",:action => "delete_game_reservation_rule", :reservation_rule_id => game_reservation_rule.id, :confirm => t('activemodel.confirm.destroy') %>
-          </p>
-        <%end%>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <!-- new price rule Modal -->
+  <div id="newPriceRuleModal" class="modal  fade" tabindex="-1" role="dialog" aria-labelledby="newPriceRuleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="newPriceRuleModalLabel"><%=t('views.defaults.actions.new_game_price_rule') %></h3>
+        </div>
+        <%= form_tag(:controller => "games", :action => "new_price_rule", :method => "post") do %>
+          <div class="modal-body">
+            <%= hidden_field_tag 'price_rule[game_id]', @game.id %>
+            <li id="price_type" class="number input optional numeric stringish">
+            <label class=" label" for="price_type">
+              <%= GamePriceRule.human_attribute_name(:rule_type) %>
+              <abbr title="required">*</abbr>
+            </label>
+            <%= select_tag('price_rule[rule_type]', options_for_select([[GamePriceRule.human_attribute_name(:week_value), '00'], [GamePriceRule.human_attribute_name(:date_value), '01']])) %>
+            </li>
+            <!--TODO 当选中按星期时显示javascript-->
+            <div id="select_week_price_rule">
+              <%= t('views.defaults.game.every_week')%>
+              <%= select(:price_rule,:week_value,
+                         [['周一',1],
+                           ['周二',2],
+                           ['周三',3],
+                           ['周四',4],
+                           ['周五',5],
+                           ['周六',6],
+                           ['周日',7]]) %>
+                         </div>
+                         <!--TODO 当选中按日期时显示javascript-->
+                         <div id="select_date_price_rule" style="display: none;">
+                           <%= date_select :price_rule, :date_value %>
+                           </div >
+                           <div id="price_rule">
+                             <%= t('views.defaults.game.of')%>
+                             <%= time_select :price_rule, :start_time,:discard_year => true %> 
+                             <%= t('views.defaults.game.to')%>
+                             <%= time_select :price_rule, :end_time,:discard_year => true %>
+                             <%= t('views.defaults.game.price_is')%>
+                             <%= text_field_tag('price_rule[price]') %>
+                             <%= t('views.defaults.game.yuan')%>
+                             <% court = Court.find(@game.court_id) %>
+                             <%if court.reservation_type.according_time?%>
+                               <%=court.min_unit%> 
+                               <%= t('views.defaults.game.every_hour')%>
+                             <%else %>
+                               <%=court.min_unit%>
+                               <%= t('views.defaults.game.every_people')%>
+                             <%end%>
+                             </div >
+                           </div>
+                           <div class="modal-footer">
+                             <button class="btn btn-default" data-dismiss="modal" aria-hidden="true"><%= t('views.defaults.actions.cancel') %></button>
+                             <%= submit_tag(t('views.defaults.actions.new_game_price_rule')) %>
+                           </div>
+                         <% end %>
+                       </div><!-- /.modal-content -->
+                     </div><!-- /.modal-dialog -->
+                   </div>
+                   <!-- new reservation rule Modal -->
+                   <div id="newReservationRuleModal" class="modal  fade" tabindex="-1" role="dialog" aria-labelledby="newReservationRuleModalLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                       <div class="modal-content">
+                         <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                           <h3 id="newReservationRuleModalLabel"><%=t('views.defaults.actions.new_game_reservation_rule') %></h3>
+                         </div>
+                         <%= form_tag(:controller => "games", :action => "new_reservation_rule", :method => "post") do %>
+                           <div class="modal-body">
+                             <%= hidden_field_tag 'reservation_rule[game_id]', @game.id %>
+                             <li id="price_type" class="number input optional numeric stringish">
+                             <label class=" label" for="reservation_type">
+                               <%= GameReservationRule.human_attribute_name(:rule_type) %>
+                               <abbr title="required">*</abbr>
+                             </label>
+                             <%= select_tag('reservation_rule[rule_type]', options_for_select([[GameReservationRule.human_attribute_name(:week_value), '00'], [GameReservationRule.human_attribute_name(:date_value), '01']])) %>
+                             </li>
+                             <!--TODO 当选中按星期时显示javascript-->
+                             <div id="select_week_reservation_rule">
+                               <%= t('views.defaults.game.every_week')%>
+                               <%= select(:reservation_rule,:week_value,
+                                          [['周一',1],
+                                            ['周二',2],
+                                            ['周三',3],
+                                            ['周四',4],
+                                            ['周五',5],
+                                            ['周六',6],
+                                            ['周日',7]]) %>
+                                          </div>
+                                          <!--TODO 当选中按日期时显示javascript-->
+                                          <div id="select_date_reservation_rule" style="display: none;">
+                                            <%= date_select :reservation_rule, :date_value %>
+                                            </div >
+                                            <div id="reservation_rule">
+                                              <%= t('views.defaults.game.of')%>
+                                              <%= time_select :reservation_rule, :start_time %> 
+                                              <%= t('views.defaults.game.to')%>
+                                              <%= time_select :reservation_rule, :end_time %>
+                                              <%= t('views.defaults.game.this_game')%>
+                                              <%= radio_button_tag("reservation_rule[can_reservation]", true,true)%> <%= t('views.defaults.game.reservation_true')%>
+                                              <%= radio_button_tag("reservation_rule[can_reservation]", false)%> <%= t('views.defaults.game.reservation_false')%>
+                                              </div >
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button class="btn btn-default" data-dismiss="modal" aria-hidden="true"><%= t('views.defaults.actions.cancel') %></button>
+                                              <%= submit_tag(t('views.defaults.actions.new_game_reservation_rule')) %>
+                                            </div>
+                                          <% end %>
+                                        </div><!-- /.modal-content -->
+                                      </div><!-- /.modal-dialog -->
+                                    </div>
+                                    <div class="wb-content-detail">
+                                      <table class="table table-bordered" style="width: 100%;">
+                                        <tbody>
+                                          <tr>
+                                            <td><%=Sport.model_name.human%></td>
+                                            <td><%= Sport.find(Court.find(@game.court_id).sport_id).name + "(" + Court.find(@game.court_id).reservation_type.text + ")" -%></td>
+                                          </tr>
+                                          <tr>
+                                            <td><%= Game.human_attribute_name(:name) %></td>
+                                            <td><%= @game.name -%></td>
+                                          </tr>
+                                          <tr>
+                                            <td><%= Game.human_attribute_name(:sort) %></td>
+                                            <td><%= @game.sort -%></td>
+                                          </tr>
+                                          <tr>
+                                            <td><%= Game.human_attribute_name(:default_price) %></td>
+                                            <td><%= @game.default_price -%></td>
+                                          </tr>
+                                          <tr>
+                                            <td><%= Game.human_attribute_name(:can_reservation) %></td>
+                                            <td>
+                                              <% if @game.can_reservation%> 
+                                                <%= t('views.defaults.game.reservation_true')%>
+                                              <%else%>
+                                                <%= t('views.defaults.game.reservation_false')%>
+                                              <%end%>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td><%= GamePriceRule.model_name.human%></td>
+                                            <td>
+                                              <% @game.game_price_rules.all.each do |game_price_rule| %>
+                                                <% if game_price_rule.rule_type == '00' %>
+                                                  <%= t('views.defaults.game.every_week')%>
+                                                  <% case game_price_rule.week_value%>
+                                                  <%when 1%> 
+                                                    周一
+                                                  <%when 2%> 
+                                                    周二
+                                                  <%when 3%> 
+                                                    周三
+                                                  <%when 4%> 
+                                                    周四
+                                                  <%when 5%> 
+                                                    周五
+                                                  <%when 6%> 
+                                                    周六
+                                                  <%when 7%> 
+                                                    周日
+                                                  <%end%>
+                                                <%else%>
+                                                  <%= game_price_rule.date_value %> 
+                                                <%end%>
+                                                <%= t('views.defaults.game.of')%>
+                                                <%= game_price_rule.start_time.strftime("%H:%M") %> 
+                                                <%= t('views.defaults.game.to')%>
+                                                <%= game_price_rule.end_time.strftime("%H:%M") %> 
+                                                <%= t('views.defaults.game.price_is')%>
+                                                <%= game_price_rule.price %>
+                                                <%= t('views.defaults.game.yuan')%>
+                                                <% court = Court.find(@game.court_id) %>
+                                                <%if court.reservation_type.according_time?%>
+                                                  <%=court.min_unit%> 
+                                                  <%= t('views.defaults.game.every_hour')%>
+                                                <%else %>
+                                                  <%=court.min_unit%>
+                                                  <%= t('views.defaults.game.every_people')%>
+                                                <%end%>
+                                                <%= link_to t('views.defaults.actions.destroy'), :controller => "games",:action => "delete_game_price_rule", :price_rule_id => game_price_rule.id, :confirm => t('activemodel.confirm.destroy') %>
+                                                </p>
+                                              <%end%>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td><%= GameReservationRule.model_name.human%></td>
+                                            <td>
+                                              <% @game.game_reservation_rules.all.each do |game_reservation_rule| %>
+                                                <% if game_reservation_rule.rule_type == '00' %>
+                                                  <%= t('views.defaults.game.every_week')%>
+                                                  <% case game_reservation_rule.week_value%>
+                                                  <%when 1%> 
+                                                    周一
+                                                  <%when 2%> 
+                                                    周二
+                                                  <%when 3%> 
+                                                    周三
+                                                  <%when 4%> 
+                                                    周四
+                                                  <%when 5%> 
+                                                    周五
+                                                  <%when 6%> 
+                                                    周六
+                                                  <%when 7%> 
+                                                    周日
+                                                  <%end%>
+                                                <%else%>
+                                                  <%= game_reservation_rule.date_value %> 
+                                                <%end%>
+                                                <%= t('views.defaults.game.of')%>
+                                                <%= game_reservation_rule.start_time.strftime("%H:%M") %> 
+                                                <%= t('views.defaults.game.to')%>
+                                                <%= game_reservation_rule.end_time.strftime("%H:%M") %> 
+                                                <%= t('views.defaults.game.this_game')%>
+                                                <% if game_reservation_rule.can_reservation%> 
+                                                  <%= t('views.defaults.game.reservation_true')%>
+                                                <%else%>
+                                                  <%= t('views.defaults.game.reservation_false')%>
+                                                <%end%>
+                                                <%= link_to t('views.defaults.actions.destroy'), :controller => "games",:action => "delete_game_reservation_rule", :reservation_rule_id => game_reservation_rule.id, :confirm => t('activemodel.confirm.destroy') %>
+                                                </p>
+                                              <%end%>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>

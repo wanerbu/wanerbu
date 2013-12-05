@@ -93,123 +93,124 @@
             <% 
               old_sport_id = 0 
               @gym.courts.order("sport_id asc").each do |court|
-              new_sport_id = court.sport_id
-              if new_sport_id != old_sport_id then
-            %>
+                new_sport_id = court.sport_id
+                if new_sport_id != old_sport_id then
+              %>
               <%= Sport.find(court.sport_id).name-%></a> 
             <% 
-              end
-             old_sport_id = new_sport_id 
+                end
+                old_sport_id = new_sport_id 
               end
             %>
-          </dd>
-        </dl>
-      </div>
-    </div><!--ui_text-->
-  </div><!--itemTopic-->
-  <div class='ui_right'>
-    <div class='ui_map'>
-      <div class='mapInfo'>
-        <div id="allmap"></div>
-      </div>
-      <div class='mapModify'>
-        <div class="search_icon_tab">
-          <a title="驾车" href="javascript:void(0);" class="select"><img src="../images/blank.gif" class="car"></a>
-          <a title="公共交通" href="javascript:void(0);" class=""><img src="../images/blank.gif" class="bus"></a>
-          <a title="步行" href="javascript:void(0);" class=""><img src="../../images/blank.gif" class="men"></a>
-        </div>
-        <div class="search_form">
-          <ul>
-            <li>
-            <span title="起点" class="map_ico_a"></span>
-            <input type="text" alt="请输入起点" class="text" style="width:174px;" id="fromAddress">
-            </li>
-            <li>
-            <span title="终点" class="map_ico_b"></span>
-            <input type="text" value="<%= address%>" class="text" style="width:174px;" id="endAddress">
-            </li>
-            <li>
-            <a href="transit_search.html" target="_blank"><button type="button" class="btn btn-info more">查询路线</button></a>
-            </li>
-          </ul>					
-        </div>
-      </div>
-    </div><!--map-->
-  </div>
-  <div class="ui_summary">
-    <p class="ui_summary_big">
-    <span class="first"></span>
-    <%= @gym.intro%>
-    <a class="ffst cSport ml5" target="_blank" style="display:inline-block;" href="/news/47602086">详情&gt;&gt;</a>    <span></span>
-    </p>
-  </div><!--ui_summary-->
-</div><!-- /.ui_row -->
-<div class="ui_row details">
-  <div class="ui_left details_left">
-    <div>
-      <ul class="nav nav-tabs">
-        <li class="active"><a >场地预订</a></li>
-      </ul>
-    </div>
-    <div id="reserveList">
-      <%= render 'reservelist' -%>
-    </div>
-    <!--查询结果-->
-    <div id="reserveListBySearch">
-    </div>
-  </div>
-  <div class="details_right ui_right">
-    <div class="right_info">
-      <div><h2>相关优惠</h2></div>
-      <div>
-        <ul>
-          <li>
-          <span class="cSport">农行信用卡银联在线支付</span>每笔订单立减<b class="cSport">10</b>元
-          </li>
-          <li class="mt5">
-          <span class="cSport">银联在线支付</span>每笔订单立减<b class="cSport">5</b>元, 立返<b>5</b>元券
-          </li>
-        </ul>
-      </div>
-      <div class="mt10"><h2>相关活动</h2></div>
-      <div class="hot_activity">
-        <ul>
-          <li>
-          <dl class="dl-horizontal">
-            <dt class="act_pic">
-            <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742">
-              <img width="96" height="128" alt="玩儿不@运动 9元抢场 第二十期10月1日场" src="../../assets/img/act.jpg">
-            </a>
-            </dt>
-            <dd class="act_txt">
-            <span title="玩儿不官方认证活动" class="mr5"></span>
-            <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742" class="cSport">玩儿不@运动 9元抢场 第二十期10月1日场</a>
-            <p class="mt10">5月21日--12月31日</p>
-            <p class="mt10">玩儿不运动</p>
             </dd>
           </dl>
-          </li>
+        </div>
+      </div><!--ui_text-->
+    </div><!--itemTopic-->
+    <div class='ui_right'>
+      <div class='ui_map'>
+        <div class='mapInfo'>
+          <div id="allmap"></div>
+        </div>
+        <div class='mapModify'>
+          <div class="search_icon_tab">
+            <a title="驾车" href="javascript:void(0);" class="select"><img src="../images/blank.gif" class="car"></a>
+            <a title="公共交通" href="javascript:void(0);" class=""><img src="../images/blank.gif" class="bus"></a>
+            <a title="步行" href="javascript:void(0);" class=""><img src="../../images/blank.gif" class="men"></a>
+          </div>
+          <div class="search_form">
+            <ul>
+              <li>
+              <span title="起点" class="map_ico_a"></span>
+              <input type="text" alt="请输入起点" class="text" style="width:174px;" id="fromAddress">
+              </li>
+              <li>
+              <span title="终点" class="map_ico_b"></span>
+              <input type="text" value="<%= address%>" class="text" style="width:174px;" id="endAddress">
+              </li>
+              <li>
+              <a href="transit_search.html" target="_blank"><button type="button" class="btn btn-info more">查询路线</button></a>
+              </li>
+            </ul>					
+          </div>
+        </div>
+      </div><!--map-->
+    </div>
+    <div class="ui_summary">
+      <p class="ui_summary_big">
+      <%= @gym.intro%>
+      <a class="ffst cSport ml5" target="_blank" style="display:inline-block;" href="/news/47602086">详情&gt;&gt;</a>    <span></span>
+      </p>
+    </div><!--ui_summary-->
+  </div><!-- /.ui_row -->
+  <div class="ui_row details">
+    <div class="ui_left details_left">
+      <div>
+        <ul class="nav nav-tabs">
+          <li class="active"><a >场地预订</a></li>
         </ul>
+      </div>
+      <div id="reserveList">
+        <%= render 'reservelist' -%>
+      </div>
+      <!--查询结果-->
+      <div id="reserveListBySearch">
+      </div>
+    </div>
+    <div class="details_right ui_right">
+      <div class="right_info">
+        <div><h2>相关优惠</h2></div>
+        <div>
+          <ul>
+            <li>
+            <span class="cSport">农行信用卡银联在线支付</span>每笔订单立减<b class="cSport">10</b>元
+            </li>
+            <li class="mt5">
+            <span class="cSport">银联在线支付</span>每笔订单立减<b class="cSport">5</b>元, 立返<b>5</b>元券
+            </li>
+          </ul>
+        </div>
+        <div class="mt10"><h2>相关活动</h2></div>
+        <div class="hot_activity">
+          <ul>
+            <li>
+            <dl class="dl-horizontal">
+              <dt class="act_pic">
+              <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742">
+                <img width="96" height="128" alt="玩儿不@运动 9元抢场 第二十期10月1日场" src="../../assets/img/act.jpg">
+              </a>
+              </dt>
+              <dd class="act_txt">
+              <span title="玩儿不官方认证活动" class="mr5"></span>
+              <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742" class="cSport">玩儿不@运动 9元抢场 第二十期10月1日场</a>
+              <p class="mt10">5月21日--12月31日</p>
+              <p class="mt10">玩儿不运动</p>
+              </dd>
+            </dl>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<form id="searchForm"> 
-  <input type="hidden" name="gymid" id="gymid" value="<%=@gym.id%>"/>
-  <input type="hidden" name="sportid" id="sportid" value="<%=@court.sport_id%>"/>
-  <input type="hidden" name="reservationtype" id="reservationtype" value="<%=@court.reservation_type%>"/>
-</form> 
-<script type="text/javascript">
-  var map = new BMap.Map("allmap");    // 创建地图实例       
-  var end = document.getElementById("endAddress").value;
-  // 创建地址解析器实例   
-  var myGeo = new BMap.Geocoder();    
-  // 将地址解析结果显示在地图上，并调整地图视野  
-  myGeo.getPoint(end, function(point){    
-      if (point) {	   
-      map.centerAndZoom(point, 15);// 创建点坐标,初始化地图，设置中心点坐标和地图级别  
-      map.addOverlay(new BMap.Marker(point));  		
-      }    
-      }, "西安市"); 
+  <form id="searchForm"> 
+    <input type="hidden" name="gymid" id="gymid" value="<%=@gym.id%>"/>
+    <% if @court != nil %>
+      <input type="hidden" name="sportid" id="sportid" value="<%=@court.sport_id%>"/>
+      <input type="hidden" name="reservationtype" id="reservationtype" value="<%=@court.reservation_type%>"/>
+    <%end%>
+  </form> 
+  <script type="text/javascript">
+    var map = new BMap.Map("allmap");    // 创建地图实例       
+    var end = document.getElementById("endAddress").value;
+    // 创建地址解析器实例   
+    var myGeo = new BMap.Geocoder();    
+    // 将地址解析结果显示在地图上，并调整地图视野  
+    myGeo.getPoint(end, function(point){    
+        if (point) {	   
+        map.centerAndZoom(point, 15);// 创建点坐标,初始化地图，设置中心点坐标和地图级别  
+        map.addOverlay(new BMap.Marker(point));  		
+        }    
+        }, "西安市"); 
 
-    </script>
+</script>

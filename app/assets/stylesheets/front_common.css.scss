@@ -16,7 +16,9 @@ ul li {
   padding: 0;
   margin: 0;
 }
-
+em {
+    font-style: normal;
+}
 
 /*常量*/
 .mt10{margin-top:10px}
@@ -32,7 +34,9 @@ ul li {
   float: left;
 }
 .cSport{color:#39c!important} 
-
+.c999 {
+    color: #999999 !important;
+}
 
 
 /*class id 级别前台共通样式*/

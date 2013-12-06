@@ -69,4 +69,11 @@ class GymController < ApplicationController
     end
     render :partial => "reservelist"
   end
+  def reserve
+    @court = Court.find(params[:id]) 
+  end
+  def searchgame
+    @court = Court.find(params[:id]) 
+    render :partial => "gamelist"
+  end
 end

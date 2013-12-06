@@ -43,7 +43,7 @@ module GymHelper
         </span>
         <span class=\"opiAct\">"
     if fix_reservation
-      s = s + "<a href=\"javascript:toOneCourt('#{arg["court_id"]}',#{date})\" target=\"_blank\"><button class=\"btn btn-primary\" type=\"button\">在线预订</button></a>"
+      s = s + "<a href=\"javascript:toOneCourt('#{arg["court_id"]}','#{date}')\" ><button class=\"btn btn-primary\" type=\"button\">在线预订</button></a>"
     else
       s = s + "<em class=\"c999\">暂不支持预订</em>"
     end

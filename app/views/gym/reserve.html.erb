@@ -1,0 +1,20 @@
+<%= javascript_include_tag "reserve.js" %>
+<%= stylesheet_link_tag "front_common" %>
+<%= stylesheet_link_tag "reserve" %>
+
+<div class="ui_row">
+  <div class="payStep02">
+    <ul class="payOrderSteps">
+      <li class="step1">1.选择场馆<i class="icon-forward"></i></li>
+      <li class="step2 setp_active">2.选择场次<i class="icon-forward"></i></li>
+      <li class="step3">3.确认支付<i class="icon-forward"></i></li>
+      <li class="step4">4.预订成功</li>
+    </ul>
+  </div><!--setp-->
+  <div id="gameList">
+    <%= render 'gamelist' -%>
+  </div>
+  <!--查询结果-->
+  <div id="gameListBySearch">
+  </div>
+</div><!--/.ui_row-->

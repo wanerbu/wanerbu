@@ -17,27 +17,23 @@ ul li {
   margin: 0;
 }
 em {
-    font-style: normal;
+  font-style: normal;
 }
 
 /*常量*/
 .mt10{margin-top:10px}
+.mt20 {margin-top: 20px!important;}
+.mt40 {margin-top: 40px!important;}
+.ml5 { margin-left: 5px;}
 .ml15 {margin-left: 15px;}
-.mt10 {margin-top: 10px;}
-.mt20 {
-  margin-top: 20px!important;
-}
-.right {
-  float: right;
-}
-.left {
-  float: left;
-}
+.ml10{margin-left: 40px;}
+.mr5 { margin-right: 5px;}
+.fs14 {font-size: 14px;}
+.right {float: right;}
+.left {float: left;}
 .cSport{color:#39c!important} 
-.c999 {
-    color: #999999 !important;
-}
-
+.c999 {color: #999999 !important;}
+.cf60{color: #FF6600;}
 
 /*class id 级别前台共通样式*/
 .container{
@@ -60,6 +56,12 @@ em {
 
 .title{
   font-size: 16px;
+}
+.pho-text{
+width: 120px;
+}
+.vla-text{
+width: 50px;
 }
 /*活动列表样式*/
 .activity_list dt {

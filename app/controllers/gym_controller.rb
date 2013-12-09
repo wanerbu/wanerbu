@@ -76,4 +76,14 @@ class GymController < ApplicationController
     @court = Court.find(params[:id]) 
     render :partial => "gamelist"
   end
+  def submit_order
+    @order = Order.new(params[:order])
+    @order.save
+    reservations = Reservation.create(params[:reservations])
+    reservations.each do |reservation| 
+      reservation.order_id = @order.id
+      reservation.save
+    end
+    render "confirm_order"
+  end
 end

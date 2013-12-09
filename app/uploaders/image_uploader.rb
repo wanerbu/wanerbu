@@ -43,7 +43,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
    version :thumb do
-     process :resize_to_limit => [120, 90]
+     process :resize_to_limit => [120, 65]
    end
 
   # Add a white list of extensions which are allowed to be uploaded.

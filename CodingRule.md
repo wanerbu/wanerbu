@@ -195,4 +195,6 @@ cancan默认使用current_user来获得当前的用户，可以通过在controll
 1. https://github.com/carrierwaveuploader/carrierwave
 2. 如果bundle install rmgick 时出现类似Can't find Magick-config的错误，需先apt-get install libmagickwand-dev
 
-
+###drop table
+1.$rails console
+2.ActiveRecord::Migration.drop_table(:users)

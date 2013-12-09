@@ -26,6 +26,7 @@
         new_game_reservation_rule: 新增预订规则
         upload_image: 上传照片
         remove_image: 删除所选照片
+        submit_order: 提交订单
       query_results:
         prefix: "共: "
         unit: " 件"

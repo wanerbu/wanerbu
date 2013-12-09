@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  status: MyString
+  order_time: 2013-12-09 16:04:33
+
+two:
+  user_id: 1
+  status: MyString
+  order_time: 2013-12-09 16:04:33

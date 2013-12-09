@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130720071936) do
+ActiveRecord::Schema.define(:version => 20131209090752) do
 
   create_table "admin_roles", :force => true do |t|
     t.integer "admin_id", :null => false
@@ -166,6 +166,14 @@ ActiveRecord::Schema.define(:version => 20130720071936) do
 
   add_index "gyms", ["user_id"], :name => "index_gyms_on_user_id", :unique => true
 
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "status",                     :default => "00", :null => false
+    t.string   "telephone_no", :limit => 30, :default => "",   :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
   create_table "properties", :force => true do |t|
     t.string   "name",       :limit => 20, :null => false
     t.string   "unit",       :limit => 6
@@ -180,6 +188,16 @@ ActiveRecord::Schema.define(:version => 20130720071936) do
     t.string   "province",   :limit => 20
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+  end
+
+  create_table "reservations", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "order_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.float    "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|

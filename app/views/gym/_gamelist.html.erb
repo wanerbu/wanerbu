@@ -82,9 +82,11 @@
                     <div class="pk_cols">
                       <% arr = value.to_a %>
                       <% if arr[1]
-                      selectid = game.id.to_s + params[:date].delete("-") + key.delete(":") 
+                      selectid = game.id.to_s + params[:date].delete("-") + key.delete(":")
+                      s_time = Time.parse(params[:date].to_s + " " + key.to_s + ":00")
+                      e_time = Time.parse(params[:date].to_s + " " + next_key.to_s + ":00")
                     %>
-                    <span onclick='return select(<%=selectid%>,<%=game.id%>)' id="<%=selectid%>" title="<%= key + '-' + next_key + ' ' + game.name + ' ' + arr[0].to_s + ' '%>元" price="<%=arr[0]%>" start_time ="<%=key%>" end_time="<%=next_key%>" class="hasSeat">
+                    <span onclick='return select(<%=selectid%>,<%=game.id%>)' id="<%=selectid%>" title="<%= key + '-' + next_key + ' ' + game.name + ' ' + arr[0].to_s + ' '%>元" price="<%=arr[0]%>" start_time ="<%=s_time%>" end_time="<%=e_time%>" class="hasSeat">
                       <%=arr[0]%>元
                     <% else %>
                       <span title="该场次已售出" class="sellSeat">
@@ -101,7 +103,7 @@
     </div>
   </div>
 </div><!--ui_left-->
-<form>
+<%= form_tag({:controller => "gym", :action => "submit_order"}, {:method => "post"}) do %>
   <div id="orderform" class="ui_right">
     <div class="innder">
       <div class="pewSeat">
@@ -125,7 +127,7 @@
         <div class="mobileInfo mt10">
           <p><em>手机号：</em></p>
           <p>
-          <input type="text" class="pho-text" placeholder="请输入您的手机号">
+          <input id="telephone_no" type="text" class="pho-text" placeholder="请输入您的手机号" name="order[telephone_no]">
           <span class="cred">*</span>
           </p>
           <p class="mt5"><em>验证码：</em></p>
@@ -134,13 +136,45 @@
           <span class="cred">*</span>
           </p>
           <p class="ml10">
-          <a href="confirm_order.html" target="_blank"><button class="btn btn-primary" type="button" >提交订单</button></a>
+          <%= submit_tag(t('views.defaults.actions.submit_order'),:onclick => "return validateform();") %>
           </p>
         </div>
       </div>
     </div>
-  <input id="timesInput" type="hidden" value="0" name="timesInput">
-  <input id="priceInput" type="hidden" value="0" name="priceInput">
+    <input id="timesInput" type="hidden" value="0" name="timesInput">
+    <input id="priceInput" type="hidden" value="0" name="priceInput">
+    <!--
+    <input id="user_id" type="hidden" value="<%#=current_user.nil? ? " " : current_user.id%>" name="user_id">
+    -->
+    <input id="user_id" type="hidden" value="1" name="order[user_id]">
   </div><!--ui_right-->
-</form>
+<%end%>
 </div><!--seatGroup-->
+<!-- Modal -->
+<%#= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">玩儿不网登录</h4>
+        </div>
+        <div class="modal-body">
+          <div><%#= f.label :login %><br />
+            <%#= f.text_field :login %></div>
+
+          <div><%#= f.label :password %><br />
+            <%#= f.password_field :password %></div>
+
+          <%# if devise_mapping.rememberable? -%>
+            <div><%#= f.check_box :remember_me %> <%#= f.label :remember_me %></div>
+          <%# end -%>
+        </div>
+        <div class="modal-footer">
+          <div><%#= f.submit "Sign in" %></div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+<%# end %>
+

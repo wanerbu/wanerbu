@@ -1,0 +1,119 @@
+<%= javascript_include_tag "confirm_order.js" %>
+<%= stylesheet_link_tag "front_common" %>
+<%= stylesheet_link_tag "confirm_order" %>
+<div class="ui_row">
+  <div class="payStep03">
+    <ul class="payOrderSteps">
+      <li class="step1">1.选择场馆<i class="icon-forward"></i></li>
+      <li class="step2">2.选择场次<i class="icon-forward"></i></li>
+      <li class="step3 setp_active">3.确认支付<i class="icon-forward"></i></li>
+      <li class="step4">4.预订成功</li>
+    </ul>
+  </div><!--setp-->
+  <div class="payBox mt20">
+    <div class="payBox_header">
+      <div class="pad">
+        <h2>订单信息</h2>
+      </div>
+    </div>
+    <%
+      reservation = @order.reservations.first
+      court = Court.find(Game.find(reservation.game_id).court_id)
+      gym = Gym.find(court.gym_id)
+    %>
+    <div class="payBox_body">
+      <div class="payBox_body_left">
+        <dl class="gym_info">
+          <ul>
+            <li><em>预定场馆：</em><%=gym.name%></li>
+            <li><em>详细地址：</em>
+            <%= Province.find(gym.province_id).province +
+              City.find(gym.city_id).city +
+              Area.find(gym.area_id).area +
+              gym.address %></li>
+            </ul>
+          </dl>
+          <ol class="order_info">
+            <li><em>订单号：</em><%=@order.id%></li>
+            <li><em>预订项目：</em><%= Sport.find(court.sport_id).name-%>
+            <em class="ml30">预订日期：</em> <%= (reservation.start_time).strftime("%m月%d日")%>&nbsp;<%= show_week(reservation.start_time.to_date)%></li>
+            <li class="games">
+            <em style="margin:0;" class="games_rev"> 预订场次：</em>
+            </li>
+            <%total_price = 0
+              @order.reservations.each do |reserve|%>
+              <li>
+              <span class="changci"><%=reserve.start_time.strftime("%H:%M")%>-<%=reserve.end_time.strftime("%H:%M").to_s + " " + Game.find(reserve.game_id).name + " " + reserve.price.to_s %>元</span>
+              </li>
+              <%total_price = total_price + reserve.price%>
+            <%end%>
+            <li class="mt10"><b class="fs14">应付金额：</b><span class="price"><b><%=total_price%> </b></span>元 </li>
+            <li class="changeMobile">
+            接收手机号码：
+            <label for="mobile">
+              <b class="fs16 c333"><%=@order.telephone_no%></b>
+            </label>
+            </li>
+          </ol>
+        </div>
+        <div class="payBox_body_right">
+          <div class="limitTimedetail inner">
+            <p><span class="fs14 cf60">请在15分钟内完成付款</span>，超时系统将自动释放已选场次，支付中如遇到问题请致电：<b>4000-406-506</b></p>
+            <div class="limitTime">
+              <b class="fs22">剩余支付时间：</b>
+              <p class="fs20 mt5">订单已超时</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--payBox_body-->
+    <div class="payList mt20" style="float: left;">
+      <div>
+        <ul class="nav nav-tabs">
+          <li class="active"> <a href="javascript:searchPPPV('booking', '');">网上支付</a></li>
+        </ul>
+      </div>
+      <div class="payMenu">
+        <dl class="clear">
+          <dt>银行支付：</dt>
+          <dd class="payway clear">
+          <label for="icon_jtyh" title="交通银行" class="icon_jtyh">
+            <input type="radio" value="directPay:COMM" id="icon_jtyh" name="paymethod">
+          </label>
+          <label for="icon_jsyh" title="中国建设银行" class="icon_jsyh ">
+            <input type="radio" value="unionPay:CCB" id="icon_jsyh" name="paymethod">
+          </label>
+          <label for="icon_pfyh" title="浦发银行" class="icon_pfyh ">
+            <input type="radio" value="spdPay" id="icon_pfyh" name="paymethod">
+          </label>
+          <label for="icon_gsyh" title="中国工商银行" class="icon_gsyh ">
+            <input type="radio" value="unionPay:ICBC" id="icon_gsyh" name="paymethod">
+          </label>
+          <label for="icon_nyyh" title="中国农业银行" class="icon_nyyh">
+            <input type="radio" value="unionPay:ABC" id="icon_nyyh" name="paymethod">
+          </label>
+          <label for="icon_gfyh" title="广东发展银行" class="icon_gfyh">
+            <input type="radio" value="gdbPay" id="icon_gfyh" name="paymethod">
+          </label>
+          <label for="icon_yz" title="邮政储蓄银行" class="icon_yz ">
+            <input type="radio" value="psbcPay:01" id="icon_yz" name="paymethod">
+          </label>
+          <label for="icon_zsyh" title="招商银行" class="icon_zsyh ">
+            <input type="radio" value="cmbPay" id="icon_zsyh" name="paymethod">
+          </label>
+          <label for="icon_xyyh" title="兴业银行" class="icon_xyyh ">
+            <input type="radio" value="unionPay:CIB" id="icon_xyyh" name="paymethod">
+          </label>
+          <label for="icon_gdyh" title="中国光大银行" class="icon_gdyh">
+            <input type="radio" value="unionPay:CEB" id="icon_gdyh" name="paymethod">
+          </label>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="mt20 span12 payments" style="float: left;">
+      <p>
+      <button type="button" class="btn btn-primary ml5">确认订单，立即支付</button>
+      </p>
+    </div>
+  </div><!--/.ui_row-->

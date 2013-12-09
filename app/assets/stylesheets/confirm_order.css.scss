@@ -1,0 +1,224 @@
+// Place all the styles related to the gym controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.mt20 {margin-top: 20px;}
+.mt5 {margin-top: 5px;}
+.ml30 {margin-left: 30px;}
+.ml5 {margin-left: 5px;}
+.mtv6 {margin-top: -6px;};
+.fs14 {font-size: 14px;}
+.fs16 {font-size: 16px;}
+.fs22 {font-size: 22px;}
+.fs20 {font-size: 20px;}
+
+.payOrderSteps {
+  background-color: #EEEEEE;
+  overflow-y: hidden;
+}
+.payOrderSteps li {
+  color: #999999;
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  width: 25%;
+}
+.step1, .step2, .step3, .step4 {
+  text-indent: -8px;
+}
+.setp_active{
+  color: #3399CC !important;
+}
+
+.payBox_header {
+  border-bottom-color: #EBEBEB;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  height: 35px;
+}
+.payBox_header h2 {
+  font-size: 14px;
+}
+.payBox_body {
+  border-top-color: #1885AE;
+  border-top-style: solid;
+  border-top-width: 2px;
+}
+.payBox_body_left{
+  float: left;
+  min-height: 230px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+  border-left-color: #BEE5F2;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: #BEE5F2;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-bottom-color: #BEE5F2;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+.payBox_body_right{
+  width: 258px;
+  float: left;
+}
+.gym_info{
+  float: left;
+  margin-bottom: -30000px;
+  padding-bottom: 30000px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  width: 279px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+em {
+  font-style: normal;
+  color: #999999;
+}
+.payBox_body_left li {
+  line-height: 28px;
+}
+.payBox_body_left ol {
+  float: left;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  width: 400px;
+}
+
+.games .games_rev {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.changci {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #3399CC;
+  border-style: solid;
+  border-width: 1px;
+  color: #3399CC;
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 10px;
+  margin-top: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-bottom: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0;
+  text-align: center;
+  width: 170px;
+}
+
+.price {
+  color: #FF6600;
+  font-size: 14px;
+}
+.changeMobile {
+  height: 30px;
+  line-height: 30px;
+  padding-left: 1px;
+}
+.changeMobile {
+  background-clip: border-box;
+  background-color: #F3F3F3;
+}
+label {
+  display: inline;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.limitTimedetail{
+  background-color: #F3FBFE;
+  padding-left: 10px;
+}
+
+.cf60, .yellow {
+  color: #FF6600;
+}
+.payBox_hd{
+  float: left;
+}
+.payments{
+  background-color: #F8F8F8;
+}
+.row-fluid [class*="span"]{
+  margin-left: 0;
+}
+
+.payway label {
+  background-image: url("icon_pay.png");
+  background-repeat: no-repeat;
+  border-bottom-color: #FFFFFF;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-top-color: #FFFFFF;
+  border-top-style: solid;
+  border-top-width: 1px;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  height: 40px;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 20px;
+  margin-top: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+}
+.payway label {
+  width: 147px;
+}
+.payway label.icon_jtyh {
+  background-position: 30px -120px;
+}
+.payway label.icon_jsyh {
+  background-position: 30px -40px;
+}
+.payway label.icon_pfyh {
+  background-position: 30px -360px;
+}
+.payway label.icon_gsyh {
+  background-position: 30px 0;
+}
+.payway label.icon_nyyh {
+  background-position: 30px -240px;
+}
+.payway label.icon_gfyh {
+  background-position: 30px -160px;
+}
+.payway label.icon_yz {
+  background-position: 30px -1209px;
+}
+.payway label.icon_zsyh {
+  background-position: 30px -80px;
+}
+.payway label.icon_xyyh {
+  background-position: 30px -200px;
+}
+.payway label.icon_gdyh {
+  background-position: 30px -280px;
+}
+.payway label input {
+  left: 8px;
+  position: absolute;
+  top: 14px;
+}

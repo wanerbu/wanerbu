@@ -13,7 +13,7 @@ class User::Master::GymsController <  User::UserBaseController
 
   def index
     # TODO Tom 存在性的check
-   @gym = current_user.gym
+    @gym = current_user.gym
   end
 
   def new
@@ -47,13 +47,13 @@ class User::Master::GymsController <  User::UserBaseController
   end
 
   def update
-      @gym = Gym.find(params[:id])
-      if @gym.update_attributes(params[:gym])
-        redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.update", model: Gym.model_name.human)
-      else
-        flash[:alert] = I18n.t("activemodel.errors.update", model: Gym.model_name.human)
-        render "edit"
-      end
+    @gym = Gym.find(params[:id])
+    if @gym.update_attributes(params[:gym])
+      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.update", model: Gym.model_name.human)
+    else
+      flash[:alert] = I18n.t("activemodel.errors.update", model: Gym.model_name.human)
+      render "edit"
+    end
   end
 
   def destroy
@@ -132,10 +132,18 @@ class User::Master::GymsController <  User::UserBaseController
   #生成历史记录
   def generate_log(action)
     if @gym.history_log.nil?
-        action_history_log = current_user.login_id + "于"+ Time.now.to_date.to_s + " " + Time.now.strftime("%H:%M").to_s + I18n.t("activemodel.success."+action, model: Gym.model_name.human)  + ";"
+      action_history_log = current_user.login_id + "于"+ Time.now.to_date.to_s + " " + Time.now.strftime("%H:%M").to_s + I18n.t("activemodel.success."+action, model: Gym.model_name.human)  + ";"
     else
-        action_history_log = @gym.history_log + current_user.login_id + "于"+ Time.now.to_date.to_s + " " + Time.now.strftime("%H:%M").to_s + I18n.t("activemodel.success."+action, model: Gym.model_name.human)  + ";"
+      action_history_log = @gym.history_log + current_user.login_id + "于"+ Time.now.to_date.to_s + " " + Time.now.strftime("%H:%M").to_s + I18n.t("activemodel.success."+action, model: Gym.model_name.human)  + ";"
     end
     return action_history_log
+  end
+  def remove_image
+    @gym_images = GymImage.find(params[:gym_image_ids])
+    @gym_images.each { |gym_image|
+      gym_image.remove_image!
+      gym_image.save
+      gym_image.destroy }
+      redirect_to user_master_gyms_path, notice: I18n.t("activemodel.success.destroy", model: GymImage.model_name.human)
   end
 end

@@ -14,16 +14,16 @@
         <td><%= @gym.intro -%></td>
       </tr>
       <tr>
-      <tr>
-        <td><%= Gym.human_attribute_name(:address) %></td>
-        <td>
-          <% if @gym.province_id != nil and @gym.city_id != nil and @gym.area_id != nil%>
-            <%= Province.find(@gym.province_id).province + City.find(@gym.city_id).city + Area.find(@gym.area_id).area + @gym.address -%>
-          <%else%>
-            <%= @gym.address %>
-          <%end%>
-        </td>
-      </tr>
+        <tr>
+          <td><%= Gym.human_attribute_name(:address) %></td>
+          <td>
+            <% if @gym.province_id != nil and @gym.city_id != nil and @gym.area_id != nil%>
+              <%= Province.find(@gym.province_id).province + City.find(@gym.city_id).city + Area.find(@gym.area_id).area + @gym.address -%>
+            <%else%>
+              <%= @gym.address %>
+            <%end%>
+          </td>
+        </tr>
         <td><%= Gym.human_attribute_name(:telephone) %></td>
         <td><%= @gym.telephone -%></td>
       </tr>
@@ -32,10 +32,10 @@
         <td><%= @gym.status.text -%></td>
       </tr>
       <% if @gym.status.rejected? or @gym.status.locked? %>
-      <tr>
-        <td><%= @gym.status.text + Gym.human_attribute_name(:reason) %></td>
-        <td><%= @gym.reason -%></td>
-      </tr>
+        <tr>
+          <td><%= @gym.status.text + Gym.human_attribute_name(:reason) %></td>
+          <td><%= @gym.reason -%></td>
+        </tr>
       <% end%>
       <tr>
         <td><%= Gym.human_attribute_name(:open_time) %></td>
@@ -59,12 +59,18 @@
       <tr>
         <td><%= GymImage.human_attribute_name(:image) %></td>
         <td>
-         <% @gym.gym_images.all.each do |gym_image| %>
-            <%= image_tag gym_image.image_url(:thumb).to_s %>
-            </p>
-            <%= gym_image.intro.to_s %>
-            </p>
-         <%end%>
+          <%= form_tag({:controller => "gyms", :action => "remove_image"}, {:method => "post", multipart: true}) do %>
+            <% @gym.gym_images.all.each do |gym_image| %>
+              <%= image_tag gym_image.image_url(:thumb).to_s %>
+              </p>
+              <%= gym_image.intro.to_s %>
+              <%= check_box_tag 'gym_image_ids[]', gym_image.id-%>
+              </p>
+            <%end%>
+            <%if @gym.gym_images.first != nil %>
+              <%= submit_tag(t('views.defaults.actions.remove_image')) %>
+            <%end%>
+          <%end%>
         </td>
       </tr>
     </tbody>

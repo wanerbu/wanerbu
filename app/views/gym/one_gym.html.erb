@@ -40,32 +40,16 @@
     <div class='ui_media'>
       <div id="myCarousel" class="carousel slide">
         <div class="carousel-inner">
-          <div class="item active">
-            <img src="/images/1.jpeg" alt="" class='img-thumbnail'>
-            <div class="container">
-              <div class="carousel-caption">
-                <a class="btn btn-lg btn-primary" href="#">Sign up today</a>
+          <% @gym.gym_images.all.each do |gym_image| %>
+            <div class="<%= @gym.gym_images.all.first.id  == gym_image.id ? 'item active' : 'item' %>">
+              <%= image_tag gym_image.image_url.to_s, class: 'img-thumbnail' %>
+              <div class="container">
+                <div class="carousel-caption">
+                  <a class="btn btn-lg btn-primary" href="#"><%=gym_image.intro.to_s%></a>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="item">
-            <img src="/images/2.jpeg" alt="" class='img-thumbnail'>
-            <div class="container">
-              <div class="carousel-caption">
-                <p class="lead">football, let`s go!</p>
-                <a class="btn btn-lg btn-primary" href="#">Learn more</a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="/images/3.jpeg" alt="" class='img-thumbnail'>
-            <div class="container">
-              <div class="carousel-caption">
-                <p class="lead">football, let`s go!</p>
-                <a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
-              </div>
-            </div>
-          </div>
+          <%end%>
         </div>
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
         <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
@@ -213,4 +197,4 @@
         }    
         }, "西安市"); 
 
-</script>
+      </script>

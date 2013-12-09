@@ -36,11 +36,12 @@ class UserAbility
     #当前用户只能操作自己的资源
     if user.ability? :manage_gym
       can [:index],    Gym, :user_id => user.id
-      can [:apply,:upload_image],    Gym, :user_id => user.id,:status => ['draft','canceled','rejected','locked']
+      can [:apply,:upload_image], Gym, :user_id => user.id,:status => ['draft','canceled','rejected','locked']
       can [:cancel],   Gym, :user_id => user.id,:status => 'applying'
       can [:release],  Gym, :user_id => user.id,:status => ['approved','suspended']
       can [:suspend],  Gym, :user_id => user.id,:status => 'released'
       can [:edit,:update], Gym, :user_id => user.id
+      can [:remove_image], Gym, :user_id => user.id
       cannot [:edit,:update],       Gym,:status => 'applying'
       can :manage, Court, :id       => (user.gym.nil?) ? "" : user.gym.court_ids 
       can :manage, Game,  :court_id => (user.gym.nil?) ? "" : user.gym.court_ids 

@@ -65,6 +65,7 @@ Wanerbu::Application.routes.draw do
         end
       end
       match 'gyms/upload_image' => 'gyms#upload_image',:via => :post
+      match 'gyms/remove_image' => 'gyms#remove_image',:via => :post
       match 'gyms/get_cities_by_province_id/:province_id' => 'gyms#get_cities_by_province_id',:via=>:get
       match 'gyms/:id/get_cities_by_province_id/:province_id' => 'gyms#get_cities_by_province_id',:via=>:get
       match 'gyms/get_areas_by_city_id/:city_id' => 'gyms#get_areas_by_city_id',:via=>:get

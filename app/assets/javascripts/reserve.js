@@ -13,6 +13,7 @@ function searchgame(court_id,date){
       });
 }
 function select(id,game_id){
+  var MAX_RESERVATION_NUM = 4;
   var element = document.getElementById(id);
   var price = element.getAttribute("price") * 1;
   var start_time = element.getAttribute("start_time");
@@ -33,7 +34,7 @@ function select(id,game_id){
     hasSiteBox.removeChild(oldDiv);
     //移除订单信息条
     var orderform = document.getElementById('orderform');
-    for(var i=1;i<=5;i++){
+    for(var i=1;i<=MAX_RESERVATION_NUM;i++){
       var willgameid = document.getElementById('game_id' + i);
       var willprice = document.getElementById('price' + i);
       var willstart_time = document.getElementById('start_time' + i);
@@ -60,8 +61,8 @@ function select(id,game_id){
       } 
     }
   }else{
-    if (timesInput >= 5){
-      alert("当前场次组合最多可选5片场地！");
+    if (timesInput >= MAX_RESERVATION_NUM){
+      alert("当前场次组合最多可选" + MAX_RESERVATION_NUM + "片场地！");
       return false;
     }else{
       element.setAttribute("class","checkSeat");//设为选中
@@ -71,11 +72,11 @@ function select(id,game_id){
       }
       document.getElementById("timesInput").value = timesInput + 1;
       var idnum = timesInput + 1;
-      for(var i=1;i<=5;i++){
+      for(var i=1;i<= MAX_RESERVATION_NUM;i++){
         var willadd = document.getElementById('game_id' + i);
         if (willadd == null){
           idnum = i;
-          i = 6;
+          i = MAX_RESERVATION_NUM + 1;
         }
       } 
       document.getElementById("priceInput").value = priceInput + price;

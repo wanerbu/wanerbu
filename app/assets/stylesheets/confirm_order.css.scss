@@ -110,21 +110,13 @@ em {
   border-style: solid;
   border-width: 1px;
   color: #3399CC;
-  display: block;
   height: 26px;
   line-height: 26px;
-  margin-bottom: 10px;
-  margin-left: 0;
-  margin-right: 10px;
-  margin-top: 0;
+  margin: 0 10px 10px 0;
+  padding: 0 5px;
   overflow-x: hidden;
   overflow-y: hidden;
-  padding-bottom: 0;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 0;
-  text-align: center;
-  width: 170px;
+  text-align: left;
 }
 
 .price {
@@ -149,7 +141,15 @@ label {
   background-color: #F3FBFE;
   padding-left: 10px;
 }
-
+.RemainMS {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 45px;
+  font-weight: normal;
+  color: #01648B;
+}
+.limitTime{
+padding-bottom: 30px;
+}
 .cf60, .yellow {
   color: #FF6600;
 }
@@ -158,9 +158,6 @@ label {
 }
 .payments{
   background-color: #F8F8F8;
-}
-.row-fluid [class*="span"]{
-  margin-left: 0;
 }
 
 .payway label {

@@ -81,74 +81,78 @@
                   <% hs.each_cons(2) {|(key,value),(next_key,next_value)|%>
                     <div class="pk_cols">
                       <% arr = value.to_a %>
-                      <% if arr[1]
+                      <% if arr[1]#可以预订
                       selectid = game.id.to_s + params[:date].delete("-") + key.delete(":")
                       s_time = Time.parse(params[:date].to_s + " " + key.to_s + ":00")
                       e_time = Time.parse(params[:date].to_s + " " + next_key.to_s + ":00")
                     %>
-                    <span onclick='return select(<%=selectid%>,<%=game.id%>)' id="<%=selectid%>" title="<%= key + '-' + next_key + ' ' + game.name + ' ' + arr[0].to_s + ' '%>元" price="<%=arr[0]%>" start_time ="<%=s_time%>" end_time="<%=e_time%>" class="hasSeat">
-                      <%=arr[0]%>元
-                    <% else %>
-                      <span title="该场次已售出" class="sellSeat">
+                        <%if !game.has_reservation(s_time,e_time) #没有预订%>
+                           <span onclick='return select(<%=selectid%>,<%=game.id%>)' id="<%=selectid%>" title="<%= key + '-' + next_key + ' ' + game.name + ' ' + arr[0].to_s + ' '%>元" price="<%=arr[0]%>" start_time ="<%=s_time%>" end_time="<%=e_time%>" class="hasSeat">
+                           <%=arr[0]%>元
+                        <%else%>
+                           <span title="该场次已售出" class="sellSeat">
+                        <%end%>
+                      <% else %>
+                        <span title="该场次已售出" class="sellSeat">
                       <%end%>
-                    </span>
-                  </div>
-                <%}%>
-              </div>
-            <%end%>
-            </dd>
-          </dl>
+                      </span>
+                    </div>
+                  <%}%>
+                </div>
+              <%end%>
+              </dd>
+            </dl>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div><!--ui_left-->
-<%= form_tag({:controller => "gym", :action => "submit_order"}, {:method => "post"}) do %>
-  <div id="orderform" class="ui_right">
-    <div class="innder">
-      <div class="pewSeat">
-        <p class="bold fs14"><a href=""><%=gym.name%></a></p>
-        <p class="mt10"><em>预订项目：</em><b>
-          <%= Sport.find(@court.sport_id).name %></b></p>
-        <p><em>日期：</em><span class="cred fs14"><%=params[:date].to_date.strftime("%y-%m-%d")%>&nbsp;<%= show_week(params[:date].to_date)%></span></p>
-      </div>
-      <div class="choose_games_txt">场次：</div>
-      <div id="cancelSite" style="display: block;" >
-        <span class="pews">还未选择场次</span>
-        <p>
-        <span class="cf60">单击左侧选择场次</span></p>
-      </div>
-      <div id="hasSiteBox" style="display: none;">
-      </div>
-      <div id="hasSiteInfo" style="display: none; float: left;">
-      </div>
-      <div class="rightBox">
-        <p>输入接收短信的手机号码</p>
-        <div class="mobileInfo mt10">
-          <p><em>手机号：</em></p>
+  </div><!--ui_left-->
+  <%= form_tag({:controller => "gym", :action => "submit_order"}, {:method => "post"}) do %>
+    <div id="orderform" class="ui_right">
+      <div class="innder">
+        <div class="pewSeat">
+          <p class="bold fs14"><a href=""><%=gym.name%></a></p>
+          <p class="mt10"><em>预订项目：</em><b>
+            <%= Sport.find(@court.sport_id).name %></b></p>
+          <p><em>日期：</em><span class="cred fs14"><%=params[:date].to_date.strftime("%y-%m-%d")%>&nbsp;<%= show_week(params[:date].to_date)%></span></p>
+        </div>
+        <div class="choose_games_txt">场次：</div>
+        <div id="cancelSite" style="display: block;" >
+          <span class="pews">还未选择场次</span>
           <p>
-          <input id="telephone_no" type="text" class="pho-text" placeholder="请输入您的手机号" name="order[telephone_no]">
-          <span class="cred">*</span>
-          </p>
-          <p class="mt5"><em>验证码：</em></p>
-          <p>
-          <input class="vla-text" type="text">
-          <span class="cred">*</span>
-          </p>
-          <p class="ml10">
-          <%= submit_tag(t('views.defaults.actions.submit_order'),:onclick => "return validateform();") %>
-          </p>
+          <span class="cf60">单击左侧选择场次</span></p>
+        </div>
+        <div id="hasSiteBox" style="display: none;">
+        </div>
+        <div id="hasSiteInfo" style="display: none; float: left;">
+        </div>
+        <div class="rightBox">
+          <p>输入接收短信的手机号码</p>
+          <div class="mobileInfo mt10">
+            <p><em>手机号：</em></p>
+            <p>
+            <input id="telephone_no" type="text" class="pho-text" placeholder="请输入您的手机号" name="order[telephone_no]">
+            <span class="cred">*</span>
+            </p>
+            <p class="mt5"><em>验证码：</em></p>
+            <p>
+            <input class="vla-text" type="text">
+            <span class="cred">*</span>
+            </p>
+            <p class="ml10">
+            <%= submit_tag(t('views.defaults.actions.submit_order'),:onclick => "return validateform();") %>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    <input id="timesInput" type="hidden" value="0" name="timesInput">
-    <input id="priceInput" type="hidden" value="0" name="priceInput">
-    <!--
-    <input id="user_id" type="hidden" value="<%#=current_user.nil? ? " " : current_user.id%>" name="user_id">
-    -->
-    <input id="user_id" type="hidden" value="1" name="order[user_id]">
-  </div><!--ui_right-->
-<%end%>
+      <input id="timesInput" type="hidden" value="0" name="timesInput">
+      <input id="priceInput" type="hidden" value="0" name="priceInput">
+      <!--
+      <input id="user_id" type="hidden" value="<%#=current_user.nil? ? " " : current_user.id%>" name="user_id">
+      -->
+      <input id="user_id" type="hidden" value="1" name="order[user_id]">
+    </div><!--ui_right-->
+  <%end%>
 </div><!--seatGroup-->
 <!-- Modal -->
 <%#= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -167,7 +171,7 @@
             <%#= f.password_field :password %></div>
 
           <%# if devise_mapping.rememberable? -%>
-            <div><%#= f.check_box :remember_me %> <%#= f.label :remember_me %></div>
+          <div><%#= f.check_box :remember_me %> <%#= f.label :remember_me %></div>
           <%# end -%>
         </div>
         <div class="modal-footer">
@@ -176,5 +180,5 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
-<%# end %>
+  <%# end %>
 

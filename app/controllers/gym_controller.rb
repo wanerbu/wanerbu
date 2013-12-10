@@ -58,14 +58,14 @@ class GymController < ApplicationController
     @gym = Gym.find(params[:gymid])
     reservation_type = "00"
     case params[:reservationtype]
-        when "according_time"
-          reservation_type = Wanerbu::CodeDefine::COURT_RESERVATION_TYPE[:according_time]
-        when "according_people"
-          reservation_type = Wanerbu::CodeDefine::COURT_RESERVATION_TYPE[:according_people]
+    when "according_time"
+      reservation_type = Wanerbu::CodeDefine::COURT_RESERVATION_TYPE[:according_time]
+    when "according_people"
+      reservation_type = Wanerbu::CodeDefine::COURT_RESERVATION_TYPE[:according_people]
     end
     @court = Court.where(:gym_id => params[:gymid],:sport_id => params[:sportid],:reservation_type => reservation_type).first 
     if @court == nil then
-    @court = Court.where(:gym_id => params[:gymid],:sport_id => params[:sportid]).first 
+      @court = Court.where(:gym_id => params[:gymid],:sport_id => params[:sportid]).first 
     end
     render :partial => "reservelist"
   end
@@ -85,5 +85,10 @@ class GymController < ApplicationController
       reservation.save
     end
     render "confirm_order"
+  end
+  def update_order_to_timeout
+    @order = Order.find(params[:id])
+    @order.status = "92"
+    @order.save
   end
 end

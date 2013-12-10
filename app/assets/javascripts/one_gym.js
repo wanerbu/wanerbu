@@ -18,5 +18,4 @@ function requestSearch(){
 function toOneCourt(court_id,date){
   var url = '/gym/reserve/'+ court_id + '/' + date;
   window.open(url,"_blank");
-
 }

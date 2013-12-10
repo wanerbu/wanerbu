@@ -7,6 +7,7 @@ Wanerbu::Application.routes.draw do
   match 'gym/getcourt/:gymid/:sportid/:reservationtype' => 'gym#getcourt',:via=>:get
   match 'gym/reserve/:id/:date' => 'gym#reserve',:via=>:get
   match 'gym/searchgame/:id/:date' => 'gym#searchgame',:via=>:get
+  match 'gym/update_order_to_timeout/:id' => 'gym#update_order_to_timeout',:via=>:get
   match 'gym/submit_order' => 'gym#submit_order',:via => :post
 
   # 普通用户认证部分

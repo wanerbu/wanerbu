@@ -61,7 +61,7 @@
             <p><span class="fs14 cf60">请在15分钟内完成付款</span>，超时系统将自动释放已选场次，支付中如遇到问题请致电：<b>4000-406-506</b></p>
             <div class="limitTime">
               <b class="fs22">剩余支付时间：</b>
-              <p class="fs20 mt5">订单已超时</p>
+              <p id="showtimeout" class="fs20 mt5"></p>
             </div>
           </div>
         </div>
@@ -113,7 +113,13 @@
     </div>
     <div class="mt20 span12 payments" style="float: left;">
       <p>
-      <button type="button" class="btn btn-primary ml5">确认订单，立即支付</button>
+      <button type="button" onclick = "return validateform();" class="btn btn-primary ml5">确认订单，立即支付</button>
       </p>
     </div>
   </div><!--/.ui_row-->
+<form id="requestForm"> 
+  <input type="hidden" name="court_id" id="court_id" value="<%=court.id%>"/>
+  <input type="hidden" name="date" id="date" value="<%=reservation.start_time.to_date%>"/>
+  <input type="hidden" name="order_status" id="order_status" value="00"/>
+  <input type="hidden" name="order_id" id="order_id" value="<%=@order.id%>"/>
+</form> 

@@ -14,4 +14,20 @@ class Game < ActiveRecord::Base
   validates :sort, 
     :presence => true,
     :numericality => { :only_integer => true,:greater_than => 0 }
+  #如果该场次在该时间段有预订，返回true,否则返回false
+  def has_reservation(start_time,end_time)
+    s_time = start_time.to_formatted_s(:db) 
+    e_time = end_time.to_formatted_s(:db) 
+    r = false
+    reservations = Reservation.where("(start_time < ? and end_time >= ? and game_id = ?)",e_time,e_time,self.id)
+    if reservations != nil
+      reservations.each do |reservation|
+        order = Order.find(reservation.order_id)
+        if (order.status <= '50')
+          r = true;
+        end
+      end
+    end
+    return r
+  end 
 end

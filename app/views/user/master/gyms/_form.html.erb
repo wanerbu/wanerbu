@@ -14,7 +14,7 @@
        </span>  
        <span id="areas">
        </span>
-       <%= text_field_tag 'address', @gym.address %>  
+       <%= text_field_tag 'gym[address]', @gym.address %>  
      </li>
       <%= f.input :telephone, :required => true %>
       <input id="gym_open_time_1i" type="hidden" value="2001" name="gym[open_time(1i)]">

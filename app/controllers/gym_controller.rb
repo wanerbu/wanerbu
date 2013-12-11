@@ -85,10 +85,22 @@ class GymController < ApplicationController
       reservation.save
     end
     render "confirm_order"
+    t = Thread.new {
+      sleep(1.minutes)
+      last_order = Order.find(@order.id)
+      if last_order.status = "00"
+        last_order.status = "92"
+        last_order.save
+      end
+    }
+    t.run
   end
   def update_order_to_timeout
     @order = Order.find(params[:id])
     @order.status = "92"
     @order.save
+  end
+  def search_map
+    render "transit_search"
   end
 end

@@ -19,3 +19,12 @@ function toOneCourt(court_id,date){
   var url = '/gym/reserve/'+ court_id + '/' + date;
   window.open(url,"_blank");
 }
+function tabs(clicka,searchtype){
+  var elements = document.getElementById('pattern');
+  for (var i = 0; i < elements.children.length ; i++ )
+  {
+    elements.children[i].removeAttribute("class");
+  }
+  clicka.setAttribute("class","select");
+  document.getElementById('searchtype').value = searchtype;
+}

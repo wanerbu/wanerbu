@@ -6,7 +6,10 @@
   <div class="detail_head">
     <div class="detailPa">
       <div class="detailName clear">
-        <h1 class="left"><%= @gym.name %></h1>		
+        <%
+        gym_name = @gym.name
+        %>
+        <h1 class="left"><%= gym_name %></h1>		
         <div class="left clear mt10 ml15"><!-- 传评分数gmark -->
           <ul class="ui_big_ratings"><!-- 大的评分 -->
             <li class="half"></li>
@@ -60,8 +63,10 @@
         <dl>
           <dt>详细地址：</dt>
           <dd>
-          <%address =  Province.find(@gym.province_id).province +
-            City.find(@gym.city_id).city +
+          <%
+            city = City.find(@gym.city_id).city 
+          address =  Province.find(@gym.province_id).province +
+            city +
             Area.find(@gym.area_id).area +
             @gym.address %>
             <%= address %>
@@ -97,26 +102,31 @@
           <div id="allmap"></div>
         </div>
         <div class='mapModify'>
-          <div class="search_icon_tab">
-            <a title="驾车" href="javascript:void(0);" class="select"><img src="../images/blank.gif" class="car"></a>
-            <a title="公共交通" href="javascript:void(0);" class=""><img src="../images/blank.gif" class="bus"></a>
-            <a title="步行" href="javascript:void(0);" class=""><img src="../../images/blank.gif" class="men"></a>
+          <div id="pattern" class="search_icon_tab">
+            <a title="驾车" onclick="tabs(this,'1')"  class="select"><img src="images/blank.gif" class="car"></a>
+            <a title="公共交通" onclick="tabs(this,'2')" class=""><img src="images/blank.gif" class="bus"></a>
+            <a title="步行" onclick="tabs(this,'3')"  class=""><img src="images/blank.gif" class="men"></a>
           </div>
-          <div class="search_form">
-            <ul>
-              <li>
-              <span title="起点" class="map_ico_a"></span>
-              <input type="text" alt="请输入起点" class="text" style="width:174px;" id="fromAddress">
-              </li>
-              <li>
-              <span title="终点" class="map_ico_b"></span>
-              <input type="text" value="<%= address%>" class="text" style="width:174px;" id="endAddress">
-              </li>
-              <li>
-              <a href="transit_search.html" target="_blank"><button type="button" class="btn btn-info more">查询路线</button></a>
-              </li>
-            </ul>					
-          </div>
+          <%= form_tag({:controller => "gym", :action => "search_map"},{:method => "post",:target => '_blank'}) do %>
+            <div class="search_form">
+              <ul>
+                <li>
+                <span title="起点" class="map_ico_a"></span>
+                <input type="text" alt="请输入起点" class="text" name="fromaddress" style="width:174px;" id="fromAddress">
+                </li>
+                <li>
+                <span title="终点" class="map_ico_b"></span>
+                <input type="text" value="<%= address%>" class="text" name="toaddress" style="width:174px;" id="endAddress">
+                <input type="hidden" name="city" id="city" value="<%=city%>"/>
+                <input type="hidden" name="gym_name" id="gym_name" value="<%=gym_name%>"/>
+                </li>
+                <li>
+                <input id="searchtype" type="hidden" value="1" name="searchtype">
+                <%= submit_tag('查询路线') %>
+                </li>
+              </ul>
+            </div>
+          <%end%>
         </div>
       </div><!--map-->
     </div>
@@ -187,6 +197,7 @@
   <script type="text/javascript">
     var map = new BMap.Map("allmap");    // 创建地图实例       
     var end = document.getElementById("endAddress").value;
+    var city = document.getElementById("city").value;
     // 创建地址解析器实例   
     var myGeo = new BMap.Geocoder();    
     // 将地址解析结果显示在地图上，并调整地图视野  
@@ -195,6 +206,6 @@
         map.centerAndZoom(point, 15);// 创建点坐标,初始化地图，设置中心点坐标和地图级别  
         map.addOverlay(new BMap.Marker(point));  		
         }    
-        }, "西安市"); 
+        }, city); 
 
-      </script>
+</script>

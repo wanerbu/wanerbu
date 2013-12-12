@@ -7,7 +7,7 @@ Wanerbu::Application.routes.draw do
   match 'gym/getcourt/:gymid/:sportid/:reservationtype' => 'gym#getcourt',:via=>:get
   match 'gym/reserve/:id/:date' => 'gym#reserve',:via=>:get
   match 'gym/searchgame/:id/:date' => 'gym#searchgame',:via=>:get
-  match 'gym/update_order_to_timeout/:id' => 'gym#update_order_to_timeout',:via=>:get
+  match 'gym/check_order' => 'gym#check_order',:via => :post
   match 'gym/submit_order' => 'gym#submit_order',:via => :post
   match 'gym/search_map' => 'gym#search_map',:via => :post
 

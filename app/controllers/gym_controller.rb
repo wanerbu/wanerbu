@@ -76,6 +76,21 @@ class GymController < ApplicationController
     @court = Court.find(params[:id]) 
     render :partial => "gamelist"
   end
+  def check_order
+    rh = {}
+    rh[:rs] = []
+    params[:reservations].each do |r|
+      game = Game.find(r["game_id"])
+      s_time = r["start_time"][0..-7].to_time
+      e_time = r["end_time"][0..-7].to_time
+      if game.has_reservation(s_time,e_time)
+        rh[:rs] << r
+      end
+    end
+    respond_to do |format|
+      format.json { render :json => rh[:rs] }
+    end
+  end
   def submit_order
     @order = Order.new(params[:order])
     @order.save
@@ -94,11 +109,6 @@ class GymController < ApplicationController
       end
     }
     t.run
-  end
-  def update_order_to_timeout
-    @order = Order.find(params[:id])
-    @order.status = "92"
-    @order.save
   end
   def search_map
     render "transit_search"

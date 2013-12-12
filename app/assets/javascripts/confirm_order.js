@@ -20,9 +20,8 @@ $(document).ready(function(){
       showtimeout.innerHTML =  '订单已超时';
       clearInterval(timer);
       document.getElementById("order_status").value = "92";
-      //更新订单状态为超时
+      //更新订单状态为超时,DB更新有线程完成
       order_id = document.getElementById("order_id").value;
-      $.get('update_order_to_timeout/' + order_id);
       //回到场次选择页面
       relink();
     }

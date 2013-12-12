@@ -107,7 +107,7 @@
       </div>
     </div>
   </div><!--ui_left-->
-  <%= form_tag({:controller => "gym", :action => "submit_order"}, {:method => "post"}) do %>
+  <%= form_tag({:controller => "gym", :action => "submit_order"}, {:method => "post",:id => 'orderform'}) do %>
     <div id="orderform" class="ui_right">
       <div class="innder">
         <div class="pewSeat">
@@ -182,3 +182,22 @@
   </div><!-- /.modal -->
   <%# end %>
 
+  <div class="modal fade" id="checkorderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="checkouderModalLabel">玩儿不网提示</h4>
+        </div>
+        <div class="modal-body">
+          <div style="font-size: 14px;margin-bottom: 10px;">对不起！你所选的以下场次已被其他用户暂时抢占，系统将会自动释放你的选择，请重新选择!</div>
+          <div id="checkedHas" >
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">我知道了</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

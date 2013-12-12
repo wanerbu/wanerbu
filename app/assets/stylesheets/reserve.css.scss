@@ -207,7 +207,6 @@ em{
   text-align: center;
   width: 96px;
 }
-
 .isSite {
   background: none repeat scroll 0 0 #FFFFFF;
   border: 1px solid #3399CC;
@@ -217,6 +216,9 @@ em{
   margin: 0 5px 5px 0;
   text-align: left;
   width: 160px;
+}
+#checkedHas .isSite{
+  float: none;
 }
 .rightBox {
   padding-bottom: 15px;

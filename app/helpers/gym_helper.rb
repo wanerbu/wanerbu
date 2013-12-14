@@ -49,7 +49,7 @@ module GymHelper
     end
     return s.html_safe
   end
-  #
+  #for accordint to time type game
   #need pass PRM
   #open_time
   #close_time
@@ -62,44 +62,49 @@ module GymHelper
   #
   def get_fix_price_reservation(arg,date)
     @game = Game.find(arg["game_id"])
-    open_time = arg["open_time"]
-    close_time = arg["close_time"]
-    min_unit = arg["min_unit"]
 
     fix_price = @game.default_price
     fix_reservation = @game.can_reservation
     h = Hash.new()
 
-    if arg["reservation_type"] == "according_time" then
-      (open_time.to_time.utc.to_i .. close_time.to_time.utc.to_i).step(min_unit.hour).each do |time|
-        hm = Time.at(time).utc.strftime('%H:%M')
-        @game.game_price_rules.where("(week_value = ? and rule_type = '00') or (date_value = ? and rule_type = '01')",date.strftime("%u"),date).order("rule_type asc").all.each do |game_price_rule|
-          if (hm >= game_price_rule.start_time.to_time.utc.strftime('%H:%M')) && (hm <= game_price_rule.end_time.to_time.utc.strftime('%H:%M') ) 
-            fix_price = game_price_rule.price
-          end
-        end
-        @game.game_reservation_rules.where("(week_value = ? and rule_type = '00') or (date_value = ? and rule_type = '01')",date.strftime("%u"),date).order("rule_type asc").all.each do |game_reservation_rule|
-          if (hm >= game_reservation_rule.start_time.to_time.utc.strftime('%H:%M')) && (hm <= game_reservation_rule.end_time.to_time.utc.strftime('%H:%M') ) 
-            fix_reservation = game_reservation_rule.can_reservation
-          end
-        end
-        h[hm] = [fix_price,fix_reservation]
-        fix_price = @game.default_price
-        fix_reservation = @game.can_reservation
-      end
-    end
-    if arg["reservation_type"] == "according_people" then
+    open_time = arg["open_time"]
+    close_time = arg["close_time"]
+    min_unit = arg["min_unit"]
+    (open_time.to_time.utc.to_i .. close_time.to_time.utc.to_i).step(min_unit.hour).each do |time|
+      hm = Time.at(time).utc.strftime('%H:%M')
       @game.game_price_rules.where("(week_value = ? and rule_type = '00') or (date_value = ? and rule_type = '01')",date.strftime("%u"),date).order("rule_type asc").all.each do |game_price_rule|
-        fix_price = game_price_rule.price
+        if (hm >= game_price_rule.start_time.to_time.utc.strftime('%H:%M')) && (hm <= game_price_rule.end_time.to_time.utc.strftime('%H:%M') ) 
+          fix_price = game_price_rule.price
+        end
       end
       @game.game_reservation_rules.where("(week_value = ? and rule_type = '00') or (date_value = ? and rule_type = '01')",date.strftime("%u"),date).order("rule_type asc").all.each do |game_reservation_rule|
-        fix_reservation = game_reservation_rule.can_reservation
+        if (hm >= game_reservation_rule.start_time.to_time.utc.strftime('%H:%M')) && (hm <= game_reservation_rule.end_time.to_time.utc.strftime('%H:%M') ) 
+          fix_reservation = game_reservation_rule.can_reservation
+        end
       end
-      h["allday"] = [fix_price,fix_reservation]
+      h[hm] = [fix_price,fix_reservation]
+      fix_price = @game.default_price
+      fix_reservation = @game.can_reservation
     end
     return h
   end
+  #for accordint to people type game
+  def get_fix_price_reservation_for_people(game_id,date)
+    @game = Game.find(game_id)
 
+    fix_price = @game.default_price
+    fix_reservation = @game.can_reservation
+    h = Hash.new()
+    @game.game_price_rules.where("(week_value = ? and rule_type = '00') or (date_value = ? and rule_type = '01')",date.strftime("%u"),date).order("rule_type asc").all.each do |game_price_rule|
+      fix_price = game_price_rule.price
+    end
+    @game.game_reservation_rules.where("(week_value = ? and rule_type = '00') or (date_value = ? and rule_type = '01')",date.strftime("%u"),date).order("rule_type asc").all.each do |game_reservation_rule|
+      fix_reservation = game_reservation_rule.can_reservation
+    end
+    h["allday"] = [fix_price,fix_reservation]
+
+    return h
+  end
   def show_week(date)
     case date.strftime("%w")
     when "0"
@@ -119,4 +124,4 @@ module GymHelper
     end
     return s
   end
-end
+  end

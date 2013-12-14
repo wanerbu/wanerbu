@@ -203,3 +203,111 @@ function remove_order_input(id){
     }
   }
 }
+function select_p(id,game_id){
+  var element = document.getElementById(id);
+  var start_time = element.getAttribute("start_time");
+  var end_time = element.getAttribute("end_time");
+  var price =  element.getAttribute("price") * 1;
+  var peoplesInput =  document.getElementById("peoplesInput").value * 1;
+  var select_num = document.getElementById("select"+id).value * 1;
+  var pre_num = document.getElementById("pre"+id).value  * 1;
+  peoplesInput = peoplesInput + select_num - pre_num;
+  if (peoplesInput > 0){
+    $('#cancelSite').hide();
+    $('#hasSiteBox').show();
+  } 
+  if (peoplesInput == 0 ){
+    $('#cancelSite').show();
+    $('#hasSiteBox').hide();
+  }
+  var hasSiteBox = document.getElementById('hasSiteBox');
+  var orderform = document.getElementById('orderform');
+  if ( select_num > 0){
+    var lang =  element.getAttribute("lang");
+    if (pre_num == 0){
+      var newDiv = document.createElement('div');
+      newDiv.setAttribute('class','isSite');
+      newDiv.setAttribute('id','order' + id);
+      newDiv.setAttribute('fortotalprice','order' + id);
+      newDiv.setAttribute('price',price * select_num);
+      newDiv.innerHTML = '<span>' + lang +" "+select_num + "人 共"+ price * select_num +'元</span>';
+      hasSiteBox.appendChild(newDiv);
+      //生成订单form信息
+      var newGameIdInput = document.createElement('input');
+      newGameIdInput.setAttribute('id','game_id' + id);
+      newGameIdInput.setAttribute('name','reservations[][game_id]');
+      newGameIdInput.setAttribute('value',game_id);
+      newGameIdInput.setAttribute('type','hidden');
+      orderform.appendChild(newGameIdInput);
+      var newPriceInput = document.createElement('input');
+      newPriceInput.setAttribute('id','price' + id);
+      newPriceInput.setAttribute('name','reservations[][price]');
+      newPriceInput.setAttribute('value',price);
+      newPriceInput.setAttribute('type','hidden');
+      orderform.appendChild(newPriceInput);
+      var newStartTimeInput = document.createElement('input');
+      newStartTimeInput.setAttribute('id','start_time' + id);
+      newStartTimeInput.setAttribute('name','reservations[][start_time]');
+      newStartTimeInput.setAttribute('value',start_time);
+      newStartTimeInput.setAttribute('type','hidden');
+      orderform.appendChild(newStartTimeInput);
+      var newEndTimeInput = document.createElement('input');
+      newEndTimeInput.setAttribute('id','end_time' + id);
+      newEndTimeInput.setAttribute('name','reservations[][end_time]');
+      newEndTimeInput.setAttribute('value',end_time);
+      newEndTimeInput.setAttribute('type','hidden');
+      orderform.appendChild(newEndTimeInput);
+      var newPeopleNumInput = document.createElement('input');
+      newPeopleNumInput.setAttribute('id','people_num' + id);
+      newPeopleNumInput.setAttribute('name','reservations[][people_num]');
+      newPeopleNumInput.setAttribute('value',select_num);
+      newPeopleNumInput.setAttribute('type','hidden');
+      orderform.appendChild(newPeopleNumInput);
+    }else{
+      oldDiv =  document.getElementById('order'+id);
+      oldDiv.setAttribute('price',price * select_num);
+      oldDiv.innerHTML = '<span>' + lang +" "+select_num + "人 共"+ price * select_num +'元</span>';
+      oldPeopleNumInput =  document.getElementById('people_num'+id);
+      oldPeopleNumInput.setAttribute('value',select_num);
+    }
+  }else if (pre_num > 0){
+    oldDiv =  document.getElementById('order'+id);
+    hasSiteBox.removeChild(oldDiv);
+    oldGameIdInput =  document.getElementById('game_id'+id);
+    orderform.removeChild(oldGameIdInput);
+    oldPriceInput =  document.getElementById('price'+id);
+    orderform.removeChild(oldPriceInput);
+    oldStartTimeInput =  document.getElementById('start_time'+id);
+    orderform.removeChild(oldStartTimeInput);
+    oldEndTimeInput =  document.getElementById('end_time'+id);
+    orderform.removeChild(oldEndTimeInput);
+    oldPeopleNumInput =  document.getElementById('people_num'+id);
+    orderform.removeChild(oldPeopleNumInput);
+  }
+  document.getElementById("peoplesInput").value = peoplesInput;
+  document.getElementById("pre"+id).value = select_num;
+  //计算总价
+  var totalprice = 0 ;
+  $("div[fortotalprice^='order']").each(
+      function(i){
+        totalprice = totalprice + this.getAttribute("price") * 1;
+      }
+      );
+  if (peoplesInput >= 1){
+    var hasSiteInfo = document.getElementById("hasSiteInfo");
+    hasSiteInfo.innerHTML ='共<b class=\'m5 cf60\'>' + totalprice + '元</b>';
+    $('#hasSiteInfo').show();
+  }else{
+    $('#hasSiteInfo').hide();
+  }
+}
+function validateform_p(){
+  r = false;
+  var peoplesInput =  document.getElementById("peoplesInput").value * 1;
+  if ( peoplesInput <= 0){
+    alert("你还没有选择场次，请选择左边的场次！");
+  } else {
+    r = true;
+  }
+  return r;
+}

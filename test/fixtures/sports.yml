@@ -3,11 +3,11 @@
 one:
   id: 1
   name: '羽毛球'
-  intro: '羽毛球介绍' 
+  intro: '羽毛球好' 
   sort: 1
 
 two:
   id: 2
-  name: basketball
-  intro: basketball intro
+  name: '篮球'
+  intro: '篮球好'
   sort: 2

@@ -21,6 +21,7 @@
     <%= f.input :name, :required => true%>
     <%= f.input :sort, :required => true%>
     <%= f.input :default_price,:required => true%>
+    <%= f.input :max_people,:required => true%>
     <%#= f.input :can_reservation,:required => true, :as => :radio%>
     <li id="court_game_can_reservation" class="number input optional numeric stringish">
         <label class=" label" for="court_game_can_reservation"><%= Game.human_attribute_name(:can_reservation) %></label>

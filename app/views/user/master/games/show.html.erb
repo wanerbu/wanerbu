@@ -150,6 +150,10 @@
                                             <td><%= @game.default_price -%></td>
                                           </tr>
                                           <tr>
+                                            <td><%= Game.human_attribute_name(:max_people) %></td>
+                                            <td><%= @game.max_people -%></td>
+                                          </tr>
+                                          <tr>
                                             <td><%= Game.human_attribute_name(:can_reservation) %></td>
                                             <td>
                                               <% if @game.can_reservation%> 

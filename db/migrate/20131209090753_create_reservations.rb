@@ -6,6 +6,7 @@ class CreateReservations < ActiveRecord::Migration
       t.datetime :start_time
       t.datetime :end_time
       t.float :price
+      t.integer :people_num, limit: 3
 
       t.timestamps
     end

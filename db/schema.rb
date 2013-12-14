@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131209090752) do
+ActiveRecord::Schema.define(:version => 20131209090753) do
 
   create_table "admin_roles", :force => true do |t|
     t.integer "admin_id", :null => false
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20131209090752) do
     t.integer  "sort",            :limit => 3
     t.boolean  "can_reservation"
     t.float    "default_price",                 :default => 0.0
+    t.integer  "max_people",      :limit => 5
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
   end
@@ -196,8 +197,9 @@ ActiveRecord::Schema.define(:version => 20131209090752) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.float    "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "people_num", :limit => 3
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "roles", :force => true do |t|

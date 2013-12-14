@@ -1,17 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  game_id: 1
-  order_id: 1
-  start_time: 2013-12-09 16:07:52
-  end_time: 2013-12-09 16:07:52
-  reservation_time: 2013-12-09 16:07:52
-  price: 1.5
-
-two:
-  game_id: 1
-  order_id: 1
-  start_time: 2013-12-09 16:07:52
-  end_time: 2013-12-09 16:07:52
-  reservation_time: 2013-12-09 16:07:52
-  price: 1.5

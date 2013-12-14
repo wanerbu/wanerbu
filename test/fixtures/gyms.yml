@@ -6,11 +6,11 @@
 #
 one:
   id: 1
-  name: Gym1
+  name: '周康航球馆'
   user_id: 1
-  intro: Gym1 intro
+  intro: '周康航球馆环境好'
   logo: test02.jpg
-  address: Gym1 address
+  address: '管委会'
   telephone: 111111111
   province_id: 610000
   city_id: 610100

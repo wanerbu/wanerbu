@@ -6,6 +6,7 @@ class CreateGames < ActiveRecord::Migration
       t.integer :sort, limit: 3
       t.boolean :can_reservation
       t.float :default_price, default: 0
+      t.integer :max_people, limit: 5
 
       t.timestamps
     end

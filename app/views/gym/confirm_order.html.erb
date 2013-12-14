@@ -35,17 +35,23 @@
           </dl>
           <ol class="order_info">
             <li><em>订单号：</em><%=@order.id%></li>
-            <li><em>预订项目：</em><%= Sport.find(court.sport_id).name-%>
+            <li><em>预订项目：</em><%= Sport.find(court.sport_id).name+ "(" + court.reservation_type.text + ")"%>
             <em class="ml30">预订日期：</em> <%= (reservation.start_time).strftime("%m月%d日")%>&nbsp;<%= show_week(reservation.start_time.to_date)%></li>
             <li class="games">
             <em style="margin:0;" class="games_rev"> 预订场次：</em>
             </li>
             <%total_price = 0
-              @order.reservations.each do |reserve|%>
+            @order.reservations.each do |reserve|%>
               <li>
-              <span class="changci"><%=reserve.start_time.strftime("%H:%M")%>-<%=reserve.end_time.strftime("%H:%M").to_s + " " + Game.find(reserve.game_id).name + " " + reserve.price.to_s %>元</span>
+              <span class="changci"><%=reserve.start_time.strftime("%H:%M")%>-<%=reserve.end_time.strftime("%H:%M").to_s + " " + Game.find(reserve.game_id).name + " " + reserve.price.to_s %>元
+                <%if court.reservation_type == "according_people" %>
+                  每人不限时 <%=reserve.people_num%>人 共<%=reserve.price * reserve.people_num.to_f%>元
+                  <%total_price = total_price + reserve.price * reserve.people_num.to_f%>
+                <%else%>
+                  <%total_price = total_price + reserve.price%>
+                <%end%>
+              </span>
               </li>
-              <%total_price = total_price + reserve.price%>
             <%end%>
             <li class="mt10"><b class="fs14">应付金额：</b><span class="price"><b><%=total_price%> </b></span>元 </li>
             <li class="changeMobile">
@@ -117,9 +123,9 @@
       </p>
     </div>
   </div><!--/.ui_row-->
-<form id="requestForm"> 
-  <input type="hidden" name="court_id" id="court_id" value="<%=court.id%>"/>
-  <input type="hidden" name="date" id="date" value="<%=reservation.start_time.to_date%>"/>
-  <input type="hidden" name="order_status" id="order_status" value="00"/>
-  <input type="hidden" name="order_id" id="order_id" value="<%=@order.id%>"/>
-</form> 
+  <form id="requestForm"> 
+    <input type="hidden" name="court_id" id="court_id" value="<%=court.id%>"/>
+    <input type="hidden" name="date" id="date" value="<%=reservation.start_time.to_date%>"/>
+    <input type="hidden" name="order_status" id="order_status" value="00"/>
+    <input type="hidden" name="order_id" id="order_id" value="<%=@order.id%>"/>
+  </form> 

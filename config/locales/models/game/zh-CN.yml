@@ -8,6 +8,7 @@
         sort: "顺序"
         default_price: "场次价格(默认)"
         can_reservation: "能否预订(默认)"
+        max_people: "每天最多预订人数"
     errors:
       models:
         game:

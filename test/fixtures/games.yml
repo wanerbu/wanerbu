@@ -14,3 +14,4 @@ two:
   sort: 1
   default_price: 1.5
   can_reservation: false
+  max_people: 20

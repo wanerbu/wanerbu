@@ -30,5 +30,10 @@ class Game < ActiveRecord::Base
       end
     end
     return r
-  end 
+  end
+  def get_remain_people_num(start_time) 
+    date = start_time.to_date
+    reserved_num = Reservation.joins(:order).where("orders.status <= '50' and date(reservations.start_time) = ? and reservations.game_id = ?",date,self.id).sum("reservations.people_num")
+    return self.max_people - reserved_num
+  end
 end

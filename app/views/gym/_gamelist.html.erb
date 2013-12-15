@@ -219,10 +219,10 @@
         </div>
       </div>
     </div>
+    <input id="user_id" type="hidden" value="<%=current_user.nil? ? " " : current_user.id%>" name="order[user_id]">
     <!--
-    <input id="user_id" type="hidden" value="<%#=current_user.nil? ? " " : current_user.id%>" name="user_id">
-    -->
     <input id="user_id" type="hidden" value="1" name="order[user_id]">
+    -->
   </div><!--ui_right-->
 <%end%>
   </div><!--seatGroup-->
@@ -232,7 +232,7 @@
     <input id="priceInput" type="hidden" value="0" name="priceInput">
   </form>
   <!-- Modal -->
-  <%#= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -241,23 +241,23 @@
             <h4 class="modal-title" id="myModalLabel">玩儿不网登录</h4>
           </div>
           <div class="modal-body">
-            <div><%#= f.label :login %><br />
-              <%#= f.text_field :login %></div>
+            <div><%= f.label :login %><br />
+              <%= f.text_field :login %></div>
 
-            <div><%#= f.label :password %><br />
-              <%#= f.password_field :password %></div>
+            <div><%= f.label :password %><br />
+              <%= f.password_field :password %></div>
 
-            <%# if devise_mapping.rememberable? -%>
-            <div><%#= f.check_box :remember_me %> <%#= f.label :remember_me %></div>
-            <%# end -%>
+            <% if devise_mapping.rememberable? -%>
+            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+            <% end -%>
           </div>
           <div class="modal-footer">
-            <div><%#= f.submit "Sign in" %></div>
+            <div><%= f.submit "Sign in" %></div>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <%# end %>
+    <% end %>
 
     <div class="modal fade" id="checkorderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">

@@ -56,7 +56,7 @@ module Wanerbu
     config.active_record.whitelist_attributes = true
 
     # 默认不加载所有helper
-    config.action_controller.include_all_helpers = false
+    config.action_controller.include_all_helpers =  false
 
     # Enable the asset pipeline
     config.assets.enabled = true

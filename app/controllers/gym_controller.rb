@@ -83,8 +83,16 @@ class GymController < ApplicationController
       game = Game.find(r["game_id"])
       s_time = r["start_time"][0..-7].to_time
       e_time = r["end_time"][0..-7].to_time
-      if game.has_reservation(s_time,e_time)
-        rh[:rs] << r
+      if params[:reservation_type] == "according_time"
+        if game.has_reservation(s_time,e_time)
+          rh[:rs] << r
+        end
+      else
+        remain_people_num = game.get_remain_people_num(s_time)
+        if remain_people_num < r[:people_num].to_i
+          r[:people_num] = remain_people_num
+          rh[:rs] << r
+        end
       end
     end
     respond_to do |format|

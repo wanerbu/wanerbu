@@ -127,11 +127,10 @@
                         </div><!--cols-->
                         <div class="pk_cols_p">
                           <% if remain_people_num > 0%>
-                            <div class="left">请选择人数</div>
+                            <div id="<%="info"+selectid%>" class="left">请选择人数</div>
                             <div class="left">
                               <div class="left">
                                 <select onchange="select_p(<%=selectid%>,<%=game.id%>)" id="<%="select"+selectid%>">
-                                  <option>0</option>
                                   <%if remain_people_num >= 10 %>
                                     <option>0</option>
                                     <option>1</option>
@@ -143,6 +142,7 @@
                                 <div class="left"> <em>场次充足</em></div>
                               <%else%>
                                 <% if remain_people_num >= 4%>
+                                  <option>0</option>
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
@@ -151,14 +151,14 @@
                               </div>
                             <%else%>
                               <% if remain_people_num >= 1%>
-                                <%for i in 1..remain_people_num%>
+                                <%for i in 0..remain_people_num%>
                                   <option><%=i%></option>
                                 <%end%>
                               <%end%>
                             </select>
                           </div>
                         <%end%>
-                        <div class="left"> <em>剩余<%=remain_people_num%>人</em></div>
+                        <div id="<%="remain"+selectid%>" class="left"> <em>剩余<%=remain_people_num%>人</em></div>
                       <%end%>
                     </div>
                     <input id="<%="pre"+selectid%>" type="hidden" value="0" name="<%="pre"+selectid%>">
@@ -220,9 +220,7 @@
       </div>
     </div>
     <input id="user_id" type="hidden" value="<%=current_user.nil? ? " " : current_user.id%>" name="order[user_id]">
-    <!--
-    <input id="user_id" type="hidden" value="1" name="order[user_id]">
-    -->
+    <input id="reservation_type" type="hidden" value="<%=reservation_type%>" name="reservation_type">
   </div><!--ui_right-->
 <%end%>
   </div><!--seatGroup-->
@@ -239,7 +237,11 @@
           <h4 class="modal-title" id="checkouderModalLabel">玩儿不网提示</h4>
         </div>
         <div class="modal-body">
-          <div style="font-size: 14px;margin-bottom: 10px;">对不起！你所选的以下场次已被其他用户暂时抢占，系统将会自动释放你的选择，请重新选择!</div>
+              <%if reservation_type  == "according_time" then%>
+                <div style="font-size: 14px;margin-bottom: 10px;">对不起！你所选的以下场次已被其他用户暂时抢占，系统将会自动释放你的选择，请重新选择!</div>
+              <%else%>
+                <div style="font-size: 14px;margin-bottom: 10px;">对不起！你所选的以下场次已被其他用户暂时抢占，系统会自动将余下的名额分配给您，如需调整请重新选择!</div>
+              <%end%>
           <div id="checkedHas" >
 
           </div>

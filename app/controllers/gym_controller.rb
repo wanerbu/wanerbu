@@ -121,4 +121,20 @@ class GymController < ApplicationController
   def search_map
     render "transit_search"
   end
+  def code_image
+    session[:noisy_image] = NoisyImage.new(4)
+    session[:code] = session[:noisy_image].code
+    image = session[:noisy_image].code_image
+    send_data image, :type => 'image/jpeg', :disposition => 'inline'
+  end
+  def check_code_image
+    rs = false;
+    puts session[:code]
+    if params[:type_code] == session[:code].to_s
+      rs = true;
+    end
+    respond_to do |format|
+      format.json { render :json => rs }
+    end
+  end
 end

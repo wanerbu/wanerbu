@@ -13,6 +13,42 @@ function searchgame(court_id,date){
         $("#gameListBySearch").html(data);
       });
 }
+function refresh_image(){
+  var image = document.getElementById("code_image");
+  if(image.complete) {
+    var new_image = new Image();
+    //set up the new image
+    new_image.id = "code_image";
+    new_image.height = "30";
+    new_image.src = "/gym/code_image#" + new Date().getTime();           
+    // insert new image and remove old
+    image.parentNode.insertBefore(new_image,image);
+    image.parentNode.removeChild(image);
+  }
+}
+function check_code_image(){
+  r = false;
+  type_code = document.getElementById("type_code").value;
+  if (type_code != ""){
+    $.ajax({
+      url: '/gym/check_code_image/' + type_code,
+      type: 'get',
+      dataType: 'json',
+      async: false,
+      success:function(data) {
+        if (data){
+          r = true;
+        }else{
+          alert("验证码有误，请重新输入");
+          refresh_image();
+        }
+      }
+    });
+  }else{
+    alert("验证码不能为空，请重新输入");
+  }
+  return r;
+}
 function select(id,game_id){
   var user_id =  document.getElementById("user_id").value;
   if (user_id == " "){
@@ -121,58 +157,60 @@ function validateform(){
     if(!$("#telephone_no").val().match(/^1[3|4|5|8][0-9]\d{4,8}$/)){
       alert("手机号码格式不正确！请重新输入！"); 
     }else{
-      $.ajax({
-        url: '/gym/check_order',
-        type: 'post',
-        dataType: 'json',
-        async: false,
-        data: $('form#orderform').serialize(),
-        success:function(data) {
-          if (jQuery.isEmptyObject(data)){//所选场次没有被占
-            r = true;
-          }else{
-            var checkedHas = document.getElementById('checkedHas');
-            var arrID = new Array();
-            $.each(data, function (index, value) {
-              id = value["game_id"]+value["start_time"].substring(0,4) + value["start_time"].substring(5,7) + value["start_time"].substring(8,10) + value["start_time"].substring(11,13) + value["start_time"].substring(14,16);
-              arrID.push(id);
-              //生成Modal上的场次信息条
-              var element = document.getElementById(id);
-              var title =  element.getAttribute("title");
-              var newDiv = document.createElement('div');
-              newDiv.setAttribute('class','isSite');
-              newDiv.innerHTML = '<span>' + title + '</span>';
-              checkedHas.appendChild(newDiv);
-            });
-            $('#checkorderModal').modal('toggle');
-            $('#checkorderModal').on('hidden.bs.modal', function (e) {
-              var hasSiteBox = document.getElementById('hasSiteBox');
-              var orderform = document.getElementById('orderform');
-              for(i=0;i<arrID.length;i++){
-                var timesInput = document.getElementById("timesInput").value * 1;
-                var priceInput = document.getElementById("priceInput").value * 1;
-                //移除主页面的场次信息条
-                oldDiv = document.getElementById('order' + arrID[i]);
-                hasSiteBox.removeChild(oldDiv);
-                //设为已售出
-                select_element = document.getElementById(arrID[i]);
-                select_element.setAttribute("class","sellSeat");
-                //移除选主页面的择方法
-                select_element.removeAttribute("onclick");
-                select_element.innerHTML = "";
-                var price = select_element.getAttribute("price") * 1;
-                document.getElementById("timesInput").value = timesInput - 1;
-                document.getElementById("priceInput").value = priceInput - price;
-                //移除订主页面的单信息
-                remove_order_input(arrID[i]);
-              } 
-              show_fix_times_price();
-              checkedHas.innerHTML = "";
-            });
-            r = false;
+      if (check_code_image()){//验证码成功
+        $.ajax({
+          url: '/gym/check_order',
+          type: 'post',
+          dataType: 'json',
+          async: false,
+          data: $('form#orderform').serialize(),
+          success:function(data) {
+            if (jQuery.isEmptyObject(data)){//所选场次没有被占
+              r = true;
+            }else{
+              var checkedHas = document.getElementById('checkedHas');
+              var arrID = new Array();
+              $.each(data, function (index, value) {
+                id = value["game_id"]+value["start_time"].substring(0,4) + value["start_time"].substring(5,7) + value["start_time"].substring(8,10) + value["start_time"].substring(11,13) + value["start_time"].substring(14,16);
+                arrID.push(id);
+                //生成Modal上的场次信息条
+                var element = document.getElementById(id);
+                var title =  element.getAttribute("title");
+                var newDiv = document.createElement('div');
+                newDiv.setAttribute('class','isSite');
+                newDiv.innerHTML = '<span>' + title + '</span>';
+                checkedHas.appendChild(newDiv);
+              });
+              $('#checkorderModal').modal('toggle');
+              $('#checkorderModal').on('hidden.bs.modal', function (e) {
+                var hasSiteBox = document.getElementById('hasSiteBox');
+                var orderform = document.getElementById('orderform');
+                for(i=0;i<arrID.length;i++){
+                  var timesInput = document.getElementById("timesInput").value * 1;
+                  var priceInput = document.getElementById("priceInput").value * 1;
+                  //移除主页面的场次信息条
+                  oldDiv = document.getElementById('order' + arrID[i]);
+                  hasSiteBox.removeChild(oldDiv);
+                  //设为已售出
+                  select_element = document.getElementById(arrID[i]);
+                  select_element.setAttribute("class","sellSeat");
+                  //移除选主页面的择方法
+                  select_element.removeAttribute("onclick");
+                  select_element.innerHTML = "";
+                  var price = select_element.getAttribute("price") * 1;
+                  document.getElementById("timesInput").value = timesInput - 1;
+                  document.getElementById("priceInput").value = priceInput - price;
+                  //移除订主页面的单信息
+                  remove_order_input(arrID[i]);
+                } 
+                show_fix_times_price();
+                checkedHas.innerHTML = "";
+              });
+              r = false;
+            }
           }
-        }
-      });
+        });
+      }
     }
   }
   return r;
@@ -320,71 +358,73 @@ function validateform_p(){
     if(!$("#telephone_no").val().match(/^1[3|4|5|8][0-9]\d{4,8}$/)){
       alert("手机号码格式不正确！请重新输入！"); 
     }else{
-      $.ajax({
-        url: '/gym/check_order',
-        type: 'post',
-        dataType: 'json',
-        async: false,
-        data: $('form#orderform').serialize(),
-        success:function(data) {
-          if (jQuery.isEmptyObject(data)){//所选场次没有被占
-            r = true;
-          }else{
-            var checkedHas = document.getElementById('checkedHas');
-            $.each(data, function (index, value) {
-              id = value["game_id"]+value["start_time"].substring(0,4) + value["start_time"].substring(5,7) + value["start_time"].substring(8,10);
-              //生成Modal上的场次信息条
-              var element = document.getElementById("order"+id);
-              var newDiv = document.createElement('div');
-              newDiv.setAttribute('class','isSite');
-              newDiv.innerHTML = element.innerHTML; 
-              checkedHas.appendChild(newDiv);
-            });
-            $('#checkorderModal').modal('toggle');
-            $('#checkorderModal').on('hidden.bs.modal', function (e) {
-              var hasSiteBox = document.getElementById('hasSiteBox');
-              var orderform = document.getElementById('orderform');
+      if (check_code_image()){//验证码成功
+        $.ajax({
+          url: '/gym/check_order',
+          type: 'post',
+          dataType: 'json',
+          async: false,
+          data: $('form#orderform').serialize(),
+          success:function(data) {
+            if (jQuery.isEmptyObject(data)){//所选场次没有被占
+              r = true;
+            }else{
+              var checkedHas = document.getElementById('checkedHas');
               $.each(data, function (index, value) {
                 id = value["game_id"]+value["start_time"].substring(0,4) + value["start_time"].substring(5,7) + value["start_time"].substring(8,10);
-                people_num = value["people_num"] * 1;
-                if (people_num > 0){
-                  //更改select的option
-                  $("#select"+id + " option").each(function(){
-                    if ($(this).val() * 1 > people_num){
-                      $(this).remove();
-                    }
-                  });
-                  //把最大值设为以已选
-                  last_option = $("#select"+id +" option:last");
-                  last_option.prop('selected',true); 
-                  //更改提示人数信息
-                  remainDiv = document.getElementById("remain"+id);
-                  remainDiv.innerHTML =  "<em>剩余" + people_num +"人</em>";
-                  //调用select_p方法
-                  select_p(id,value["game_id"]);
-                }else{
-                  select = $('#select'+id);
-                  //把0设为以已选
-                  select.val("0");
-                  //调用select_p方法
-                  select_p(id,value["game_id"]);
-                  //删除select控件
-                  select.remove();
-                  //更改选项样式
-                  var box = document.getElementById(id);
-                  box.setAttribute("class","");//取消选中
-                  //更改提示人数信息
-                  remainDiv = document.getElementById("remain"+id);
-                  remainDiv.innerHTML =  " <em>名额已满,暂不能预订</em>";
-                  infoDiv = document.getElementById("info"+id);
-                  infoDiv.innerHTML =  "";
-                }
+                //生成Modal上的场次信息条
+                var element = document.getElementById("order"+id);
+                var newDiv = document.createElement('div');
+                newDiv.setAttribute('class','isSite');
+                newDiv.innerHTML = element.innerHTML; 
+                checkedHas.appendChild(newDiv);
               });
-              checkedHas.innerHTML = "";
-            });
+              $('#checkorderModal').modal('toggle');
+              $('#checkorderModal').on('hidden.bs.modal', function (e) {
+                var hasSiteBox = document.getElementById('hasSiteBox');
+                var orderform = document.getElementById('orderform');
+                $.each(data, function (index, value) {
+                  id = value["game_id"]+value["start_time"].substring(0,4) + value["start_time"].substring(5,7) + value["start_time"].substring(8,10);
+                  people_num = value["people_num"] * 1;
+                  if (people_num > 0){
+                    //更改select的option
+                    $("#select"+id + " option").each(function(){
+                      if ($(this).val() * 1 > people_num){
+                        $(this).remove();
+                      }
+                    });
+                    //把最大值设为以已选
+                    last_option = $("#select"+id +" option:last");
+                    last_option.prop('selected',true); 
+                    //更改提示人数信息
+                    remainDiv = document.getElementById("remain"+id);
+                    remainDiv.innerHTML =  "<em>剩余" + people_num +"人</em>";
+                    //调用select_p方法
+                    select_p(id,value["game_id"]);
+                  }else{
+                    select = $('#select'+id);
+                    //把0设为以已选
+                    select.val("0");
+                    //调用select_p方法
+                    select_p(id,value["game_id"]);
+                    //删除select控件
+                    select.remove();
+                    //更改选项样式
+                    var box = document.getElementById(id);
+                    box.setAttribute("class","");//取消选中
+                    //更改提示人数信息
+                    remainDiv = document.getElementById("remain"+id);
+                    remainDiv.innerHTML =  " <em>名额已满,暂不能预订</em>";
+                    infoDiv = document.getElementById("info"+id);
+                    infoDiv.innerHTML =  "";
+                  }
+                });
+                checkedHas.innerHTML = "";
+              });
+            }
           }
-        }
-      });
+        });
+      }
     }
   }
   return r;

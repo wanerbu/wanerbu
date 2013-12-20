@@ -206,50 +206,52 @@
           </p>
           <p class="mt5"><em>验证码：</em></p>
           <p>
-          <input class="vla-text" type="text">
+          <input class="vla-text" type="text" id="type_code" name="type_code">   
           <span class="cred">*</span>
-          </p>
-          <p class="ml10">
-          <%if reservation_type  == "according_time" %>
-            <%= submit_tag(t('views.defaults.actions.submit_order'),:onclick => "return validateform();") %>
-          <%else%>
-            <%= submit_tag(t('views.defaults.actions.submit_order'),:onclick => "return validateform_p();") %>
-          <%end%>
-          </p>
-        </div>
-      </div>
-    </div>
-    <input id="user_id" type="hidden" value="<%=current_user.nil? ? " " : current_user.id%>" name="order[user_id]">
-    <input id="reservation_type" type="hidden" value="<%=reservation_type%>" name="reservation_type">
-  </div><!--ui_right-->
-<%end%>
-  </div><!--seatGroup-->
-  <form id="forCtrl">
-    <input id="peoplesInput" type="hidden" value="0" name="peoplesInput">
-    <input id="timesInput" type="hidden" value="0" name="timesInput">
-    <input id="priceInput" type="hidden" value="0" name="priceInput">
-  </form>
-  <div class="modal fade" id="checkorderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="checkouderModalLabel">玩儿不网提示</h4>
-        </div>
-        <div class="modal-body">
-              <%if reservation_type  == "according_time" then%>
-                <div style="font-size: 14px;margin-bottom: 10px;">对不起！你所选的以下场次已被其他用户暂时抢占，系统将会自动释放你的选择，请重新选择!</div>
-              <%else%>
-                <div style="font-size: 14px;margin-bottom: 10px;">对不起！你所选的以下场次已被其他用户暂时抢占，系统会自动将余下的名额分配给您，如需调整请重新选择!</div>
-              <%end%>
-          <div id="checkedHas" >
-
+          </br>
+          <img id='code_image'height='30' src="/gym/code_image"><a href="javascript:refresh_image();">看不清楚？</a>
+            </p>
+            <p class="ml10">
+            <%if reservation_type  == "according_time" %>
+              <%= submit_tag(t('views.defaults.actions.submit_order'),:onclick => "return validateform();") %>
+            <%else%>
+              <%= submit_tag(t('views.defaults.actions.submit_order'),:onclick => "return validateform_p();") %>
+            <%end%>
+            </p>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">我知道了</button>
+      </div>
+      <input id="user_id" type="hidden" value="<%=current_user.nil? ? " " : current_user.id%>" name="order[user_id]">
+      <input id="reservation_type" type="hidden" value="<%=reservation_type%>" name="reservation_type">
+    </div><!--ui_right-->
+  <%end%>
+</div><!--seatGroup-->
+<form id="forCtrl">
+  <input id="peoplesInput" type="hidden" value="0" name="peoplesInput">
+  <input id="timesInput" type="hidden" value="0" name="timesInput">
+  <input id="priceInput" type="hidden" value="0" name="priceInput">
+</form>
+<div class="modal fade" id="checkorderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="checkouderModalLabel">玩儿不网提示</h4>
+      </div>
+      <div class="modal-body">
+        <%if reservation_type  == "according_time" then%>
+          <div style="font-size: 14px;margin-bottom: 10px;">对不起！你所选的以下场次已被其他用户暂时抢占，系统将会自动释放你的选择，请重新选择!</div>
+        <%else%>
+          <div style="font-size: 14px;margin-bottom: 10px;">对不起！你所选的以下场次已被其他用户暂时抢占，系统会自动将余下的名额分配给您，如需调整请重新选择!</div>
+        <%end%>
+        <div id="checkedHas" >
+
         </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-  <%= render 'common_parts/login_modal' -%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">我知道了</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<%= render 'common_parts/login_modal' -%>

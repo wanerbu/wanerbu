@@ -8,8 +8,10 @@ Wanerbu::Application.routes.draw do
   match 'gym/reserve/:id/:date' => 'gym#reserve',:via=>:get
   match 'gym/searchgame/:id/:date' => 'gym#searchgame',:via=>:get
   match 'gym/check_order' => 'gym#check_order',:via => :post
+  match 'gym/check_code_image/:type_code' => 'gym#check_code_image',:via => :get
   match 'gym/submit_order' => 'gym#submit_order',:via => :post
   match 'gym/search_map' => 'gym#search_map',:via => :post
+  match 'gym/code_image' => 'gym#code_image',:via => :get
 
   # 普通用户认证部分
   devise_for :users,

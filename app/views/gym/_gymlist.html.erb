@@ -1,6 +1,6 @@
 <div class="left count">
   <span>
-    共<b class="cSport"><%=@gyms.count%></b>家场馆
+    共<b class="cSport"><%=params[:count]%></b>家场馆
   </span>
 </div>
 <ul>
@@ -22,36 +22,39 @@
           <a href="javascript:toOneGym('<%= gym.id %>')" title=<%=gym.name%> ><%= gym.name %></a>
         </span>
         <span class="grade" style="display:inline">
-          <sub style="margin:0;"><%=gym.score.truncate%></sub>
-          <sup>.0</sup>
-        </span>
-      </div>
-      <p class="mt10">详细地址：
-      <%= Province.find(gym.province_id).province +
-        City.find(gym.city_id).city +
-        Area.find(gym.area_id).area +
-        gym.address %>
-        <span class="ffst">[</span><a class="cSport" target="_blank" href="/common/baiduMap.xhtml?id=1276900&tag=sport">地图</a><span class="ffst">]</span>
-        </p>
-        <p class="mt10">联系电话：<%=gym.telephone%></p>
-        <p class="mt10">经营项目：
-        <% 
-          old_sport_id = 0 
-          gym.courts.order("sport_id asc").each do |court|
+          <%score = gym.score
+            score_decimal = score.to_s.split(".")[1].to_i
+          %>
+        <sub style="margin:0;"><%=score.to_i%></sub>
+        <sup>.<%=  score_decimal > 0 ? score_decimal : 0 %></sup>
+      </span>
+    </div>
+    <p class="mt10">详细地址：
+    <%= Province.find(gym.province_id).province +
+      City.find(gym.city_id).city +
+      Area.find(gym.area_id).area +
+      gym.address %>
+      <span class="ffst">[</span><a class="cSport" target="_blank" href="/common/baiduMap.xhtml?id=1276900&tag=sport">地图</a><span class="ffst">]</span>
+      </p>
+      <p class="mt10">联系电话：<%=gym.telephone%></p>
+      <p class="mt10">经营项目：
+      <% 
+        old_sport_id = 0 
+        gym.courts.order("sport_id asc").each do |court|
           new_sport_id = court.sport_id
           if new_sport_id != old_sport_id then
         %>
         <%= Sport.find(court.sport_id).name-%></a> 
-       <% 
+      <% 
           end
           old_sport_id = new_sport_id 
-          end
-        %>
-        </p>
-      </div>
-      </li>
-    <% end %>
-  </ul>
-  <div class='ui_row'>
-    <%= will_paginate @gyms %>
-  </div>
+        end
+      %>
+      </p>
+    </div>
+    </li>
+  <% end %>
+</ul>
+<div class='ui_row'>
+  <%= will_paginate @gyms %>
+</div>

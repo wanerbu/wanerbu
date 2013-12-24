@@ -198,3 +198,5 @@ cancan默认使用current_user来获得当前的用户，可以通过在controll
 ###drop table
 1.$rails console
 2.ActiveRecord::Migration.drop_table(:users)
+###delet all record from DB
+Post.delete_all

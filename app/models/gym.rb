@@ -1,7 +1,7 @@
 class Gym < ActiveRecord::Base
   #Enumerize使用
   extend Enumerize
- attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:score,:status,:deleted_at,:user_id,:history_log,:reason,:logo,:province_id,:city_id,:area_id
+ attr_accessible :name,:intro,:address,:telephone,:open_time,:close_time,:status,:deleted_at,:user_id,:history_log,:reason,:logo,:province_id,:city_id,:area_id
   mount_uploader :logo, ImageUploader
   #Enumerize使用
   enumerize :status, in: Wanerbu::CodeDefine::GYM_STATUS, default: :draft
@@ -13,6 +13,7 @@ class Gym < ActiveRecord::Base
   belongs_to :user
   has_many   :courts
   has_many   :gym_images
+  has_many   :gym_comments,:order => "gym_comments.created_at DESC"
   # validations
   validates :name, 
     :presence => true,
@@ -40,5 +41,9 @@ class Gym < ActiveRecord::Base
    if close_time.present? && open_time.present? && close_time <= open_time
      self.errors.add(:close_time, :close_time_less_than_open_time)
    end
+ end
+ def score
+    s = self.gym_comments.average("score")
+    s = s.round(1) if s.present?
  end 
 end

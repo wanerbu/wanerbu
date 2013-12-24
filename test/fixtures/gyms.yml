@@ -54,7 +54,6 @@ five:
   province_id: 610000
   city_id: 610100
   area_id: 610101
-  score: 5.3
   open_time: <%= Time.now %>
   close_time: <%= Time.now %>
 six:
@@ -68,7 +67,6 @@ six:
   province_id: 610000
   city_id: 610100
   area_id: 610101
-  score: 6.4
   open_time: <%= Time.now %>
   close_time: <%= Time.now %>
 seve:
@@ -82,6 +80,5 @@ seve:
   province_id: 610000
   city_id: 610100
   area_id: 610101
-  score: 7.5
   open_time: <%= Time.now %>
   close_time: <%= Time.now %>

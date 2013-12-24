@@ -24,6 +24,9 @@ h1 span{font-size:18px;margin-left:10px;color:#999}
   line-height: 24px;
   float: left;
 }
+.ratings li, .ui_big_ratings li, .initRating span {
+  background: url('ico_star.gif') no-repeat;
+}
 .ui_big_ratings li.half {
   background-position: 1px 0;
 }
@@ -34,9 +37,6 @@ h1 span{font-size:18px;margin-left:10px;color:#999}
   background-position: -25px 0;
   cursor: default;
   overflow: hidden;
-}
-.ratings li, .ui_big_ratings li, .initRating span {
-  background: url('ico_star.gif') no-repeat;
 }
 
 ul li {
@@ -430,4 +430,62 @@ ul.nav-tabs li a{
 }
 .search_form span.map_ico_b {
   background-position: -2px -235px;
+}
+.modify_alt {
+  height: 30px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+.brown {
+  color: #329ACD;
+}
+.modify_alt .ui_big_ratings li {
+  cursor: pointer;
+}
+.comment_form {
+  float: left;
+  width: 100%;
+}
+
+.logon_img{
+  float: left;
+  margin-top: 55px;
+}
+.comment_input{
+  float: left;
+  margin-left: 20px;
+  width: 88%;
+}
+.ui_comment_list{
+  padding-left: 70px;
+  width: 600px;
+  margin-top: 10px;
+}
+.ui_original {
+  border-top: 1px solid #F2F2F2;
+  clear: both;
+  overflow: hidden;
+  padding: 10px 0; 
+}
+.ui_original dt {
+  float:left;
+}
+.ui_original dd {
+  float:left;
+  margin-left: 15px;
+  width: 450px;
+}
+.comment_grade {
+  color: #FF6600;
+  font-size: 12px;
+  margin: 1px 2px;
+}
+.comment_time {
+  margin-top: 15px;
+}
+.comment_time span{
+  color: #999999;
 }

@@ -4,6 +4,7 @@ Wanerbu::Application.routes.draw do
   get "gym/gym_home"
   match 'gym/search/:sportid/:areaid/:keyword/:reservekey/:sortkey' => 'gym#search',:via=>:get
   match 'gym/one_gym/:id/:sportid' => 'gym#one_gym',:via=>:get
+  match 'gym/submit_comment' => 'gym#submit_comment',:via => :post
   match 'gym/getcourt/:gymid/:sportid/:reservationtype' => 'gym#getcourt',:via=>:get
   match 'gym/reserve/:id/:date' => 'gym#reserve',:via=>:get
   match 'gym/searchgame/:id/:date' => 'gym#searchgame',:via=>:get

@@ -7,14 +7,15 @@ class GymController < ApplicationController
     end
     sortkey = sortkey + "0) then 0 else 1 end "
     @gyms = Gym.paginate(:page => params[:page],:per_page => 1).order(sortkey)
+    params[:count] = @gyms.count
   end
   def search
     $sql = "1 = 1 "
     if params[:areaid] != "all"then
-      $sql = $sql + " and area_id = " + params[:areaid]
+      $sql = $sql + " and gyms.area_id = " + params[:areaid]
     end  
     if params[:sportid] != "all"then
-      $sql = $sql + " and id in ("
+      $sql = $sql + " and gyms.id in ("
       courts = Court.where(:sport_id => params[:sportid])
       courts.each do |court|
         $sql = $sql + court.gym_id.to_s + ","
@@ -22,10 +23,10 @@ class GymController < ApplicationController
       $sql = $sql + "0)"
     end
     if params[:keyword] != "all"then
-      $sql = $sql + " and name LIKE '%#{params[:keyword]}%'"
+      $sql = $sql + " and gyms.name LIKE '%#{params[:keyword]}%'"
     end
     if params[:reservekey] != "all"then
-      $sql = $sql + " and id in ("
+      $sql = $sql + " and gyms.id in ("
       courts = Court.includes(:games).where("games.can_reservation" => true)
       courts.each do |court|
         $sql = $sql + court.gym_id.to_s + ","
@@ -33,18 +34,20 @@ class GymController < ApplicationController
       $sql = $sql + "0)"
     end
     $sortkey = 'id asc'
-    if params[:sortkey] == "score" then
-      $sortkey = 'score desc'
-    end
     if params[:sortkey] == "opengym" then
-      $sortkey = "case when id in ("
+      $sortkey = "case when gyms.id in ("
       courts = Court.includes(:games).where("games.can_reservation" => true)
       courts.each do |court|
         $sortkey = $sortkey + court.gym_id.to_s + ","
       end
       $sortkey = $sortkey+ "0) then 0 else 1 end "
+      @gyms = Gym.where($sql).paginate(:page => params[:page],:per_page => 1).order($sortkey)
+      params[:count] = @gyms.count
     end
-    @gyms = Gym.where($sql).paginate(:page => params[:page],:per_page => 1).order($sortkey)
+    if params[:sortkey] == "score" then
+      @gyms = Gym.where($sql).includes(:gym_comments).group("gyms.id").order("avg(gym_comments.score) desc").paginate(:page => params[:page],:per_page => 1)
+      params[:count] = Gym.where($sql).count
+    end
     render :partial => "gymlist"
   end
   def one_gym
@@ -53,6 +56,12 @@ class GymController < ApplicationController
     if params[:sportid] != "all"then
       @court = Court.where("sport_id = ? and gym_id = ?",params[:sportid],params[:id]).first
     end
+  end
+  def submit_comment
+    @gym_comment = GymComment.new(params[:gym_comment])
+    @gym_comment.save
+    @gym = Gym.find(params[:gym_comment][:gym_id])
+    render :partial => "gym_comments_list"
   end
   def getcourt
     @gym = Gym.find(params[:gymid])

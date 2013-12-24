@@ -7,34 +7,43 @@
     <div class="detailPa">
       <div class="detailName clear">
         <%
-        gym_name = @gym.name
+          gym_name = @gym.name
+          gym_id = @gym.id
+          score = @gym.score
+          score_decimal = score.to_s.split(".")[1].to_i
+          star_num = 0
+          star_num = score.round(1) if score > 0
         %>
         <h1 class="left"><%= gym_name %></h1>		
         <div class="left clear mt10 ml15"><!-- 传评分数gmark -->
           <ul class="ui_big_ratings"><!-- 大的评分 -->
-            <li class="half"></li>
-            <li class="on"></li>
-            <li class="half"></li>
-            <li class="on"></li>
-            <li class="half"></li>
-            <li class="on"></li>
-            <li class="half"></li>
-            <li class="on"></li>
-            <li class="half"></li>
-            <li class="no"></li>
-          </ul>
-          <span class="bigSubp left"><sub id="mark_integer">8</sub><sup id="mark_decimal">.7</sup></span>
-        </div>
-        <div class="ratingsCount left">
-          <ul>
-            <li><a href="javascript:showMovieMark();" class="cou">我要评分</a></li>
-            <li>
-            <span><a href="javascript:addCollection();" class="ad" id="nCollect">感兴趣</a></span>
-            <span><a href="javascript:cancelTreasure();" class="ad se none" id="hCollect">取消感兴趣</a></span>
-            </li>
-          </ul>
-        </div>
-      </div><!--detailName-->
+            <% for i in 1..10
+            if i <= star_num
+              if i.even? %>
+              <li class="on"></li>
+            <% else %>
+              <li class="half"></li>
+            <%end%>
+          <%else
+          if i.even?%>
+          <li class="no"></li>
+        <%else%>
+          <li class=""></li>
+        <%end%>
+      <%end%>
+    <%end%>
+  </ul>
+  <span class="bigSubp left">
+    <sub id="mark_integer"><%=score.to_i%></sub>
+    <sup id="mark_decimal">.<%=  score_decimal > 0 ? score_decimal : 0 %></sup>
+  </span>
+</div>
+<div class="ratingsCount left">
+  <ul>
+    <li><a href="javascript:showComment();" class="cou">我要评分</a></li>
+  </ul>
+</div>
+</div><!--detailName-->
     </div><!--detailPa-->
   </div><!--detail head-->
 </div><!--ui_row-->
@@ -65,147 +74,196 @@
           <dd>
           <%
             city = City.find(@gym.city_id).city 
-          address =  Province.find(@gym.province_id).province +
-            city +
-            Area.find(@gym.area_id).area +
-            @gym.address %>
-            <%= address %>
-            <span class="ffst">[<a href="/common/baiduMap.xhtml?id=37597055&amp;tag=sport" target="_blank">地图</a>]</span></dd>
-          </dl>
-          <dl>
-            <dt>联系电话：</dt>
-            <dd><%=@gym.telephone%></dd>
-          </dl>
-          <dl>
-            <dt>运动项目：</dt>
-            <dd>
-            <% 
-              old_sport_id = 0 
-              @gym.courts.order("sport_id asc").each do |court|
-                new_sport_id = court.sport_id
-                if new_sport_id != old_sport_id then
-              %>
-              <%= Sport.find(court.sport_id).name-%></a> 
-            <% 
+            address =  Province.find(@gym.province_id).province +
+              city +
+              Area.find(@gym.area_id).area +
+              @gym.address %>
+              <%= address %>
+              <span class="ffst">[<a href="/common/baiduMap.xhtml?id=37597055&amp;tag=sport" target="_blank">地图</a>]</span></dd>
+            </dl>
+            <dl>
+              <dt>联系电话：</dt>
+              <dd><%=@gym.telephone%></dd>
+            </dl>
+            <dl>
+              <dt>运动项目：</dt>
+              <dd>
+              <% 
+                old_sport_id = 0 
+                @gym.courts.order("sport_id asc").each do |court|
+                  new_sport_id = court.sport_id
+                  if new_sport_id != old_sport_id then
+                %>
+                <%= Sport.find(court.sport_id).name-%></a> 
+              <% 
+                  end
+                  old_sport_id = new_sport_id 
                 end
-                old_sport_id = new_sport_id 
-              end
-            %>
-            </dd>
-          </dl>
-        </div>
-      </div><!--ui_text-->
-    </div><!--itemTopic-->
-    <div class='ui_right'>
-      <div class='ui_map'>
-        <div class='mapInfo'>
-          <div id="allmap"></div>
-        </div>
-        <div class='mapModify'>
-          <div id="pattern" class="search_icon_tab">
-            <a title="驾车" onclick="tabs(this,'1')"  class="select"><img src="images/blank.gif" class="car"></a>
-            <a title="公共交通" onclick="tabs(this,'2')" class=""><img src="images/blank.gif" class="bus"></a>
-            <a title="步行" onclick="tabs(this,'3')"  class=""><img src="images/blank.gif" class="men"></a>
-          </div>
-          <%= form_tag({:controller => "gym", :action => "search_map"},{:method => "post",:target => '_blank'}) do %>
-            <div class="search_form">
-              <ul>
-                <li>
-                <span title="起点" class="map_ico_a"></span>
-                <input type="text" alt="请输入起点" class="text" name="fromaddress" style="width:174px;" id="fromAddress">
-                </li>
-                <li>
-                <span title="终点" class="map_ico_b"></span>
-                <input type="text" value="<%= address%>" class="text" name="toaddress" style="width:174px;" id="endAddress">
-                <input type="hidden" name="city" id="city" value="<%=city%>"/>
-                <input type="hidden" name="gym_name" id="gym_name" value="<%=gym_name%>"/>
-                </li>
-                <li>
-                <input id="searchtype" type="hidden" value="1" name="searchtype">
-                <%= submit_tag('查询路线') %>
-                </li>
-              </ul>
-            </div>
-          <%end%>
-        </div>
-      </div><!--map-->
-    </div>
-    <div class="ui_summary">
-      <p class="ui_summary_big">
-      <%= @gym.intro%>
-      <a class="ffst cSport ml5" target="_blank" style="display:inline-block;" href="/news/47602086">详情&gt;&gt;</a>    <span></span>
-      </p>
-    </div><!--ui_summary-->
-  </div><!-- /.ui_row -->
-  <div class="ui_row details">
-    <div class="ui_left details_left">
-      <div>
-        <ul class="nav nav-tabs">
-          <li class="active"><a >场地预订</a></li>
-        </ul>
-      </div>
-      <div id="reserveList">
-        <%= render 'reservelist' -%>
-      </div>
-      <!--查询结果-->
-      <div id="reserveListBySearch">
-      </div>
-    </div>
-    <div class="details_right ui_right">
-      <div class="right_info">
-        <div><h2>相关优惠</h2></div>
-        <div>
-          <ul>
-            <li>
-            <span class="cSport">农行信用卡银联在线支付</span>每笔订单立减<b class="cSport">10</b>元
-            </li>
-            <li class="mt5">
-            <span class="cSport">银联在线支付</span>每笔订单立减<b class="cSport">5</b>元, 立返<b>5</b>元券
-            </li>
-          </ul>
-        </div>
-        <div class="mt10"><h2>相关活动</h2></div>
-        <div class="hot_activity">
-          <ul>
-            <li>
-            <dl class="dl-horizontal">
-              <dt class="act_pic">
-              <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742">
-                <img width="96" height="128" alt="玩儿不@运动 9元抢场 第二十期10月1日场" src="../../assets/img/act.jpg">
-              </a>
-              </dt>
-              <dd class="act_txt">
-              <span title="玩儿不官方认证活动" class="mr5"></span>
-              <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742" class="cSport">玩儿不@运动 9元抢场 第二十期10月1日场</a>
-              <p class="mt10">5月21日--12月31日</p>
-              <p class="mt10">玩儿不运动</p>
+              %>
               </dd>
             </dl>
-            </li>
+          </div>
+        </div><!--ui_text-->
+      </div><!--itemTopic-->
+      <div class='ui_right'>
+        <div class='ui_map'>
+          <div class='mapInfo'>
+            <div id="allmap"></div>
+          </div>
+          <div class='mapModify'>
+            <div id="pattern" class="search_icon_tab">
+              <a title="驾车" onclick="tabs(this,'1')"  class="select"><img src="images/blank.gif" class="car"></a>
+              <a title="公共交通" onclick="tabs(this,'2')" class=""><img src="images/blank.gif" class="bus"></a>
+              <a title="步行" onclick="tabs(this,'3')"  class=""><img src="images/blank.gif" class="men"></a>
+            </div>
+            <%= form_tag({:controller => "gym", :action => "search_map"},{:method => "post",:target => '_blank'}) do %>
+              <div class="search_form">
+                <ul>
+                  <li>
+                  <span title="起点" class="map_ico_a"></span>
+                  <input type="text" alt="请输入起点" class="text" name="fromaddress" style="width:174px;" id="fromAddress">
+                  </li>
+                  <li>
+                  <span title="终点" class="map_ico_b"></span>
+                  <input type="text" value="<%= address%>" class="text" name="toaddress" style="width:174px;" id="endAddress">
+                  <input type="hidden" name="city" id="city" value="<%=city%>"/>
+                  <input type="hidden" name="gym_name" id="gym_name" value="<%=gym_name%>"/>
+                  </li>
+                  <li>
+                  <input id="searchtype" type="hidden" value="1" name="searchtype">
+                  <%= submit_tag('查询路线') %>
+                  </li>
+                </ul>
+              </div>
+            <%end%>
+          </div>
+        </div><!--map-->
+      </div>
+      <div class="ui_summary">
+        <p class="ui_summary_big">
+        <%= @gym.intro%>
+        <a class="ffst cSport ml5" target="_blank" style="display:inline-block;" href="/news/47602086">详情&gt;&gt;</a>    <span></span>
+        </p>
+      </div><!--ui_summary-->
+    </div><!-- /.ui_row -->
+    <div class="ui_row details">
+      <div class="ui_left details_left">
+        <div>
+          <ul class="nav nav-tabs">
+            <li class="active"><a >场地预订</a></li>
           </ul>
+        </div>
+        <div id="reserveList">
+          <%= render 'reservelist' -%>
+        </div>
+        <!--查询结果-->
+        <div id="reserveListBySearch">
+        </div>
+        <!--评论-->
+        <div class="mt20" id="location_comment">
+          <ul class="nav nav-tabs">
+            <li class="active"><a >玩儿不评论</a></li>
+          </ul>
+        </div>
+        <%= form_tag({:controller => "gym", :action => "submit_comment"}, {:method => "post",:id => 'commentform'}) do %>
+          <div class="comment_form">
+            <dl>
+              <dt class="logon_img">
+              <a href="javascript:void(0);"><img width="50" height="50" src="/images/default_head.png"></a>
+              </dt>
+              <dd class="comment_input">
+              <div class="modify_alt">
+                <b class="left mt5">我要评分：</b>
+                <ul class="ui_big_ratings" id="scoreMark">
+                  <li lang="不推荐，不考虑" id="1" class="" ></li>
+                  <li lang="不推荐，不考虑" class="no" id="2" ></li>
+                  <li lang="不推荐，不考虑" id="3" class="" ></li>
+                  <li lang="凑合，别无选择可考虑" class="no" id="4" ></li>
+                  <li lang="凑合，别无选择可考虑" id="5" class="" ></li>
+                  <li lang="不错，值得考虑" class="no" id="6" ></li>
+                  <li lang="不错，值得考虑" id="7" class="" ></li>
+                  <li lang="很棒，推荐大家去" class="no" id="8" ></li>
+                  <li lang="很棒，推荐大家去" id="9" class="" ></li>
+                  <li lang="最佳，绝对首选" class="no" id="10" ></li>
+                </ul>
+                <sub class="ml10 mr10 left" id="scoreMarkPoint"></sub>
+                <span id="scoreMarkDesc" class="brown left"></span>
+                <input type="hidden" name="gym_comment[score]" id="score" value=""/>
+                <input type="hidden" name="gym_comment[gym_id]" id="gym_id" value="<%=gym_id%>"/>
+                <input id="user_id" type="hidden" value="<%=current_user.nil? ? " " : current_user.id%>" name="gym_comment[user_id]">
+              </div>
+              <div>
+                <textarea id="comment" name="gym_comment[comment]" style="width: 100%;"></textarea> 
+              </div>
+              <div class="right"> 
+                <b id="remain">140</b>
+                <button type="button" id="sub_comment" class="btn btn-primary">发布</button>
+              </div>
+              </dd>
+            </dl>
+          </div>
+        <%end%>
+        <br>
+        <div id="gym_comments_list" class="left">
+          <%= render 'gym_comments_list' -%>
+        </div>
+      </div>
+      <div class="details_right ui_right">
+        <div class="right_info">
+          <div><h2>相关优惠</h2></div>
+          <div>
+            <ul>
+              <li>
+              <span class="cSport">农行信用卡银联在线支付</span>每笔订单立减<b class="cSport">10</b>元
+              </li>
+              <li class="mt5">
+              <span class="cSport">银联在线支付</span>每笔订单立减<b class="cSport">5</b>元, 立返<b>5</b>元券
+              </li>
+            </ul>
+          </div>
+          <div class="mt10"><h2>相关活动</h2></div>
+          <div class="hot_activity">
+            <ul>
+              <li>
+              <dl class="dl-horizontal">
+                <dt class="act_pic">
+                <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742">
+                  <img width="96" height="128" alt="玩儿不@运动 9元抢场 第二十期10月1日场" src="../../assets/img/act.jpg">
+                </a>
+                </dt>
+                <dd class="act_txt">
+                <span title="玩儿不官方认证活动" class="mr5"></span>
+                <a target="_blank" title="玩儿不@运动 9元抢场 第二十期10月1日场" href="/activity/8179742" class="cSport">玩儿不@运动 9元抢场 第二十期10月1日场</a>
+                <p class="mt10">5月21日--12月31日</p>
+                <p class="mt10">玩儿不运动</p>
+                </dd>
+              </dl>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <form id="searchForm"> 
-    <input type="hidden" name="gymid" id="gymid" value="<%=@gym.id%>"/>
-    <% if @court != nil %>
-      <input type="hidden" name="sportid" id="sportid" value="<%=@court.sport_id%>"/>
-      <input type="hidden" name="reservationtype" id="reservationtype" value="<%=@court.reservation_type%>"/>
-    <%end%>
-  </form> 
-  <script type="text/javascript">
-    var map = new BMap.Map("allmap");    // 创建地图实例       
-    var end = document.getElementById("endAddress").value;
-    var city = document.getElementById("city").value;
-    // 创建地址解析器实例   
-    var myGeo = new BMap.Geocoder();    
-    // 将地址解析结果显示在地图上，并调整地图视野  
-    myGeo.getPoint(end, function(point){    
-        if (point) {	   
-        map.centerAndZoom(point, 15);// 创建点坐标,初始化地图，设置中心点坐标和地图级别  
-        map.addOverlay(new BMap.Marker(point));  		
-        }    
-        }, city); 
+    <form id="searchForm"> 
+      <input type="hidden" name="gymid" id="gymid" value="<%=gym_id%>"/>
+      <% if @court != nil %>
+        <input type="hidden" name="sportid" id="sportid" value="<%=@court.sport_id%>"/>
+        <input type="hidden" name="reservationtype" id="reservationtype" value="<%=@court.reservation_type%>"/>
+      <%end%>
+    </form> 
+    <%= render 'common_parts/login_modal' -%>
+    <script type="text/javascript">
+      var map = new BMap.Map("allmap");    // 创建地图实例       
+      var end = document.getElementById("endAddress").value;
+      var city = document.getElementById("city").value;
+      // 创建地址解析器实例   
+      var myGeo = new BMap.Geocoder();    
+      // 将地址解析结果显示在地图上，并调整地图视野  
+      myGeo.getPoint(end, function(point){    
+          if (point) {	   
+          map.centerAndZoom(point, 15);// 创建点坐标,初始化地图，设置中心点坐标和地图级别  
+          map.addOverlay(new BMap.Marker(point));  		
+          }    
+          }, city); 
 
-</script>
+        </script>

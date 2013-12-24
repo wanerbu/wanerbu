@@ -1,0 +1,21 @@
+<div class="ui_comment_list">
+  <% @gym.gym_comments.each do |comment| -%>
+    <dl class="ui_original">
+      <dt >
+      <a href="javascript:void(0);"><img width="50" height="50" src="/images/default_head.png"></a>
+      </dt>
+      <dd>
+      <div>
+        <%user = User.find(comment.user_id)%>
+        <div>
+          <a href="#"><%=user.name%></a>:(<span class="comment_grade"><%=comment.score%></span>分)
+        </div>
+        <div> <%=comment.comment%></div>
+      </div>
+      <div class="comment_time">
+        <span> 发表于<%=comment.created_at.strftime("%Y-%m-%d %H:%M:%S")%></span>
+      </div>
+      </dd>
+    </dl>
+  <% end -%>
+</div>

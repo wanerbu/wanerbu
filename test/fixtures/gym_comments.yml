@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gym_id: 1
+  user_id: 1
+  score: 10
+  comment: MyText
+
+two:
+  gym_id: 1
+  user_id: 1
+  score: 9
+  comment: MyText
+th:
+  gym_id: 2
+  user_id: 1
+  score: 1.0
+  comment: MyText
+f:
+  gym_id: 4
+  user_id: 1
+  score: 8.0
+  comment: MyText

@@ -28,3 +28,200 @@ function tabs(clicka,searchtype){
   clicka.setAttribute("class","select");
   document.getElementById('searchtype').value = searchtype;
 }
+$(document).ready(function(){
+  $("#1").mouseover(function() {
+    set_class("1");
+  });
+  $("#1").mouseleave(function() {
+    var score = $("#score").val();
+    set_class(score);
+  });
+  $("#1").click(function() {
+    $("#score").attr("value","1");
+  });
+
+  $("#2").mouseover(function() {
+    set_class("2");
+  });
+  $("#2").mouseleave(function() {
+    var score = $("#score").val();
+    set_class(score);
+  });
+  $("#2").click(function() {
+    $("#score").attr("value","2");
+  });
+
+  $("#3").mouseover(function() {
+    set_class("3");
+  });
+  $("#3").mouseleave(function() {
+    var score = $("#score").val();
+    set_class(score);
+  });
+  $("#3").click(function() {
+    $("#score").attr("value","3");
+  });
+
+  $("#4").mouseover(function() {
+    set_class("4");
+  });
+  $("#4").mouseleave(function() {
+    var score = $("#score").val();
+    set_class(score);
+  });
+  $("#4").click(function() {
+    $("#score").attr("value","4");
+  });
+
+  $("#5").mouseover(function() {
+    set_class("5");
+  });
+  $("#5").mouseleave(function() {
+    var score = $("#score").val();
+    set_class(score);
+  });
+  $("#5").click(function() {
+    $("#score").attr("value","5");
+  });
+
+  $("#6").mouseover(function() {
+    set_class("6");
+  });
+  $("#6").mouseleave(function() {
+    var score = $("#score").val();
+    set_class(score);
+  });
+  $("#6").click(function() {
+    $("#score").attr("value","6");
+  });
+
+  $("#7").mouseover(function() {
+    set_class("7");
+  });
+  $("#7").mouseleave(function() {
+    var score = $("#score").val();
+    set_class(score);
+  });
+  $("#7").click(function() {
+    $("#score").attr("value","7");
+  });
+
+  $("#8").mouseover(function() {
+    set_class("8");
+  });
+  $("#8").mouseleave(function() {
+    var score = $("#score").val();
+    set_class(score);
+  });
+  $("#8").click(function() {
+    $("#score").attr("value","8");
+  });
+
+  $("#9").mouseover(function() {
+    set_class("9");
+  });
+  $("#9").mouseleave(function() {
+    var score = $("#score").val();
+    set_class(score);
+  });
+  $("#9").click(function() {
+    $("#score").attr("value","9");
+  });
+
+  $("#10").mouseover(function() {
+    set_class("10");
+  });
+  $("#10").mouseleave(function() {
+    var score = $("#score").val();
+    set_class(score);
+  });
+  $("#10").click(function() {
+    $("#score").attr("value","10");
+  });
+
+  $("#sub_comment").click(function() {
+    var user_id =  document.getElementById("user_id").value;
+    if (user_id == " "){
+      $('#loginModal').modal('toggle');
+    }else{
+      var score = $("#score").val();
+      if(score == ""){
+        alert("请选择一个分数！");
+      }else{
+        var comment = $("#comment").val();
+        if (comment == ""){
+          alert("请输入评论内容！");
+        }else{
+          $.ajax({
+            url: '/gym/submit_comment',
+            type: 'post',
+            async: false,
+            data: $('form#commentform').serialize(),
+            success:function(data) {
+              $("#gym_comments_list").html(data);
+              document.getElementById("comment").value = "";
+              document.getElementById("remain").innerHTML = "140";
+            }
+          });
+        }
+      }
+    }
+  });
+
+  $("#comment").keydown(function() {
+    gbcount();
+  });
+
+  $("#comment").keyup(function() {
+    gbcount();
+  });
+
+});
+function set_class(s){
+  score = s * 1;
+  for (var i =1 ; i <=10 ; i++){
+    if(i <= score){
+      if(i%2 == 0){
+        $("#"+i).attr("class","on");
+      }else{
+        $("#"+i).attr("class","half");
+      }
+    }else{
+      if(i%2 == 0){
+        $("#"+i).attr("class","no");
+      }else{
+        $("#"+i).attr("class","");
+      }
+    }
+  }
+  smp = document.getElementById("scoreMarkPoint");
+  smd = document.getElementById("scoreMarkDesc"); 
+  if(s == ""){
+    smp.innerHTML = "";
+    smd.innerHTML = "";
+  }else{
+    ele = document.getElementById(s);
+    var lang =  ele.getAttribute("lang");
+    smp.innerHTML = s + ".0";
+    smd.innerHTML = lang;
+  }
+}
+
+function gbcount(){
+  var max = 140;
+  var remain = 0;
+  var message =  document.getElementById("comment");
+  var remain_b =  document.getElementById("remain");
+  if (message.value.length > max) { 
+    message.value = message.value.substring(0,max); 
+    remain = 0; 
+    alert("评论内容不能超过 140 个字!"); 
+  } 
+  else { 
+    remain = max - message.value.length; 
+  } 
+  remain_b.innerHTML = remain;
+} 
+function showComment(){
+  window.location.hash = "#location_comment";
+}

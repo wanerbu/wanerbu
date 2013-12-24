@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131219071512) do
+ActiveRecord::Schema.define(:version => 20131223040359) do
 
   create_table "admin_roles", :force => true do |t|
     t.integer "admin_id", :null => false
@@ -134,6 +134,15 @@ ActiveRecord::Schema.define(:version => 20131219071512) do
 
   add_index "games", ["court_id"], :name => "index_games_on_court_id"
 
+  create_table "gym_comments", :force => true do |t|
+    t.integer  "gym_id"
+    t.integer  "user_id"
+    t.float    "score",      :default => 0.0, :null => false
+    t.text     "comment"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
   create_table "gym_images", :force => true do |t|
     t.integer  "gym_id"
     t.string   "image"
@@ -155,7 +164,6 @@ ActiveRecord::Schema.define(:version => 20131219071512) do
     t.string   "telephone",   :limit => 30,  :default => "",   :null => false
     t.time     "open_time",                                    :null => false
     t.time     "close_time",                                   :null => false
-    t.float    "score",                      :default => 0.0,  :null => false
     t.string   "status",                     :default => "00", :null => false
     t.string   "reason",      :limit => 100
     t.text     "history_log"

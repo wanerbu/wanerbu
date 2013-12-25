@@ -3,15 +3,30 @@
 one:
   id: 1
   court_id: 1
-  name: game one
+  name: '场次一'
   sort: 1
   default_price: 1.5
   can_reservation: true
 two:
   id: 2
   court_id: 2
-  name: game two
+  name: '场次一'
   sort: 1
   default_price: 1.5
-  can_reservation: false
+  can_reservation: true
   max_people: 20
+t:
+  id: 3
+  court_id: 1
+  name: '场次二'
+  sort: 1
+  default_price: 1.5
+  can_reservation: true
+f:
+  id: 4
+  court_id: 2
+  name: '场次二'
+  sort: 1
+  default_price: 1.5
+  can_reservation: true
+  max_people: 5

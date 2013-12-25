@@ -9,14 +9,13 @@ one:
   name: '周康航球馆'
   user_id: 1
   intro: '周康航球馆环境好'
-  logo: test02.jpg
   address: '管委会'
   telephone: 111111111
   province_id: 610000
   city_id: 610100
   area_id: 610101
-  open_time: <%= Time.now %>
-  close_time: <%= Time.now %>
+  open_time: '2000-01-01 08:00:00'
+  close_time: '2000-01-01 23:00:00'
 two:
   id: 2
   name: Gym2
@@ -28,8 +27,8 @@ two:
   province_id: 610000
   city_id: 610100
   area_id: 610101
-  open_time: <%= Time.now %>
-  close_time: <%= Time.now %>
+  open_time: '2000-01-01 08:00:00'
+  close_time: '2000-01-01 23:00:00'
 four:
   id: 4
   name: Gym4
@@ -41,8 +40,8 @@ four:
   province_id: 610000
   city_id: 610100
   area_id: 610101
-  open_time: <%= Time.now %>
-  close_time: <%= Time.now %>
+  open_time: '2000-01-01 08:00:00'
+  close_time: '2000-01-01 23:00:00'
 five:
   id: 5
   name: Gym5
@@ -54,8 +53,8 @@ five:
   province_id: 610000
   city_id: 610100
   area_id: 610101
-  open_time: <%= Time.now %>
-  close_time: <%= Time.now %>
+  open_time: '2000-01-01 08:00:00'
+  close_time: '2000-01-01 23:00:00'
 six:
   id: 6
   name: Gym6
@@ -67,8 +66,8 @@ six:
   province_id: 610000
   city_id: 610100
   area_id: 610101
-  open_time: <%= Time.now %>
-  close_time: <%= Time.now %>
+  open_time: '2000-01-01 08:00:00'
+  close_time: '2000-01-01 23:00:00'
 seve:
   id: 7
   name: Gym7
@@ -80,5 +79,5 @@ seve:
   province_id: 610000
   city_id: 610100
   area_id: 610101
-  open_time: <%= Time.now %>
-  close_time: <%= Time.now %>
+  open_time: '2000-01-01 08:00:00'
+  close_time: '2000-01-01 23:00:00'

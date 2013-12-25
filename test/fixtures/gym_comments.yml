@@ -4,20 +4,20 @@ one:
   gym_id: 1
   user_id: 1
   score: 10
-  comment: MyText
+  comment: good
 
 two:
   gym_id: 1
   user_id: 1
   score: 9
-  comment: MyText
+  comment: good
 th:
   gym_id: 2
   user_id: 1
   score: 1.0
-  comment: MyText
+  comment: good
 f:
   gym_id: 4
   user_id: 1
   score: 8.0
-  comment: MyText
+  comment: good

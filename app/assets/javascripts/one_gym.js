@@ -236,7 +236,8 @@ function gbcount(){
     remain = max - message.value.length; 
   } 
   remain_b.innerHTML = remain;
-} 
+}
+//跳到该页面评论处
 function showComment(){
   window.location.hash = "#location_comment";
 }
@@ -250,11 +251,12 @@ function page(value){
   jQuery.get('/gym/search_comment/' + gym_id + '?page=' + value,
       function(data){
         $("#gym_comments_list").html(data);
-        changehref();//该默认的pagination的href使其异步请求翻页 
+        changehref();//改默认的pagination的href使其异步请求翻页 
         document.getElementById("comment").value = "";
         document.getElementById("remain").innerHTML = "140";
       });
 }
+//改默认的pagination的href使其异步请求翻页 
 function changehref(){
   var page = "";
   $(".pagination a[href^='/gym']")

@@ -52,15 +52,26 @@
     <div class='ui_media'>
       <div id="myCarousel" class="carousel slide">
         <div class="carousel-inner">
-          <% @gym.gym_images.all.each do |gym_image| %>
-            <div class="<%= @gym.gym_images.all.first.id  == gym_image.id ? 'item active' : 'item' %>">
-              <%= image_tag gym_image.image_url.to_s, class: 'img-thumbnail' %>
+          <%if @gym.gym_images.empty?%>
+            <div class="item active">
+              <img src="/images/default_gym_image.jpg" alt="玩不网图片">
               <div class="container">
                 <div class="carousel-caption">
-                  <a class="btn btn-lg btn-primary" href="#"><%=gym_image.intro.to_s%></a>
+                  <a class="btn btn-lg btn-primary" href="#">玩不网</a>
                 </div>
               </div>
             </div>
+          <%else%>
+            <% @gym.gym_images.all.each do |gym_image| %>
+              <div class="<%= @gym.gym_images.all.first.id  == gym_image.id ? 'item active' : 'item' %>">
+                <%= image_tag gym_image.image_url.to_s, class: 'img-thumbnail' %>
+                <div class="container">
+                  <div class="carousel-caption">
+                    <a class="btn btn-lg btn-primary" href="#"><%=gym_image.intro.to_s%></a>
+                  </div>
+                </div>
+              </div>
+            <%end%>
           <%end%>
         </div>
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
@@ -79,7 +90,7 @@
               Area.find(@gym.area_id).area +
               @gym.address %>
               <%= address %>
-              <span class="ffst">[<a href="/common/baiduMap.xhtml?id=37597055&amp;tag=sport" target="_blank">地图</a>]</span></dd>
+             </dd>
             </dl>
             <dl>
               <dt>联系电话：</dt>
@@ -141,8 +152,9 @@
       </div>
       <div class="ui_summary">
         <p class="ui_summary_big">
+        <span></span>
         <%= @gym.intro%>
-        <a class="ffst cSport ml5" target="_blank" style="display:inline-block;" href="/news/47602086">详情&gt;&gt;</a>    <span></span>
+        <span></span>
         </p>
       </div><!--ui_summary-->
     </div><!-- /.ui_row -->

@@ -14,6 +14,9 @@
       </div>
       <div class="comment_time">
         <span> 发表于<%=comment.created_at.strftime("%Y-%m-%d %H:%M:%S")%></span>
+        <%if !current_user.nil? && current_user.id = comment.user_id%>
+          <a class="right" href="javascript:deleteComment('<%=comment.id%>')">删除</a>
+        <%end%>
       </div>
       </dd>
     </dl>
@@ -22,3 +25,5 @@
 <div class='ui_page_row'>
   <%= will_paginate @comments %>
 </div>
+<!--用于删除评论时回到原页面-->
+<input id="current_page" type="hidden" value="<%=params[:page]%>" name="current_page">

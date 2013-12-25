@@ -70,6 +70,24 @@ class GymController < ApplicationController
     @comments = @gym.gym_comments.paginate(:page => params[:page],:per_page => Wanerbu::Common::NUMBER_PER_PAGE)
     render :partial => "gym_comments_list"
   end
+  def check_comment_time
+    rs = false;
+    last_created_time = GymComment.where("gym_id =? and user_id =? ",params[:gym_comment][:gym_id],params[:gym_comment][:user_id]).last.created_at.to_s[0..18].to_time
+    current_time = Time.now().to_s[0..18].to_time
+    if (current_time.to_i - last_created_time.to_i) >= Wanerbu::Common::COMMENT_LIMIT_SECOND
+      rs = true;
+    end
+    respond_to do |format|
+      format.json { render :json => rs }
+    end
+  end
+  def delete_comment
+    @comment = GymComment.find(params[:commentid])
+    @comment.destroy
+    @gym = Gym.find(params[:gymid])
+    @comments = @gym.gym_comments.paginate(:page => params[:page],:per_page => Wanerbu::Common::NUMBER_PER_PAGE)
+    render :partial => "gym_comments_list"
+  end
   def getcourt
     @gym = Gym.find(params[:gymid])
     reservation_type = "00"
@@ -125,7 +143,7 @@ class GymController < ApplicationController
     end
     render "confirm_order"
     t = Thread.new {
-      sleep(1.minutes)
+      sleep(Wanerbu::Common::PAY_ORDER_LIMIT_MINUTE.minutes)
       last_order = Order.find(@order.id)
       if last_order.status = "00"
         last_order.status = "92"
@@ -145,7 +163,6 @@ class GymController < ApplicationController
   end
   def check_code_image
     rs = false;
-    puts session[:code]
     if params[:type_code] == session[:code].to_s
       rs = true;
     end

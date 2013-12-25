@@ -8,7 +8,11 @@ module Wanerbu
 
     NUMBER_PER_PAGE = 3
     AUTO_GENERATE_PASSWORD_LENGTH = 8
-    GYM_MANAGER_ROLE_ID = 3 
+    GYM_MANAGER_ROLE_ID = 3
+   #两次提交评论的间隔秒限制 
+    COMMENT_LIMIT_SECOND = 60
+   #订单支付时间分钟限制
+    PAY_ORDER_LIMIT_MINUTE = 1
   end
 
   module CodeDefine

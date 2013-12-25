@@ -5,7 +5,7 @@ $(document).ready(function(){
   //页面刷新时加载时间计时处理 
   var timer;
   var sec = 0;
-  var min = 1;//最大分钟数
+  var min = document.getElementById("max_min").value * 1;
   var showtimeout = document.getElementById("showtimeout");
   showtimeout.innerHTML = '<b class=\'RemainMS\'>'+ min +'</b>'+'分钟' + '<b class=\'RemainMS\'>' + sec +'</b>'+ '秒';
   timer=setInterval(function(){

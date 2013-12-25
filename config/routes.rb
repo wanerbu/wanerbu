@@ -6,6 +6,8 @@ Wanerbu::Application.routes.draw do
   match 'gym/one_gym/:id/:sportid' => 'gym#one_gym',:via=>:get
   match 'gym/submit_comment' => 'gym#submit_comment',:via => :post
   match 'gym/search_comment/:gymid' => 'gym#search_comment',:via=>:get
+  match 'gym/delete_comment/:gymid/:commentid' => 'gym#delete_comment',:via=>:get
+  match 'gym/check_comment_time' => 'gym#check_comment_time',:via => :post
   match 'gym/getcourt/:gymid/:sportid/:reservationtype' => 'gym#getcourt',:via=>:get
   match 'gym/reserve/:id/:date' => 'gym#reserve',:via=>:get
   match 'gym/searchgame/:id/:date' => 'gym#searchgame',:via=>:get

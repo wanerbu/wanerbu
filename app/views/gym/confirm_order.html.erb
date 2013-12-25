@@ -64,12 +64,14 @@
         </div>
         <div class="payBox_body_right">
           <div class="limitTimedetail inner">
-            <p><span class="fs14 cf60">请在15分钟内完成付款</span>，超时系统将自动释放已选场次，支付中如遇到问题请致电：<b>4000-406-506</b></p>
+            <p><span class="fs14 cf60">请在<%=Wanerbu::Common::PAY_ORDER_LIMIT_MINUTE%>
+              分钟内完成付款</span>，超时系统将自动释放已选场次，支付中如遇到问题请致电：<b>4000-406-506</b></p>
             <div class="limitTime">
               <b class="fs22">剩余支付时间：</b>
               <p id="showtimeout" class="fs20 mt5"></p>
             </div>
           </div>
+          <input type="hidden" name="max_min" id="max_min" value="<%=Wanerbu::Common::PAY_ORDER_LIMIT_MINUTE%>"/>
         </div>
       </div>
     </div><!--payBox_body-->

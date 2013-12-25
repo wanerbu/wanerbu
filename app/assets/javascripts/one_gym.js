@@ -153,15 +153,28 @@ $(document).ready(function(){
           alert("请输入评论内容！");
         }else{
           $.ajax({
-            url: '/gym/submit_comment',
+            url: '/gym/check_comment_time',
             type: 'post',
+            dataType: 'json',
             async: false,
             data: $('form#commentform').serialize(),
             success:function(data) {
-              $("#gym_comments_list").html(data);
-              changehref();//该默认的pagination的href使其异步请求翻页 
-              document.getElementById("comment").value = "";
-              document.getElementById("remain").innerHTML = "140";
+              if (data){//两次输入在给定的时间范围内
+                $.ajax({
+                  url: '/gym/submit_comment',
+                  type: 'post',
+                  async: false,
+                  data: $('form#commentform').serialize(),
+                  success:function(data) {
+                    $("#gym_comments_list").html(data);
+                    changehref();//该默认的pagination的href使其异步请求翻页 
+                    document.getElementById("comment").value = "";
+                    document.getElementById("remain").innerHTML = "140";
+                  }
+                });
+              }else{//两次输入时间过快
+                alert("手都输酸了,等会儿再输吧!");
+              }
             }
           });
         }
@@ -250,4 +263,19 @@ function changehref(){
           page = this.href.substr(this.href.indexOf("=") + 1);
           this.href = "javascript:page('" + page + "')";
         });
+}
+function deleteComment(comment_id){
+  if(confirm("确定要删除吗?")){
+    var gym_id = document.getElementById("gym_id").value;
+    var page = document.getElementById("current_page").value;
+    url = '/gym/delete_comment/' + gym_id + '/' + comment_id ;
+    if (page != ""){
+      url = url + '?page=' + page;
+    }
+    jQuery.get(url,
+        function(data){
+          $("#gym_comments_list").html(data);
+          changehref();//该默认的pagination的href使其异步请求翻页 
+        });
+  }
 }

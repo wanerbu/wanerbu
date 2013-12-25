@@ -88,7 +88,7 @@ function requestSearch(){
       function(data){
         $('#gymListArea').hide();    
         $("#gymListAreaBySearch").html(data);
-        changehref(); 
+        changehref();//该默认的pagination的href使其异步请求翻页 
       });
 }
 jQuery(function($) {

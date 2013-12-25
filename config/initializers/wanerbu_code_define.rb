@@ -6,7 +6,7 @@ module Wanerbu
     FORMAT_LOGIN_ID = /\A[a-zA-Z0-9]+\z/
     FORMAT_TELEPHONE = /\A[0-9]+\z/
 
-    NUMBER_PER_PAGE = 1
+    NUMBER_PER_PAGE = 3
     AUTO_GENERATE_PASSWORD_LENGTH = 8
     GYM_MANAGER_ROLE_ID = 3 
   end

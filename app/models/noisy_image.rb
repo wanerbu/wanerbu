@@ -1,3 +1,4 @@
+#生成验证码
 require 'RMagick'
 class NoisyImage
   include Magick

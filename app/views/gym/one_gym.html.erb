@@ -12,7 +12,7 @@
           score = @gym.score
           score_decimal = score.to_s.split(".")[1].to_i
           star_num = 0
-          star_num = score.round(1) if score > 0
+          star_num = score.round(1) if score.present? 
         %>
         <h1 class="left"><%= gym_name %></h1>		
         <div class="left clear mt10 ml15"><!-- 传评分数gmark -->
@@ -154,7 +154,7 @@
           </ul>
         </div>
         <div id="reserveList">
-          <%= render 'reservelist' -%>
+          <%= render 'reserves_list' -%>
         </div>
         <!--查询结果-->
         <div id="reserveListBySearch">
@@ -266,4 +266,4 @@
           }    
           }, city); 
 
-        </script>
+</script>

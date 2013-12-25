@@ -1,5 +1,5 @@
 <div class="ui_comment_list">
-  <% @gym.gym_comments.each do |comment| -%>
+  <% @comments.each do |comment| -%>
     <dl class="ui_original">
       <dt >
       <a href="javascript:void(0);"><img width="50" height="50" src="/images/default_head.png"></a>
@@ -18,4 +18,7 @@
       </dd>
     </dl>
   <% end -%>
+</div>
+<div class='ui_page_row'>
+  <%= will_paginate @comments %>
 </div>

@@ -159,6 +159,7 @@ $(document).ready(function(){
             data: $('form#commentform').serialize(),
             success:function(data) {
               $("#gym_comments_list").html(data);
+              changehref();//该默认的pagination的href使其异步请求翻页 
               document.getElementById("comment").value = "";
               document.getElementById("remain").innerHTML = "140";
             }
@@ -177,6 +178,7 @@ $(document).ready(function(){
   });
 
 });
+//设置评分星星的样式
 function set_class(s){
   score = s * 1;
   for (var i =1 ; i <=10 ; i++){
@@ -206,7 +208,7 @@ function set_class(s){
     smd.innerHTML = lang;
   }
 }
-
+//评论剩余字数统计
 function gbcount(){
   var max = 140;
   var remain = 0;
@@ -224,4 +226,28 @@ function gbcount(){
 } 
 function showComment(){
   window.location.hash = "#location_comment";
+}
+
+jQuery(function($) {
+  //页面刷新时
+  changehref(); 
+})
+function page(value){
+  var gym_id = document.getElementById("gym_id").value;
+  jQuery.get('/gym/search_comment/' + gym_id + '?page=' + value,
+      function(data){
+        $("#gym_comments_list").html(data);
+        changehref();//该默认的pagination的href使其异步请求翻页 
+        document.getElementById("comment").value = "";
+        document.getElementById("remain").innerHTML = "140";
+      });
+}
+function changehref(){
+  var page = "";
+  $(".pagination a[href^='/gym']")
+    .each(function()
+        { 
+          page = this.href.substr(this.href.indexOf("=") + 1);
+          this.href = "javascript:page('" + page + "')";
+        });
 }

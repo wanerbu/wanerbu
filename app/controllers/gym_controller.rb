@@ -6,7 +6,7 @@ class GymController < ApplicationController
       sortkey = sortkey + court.gym_id.to_s + ","
     end
     sortkey = sortkey + "0) then 0 else 1 end "
-    @gyms = Gym.paginate(:page => params[:page],:per_page => 1).order(sortkey)
+    @gyms = Gym.paginate(:page => params[:page],:per_page => Wanerbu::Common::NUMBER_PER_PAGE).order(sortkey)
     params[:count] = @gyms.count
   end
   def search
@@ -41,14 +41,14 @@ class GymController < ApplicationController
         $sortkey = $sortkey + court.gym_id.to_s + ","
       end
       $sortkey = $sortkey+ "0) then 0 else 1 end "
-      @gyms = Gym.where($sql).paginate(:page => params[:page],:per_page => 1).order($sortkey)
+      @gyms = Gym.where($sql).paginate(:page => params[:page],:per_page => Wanerbu::Common::NUMBER_PER_PAGE).order($sortkey)
       params[:count] = @gyms.count
     end
     if params[:sortkey] == "score" then
-      @gyms = Gym.where($sql).includes(:gym_comments).group("gyms.id").order("avg(gym_comments.score) desc").paginate(:page => params[:page],:per_page => 1)
+      @gyms = Gym.where($sql).includes(:gym_comments).group("gyms.id").order("avg(gym_comments.score) desc").paginate(:page => params[:page],:per_page => Wanerbu::Common::NUMBER_PER_PAGE)
       params[:count] = Gym.where($sql).count
     end
-    render :partial => "gymlist"
+    render :partial => "gyms_list"
   end
   def one_gym
     @gym = Gym.find(params[:id]) 
@@ -56,11 +56,18 @@ class GymController < ApplicationController
     if params[:sportid] != "all"then
       @court = Court.where("sport_id = ? and gym_id = ?",params[:sportid],params[:id]).first
     end
+    @comments = @gym.gym_comments.paginate(:page => params[:page],:per_page => Wanerbu::Common::NUMBER_PER_PAGE)
   end
   def submit_comment
     @gym_comment = GymComment.new(params[:gym_comment])
     @gym_comment.save
     @gym = Gym.find(params[:gym_comment][:gym_id])
+    @comments = @gym.gym_comments.paginate(:page => params[:page],:per_page => Wanerbu::Common::NUMBER_PER_PAGE)
+    render :partial => "gym_comments_list"
+  end
+  def search_comment
+    @gym = Gym.find(params[:gymid])
+    @comments = @gym.gym_comments.paginate(:page => params[:page],:per_page => Wanerbu::Common::NUMBER_PER_PAGE)
     render :partial => "gym_comments_list"
   end
   def getcourt
@@ -76,14 +83,14 @@ class GymController < ApplicationController
     if @court == nil then
       @court = Court.where(:gym_id => params[:gymid],:sport_id => params[:sportid]).first 
     end
-    render :partial => "reservelist"
+    render :partial => "reserves_list"
   end
   def reserve
     @court = Court.find(params[:id]) 
   end
   def searchgame
     @court = Court.find(params[:id]) 
-    render :partial => "gamelist"
+    render :partial => "games_list"
   end
   def check_order
     rh = {}

@@ -5,9 +5,7 @@
   <div class="activity_title">
     <h1>运动活动</h1>
     <label><b>971584</b>人参加了活动</label>
-    <a href="edit_activity.html" target="_blank">
-      <button type="button" class="btn btn-info more">发起新活动</button>
-    </a>
+    <%=button_to "发起活动",new_activity_path,:method => "get",:class => "btn btn-info more"%>
   </div>
 </div>
 <div class='ui_row mt10'>

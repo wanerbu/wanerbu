@@ -65,3 +65,11 @@ gem "cancan"
 # 文件upload
 gem "rmagick", "~>2.13.2", :require => 'RMagick'
 gem "carrierwave"
+
+#bootstrap-datepicker
+gem 'bootstrap-datepicker-rails'
+#date/time picker
+gem 'jquery-timepicker-rails'
+
+#WYSIWYG editor (based on CKEditor))
+gem 'rich'

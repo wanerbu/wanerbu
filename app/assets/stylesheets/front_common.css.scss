@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 /*标签级别前台共通样式*/
-div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,bloc
+div,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,bloc
 kquote,th,td,ins,img {
-  margin:0;padding:0;word-wrap:break-word
+  margin:0;padding:0;word-wrap:break-word;
 }
 body {
   padding-top: 60px;
@@ -11,7 +11,7 @@ body {
   font:12px/22px verdana,Arial,Helvetica,'宋体',sans-serif;color:#333;
   background-color: #e5e5e5;
 }
-ul li {
+ul li ol{
   list-style: none;
   padding: 0;
   margin: 0;
@@ -30,12 +30,20 @@ em {
 .mr5 { margin-right: 5px;}
 .mr10 {margin-right: 10px;}
 .m5 {margin: 0 5px;}
-.fs14 {font-size: 14px;}
+.mr20{ margin-right: 20px;}
+.mb15{margin-bottom:15px}
+.ml64 {margin-left: 64px;}
+
 .right {float: right;}
 .left {float: left;}
 .cSport{color:#39c!important} 
 .c999 {color: #999999 !important;}
 .cf60{color: #FF6600;}
+.fs20{font-size: 20px;}
+.CC3300{color: #CC3300 !important;}
+.c333 { color: #333333 !important;}
+.center {text-align: center;}
+.fs14 {font-size: 14px;}
 
 /*class id 级别前台共通样式*/
 .container{
@@ -93,5 +101,11 @@ width: 50px;
 }
 .wb-pagination a:hover{background:#3ae}
 /*
-*验证码样式
+*date/time picker样式
 */
+.date{
+  width: 90px;
+}
+.time{
+  width: 90px;
+}

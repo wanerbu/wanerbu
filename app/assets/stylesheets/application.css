@@ -13,4 +13,6 @@
  *= require wanerbu_formtastic
  *= require_self
  *= require common
+ *= require jquery.timepicker.css
+ *= require bootstrap-datepicker
  */

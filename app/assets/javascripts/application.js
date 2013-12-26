@@ -19,3 +19,6 @@
 //= require common
 //
 // require_tree .
+//= require jquery.timepicker.js
+//= require bootstrap-datepicker
+//= require rich

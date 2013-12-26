@@ -1,0 +1,124 @@
+// Place all the styles related to the activities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.uipic,.uitext {
+  float: left;
+}
+.uitext{
+  width:400px;
+  margin-left: 30px;
+}
+.uipic {
+  margin-right: 30px;
+}
+.kuang {
+  border-color: #DDDDDD;
+  border-style: solid;
+  border-width: 1px;
+  padding:15px;
+  margin-bottom: 20px;
+  height:100px;
+}
+.bds_tools {
+  text-align: center;
+}
+
+.uitext dl dt {
+  float: left;
+  font-weight: bold;
+  height: 30px;
+  text-align: right;
+}
+
+.uitext dl dd {
+  width: 440px;
+}
+
+dt,dd {line-height: 30px;}
+.formtastic .input {
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.formtastic li.input {
+  border-style: inherit;
+}
+#activity_submit_action, #activity_details_input {
+ list-style: none outside none;
+}
+.acPrice {
+  color: #FF6600;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cF60 {
+  color: #FF6600;
+}
+
+.title_ft {
+  font-size: 18px;
+}
+
+h2 {
+  font-family: 'Î¢ÈíÑÅºÚ','ËÎÌå';
+  font-size: 16px;
+  font-weight: bold;
+}
+.isBusiness, .isOfficial, .approved, .unApprove,.acEdit{
+  background-attachment: scroll;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url("../../img/ico_activity.png");
+  background-repeat: no-repeat;
+}
+.isBusiness, .isOfficial, .approved, .unApprove {
+  display: inline-block;
+  height: 19px;
+  margin-left: 2px;
+  vertical-align: -4px;
+  width: 30px;
+}
+.unApprove {
+  background-position: 0 -1051px;
+}
+
+
+
+#editor {
+  max-height: 250px;
+  height: 250px;
+  background-color: white;
+  border-collapse: separate; 
+  border: 1px solid rgb(204, 204, 204); 
+  padding: 4px; 
+  overflow: scroll;
+  outline: none;
+}
+.dropdown-menu a {
+  cursor: pointer;
+}
+
+.btn-toolbar {
+  float: left;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 0;
+}
+.btn-group{
+  margin-left: 0px;
+}
+.input-append .span2 {
+  width: 73.894%;
+}
+.input-append
+{
+  min-width: 222px;
+}
+
+.acEdit {
+  background-position: 4px -1130px;
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+}

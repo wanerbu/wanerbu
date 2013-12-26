@@ -1,0 +1,101 @@
+<div class="ui_row">
+  <div class="activity_title">
+    <div class="crumbs"><a href="/">玩儿不网</a>&nbsp;&gt;&nbsp;<a href="/activity/">活动</a>&nbsp;&gt;&nbsp;编辑活动
+    </div>
+  </div><!-- /.ui_row -->  
+  <div class='ui_row mt20'>
+    <div class='ui_left '>
+      <div class='uipic'>
+        <img id="showUpLoad" src="/images/default_activity_logo.jpg">
+        <div class="bds_tools mt10">
+          <button type="button" class="btn btn-info more">上传图片</button>
+        </div>
+        <div class="center mt10">
+          <p class="c999">最佳尺寸：150*200</p>
+        </div>
+      </div>
+      <div class='uitext'>
+        <%= semantic_form_for([@activity], :html => { :class => 'form-horizontal',:multipart => true }) do |f| %>
+          <%= f.inputs  do %>
+            <dl class="activityInfo">
+              <dt>活动名称：</dt>
+              <dd>
+              <%= f.input :name, :required => true,:label => false %></dd>
+              <dt>活动类型：</dt>
+              <dd>			
+              <div style="margin-top: -5px; margin-bottom: 5px;">
+                <input type="radio" lang="sport" value="sport" title="项目/场馆" id="no_sport"  name="tag" style=" margin-right: 2px; vertical-align: -8px;">
+                <span style="vertical-align: -5px;">运动</span>
+                <input type="radio" lang="" value="other" title="其他" id="no_other"  name="tag" style=" margin-right: 2px; vertical-align: -8px;">
+                <span style="vertical-align: -5px;">其他</span>
+              </div>
+              </dd>
+              <dt>活动地点：</dt>
+              <dd><input type="text" id="inputEmail" placeholder="请输入活动地址..."></dd>
+              <dt>报名时间：</dt>
+              <dd>
+              <p data-language="javascript" class="datepair">
+              <input type="text" class="date start" placeholder="报名开始日期...">
+              <input type="text" class="time start ui-timepicker-input" autocomplete="off" placeholder="报名开始时间..."> 至
+              </br>
+              <input style="margin-left: 65px;" type="text" class="time end ui-timepicker-input" autocomplete="off" placeholder="报名结束时间...">
+              <input type="text" class="date end" placeholder="报名结束日期...">
+              </p>
+              </dd>
+              <dt>活动时间：</dt>
+              <dd>
+              <p data-language="javascript" class="datepair">
+              <input type="text" class="date start" placeholder="活动开始日期...">
+              <input type="text" class="time start ui-timepicker-input" autocomplete="off" placeholder="活动开始时间..."> 至
+              </br>
+              <input style="margin-left: 65px;" type="text" class="time end ui-timepicker-input" autocomplete="off" placeholder="活动结束时间...">
+              <input type="text" class="date end" placeholder="活动结束日期...">
+              </dd>
+              <dt>人数限制：</dt>
+              <dd><input type="text" id="inputEmail" style="width: 68px">人<span class="ml10 c999 fs12">留空或为0表示不限人数</span></dd>
+              <dt style=" margin-left: 12px">联系人：</dt>
+              <dd><input type="text" id="inputEmail" style="width: 100px"></dd>
+              <dt>联系方式：</dt>
+              <dd><input type="text" id="inputEmail" style="width: 100px"></dd>
+              <dt style=" margin-left: 30px">QQ：</dt>
+              <dd><input type="text" id="inputEmail" style="width: 100px"></dd>
+              <dt>活动费用：</dt>
+              <dd><input type="text" id="inputEmail" style="width: 68px">元<span class="ml10 c999 fs12">填0或不填表示免费</span></dd>
+            </dl>
+          </div><!--uitext-->
+        </div><!--ui_left-->
+        <div class='ui_right'>
+          <div class='kuang'>
+            <div class="mod_hd">
+              <h2>组织者</h2>
+            </div>
+            <div class="mod_bd">
+              <div class="ui_abeam">
+                <div class="uipic">
+                  <a target="_blank" href="#" title="伞下晴空99">
+                    <img width="50" height="50" src="../../assets/img/default_head.png" alt="伞下晴空99">
+                  </a>
+                </div>
+                <div class="uitext">
+                  <p class="CC3300">伞下晴空99
+                  <span class="unApprove" title="未认证"></span>
+                  </p>
+                </div>
+              </div><!--ui_abeam-->
+            </div><!--mod_bd-->
+          </div><!--kuang-->
+        </div><!--ui_right-->
+      </div><!-- /.ui_row -->  
+      <div class='ui_row mt20'>
+        <div class="title_details">
+          <div><h2>活动详情</h2></div>
+          <div id="alerts"></div>
+        </div><!--details-->
+        <%= f.input :details, :as => :rich, :config => { :default_style => "myCrazyPaperclipStyle" },:label => false %>
+      </div>
+    </div><!-- /.ui_row -->  
+  <% end -%>
+  <%= f.actions do %>
+    <%= f.action :submit, :button_html => { :class => "btn btn-primary" }, :as => :button %>
+  <% end -%>
+<% end %>

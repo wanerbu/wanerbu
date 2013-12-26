@@ -11,7 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131223040359) do
+ActiveRecord::Schema.define(:version => 20131226094257) do
+
+  create_table "activities", :force => true do |t|
+    t.string   "name",              :limit => 50,  :default => "",   :null => false
+    t.string   "source_type"
+    t.integer  "user_id",                                            :null => false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "signup_start_time"
+    t.datetime "signup_end_time"
+    t.integer  "court_id"
+    t.string   "activity_address",  :limit => 100, :default => "",   :null => false
+    t.integer  "limit_num"
+    t.string   "contact_name"
+    t.string   "contact_telephone", :limit => 30,  :default => "",   :null => false
+    t.string   "qq"
+    t.text     "details"
+    t.string   "status",                           :default => "00", :null => false
+    t.float    "activity_cost"
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+  end
+
+  add_index "activities", ["court_id"], :name => "index_activities_on_court_id"
 
   create_table "admin_roles", :force => true do |t|
     t.integer "admin_id", :null => false
@@ -210,6 +233,19 @@ ActiveRecord::Schema.define(:version => 20131223040359) do
     t.datetime "updated_at",              :null => false
   end
 
+  create_table "rich_rich_files", :force => true do |t|
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "rich_file_file_name"
+    t.string   "rich_file_content_type"
+    t.integer  "rich_file_file_size"
+    t.datetime "rich_file_updated_at"
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.text     "uri_cache"
+    t.string   "simplified_type",        :default => "file"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name",           :limit => 20,                 :null => false
     t.integer  "sort",           :limit => 3,   :default => 1, :null => false
@@ -251,6 +287,14 @@ ActiveRecord::Schema.define(:version => 20131223040359) do
   end
 
   add_index "sports", ["name"], :name => "index_sports_on_name", :unique => true
+
+  create_table "user_activities", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "activity_id"
+    t.integer  "join_num"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "user_roles", :force => true do |t|
     t.integer  "user_id",    :null => false

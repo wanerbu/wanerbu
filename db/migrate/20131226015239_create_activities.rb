@@ -20,5 +20,6 @@ class CreateActivities < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :activites, :court_id
+    add_index :activities, :court_id
   end
+end

@@ -57,6 +57,8 @@ class User < ActiveRecord::Base
   has_one :gym
   has_many :gym_comments
   has_many :orders
+  has_many :activites
+  has_many :user_activites, :dependent => :destroy
   has_many(:user_roles, :validate => :false)
   has_many(:roles, through: :user_roles, :validate => :false)
 

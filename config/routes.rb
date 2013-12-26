@@ -1,6 +1,9 @@
 Wanerbu::Application.routes.draw do
 
+
   # 前台部分
+  #
+  # 场馆相关
   get "gym/gym_home"
   match 'gym/search/:sportid/:areaid/:keyword/:reservekey/:sortkey' => 'gym#search',:via=>:get
   match 'gym/one_gym/:id/:sportid' => 'gym#one_gym',:via=>:get
@@ -17,6 +20,9 @@ Wanerbu::Application.routes.draw do
   match 'gym/search_map' => 'gym#search_map',:via => :post
   match 'gym/code_image' => 'gym#code_image',:via => :get
 
+  # 活动相关
+  get "activities/activity_home"
+  resources :activities, :except => [:index] 
   # 普通用户认证部分
   devise_for :users,
              :controllers => {:sessions => 'user/users/sessions', :registrations => 'user/users/registrations'},

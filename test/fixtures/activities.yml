@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  source_type: MyString
+  user_id: 1
+  start_time: 2013-12-26 09:52:40
+  end_time: 2013-12-26 09:52:40
+  signup_start_time: 2013-12-26 09:52:40
+  signup_end_time: 2013-12-26 09:52:40
+  court_id: 1
+  activity_address: MyString
+  limit_num: 1
+  contact_name: MyString
+  contact_telephone: MyString
+  qq: MyString
+  details: MyText
+  status: MyString
+  activity_cost: 1.5
+
+two:
+  name: MyString
+  source_type: MyString
+  user_id: 1
+  start_time: 2013-12-26 09:52:40
+  end_time: 2013-12-26 09:52:40
+  signup_start_time: 2013-12-26 09:52:40
+  signup_end_time: 2013-12-26 09:52:40
+  court_id: 1
+  activity_address: MyString
+  limit_num: 1
+  contact_name: MyString
+  contact_telephone: MyString
+  qq: MyString
+  details: MyText
+  status: MyString
+  activity_cost: 1.5

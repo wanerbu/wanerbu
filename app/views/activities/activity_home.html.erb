@@ -1,0 +1,301 @@
+<%= javascript_include_tag "activities.js" %>
+<%= stylesheet_link_tag "activities" %>
+<%= stylesheet_link_tag "front_common" %>
+<div class="ui_row">
+  <div class="activity_title">
+    <h1>运动活动</h1>
+    <label><b>971584</b>人参加了活动</label>
+    <a href="edit_activity.html" target="_blank">
+      <button type="button" class="btn btn-info more">发起新活动</button>
+    </a>
+  </div>
+</div>
+<div class='ui_row mt10'>
+  <div class='ui_left'>
+    <div id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="/images/1.jpeg" alt="" class='img-polaroid'>
+          <div class="carousel-caption">
+            <h4>白日依山尽，黄河入海流</h4>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/images/2.jpeg" alt="" class='img-polaroid'>
+          <div class="carousel-caption">
+            <h4>莫愁前路无知己，天下谁人不识君</h4>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/images/3.jpeg" alt="" class='img-polaroid'>
+          <div class="carousel-caption">
+            <h4>醉卧沙场君莫笑，古来征战几人回</h4>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+  </div><!-- span8 -->
+  <div class='ui_right'>
+    <div class="top_head">
+      <span class="headName">TOP5排行榜</span>
+    </div>
+    <div class="top_body">
+      <ul>
+        <li>
+        <span class="num winner">1</span>
+        <span class="activity"><a title="1000000电影票狂欢三重奏，11元看电影" target="_blank" href="one_activity.html">1000000电影票狂欢三重，11元看</a></span>
+        <span class="point">10335参与</span>
+        </li>
+        <li>
+        <span class="num winner">2</span>
+        <span class="activity"><a title="11元看《雷神2：黑暗世界》，锤子哥来啦" target="_blank" href="one_activity.html">11元看《雷神2：黑暗世</a></span>
+        <span class="point">1033参与</span>
+        </li>
+        <li>
+        <span class="num winner">3</span>
+        <span class="activity"><a title="11元看《雷神2：黑暗世界》，锤子哥来啦" target="_blank" href="one_activity.html">11元看《雷神2：黑暗世</a></span>
+        <span class="point">1033参与</span>
+        </li>
+        <li>
+        <span class="num">4</span>
+        <span class="activity"><a title="11元看《雷神2：黑暗世界》，锤子哥来啦" target="_blank" href="one_activity.html">11元看《雷神2：黑暗世</a></span>
+        <span class="point">1033参与</span>
+        </li>
+        <li>
+        <span class="num">5</span>
+        <span class="activity"><a title="11元看《雷神2：黑暗世界》，锤子哥来啦" target="_blank" href="one_activity.html">11元看《雷神2：黑暗世</a></span>
+        <span class="point">10343参与</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class='ui_row' style='background-color:white; margin-top:0px;'>
+  <div class='span12 mt10'>
+    <div class="mb15">
+      <div class="choseBar">
+        <dl class="dl-horizontal dlTy left">
+          <dt>
+          <span class="typeTitle left">组织者:</span>
+          </dt>
+          <dd>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default">全部</button>
+            <button type="button" class="btn btn-default">官方</button>
+            <button type="button" class="btn btn-default">商家</button>
+            <button type="button" class="btn btn-default">个人</button>
+          </div>
+          </dd>
+        </dl>
+        <dl class="dl-horizontal dlTy left ml15">
+          <dt>
+          <span class="typeTitle left">时间：</span>
+          </dt>
+          <dd>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default">全部</button>
+            <button type="button" class="btn btn-default">今天</button>
+            <button type="button" class="btn btn-default">周末</button>
+            <button type="button" class="btn btn-default">最近一周</button>
+          </div>
+          </dd>
+        </dl>
+        <dl class="dl-horizontal dlTy left ml15">
+          <dt>
+          <span class="typeTitle left">区域：</span>
+          </dt>
+          <dd>
+          <div class="btn-group">
+            <button class="btn">全部区域</button>
+            <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">全部区域</a></li>
+              <li><a href="#">黄浦区</a></li>
+              <li><a href="#">徐汇区</a></li>
+            </ul>
+          </div>
+          </dd>
+        </dl>
+        <dl class="dl-horizontal dlTy left ml15">
+          <dt>
+          <span class="typeTitle left">状态：</span>
+          </dt>
+          <dd>
+          <div class="btn-group">
+            <button class="btn">全部</button>
+            <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">进行中</a></li>
+            </ul>
+          </div>
+          </dd>
+        </dl>
+      </div>
+      <div class="selectedMenus">
+        <div class="left">
+          <dl class="dl-horizontal dlTy">
+            <dt>
+            <span class="typeTitle left">活动搜索</span>
+            </dt>
+            <dd>
+            <div>
+              <form class="form-search">
+                <input type="text" class="input-medium search-query" placeholder="请输入搜索关键词">
+                <button type="submit" class="btn">搜索</button>
+              </form>
+            </div>	
+            </dd>
+          </dl>
+        </div>
+        <div class="right">
+          <div class="btn-group">
+            <button class="btn">默认(按发布日期)</button>
+            <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">默认(按发布日期)</a></li>
+              <li><a href="#">按活动日期</a></li>
+              <li><a href="#">按报名人数</a></li>
+            </ul>
+          </div>
+        </div>
+      </div><!--selectedMenus-->
+    </div><!---mb15-->
+  </div><!--span12-->
+</div><!-- /.ui_row -->
+<div class="ui_row mt10">
+  <div class="acList" id="acListArea">
+    <ul>
+      <li class="ui_panel">
+      <div class="panel_inner">
+        <p class="center"><a href="one_activity.html" title="转让下周五羽毛球场地，所在地区杨浦区" target="_blank"><img width="150" height="200" alt="转让下周五羽毛球场地，所在地区杨浦区" src="../../assets/img/activity1.jpg"></a></p>
+        <h3 class="fs12 mt10">
+          <span class="unApprove" title="未认证"></span>
+          <span class="c999">[运动]</span>
+          <a target="_blank" title="转让下周五羽毛球场地，所在地区杨浦区" href="one_activity.html">转让下周五羽毛球场地，所在地区杨浦区</a>
+        </h3>
+        <div class="title c999">
+          <span>时间：11月08日</span>
+          <span class="more"></span>
+        </div>
+      </div>
+      <div class="acBtm">
+        <span class="acPrice"> ¥80 </span>
+        <p class="c999" title="6人参加了该活动">6人参加</p>
+      </div>
+      </li>
+      <li class="ui_panel panelml">
+      <div class="panel_inner">
+        <p class="center"><a href="/activity/8972055" title="转让下周五羽毛球场地，所在地区杨浦区" target="_blank"><img width="150" height="200" alt="转让下周五羽毛球场地，所在地区杨浦区" src="../../assets/img/activity1.jpg"></a></p>
+        <h3 class="fs12 mt10">
+          <span class="unApprove" title="未认证"></span>
+          <span class="c999">[运动]</span>
+          <a target="_blank" title="转让下周五羽毛球场地，所在地区杨浦区" href="/activity/8972055">转让下周五羽毛球场地，所在地区杨浦区</a>
+        </h3>
+        <div class="title c999">
+          <span>时间：11月08日</span>
+          <span class="more"></span>
+        </div>
+      </div>
+      <div class="acBtm">
+        <span class="acPrice"> ¥80 </span>
+        <p class="c999" title="6人参加了该活动">6人参加</p>
+      </div>
+      </li>
+      <li class="ui_panel panelml">
+      <div class="panel_inner">
+        <p class="center"><a href="/activity/8972055" title="转让下周五羽毛球场地，所在地区杨浦区" target="_blank"><img width="150" height="200" alt="转让下周五羽毛球场地，所在地区杨浦区" src="../../assets/img/activity1.jpg"></a></p>
+        <h3 class="fs12 mt10">
+          <span class="unApprove" title="未认证"></span>
+          <span class="c999">[运动]</span>
+          <a target="_blank" title="转让下周五羽毛球场地，所在地区杨浦区" href="/activity/8972055">转让下周五羽毛球场地，所在地区杨浦区</a>
+        </h3>
+        <div class="title c999">
+          <span>时间：11月08日</span>
+          <span class="more"></span>
+        </div>
+      </div>
+      <div class="acBtm">
+        <span class="acPrice"> ¥80 </span>
+        <p class="c999" title="6人参加了该活动">6人参加</p>
+      </div>
+      </li>
+      <li class="ui_panel panelml">
+      <div class="panel_inner">
+        <p class="center"><a href="/activity/8972055" title="转让下周五羽毛球场地，所在地区杨浦区" target="_blank"><img width="150" height="200" alt="转让下周五羽毛球场地，所在地区杨浦区" src="../../assets/img/activity1.jpg"></a></p>
+        <h3 class="fs12 mt10">
+          <span class="unApprove" title="未认证"></span>
+          <span class="c999">[运动]</span>
+          <a target="_blank" title="转让下周五羽毛球场地，所在地区杨浦区" href="/activity/8972055">转让下周五羽毛球场地，所在地区杨浦区</a>
+        </h3>
+        <div class="title c999">
+          <span>时间：11月08日</span>
+          <span class="more"></span>
+        </div>
+      </div>
+      <div class="acBtm">
+        <span class="acPrice"> ¥80 </span>
+        <p class="c999" title="6人参加了该活动">6人参加</p>
+      </div>
+      </li>
+      <li class="ui_panel">
+      <div class="panel_inner">
+        <p class="center"><a href="/activity/8972055" title="转让下周五羽毛球场地，所在地区杨浦区" target="_blank"><img width="150" height="200" alt="转让下周五羽毛球场地，所在地区杨浦区" src="../../assets/img/activity1.jpg"></a></p>
+        <h3 class="fs12 mt10">
+          <span class="unApprove" title="未认证"></span>
+          <span class="c999">[运动]</span>
+          <a target="_blank" title="转让下周五羽毛球场地，所在地区杨浦区" href="/activity/8972055">转让下周五羽毛球场地，所在地区杨浦区</a>
+        </h3>
+        <div class="title c999">
+          <span>时间：11月08日</span>
+          <span class="more"></span>
+        </div>
+      </div>
+      <div class="acBtm">
+        <span class="acPrice"> ¥80 </span>
+        <p class="c999" title="6人参加了该活动">6人参加</p>
+      </div>
+      </li>
+      <li class="ui_panel panelml">
+      <div class="panel_inner">
+        <p class="center"><a href="/activity/8972055" title="转让下周五羽毛球场地，所在地区杨浦区" target="_blank"><img width="150" height="200" alt="转让下周五羽毛球场地，所在地区杨浦区" src="../../assets/img/activity1.jpg"></a></p>
+        <h3 class="fs12 mt10">
+          <span class="unApprove" title="未认证"></span>
+          <span class="c999">[运动]</span>
+          <a target="_blank" title="转让下周五羽毛球场地，所在地区杨浦区" href="/activity/8972055">转让下周五羽毛球场地，所在地区杨浦区</a>
+        </h3>
+        <div class="title c999">
+          <span>时间：11月08日</span>
+          <span class="more"></span>
+        </div>
+      </div>
+      <div class="acBtm">
+        <span class="acPrice"> ¥80 </span>
+        <p class="c999" title="6人参加了该活动">6人参加</p>
+      </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- /.ui_row -->  
+<div class="ui_row mt10">
+  <div class="page">
+    <div id='page'>
+      <a href="/sport/sportList.xhtml?servicetype=288731"  class='on' ><span>1</span></a>
+      <a href="/sport/sportList.xhtml?pageNo=1&servicetype=288731" ><span>2</span></a>
+      <a href="/sport/sportList.xhtml?pageNo=2&servicetype=288731" ><span>3</span></a>
+      <a href="/sport/sportList.xhtml?pageNo=3&servicetype=288731" ><span>4</span></a>
+      <a href="/sport/sportList.xhtml?pageNo=4&servicetype=288731" ><span>5</span></a>
+      <a href="/sport/sportList.xhtml?pageNo=5&servicetype=288731" ><span>6</span></a>
+      <strong>...</strong>
+      <a href="/sport/sportList.xhtml?pageNo=14&servicetype=288731" ><span>15</span></a>
+      <a href="/sport/sportList.xhtml?pageNo=1&servicetype=288731" class='next'><span>下一页</span></a>
+    </div>
+  </div>
+</div>
+

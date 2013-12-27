@@ -18,3 +18,7 @@ zh-CN:
       reservation_type:
         according_time: 按时间
         according_people: 按人次
+    activity:
+      activity_type:
+        sport: 运动
+        other: 其他

@@ -44,7 +44,41 @@ dt,dd {line-height: 30px;}
   border-style: inherit;
 }
 #activity_submit_action, #activity_details_input {
- list-style: none outside none;
+  list-style: none outside none;
+}
+#activity_activity_type_input li {
+  margin-top:10px;
+}
+#activity_activity_type_input label {
+  float: left;
+  width: 60px;
+  background-color: transparent;
+}
+#activity_activity_type_input{
+  margin-bottom: 5px;
+}
+#activity_limit_num_input{
+  float: left;
+  width: 80px;
+}
+#activity_limit_num{
+  width: 80px;
+}
+#activity_contact_name{
+  width: 160px;
+}
+#activity_contact_telephone{
+  width: 160px;
+}
+#activity_qq{
+  width: 160px;
+}
+#activity_activity_cost_input{
+  float: left;
+  width: 80px;
+}
+#activity_activity_cost{
+  width: 80px;
 }
 .acPrice {
   color: #FF6600;

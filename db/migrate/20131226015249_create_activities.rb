@@ -17,6 +17,7 @@ class CreateActivities < ActiveRecord::Migration
       t.text :details
       t.string :status,                 :null => false, :default => "00"
       t.float :activity_cost
+      t.string  :activity_type, :null => false, :default => "00"
 
       t.timestamps
     end

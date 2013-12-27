@@ -48,6 +48,13 @@ module Wanerbu
       # 按人次
       according_people: '01' 
     }
+    #活动类型
+    ACTIVITY_TYPE = {
+      # 运动
+      sport: '00',
+      # 其他
+      other: '01' 
+    }
   end
 end
 

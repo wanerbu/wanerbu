@@ -1,0 +1,29 @@
+﻿zh-CN:
+  activerecord:
+    models:
+      activity: 活动
+    attributes:
+      activity: &activity
+        activity_address:
+        activity_cost:
+        activity_type:
+        contact_name:
+        contact_telephone:
+        details:
+        end_time:
+        limit_num:
+        name:
+        qq:
+        signup_end_time:
+        signup_start_time:
+        source_type:
+        start_time:
+        status:
+    errors:
+      models:
+        activity:
+          attributes:
+  datagrid:
+    activity_report:
+      columns:
+        <<: *activity

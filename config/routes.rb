@@ -24,18 +24,22 @@ Wanerbu::Application.routes.draw do
 
   # 活动相关
   get "activities/activity_home"
+  get "activities/search/:id/:type" => 'activities#search',:via=>:get
+  match 'activities/get_cities_by_province_id/:province_id' => 'activities#get_cities_by_province_id',:via=>:get
+  match 'activities/get_areas_by_city_id/:city_id' => 'activities#get_areas_by_city_id',:via=>:get
   resources :activities, :except => [:index] 
+
   # 普通用户认证部分
   devise_for :users,
-             :controllers => {:sessions => 'user/users/sessions', :registrations => 'user/users/registrations'},
-             :path => 'auth',
-             :path_names => { :sign_in => 'login', :sign_out => 'logout'}
+    :controllers => {:sessions => 'user/users/sessions', :registrations => 'user/users/registrations'},
+    :path => 'auth',
+    :path_names => { :sign_in => 'login', :sign_out => 'logout'}
 
   # 系统管理员认证部分
   devise_for :admins,
-             :controllers => {:sessions => 'admin/admins/sessions'},
-             :path => 'admin/auth',
-             :path_names => { :sign_in => 'login', :sign_out => 'logout'}
+    :controllers => {:sessions => 'admin/admins/sessions'},
+    :path => 'admin/auth',
+    :path_names => { :sign_in => 'login', :sign_out => 'logout'}
 
   # 默认主页
   root :to => 'welcome#index'

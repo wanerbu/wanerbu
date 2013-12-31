@@ -1,0 +1,27 @@
+<div class="modal fade" id="choseCourt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width: 350px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">选择场地</h4>
+      </div>
+      <div class="modal-body" style="height: 180px;">
+        <div style="padding-left: 20px;">
+          <div class="left">
+            <p>地区</p>
+            <select id="area" style="width:60px; height:120px" multiple="multiple">
+              <%Area.all.each do |area|%>
+                <option value="<%=area.id%>"><%=area.area%></option>
+              <%end%>
+            </select>
+          </div>
+          <div id="gyms_select_div" class="left" style="display: none;">
+            <%= render 'gyms_select' -%>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary left" data-dismiss="modal"> 确定</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

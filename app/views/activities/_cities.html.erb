@@ -1,0 +1,34 @@
+<% if !cities.blank? %>
+  <% if @activity == nil %>
+    <%= collection_select(:activity, :city_id, cities.all, :id, :city,{:class =>"address_select"}) %>
+  <% else %>
+    <%= collection_select(:activity, :city_id, cities.all, :id, :city,{:selected => @activity.city_id},{:class =>"address_select"}) %>
+  <% end %>
+<% else %>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      //页面刷新时 
+      var city_id = $('select#activity_city_id :selected').val();
+
+      if(city_id == "") city_id ="0";
+
+      jQuery.get('/activities/get_areas_by_city_id/' + city_id,
+        function(data){
+        $("#areas").html(data);
+        });
+      //用户选择时
+      $("#activity_city_id").change(function() {
+        var city_id = $('select#activity_city_id :selected').val();
+
+        if(city_id == "") city_id ="0";
+
+        jQuery.get('/activities/get_areas_by_city_id/' + city_id,
+          function(data){
+          $("#areas").html(data);
+          })
+        return false;
+        });  
+  });
+</script> 

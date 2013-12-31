@@ -10,6 +10,9 @@ class CreateActivities < ActiveRecord::Migration
       t.datetime :signup_end_time
       t.integer :court_id
       t.string :activity_address,     limit: 100,:null => false, :default => ""
+      t.integer  :province_id
+      t.integer  :city_id
+      t.integer  :area_id
       t.integer :limit_num
       t.string :contact_name
       t.string :contact_telephone,   limit: 30, :null => false, :default => ""

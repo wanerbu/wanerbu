@@ -45,5 +45,8 @@ class Gym < ActiveRecord::Base
  def score
     s = self.gym_comments.average("score")
     s = s.round(1) if s.present?
- end 
+ end
+ def getFullAddress
+  full_address = City.find(self.city_id).city + Area.find(self.area_id).area + self.address 
+ end
 end

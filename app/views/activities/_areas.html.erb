@@ -1,0 +1,9 @@
+<% if !areas.blank? %>
+  <% if @activity == nil %>
+    <%= collection_select(:activity, :area_id, areas.all, :id, :area,{:class =>"address_select"}) %>
+  <% else %>
+    <%= collection_select(:activity, :area_id, areas.all, :id, :area,{:selected => @activity.area_id},{:class =>"address_select"}) %>
+  <% end %>
+<% else %>
+<% end %>
+

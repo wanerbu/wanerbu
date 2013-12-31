@@ -1,0 +1,25 @@
+<p>场馆</p>
+<select id="gym" style="width:100px; height:120px" multiple="multiple">
+  <%if !@gyms.nil? %>
+    <%@gyms.all.each do |gym|%>
+      <option value="<%=gym.id%>"><%=gym.name%></option>
+    <%end%>
+  <%end%>
+</select>
+<div id="courts_select_div" class="right" style="display: none;margin-top: -22px;">
+  <%= render 'courts_select' -%>
+</div>
+<script type="text/javascript">
+  $(function() {
+      $("#gym").change(
+        function(){
+        jQuery.get('/activities/search/' + $(this).val() + "/court",
+          function(data){
+          $('#courts_select_div').show();    
+          $("#courts_select_div").html(data);
+          $("#activity_court_id").val("");
+          });
+        }
+        );//选择场地
+      });
+</script> 

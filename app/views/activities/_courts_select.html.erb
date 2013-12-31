@@ -1,0 +1,23 @@
+<p>场地</p>
+<select id="court" style="width:80px; height:120px" multiple="multiple">
+  <%if !@courts.nil? %>
+    <%@courts.all.each do |court|%>
+      <option value="<%=court.id%>"><%=Sport.find(court.sport_id).name%></option>
+    <%end%>
+  <%end%>
+</select>
+<%if !@gym.nil? %>
+  <input id="gym_address" type="hidden" value="<%=@gym.address%>" >
+  <input id="gym_province_id" type="hidden" value="<%=@gym.province_id%>" >
+  <input id="gym_city_id" type="hidden" value="<%=@gym.city_id%>" >
+  <input id="gym_area_id" type="hidden" value="<%=@gym.area_id%>" >
+<%end%>
+<script type="text/javascript">
+  $(function() {
+      $("#court").change(
+        function(){
+        $("#activity_court_id").val($(this).val());
+        }
+        );//选择场地
+      });
+</script> 

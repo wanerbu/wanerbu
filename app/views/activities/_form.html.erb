@@ -27,7 +27,12 @@
               </dd>
               <dt>活动地点：</dt>
               <dd>
-              <%= f.input :activity_address,:label => false  %></dd>
+              <%= collection_select(:activity, :province_id, Province.all, :id, :province,{:prompt=>true},{:class =>"address_select"}) %>
+              <span id="cities">
+              </span>  
+              <span id="areas">
+              </span>
+              <%= text_field_tag 'activity[activity_address]', @activity.activity_address %>  
               <dt>报名时间：</dt>
               <dd>
               <p data-language="javascript" class="datepair">
@@ -44,8 +49,8 @@
               <input id="activity_signup_end_time_3i" type="hidden" value="" name="activity[signup_end_time(3i)]">
               <input id="activity_signup_end_time_4i" type="hidden" value="" name="activity[signup_end_time(4i)]">
               <input id="activity_signup_end_time_5i" type="hidden" value="" name="activity[signup_end_time(5i)]">
-              <input style="margin-left: 65px;" type="text"  targetfield="activity_signup_end_time" class="time end ui-timepicker-input" autocomplete="off" placeholder="报名结束时间...">
-              <input type="text" class="date end" targetfield="activity_signup_end_time" placeholder="报名结束日期...">
+              <input type="text" targetfield="activity_signup_end_time" style="margin-left: 65px;" class="date end"  placeholder="报名结束日期...">
+              <input type="text" targetfield="activity_signup_end_time" class="time end ui-timepicker-input" autocomplete="off" placeholder="报名结束时间...">
               </p>
               </dd>
               <dt>活动时间：</dt>
@@ -64,8 +69,8 @@
               <input id="activity_end_time_3i" type="hidden" value="" name="activity[end_time(3i)]">
               <input id="activity_end_time_4i" type="hidden" value="" name="activity[end_time(4i)]">
               <input id="activity_end_time_5i" type="hidden" value="" name="activity[end_time(5i)]">
-              <input style="margin-left: 65px;"  targetfield="activity_end_time" type="text" class="time end ui-timepicker-input" autocomplete="off" placeholder="活动结束时间...">
-              <input type="text"  targetfield="activity_end_time" class="date end" placeholder="活动结束日期...">
+              <input type="text" targetfield="activity_end_time" style="margin-left: 65px;" class="date end" placeholder="活动结束日期...">
+              <input type="text" targetfield="activity_end_time" class="time end ui-timepicker-input" autocomplete="off" placeholder="活动结束时间...">
               </dd>
               <dt>人数限制：</dt>
               <dd>
@@ -73,7 +78,7 @@
               <dt style=" margin-left: 12px">联系人：</dt>
               <dd><%= f.input :contact_name,:label => false  %></dd>
               <dt>联系方式：</dt>
-              <dd><%= f.input :contact_telephone,:label => false  %></dd>
+              <dd><%= f.input :contact_telephone,:label => false%></dd>
               <dt style=" margin-left: 30px">QQ：</dt>
               <dd><%= f.input :qq,:label => false  %></dd>
               <dt>活动费用：</dt>
@@ -111,7 +116,8 @@
         <%= f.input :details, :as => :rich, :config => { :default_style => "myCrazyPaperclipStyle" },:label => false %>
       </div>
     </div><!-- /.ui_row -->  
-    <input id="user_id" type="hidden" value="<%=current_user.nil? ? "1" : current_user.id%>" name="activity[user_id]">
+    <input id="user_id" type="hidden" value="<%=current_user.nil? ? " " : current_user.id%>" name="activity[user_id]">
+    <input id="activity_court_id" type="hidden" value="" name="activity[court_id]">
   <% end -%>
   <%= f.actions do %>
     <%= f.action :submit, :button_html => { :class => "btn btn-primary",:id=>"submit_activity" }, :as => :button %>

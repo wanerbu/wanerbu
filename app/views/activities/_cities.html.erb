@@ -9,6 +9,7 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+    if ($("input[name='activity[activity_type]']:checked").val() == 'other'){
       //页面刷新时 
       var city_id = $('select#activity_city_id :selected').val();
 
@@ -30,5 +31,6 @@
           })
         return false;
         });  
+      }
   });
 </script> 

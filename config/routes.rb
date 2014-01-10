@@ -1,8 +1,5 @@
 Wanerbu::Application.routes.draw do
 
-
-  mount Rich::Engine => '/rich', :as => 'rich'
-
   # 前台部分
   #
   # 场馆相关

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require kindeditor
 //
 // Include all twitter's javascripts
 //= require twitter/bootstrap
@@ -21,4 +22,3 @@
 // require_tree .
 //= require jquery.timepicker.js
 //= require bootstrap-datepicker
-//= require rich

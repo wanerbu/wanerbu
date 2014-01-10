@@ -15,4 +15,5 @@
  *= require common
  *= require jquery.timepicker.css
  *= require bootstrap-datepicker
+ *= require front_common
  */

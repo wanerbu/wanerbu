@@ -43,10 +43,6 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
-    cocaine (0.5.3)
-      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -77,28 +73,20 @@ GEM
     jquery-timepicker-rails (1.2.5.0)
       railties (>= 3.1.0)
     json (1.8.1)
-    kaminari (0.15.0)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     libv8 (3.11.8.13)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
+    mini_magick (3.7.0)
+      subexec (~> 0.2.1)
     multi_json (1.8.2)
     orm_adapter (0.0.7)
-    paperclip (3.5.2)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
-      mime-types
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-raw-upload (1.1.1)
-      multi_json
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -111,6 +99,9 @@ GEM
       activesupport (= 3.2.12)
       bundler (~> 1.0)
       railties (= 3.2.12)
+    rails_kindeditor (0.4.4)
+      carrierwave
+      mini_magick
     railties (3.2.12)
       actionpack (= 3.2.12)
       activesupport (= 3.2.12)
@@ -122,14 +113,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.2)
-    rich (1.4.6)
-      jquery-rails
-      kaminari
-      mime-types
-      paperclip
-      rack-raw-upload
-      rails (>= 3.2.0)
-      sass-rails
     rmagick (2.13.2)
     sass (3.2.12)
     sass-rails (3.2.6)
@@ -145,6 +128,7 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
     sqlite3 (1.3.7-x86-mingw32)
+    subexec (0.2.3)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -179,7 +163,7 @@ DEPENDENCIES
   jquery-rails
   jquery-timepicker-rails
   rails (= 3.2.12)
-  rich
+  rails_kindeditor
   rmagick (~> 2.13.2)
   sass-rails (~> 3.2.3)
   simple-navigation (~> 3.10)

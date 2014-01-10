@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20131226094257) do
     t.text     "details"
     t.string   "status",                           :default => "00", :null => false
     t.float    "activity_cost"
+    t.string   "logo"
     t.string   "activity_type",                    :default => "00", :null => false
     t.datetime "created_at",                                         :null => false
     t.datetime "updated_at",                                         :null => false

@@ -1,5 +1,14 @@
 $(function() {
-
+  $("#new_activity").validate({
+    rules: {
+      'activity[name]':"required",
+      'activity[activity_type]':"required"
+    },
+  messages:{
+    'activity[name]':"请输入活动名称",
+    'activity[activity_type]':"请选择活动类型"
+  }
+  }); 
   //页面刷新时根据省ID取城市 
   var province_id = $('select#activity_province_id :selected').val();
   if(province_id == "") province_id ="0";
@@ -110,6 +119,9 @@ $(function() {
         doSetTimeParam($this);
       }
     });
+    $("#activity_area_id").attr("disabled",false);
+    $("#activity_city_id").attr("disabled",false);
+    $("#activity_province_id").attr("disabled",false);
   });//用户提交时将日期时间的值设到hidden里
 
   function doSetDateParam(target){

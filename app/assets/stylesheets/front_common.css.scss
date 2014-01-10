@@ -101,8 +101,8 @@ width: 50px;
 }
 .wb-pagination a:hover{background:#3ae}
 /*
-*date/time picker样式
-*/
+ *date/time picker样式
+ */
 .date{
   width: 90px;
 }
@@ -111,4 +111,12 @@ width: 50px;
 }
 .address_select{
   width:65px;
+}
+/*
+ *jquery.validate error 样式
+ */
+label.error{
+  /* remove the next line when you have trouble in IE6 with labels in list */
+  color: red;
+  font-style: italic
 }

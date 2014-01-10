@@ -71,5 +71,5 @@ gem 'bootstrap-datepicker-rails'
 #date/time picker
 gem 'jquery-timepicker-rails'
 
-#WYSIWYG editor (based on CKEditor))
-gem 'rich'
+#rich editor https://github.com/Macrow/rails_kindeditor
+gem 'rails_kindeditor'

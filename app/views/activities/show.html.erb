@@ -1,0 +1,169 @@
+<%= stylesheet_link_tag "activities" %>
+<%= stylesheet_link_tag "front_common" %>
+<div id="main-content" class="container">
+  <div class="ui_row">
+    <div class="activity_title">
+      <div class="crumbs"><a href="/">玩儿不网</a>&nbsp;&gt;&nbsp;<a href="/activity/">活动</a>&nbsp;&gt;&nbsp;活动详情
+        <%=button_to "发起活动",new_activity_path,:method => "get",:class => "btn btn-info more"%>
+      </div>
+    </div><!-- /.ui_row -->  
+    <div class='ui_row mt20'>
+      <div class='acBox'>
+        <div class="acHeader">
+          <div class="acHeaderTop">
+            <h1><%=@activity.name%></h1>
+            <p class="mt10">
+            <span class="mr20 c666">【上海 <span class="c999">地区</span>】</span>
+            <span class="c999">37人参加</span>
+            </p>
+          </div>
+          <div class="acHeaderLine"></div>
+        </div>
+        <div class='acInner'>
+          <div class='ui_left span8'>
+            <div class='acHeaderBtm'>
+              <div class='ui_abeam'>
+                <div class='uipic'>
+                  <img width="150" height="200" src="../../assets/img/one_activity1.jpg" alt="周四(10月31日)晚上8-10点七宝三中塑胶场地羽毛活动" title="周四(10月31日)晚上8-10点七宝三中塑胶场地羽毛活动">
+                  <div class="bds_tools mt10">
+                    <span class="bds_more">分享到：</span>
+                    <a class="bds_tsina" title="分享到新浪微博" href="#"></a>
+                    <a class="bds_tqq" title="分享到腾讯微博" href="#"></a>
+                    <a class="bds_qzone" title="分享到QQ空间" href="#"></a>
+                    <a class="bds_renren" title="分享到人人网" href="#"></a>
+                  </div>
+                </div>
+                <div class='uitext'>
+                  <dl class="activityInfo">
+                    <dt>活动类型：</dt>
+                    <dd>运动</dd>
+                    <dt>活动地点：</dt>
+                    <dd>宝南路88号(近七宝老街) </dd>
+                    <dt>报名时间：</dt>
+                    <dd>10月31日 00:00&nbsp;--&nbsp;12月30日 19:10&nbsp;</dd>
+                    <dt>活动时间：</dt>
+                    <dd>10月31日 周四 20:00&nbsp;--&nbsp; 12月30日 周一 19:10 &nbsp;</dd>
+                    <dt>报名名额：</dt>
+                    <dd><b class="cF60">0</b>/<b class="cF60 mr5">30</b>(报名名额/名额限制)</dd>
+                    <dt>联系人：</dt>
+                    <dd>伞下晴空</dd>
+                    <dt>联系方式：</dt>
+                    <dd>13764556673</dd>
+                    <dt>QQ：</dt>
+                    <dd>837892523</dd>
+                    <dt>活动费用：</dt>
+                    <dd><b class="acPrice">¥35</b></dd>
+                    <dt></dt>
+                    <dd><button type="button" class="btn btn-info">我要参加</button></dd>
+                  </dl>
+                </div><!--uitext-->
+              </div><!--ui_abeam-->
+            </div><!--acHeaderBtm-->
+            <div class="title_details">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#" class="title_ft">活动详情</a></li>
+              </ul>
+            </div>
+            <div class="title_pic mt20">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#" class="title_ft">活动图片(共0张)</a> </li>
+                <li style="float: right; width: 110px;">
+                <i class="icon-plus" style="float: left; margin-top: 11px; margin-left: 6px;"></i>
+                <a href="#" class="uploadAcPic">上传图片</a> 
+                </li>
+              </ul>
+            </div>
+          </div><!--ui_left-->
+          <div class='ui_right span4'>
+            <div class='kuang'>
+              <div class="mod_hd">
+                <h2>组织者</h2>
+              </div>
+              <div class="mod_bd">
+                <div class="ui_abeam">
+                  <div class="uipic">
+                    <a target="_blank" href="#" title="伞下晴空99">
+                      <img width="50" height="50" src="../../assets/img/default_head.png" alt="伞下晴空99">
+                    </a>
+                  </div>
+                  <div class="uitext">
+                    <p><a title="伞下晴空99" target="_blank" href="#">伞下晴空99</a>
+                    <span class="unApprove" title="未认证"></span>
+                    </p>
+                    <p class="mt10">发起活动 <span class="CC3300 ml5 mr5 fs20">41</span> 次</p>
+                  </div>
+                </div><!--ui_abeam-->
+
+                <ul>
+                  <li>
+                  <em class="taac">TA发起的活动</em>
+                  </li>
+                  <li>
+                  <a title="周二(11月5日)晚上8-10点七宝三中塑胶场地羽毛活动" class="c333" target="_blank" href="/activity/8999271">周二(11月5日)晚上8-10点七宝三中</a>
+                  <span title="活动即将开始，尽请期待！" class="commingsoon">即将开始</span>
+                  </li>
+                  <li>
+                  <a title="周二(10月29日)晚上8-10点七宝三中塑胶场地羽毛活动" class="c333" target="_blank" href="/activity/8915490">周二(10月29日)晚上8-10点七宝三</a>
+                  <span title="活动进行中！" class="happening">进行中</span>
+                  </li>
+                  <li>
+                  <a title="周日(10月27日)下午5-8点七宝三中塑胶场地羽毛活动" class="c333" target="_blank" href="/activity/8902746">周日(10月27日)下午5-8点七宝三中</a>
+                  <span title="活动进行中！" class="happening">进行中</span>
+                  </li>
+                  <li>
+                  <a title="周四(10月24日)晚上8-10点七宝三中塑胶场地羽毛活动" class="c333" target="_blank" href="/activity/8895315">周四(10月24日)晚上8-10点七宝三</a>
+                  <span title="活动进行中！" class="happening">进行中</span>
+                  </li>
+                  <li>
+                  <a title="周四(10月24日)晚上8-10点七宝三中塑胶场地羽毛活动" class="c333" target="_blank" href="/activity/8894789">周四(10月24日)晚上8-10点七宝三</a>
+                  <span title="活动进行中！" class="happening">进行中</span>
+                  </li>
+                </ul>
+              </div><!--mod_bd-->
+            </div><!--kuang-->
+            <div class='kuang_item'>
+              <div class="mod_hd">
+                <h2>关联项目</h2>
+              </div>
+              <div class="mod_bd">
+                <div class="ui_abeam">
+                  <div class="uipic">
+                    <a title="羽毛球" target="_blank" href="/sport/item/288732">
+                      <img width="72" height="96" src="../../assets/img/yumaoqiu.jpg" alt="羽毛球">
+                    </a>	
+                  </div>
+                  <div class="uitext">
+                    <p><a title="羽毛球" target="_blank" href="/sport/item/288732" class="fs14">羽毛球</a></p>
+                    <p><em>关注数：</em>357953</p>
+                    <p class="mt10"><button type="button" class="btn btn-info">立即购买</button></p>
+                  </div>
+                </div><!--ui_abeam-->
+              </div><!--mod_bd-->
+            </div><!--kuang-->
+
+            <div class='kuang_item'>
+              <div class="mod_hd">
+                <h2>关联场馆</h2>
+              </div>
+              <div class="mod_bd">
+                <div class="ui_abeam">
+                  <div class="uipic">
+                    <a title="羽毛球" target="_blank" href="/sport/item/288732">
+                      <img width="72" height="96" src="../../assets/img/yumaoqiu.jpg" alt="羽毛球">
+                    </a>	
+                  </div>
+                  <div class="uitext">
+                    <p><a title="羽毛球" target="_blank" href="/sport/item/288732" class="fs14">七宝三中羽毛球馆</a></p>
+                    <p><em>地址：</em>宝南路88号(近七宝老街)</p>
+                    <p class="mt10"><button type="button" class="btn btn-info">立即购买</button></p>
+                  </div>
+                </div><!--ui_abeam-->
+              </div><!--mod_bd-->
+            </div><!--kuang-->
+
+          </div><!--ui_right-->
+        </div>
+      </div><!--acBox-->
+    </div><!-- /.ui_row -->  
+  </div><!--/.container-->
+

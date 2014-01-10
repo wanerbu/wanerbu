@@ -13,6 +13,9 @@ class ActivitiesController < ApplicationController
       render :new
     end
   end
+  def show
+    @activity= Activity.find(params[:id])
+  end
   def search
     if params[:type] == "gym"
       @gyms = Gym.where("area_id" => params[:id])
